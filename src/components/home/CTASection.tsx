@@ -4,9 +4,9 @@ import { ArrowRight, Phone, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const benefits = [
-  "Free consultation, koi obligation nahi",
-  "Estimated savings minutes mein dekhein",
-  "Settlement hone tak koi upfront fees nahi",
+  "Free consultation with no obligation",
+  "See your estimated savings in minutes",
+  "No upfront fees until debt is settled",
 ];
 
 export function CTASection() {
@@ -39,7 +39,7 @@ export function CTASection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 text-primary-foreground/90 text-sm mb-8"
           >
             <Clock className="w-4 h-4 text-accent" />
-            <span>Average settlement time: 12-24 mahine</span>
+            <span>Average settlement time: 12-24 months</span>
           </motion.div>
 
           <motion.h2
@@ -49,9 +49,9 @@ export function CTASection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6"
           >
-            Kya Aap Tayaar Hain
+            Ready to Take Control of
             <br />
-            <span className="text-accent">Karz Mukti Ke Liye?</span>
+            <span className="text-accent">Your Financial Future?</span>
           </motion.h2>
 
           <motion.p
@@ -61,8 +61,8 @@ export function CTASection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-8"
           >
-            Hazaron Bharatiyon ne apna karz successfully settle kiya hai aur 
-            tension-free life shuru ki hai. Aapki free consultation sirf ek click door hai.
+            Join thousands of Indians who have successfully settled their debts 
+            and regained peace of mind. Your free consultation is just a click away.
           </motion.p>
 
           {/* Benefits */}
@@ -91,7 +91,7 @@ export function CTASection() {
           >
             <Button variant="hero" size="xl" asChild>
               <Link to="/eligibility">
-                Free Analysis Paayein
+                Get Your Free Analysis
                 <ArrowRight className="w-5 h-5 ml-1" />
               </Link>
             </Button>
