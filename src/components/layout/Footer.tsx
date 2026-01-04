@@ -18,29 +18,32 @@ const footerLinks = {
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Compliance", href: "/compliance" },
-    { label: "FINRA Disclosure", href: "/finra" },
+    { label: "RBI Compliance", href: "/compliance" },
+    { label: "SEBI Guidelines", href: "/sebi" },
   ],
 };
 
 const trustBadges = [
-  { icon: Shield, label: "SOC 2 Certified" },
-  { icon: Lock, label: "256-bit AES" },
-  { icon: Scale, label: "FINRA Regulated" },
-  { icon: Award, label: "$500M+ Settled" },
+  { icon: Shield, label: "RBI Registered" },
+  { icon: Lock, label: "256-bit SSL" },
+  { icon: Scale, label: "CIBIL Partner" },
+  { icon: Award, label: "₹500Cr+ Settled" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-navy-dark text-primary-foreground">
+    <footer className="bg-foreground text-background">
+      {/* Tricolor Top Border */}
+      <div className="h-1 w-full bg-gradient-to-r from-primary via-card to-secondary" />
+      
       {/* Trust Badges Bar */}
-      <div className="border-b border-primary-foreground/10">
+      <div className="border-b border-background/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-2 text-sm">
                 <badge.icon className="w-5 h-5 text-accent" />
-                <span className="text-primary-foreground/80">{badge.label}</span>
+                <span className="text-background/80">{badge.label}</span>
               </div>
             ))}
           </div>
@@ -56,33 +59,36 @@ export function Footer() {
               <div className="w-10 h-10 rounded-xl accent-gradient flex items-center justify-center">
                 <Shield className="w-5 h-5 text-accent-foreground" />
               </div>
-              <span className="font-display font-bold text-xl">
-                DebtRelief<span className="text-accent">Pro</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="font-display font-bold text-xl">
+                  Rin<span className="text-primary">Mukti</span>
+                </span>
+                <span className="text-[10px] text-background/60">Debt Settlement India</span>
+              </div>
             </Link>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6 max-w-sm">
-              Your trusted partner in financial recovery through legal mediation. 
-              We help you negotiate and settle debts with confidence and transparency.
+            <p className="text-background/70 text-sm leading-relaxed mb-6 max-w-sm">
+              Bharat ka vishwasniya karj samadhan partner. Hum aapko karz se mukti 
+              dilane mein madad karte hain - poori tarah se legal aur transparent tarike se.
             </p>
-            <div className="space-y-3 text-sm text-primary-foreground/70">
-              <a href="tel:1-800-555-0123" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <div className="space-y-3 text-sm text-background/70">
+              <a href="tel:1800-123-4567" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" />
-                1-800-555-0123
+                1800-123-4567 (Toll Free)
               </a>
-              <a href="mailto:support@debtreliefpro.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <a href="mailto:namaste@rinmukti.in" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail className="w-4 h-4" />
-                support@debtreliefpro.com
+                namaste@rinmukti.in
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                New York, NY 10001
+                Mumbai, Maharashtra 400001
               </div>
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/90">
+            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-background/90">
               Services
             </h4>
             <ul className="space-y-3">
@@ -90,7 +96,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link 
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-sm text-background/70 hover:text-accent transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +107,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/90">
+            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-background/90">
               Company
             </h4>
             <ul className="space-y-3">
@@ -109,7 +115,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link 
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-sm text-background/70 hover:text-accent transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -120,7 +126,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-primary-foreground/90">
+            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-background/90">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -128,7 +134,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link 
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-sm text-background/70 hover:text-accent transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -140,11 +146,11 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/10">
+      <div className="border-t border-background/10">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
-            <p>© 2026 DebtRelief Pro. All rights reserved.</p>
-            <p>Licensed debt settlement provider. Results may vary.</p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-background/60">
+            <p>© 2026 RinMukti. All rights reserved. | Made with ❤️ in India</p>
+            <p>RBI Registered Debt Settlement Provider. Results may vary.</p>
           </div>
         </div>
       </div>

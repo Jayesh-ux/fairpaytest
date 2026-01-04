@@ -13,47 +13,47 @@ const sectors = [
   {
     icon: Wallet,
     title: "Personal Loans",
-    description: "High-interest personal loan settlements through hardship documentation and negotiation.",
+    description: "High-interest personal loan settlements - hardship documentation aur skilled negotiation ke saath.",
     stats: "Avg. 52% reduction",
     href: "/dashboard/personal-loans",
-    gradient: "from-accent/20 to-teal-light/20",
-    iconBg: "bg-accent",
+    gradient: "from-primary/20 to-accent/20",
+    iconBg: "bg-primary",
   },
   {
     icon: Building2,
     title: "Business Loans",
-    description: "Cash flow-based restructuring and settlement options for small business debt.",
+    description: "Cash flow-based restructuring aur settlement options chhote vyapariyon ke liye.",
     stats: "Avg. 48% reduction",
     href: "/dashboard/business-loans",
-    gradient: "from-navy/20 to-primary/20",
-    iconBg: "bg-navy",
+    gradient: "from-secondary/20 to-green-india/20",
+    iconBg: "bg-secondary",
   },
   {
     icon: Stethoscope,
     title: "Medical Debt",
-    description: "Billing error identification and insurance advocacy to reduce medical bills.",
+    description: "Hospital billing errors identify karna aur insurance advocacy se medical bills kam karna.",
     stats: "Avg. 55% reduction",
     href: "/dashboard/medical-debt",
-    gradient: "from-accent/20 to-teal-light/20",
-    iconBg: "bg-accent",
+    gradient: "from-primary/20 to-accent/20",
+    iconBg: "bg-primary",
   },
   {
     icon: CreditCard,
     title: "Credit Cards",
-    description: "Interest freeze negotiations and lump-sum settlement offers.",
+    description: "Interest freeze negotiations aur lump-sum settlement offers banks ke saath.",
     stats: "Avg. 50% reduction",
     href: "/dashboard/credit-cards",
-    gradient: "from-navy/20 to-primary/20",
-    iconBg: "bg-navy",
+    gradient: "from-secondary/20 to-green-india/20",
+    iconBg: "bg-secondary",
   },
   {
     icon: GraduationCap,
-    title: "Student Loans",
-    description: "Income-based repayment plans and forgiveness program guidance.",
+    title: "Education Loans",
+    description: "Income-based repayment plans aur education loan restructuring guidance.",
     stats: "Various options",
     href: "/dashboard/student-loans",
-    gradient: "from-accent/20 to-teal-light/20",
-    iconBg: "bg-accent",
+    gradient: "from-primary/20 to-accent/20",
+    iconBg: "bg-primary",
   },
 ];
 
@@ -69,17 +69,17 @@ export function SectorsSection() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
             Specialized Solutions
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Debt Settlement by
+            Karz Settlement by
             <br />
             <span className="gradient-text">Industry Sector</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Every debt type requires a unique approach. Our sector-specific strategies 
-            maximize your savings with tailored negotiation tactics.
+            Har karz type ke liye ek unique approach chahiye. Hamari sector-specific 
+            strategies aapki savings ko maximize karti hain tailored negotiation tactics ke saath.
           </p>
         </motion.div>
 
@@ -95,7 +95,7 @@ export function SectorsSection() {
               className={index === 4 ? "md:col-span-2 lg:col-span-1" : ""}
             >
               <Link to={sector.href} className="group block h-full">
-                <div className={`relative overflow-hidden rounded-2xl p-8 h-full bg-gradient-to-br ${sector.gradient} border border-border/50 hover:border-accent/50 transition-all duration-300 hover-lift`}>
+                <div className={`relative overflow-hidden rounded-2xl p-8 h-full bg-gradient-to-br ${sector.gradient} border border-border/50 hover:border-primary/50 transition-all duration-300 hover-lift`}>
                   {/* Background Pattern */}
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
                     <sector.icon className="w-full h-full" />
@@ -109,7 +109,7 @@ export function SectorsSection() {
                   {/* Content */}
                   <h3 className="font-display text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
                     {sector.title}
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     {sector.description}

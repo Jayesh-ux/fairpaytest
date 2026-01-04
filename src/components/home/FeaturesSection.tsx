@@ -15,44 +15,44 @@ const features = [
   {
     icon: Calculator,
     title: "AI Settlement Calculator",
-    description: "Get an instant estimate of your potential savings with our proprietary algorithm that analyzes creditor behavior patterns.",
+    description: "Hamara proprietary algorithm se apni potential savings ka instant estimate paayein jo creditor behavior patterns analyze karta hai.",
     link: "/calculator",
-    color: "from-accent to-teal-light",
+    color: "from-primary to-accent",
   },
   {
     icon: FileCheck,
     title: "Secure Document Vault",
-    description: "Upload and manage all your financial documents in one encrypted space with bank-level security.",
+    description: "Apne saare financial documents ek encrypted space mein upload aur manage karein bank-level security ke saath.",
     link: "/vault",
-    color: "from-navy to-primary",
+    color: "from-secondary to-green-india",
   },
   {
     icon: ShieldCheck,
     title: "Legal Compliance",
-    description: "Every negotiation follows FINRA guidelines and state regulations for your complete protection.",
+    description: "Har negotiation RBI guidelines aur Indian regulations follow karti hai aapki complete protection ke liye.",
     link: "/how-it-works",
-    color: "from-accent to-teal-light",
+    color: "from-primary to-accent",
   },
   {
     icon: Zap,
     title: "Fast Resolution",
-    description: "Our AI-assisted process reduces settlement time from months to weeks, saving you time and stress.",
+    description: "Hamara AI-assisted process settlement time ko mahino se hafton mein reduce karta hai, aapka time aur stress bachata hai.",
     link: "/eligibility",
-    color: "from-navy to-primary",
+    color: "from-secondary to-green-india",
   },
   {
     icon: Users,
     title: "Expert Advocates",
-    description: "Certified debt counselors review every case and intervene when human expertise is needed.",
+    description: "Certified debt counselors har case review karte hain aur jab human expertise ki zaroorat ho tab intervene karte hain.",
     link: "/about",
-    color: "from-accent to-teal-light",
+    color: "from-primary to-accent",
   },
   {
     icon: Clock,
     title: "24/7 Progress Tracking",
-    description: "Monitor your settlement journey in real-time with detailed status updates and milestones.",
+    description: "Apni settlement journey ko real-time mein monitor karein detailed status updates aur milestones ke saath.",
     link: "/dashboard",
-    color: "from-navy to-primary",
+    color: "from-secondary to-green-india",
   },
 ];
 
@@ -68,17 +68,17 @@ export function FeaturesSection() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-4">
-            Why Choose Us
+          <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
+            Humein Kyun Chunein
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Everything You Need for
+            Sab Kuch Jo Aapko Chahiye
             <br />
-            <span className="gradient-text">Financial Freedom</span>
+            <span className="gradient-text">Financial Freedom Ke Liye</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Our comprehensive platform combines AI technology with legal expertise 
-            to deliver results that traditional debt settlement can't match.
+            Hamara comprehensive platform AI technology ko legal expertise ke saath 
+            combine karta hai jo traditional debt settlement nahi de sakta.
           </p>
         </motion.div>
 
@@ -96,14 +96,14 @@ export function FeaturesSection() {
                 to={feature.link}
                 className="group block h-full"
               >
-                <div className="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-accent/30 transition-all duration-300">
+                <div className="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-primary/30 transition-all duration-300">
                   {/* Icon */}
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <feature.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -111,8 +111,8 @@ export function FeaturesSection() {
                   </p>
 
                   {/* Link */}
-                  <span className="inline-flex items-center text-sm font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
-                    Learn more
+                  <span className="inline-flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    Aur Jaanein
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
@@ -131,7 +131,7 @@ export function FeaturesSection() {
         >
           <Button variant="accent" size="xl" asChild>
             <Link to="/eligibility">
-              Start Your Journey Today
+              Aaj Hi Apni Journey Shuru Karein
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
