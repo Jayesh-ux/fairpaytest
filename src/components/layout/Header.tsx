@@ -63,9 +63,9 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className="font-display font-bold text-xl text-foreground leading-tight">
-                Rin<span className="text-primary">Mukti</span>
+                Debt<span className="text-primary">Mitra</span>
               </span>
-              <span className="text-[10px] text-muted-foreground -mt-1">Debt Settlement India</span>
+              <span className="text-[10px] text-muted-foreground -mt-1">Your Trusted Settlement Partner</span>
             </div>
           </Link>
 

@@ -39,7 +39,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 text-primary-foreground/90 text-sm mb-8"
           >
             <Shield className="w-4 h-4 text-accent" />
-            <span>1 Lakh+ Bharatiyon ka Vishwas • ₹500 Crore+ Settled</span>
+            <span>Trusted by 1 Lakh+ Indians • ₹500 Crore+ Successfully Settled</span>
           </motion.div>
 
           {/* Headline */}
@@ -49,9 +49,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            Karz Se Mukti Paayein
+            Settle Your Debt for
             <br />
-            <span className="text-accent">40-60% Kam Mein</span>
+            <span className="text-accent">40-60% Less</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -61,8 +61,8 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 text-balance"
           >
-            AI-powered legal mediation jo aapki taraf se creditors se baat karta hai. 
-            Apna personalized settlement plan paayein - minutes mein, mahino mein nahi.
+            AI-powered legal mediation that negotiates with creditors on your behalf. 
+            Get a personalized settlement strategy in minutes, not months.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -74,13 +74,13 @@ export function HeroSection() {
           >
             <Button variant="hero" size="xl" asChild>
               <Link to="/eligibility">
-                Eligibility Check Karein
+                Check My Eligibility
                 <ArrowRight className="w-5 h-5 ml-1" />
               </Link>
             </Button>
             <Button variant="hero-outline" size="xl" asChild>
               <Link to="/calculator">
-                Savings Calculate Karein
+                Calculate My Savings
               </Link>
             </Button>
           </motion.div>
