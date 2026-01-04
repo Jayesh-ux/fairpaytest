@@ -16,7 +16,7 @@ const navItems = [
       { label: "Business Loans", href: "/dashboard/business-loans" },
       { label: "Medical Debt", href: "/dashboard/medical-debt" },
       { label: "Credit Cards", href: "/dashboard/credit-cards" },
-      { label: "Student Loans", href: "/dashboard/student-loans" },
+      { label: "Education Loans", href: "/dashboard/student-loans" },
     ]
   },
   { label: "Document Vault", href: "/vault" },
@@ -51,6 +51,9 @@ export function Header() {
           : "bg-transparent"
       )}
     >
+      {/* Tricolor Top Border */}
+      <div className="h-1 w-full bg-gradient-to-r from-primary via-card to-secondary" />
+      
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -58,9 +61,12 @@ export function Header() {
             <div className="w-10 h-10 rounded-xl hero-gradient flex items-center justify-center shadow-lg group-hover:shadow-glow transition-shadow duration-300">
               <Shield className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-display font-bold text-xl text-foreground">
-              DebtRelief<span className="text-accent">Pro</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xl text-foreground leading-tight">
+                Rin<span className="text-primary">Mukti</span>
+              </span>
+              <span className="text-[10px] text-muted-foreground -mt-1">Debt Settlement India</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -77,7 +83,7 @@ export function Header() {
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1",
                     location.pathname === item.href || location.pathname.startsWith(item.href + "/")
-                      ? "text-accent bg-accent/10"
+                      ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   )}
                 >
@@ -102,7 +108,7 @@ export function Header() {
                           className={cn(
                             "block px-4 py-2.5 text-sm transition-colors",
                             location.pathname === subItem.href
-                              ? "text-accent bg-accent/10"
+                              ? "text-primary bg-primary/10"
                               : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                           )}
                         >
@@ -153,7 +159,7 @@ export function Header() {
                     className={cn(
                       "block px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                       location.pathname === item.href
-                        ? "text-accent bg-accent/10"
+                        ? "text-primary bg-primary/10"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     )}
                   >

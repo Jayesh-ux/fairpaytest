@@ -3,31 +3,31 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah M.",
-    location: "Austin, TX",
-    avatar: "SM",
+    name: "Rajesh Kumar",
+    location: "Mumbai, Maharashtra",
+    avatar: "RK",
     rating: 5,
-    amount: "$45,000",
-    saved: "$24,300",
-    quote: "I was drowning in credit card debt after my divorce. DebtRelief Pro negotiated a 54% reduction and I'm finally debt-free. The process was surprisingly smooth.",
+    amount: "₹12,00,000",
+    saved: "₹6,48,000",
+    quote: "Credit card ke karz mein dooba hua tha job loss ke baad. RinMukti ne 54% reduction negotiate kiya aur ab main karz-mukt hoon. Process bahut smooth tha.",
   },
   {
-    name: "Michael R.",
-    location: "Chicago, IL",
-    avatar: "MR",
+    name: "Priya Sharma",
+    location: "Delhi NCR",
+    avatar: "PS",
     rating: 5,
-    amount: "$78,000",
-    saved: "$39,780",
-    quote: "As a small business owner, I thought bankruptcy was my only option. They restructured my business debt and saved my company. Forever grateful.",
+    amount: "₹25,00,000",
+    saved: "₹12,75,000",
+    quote: "Ek chhote business owner ke taur par, mujhe laga bankruptcy hi ek option hai. Inhone mera business loan restructure kiya aur meri company bach gayi. Forever grateful.",
   },
   {
-    name: "Jennifer L.",
-    location: "Miami, FL",
-    avatar: "JL",
+    name: "Anand Patel",
+    location: "Ahmedabad, Gujarat",
+    avatar: "AP",
     rating: 5,
-    amount: "$32,000",
-    saved: "$18,560",
-    quote: "Medical bills from an unexpected surgery were crushing us. The team found billing errors and negotiated the rest. We saved 58% overall!",
+    amount: "₹8,50,000",
+    saved: "₹4,93,000",
+    quote: "Medical emergency ke baad hospital bills se crush ho raha tha. Team ne billing errors dhundhe aur baaki negotiate kiya. Humne 58% bacha liya!",
   },
 ];
 
@@ -43,17 +43,17 @@ export function TestimonialsSection() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-4">
-            Success Stories
+          <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
+            Safalta Ki Kahaniyaan
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Real People,
+            Asli Log,
             <br />
-            <span className="gradient-text">Real Results</span>
+            <span className="gradient-text">Asli Results</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Join thousands of Americans who've reclaimed their financial freedom 
-            with our proven settlement strategies.
+            Hazaron Bharatiyon se judein jinhone hamari proven settlement 
+            strategies se apni financial freedom paai hai.
           </p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export function TestimonialsSection() {
               className="glass-card rounded-2xl p-8 hover-lift"
             >
               {/* Quote Icon */}
-              <Quote className="w-10 h-10 text-accent/20 mb-4" />
+              <Quote className="w-10 h-10 text-primary/20 mb-4" />
 
               {/* Quote */}
               <p className="text-foreground leading-relaxed mb-6">
@@ -79,13 +79,13 @@ export function TestimonialsSection() {
               {/* Stats */}
               <div className="flex gap-4 mb-6 p-4 rounded-xl bg-muted/50">
                 <div>
-                  <div className="text-xs text-muted-foreground mb-1">Original Debt</div>
+                  <div className="text-xs text-muted-foreground mb-1">Original Karz</div>
                   <div className="font-display font-semibold text-foreground">{testimonial.amount}</div>
                 </div>
                 <div className="w-px bg-border" />
                 <div>
-                  <div className="text-xs text-muted-foreground mb-1">Total Saved</div>
-                  <div className="font-display font-semibold text-accent">{testimonial.saved}</div>
+                  <div className="text-xs text-muted-foreground mb-1">Total Bachaya</div>
+                  <div className="font-display font-semibold text-secondary">{testimonial.saved}</div>
                 </div>
               </div>
 
