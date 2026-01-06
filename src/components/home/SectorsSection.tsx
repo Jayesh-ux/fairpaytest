@@ -13,7 +13,7 @@ const sectors = [
   {
     icon: Wallet,
     title: "Personal Loans",
-    description: "High-interest personal loan settlements through hardship documentation and skilled negotiation.",
+    description: "High-interest personal loan settlements - hardship documentation aur skilled negotiation ke saath.",
     stats: "Avg. 52% reduction",
     href: "/dashboard/personal-loans",
     gradient: "from-primary/20 to-accent/20",
@@ -22,7 +22,7 @@ const sectors = [
   {
     icon: Building2,
     title: "Business Loans",
-    description: "Cash flow-based restructuring and settlement options for small and medium enterprises.",
+    description: "Cash flow-based restructuring aur settlement options chhote vyapariyon ke liye.",
     stats: "Avg. 48% reduction",
     href: "/dashboard/business-loans",
     gradient: "from-secondary/20 to-green-india/20",
@@ -31,7 +31,7 @@ const sectors = [
   {
     icon: Stethoscope,
     title: "Medical Debt",
-    description: "Hospital billing error identification and insurance advocacy to reduce medical bills.",
+    description: "Hospital billing errors identify karna aur insurance advocacy se medical bills kam karna.",
     stats: "Avg. 55% reduction",
     href: "/dashboard/medical-debt",
     gradient: "from-primary/20 to-accent/20",
@@ -40,7 +40,7 @@ const sectors = [
   {
     icon: CreditCard,
     title: "Credit Cards",
-    description: "Interest freeze negotiations and lump-sum settlement offers with major banks.",
+    description: "Interest freeze negotiations aur lump-sum settlement offers banks ke saath.",
     stats: "Avg. 50% reduction",
     href: "/dashboard/credit-cards",
     gradient: "from-secondary/20 to-green-india/20",
@@ -49,7 +49,7 @@ const sectors = [
   {
     icon: GraduationCap,
     title: "Education Loans",
-    description: "Income-based repayment plans and education loan restructuring guidance.",
+    description: "Income-based repayment plans aur education loan restructuring guidance.",
     stats: "Various options",
     href: "/dashboard/student-loans",
     gradient: "from-primary/20 to-accent/20",
@@ -73,13 +73,13 @@ export function SectorsSection() {
             Specialized Solutions
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Debt Settlement by
+            Karz Settlement by
             <br />
             <span className="gradient-text">Industry Sector</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Every debt type requires a unique approach. Our sector-specific strategies 
-            maximize your savings with tailored negotiation tactics.
+            Har karz type ke liye ek unique approach chahiye. Hamari sector-specific 
+            strategies aapki savings ko maximize karti hain tailored negotiation tactics ke saath.
           </p>
         </motion.div>
 

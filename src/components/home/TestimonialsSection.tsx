@@ -9,7 +9,7 @@ const testimonials = [
     rating: 5,
     amount: "₹12,00,000",
     saved: "₹6,48,000",
-    quote: "I was drowning in credit card debt after losing my job. DebtMitra negotiated a 54% reduction and I am finally debt-free. The entire process was surprisingly smooth.",
+    quote: "Credit card ke karz mein dooba hua tha job loss ke baad. RinMukti ne 54% reduction negotiate kiya aur ab main karz-mukt hoon. Process bahut smooth tha.",
   },
   {
     name: "Priya Sharma",
@@ -18,7 +18,7 @@ const testimonials = [
     rating: 5,
     amount: "₹25,00,000",
     saved: "₹12,75,000",
-    quote: "As a small business owner, I thought bankruptcy was my only option. They restructured my business loan and saved my company. I will be forever grateful.",
+    quote: "Ek chhote business owner ke taur par, mujhe laga bankruptcy hi ek option hai. Inhone mera business loan restructure kiya aur meri company bach gayi. Forever grateful.",
   },
   {
     name: "Anand Patel",
@@ -27,7 +27,7 @@ const testimonials = [
     rating: 5,
     amount: "₹8,50,000",
     saved: "₹4,93,000",
-    quote: "Medical bills from an unexpected surgery were crushing us. The team found billing errors and negotiated the rest. We saved 58% overall!",
+    quote: "Medical emergency ke baad hospital bills se crush ho raha tha. Team ne billing errors dhundhe aur baaki negotiate kiya. Humne 58% bacha liya!",
   },
 ];
 
@@ -44,16 +44,16 @@ export function TestimonialsSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block text-primary font-medium text-sm uppercase tracking-wider mb-4">
-            Success Stories
+            Safalta Ki Kahaniyaan
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Real People,
+            Asli Log,
             <br />
-            <span className="gradient-text">Real Results</span>
+            <span className="gradient-text">Asli Results</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Join thousands of Indians who have reclaimed their financial freedom 
-            with our proven settlement strategies.
+            Hazaron Bharatiyon se judein jinhone hamari proven settlement 
+            strategies se apni financial freedom paai hai.
           </p>
         </motion.div>
 
@@ -79,12 +79,12 @@ export function TestimonialsSection() {
               {/* Stats */}
               <div className="flex gap-4 mb-6 p-4 rounded-xl bg-muted/50">
                 <div>
-                  <div className="text-xs text-muted-foreground mb-1">Original Debt</div>
+                  <div className="text-xs text-muted-foreground mb-1">Original Karz</div>
                   <div className="font-display font-semibold text-foreground">{testimonial.amount}</div>
                 </div>
                 <div className="w-px bg-border" />
                 <div>
-                  <div className="text-xs text-muted-foreground mb-1">Total Saved</div>
+                  <div className="text-xs text-muted-foreground mb-1">Total Bachaya</div>
                   <div className="font-display font-semibold text-secondary">{testimonial.saved}</div>
                 </div>
               </div>

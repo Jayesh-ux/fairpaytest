@@ -61,23 +61,23 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl">
-                  Debt<span className="text-primary">Mitra</span>
+                  Rin<span className="text-primary">Mukti</span>
                 </span>
-                <span className="text-[10px] text-background/60">Your Trusted Settlement Partner</span>
+                <span className="text-[10px] text-background/60">Debt Settlement India</span>
               </div>
             </Link>
             <p className="text-background/70 text-sm leading-relaxed mb-6 max-w-sm">
-              India's trusted debt settlement partner. We help you achieve freedom 
-              from debt through completely legal and transparent mediation processes.
+              Bharat ka vishwasniya karj samadhan partner. Hum aapko karz se mukti 
+              dilane mein madad karte hain - poori tarah se legal aur transparent tarike se.
             </p>
             <div className="space-y-3 text-sm text-background/70">
               <a href="tel:1800-123-4567" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" />
                 1800-123-4567 (Toll Free)
               </a>
-              <a href="mailto:support@debtmitra.in" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <a href="mailto:namaste@rinmukti.in" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail className="w-4 h-4" />
-                support@debtmitra.in
+                namaste@rinmukti.in
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
@@ -149,7 +149,7 @@ export function Footer() {
       <div className="border-t border-background/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-background/60">
-            <p>© 2026 DebtMitra. All rights reserved. | Made in India</p>
+            <p>© 2026 RinMukti. All rights reserved. | Made with ❤️ in India</p>
             <p>RBI Registered Debt Settlement Provider. Results may vary.</p>
           </div>
         </div>
