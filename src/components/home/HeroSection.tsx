@@ -1,45 +1,44 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Shield, TrendingDown, Users } from "lucide-react";
+import { ArrowRight, CheckCircle, Shield, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { icon: CheckCircle2, value: "98%", label: "Success Rate" },
-  { icon: Shield, value: "RBI", label: "Registered" },
-  { icon: TrendingDown, value: "40-60%", label: "Avg. Reduction" },
-  { icon: Users, value: "1 Lakh+", label: "Indians Helped" },
+  { icon: Users, value: "100K+", label: "Loans Closed" },
+  { icon: Shield, value: "50+", label: "Bank Partners" },
+  { icon: Zap, value: "24hrs", label: "Fast Processing" },
+  { icon: CheckCircle, value: "99%", label: "Success Rate" },
 ];
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 hero-gradient" />
-      <div className="absolute inset-0 bg-hero-pattern opacity-30" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-muted">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-dots-pattern" />
       
-      {/* Floating Elements */}
+      {/* Gradient Orbs */}
       <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-accent/10 blur-3xl"
+        animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
       />
       <motion.div
-        animate={{ y: [0, 20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full bg-secondary/10 blur-3xl"
+        animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-accent/10 blur-3xl"
       />
 
-      <div className="container mx-auto px-4 pt-24 lg:pt-32 pb-16 relative z-10">
+      <div className="container mx-auto px-4 pt-28 lg:pt-32 pb-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Trust Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 text-primary-foreground/90 text-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"
           >
-            <Shield className="w-4 h-4 text-accent" />
-            <span>Trusted by 1 Lakh+ Indians • ₹500 Crore+ Successfully Settled</span>
+            <Shield className="w-4 h-4" />
+            <span>Trusted by 1 Lakh+ Indians • RBI Compliant Process</span>
           </motion.div>
 
           {/* Headline */}
@@ -47,11 +46,11 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6"
+            className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight mb-6"
           >
-            Settle Your Debt for
+            Close Your Loan in Minutes
             <br />
-            <span className="text-accent">40-60% Less</span>
+            <span className="gradient-text">Get Your NOC Instantly</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -59,10 +58,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 text-balance"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance"
           >
-            AI-powered legal mediation that negotiates with creditors on your behalf. 
-            Get a personalized settlement strategy in minutes, not months.
+            Expert guidance for loan closure, foreclosure, and no-dues certificates. 
+            Hassle-free process with major banks across India.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -72,15 +71,15 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="accent" size="xl" asChild>
               <Link to="/eligibility">
-                Check My Eligibility
+                Start Closure Process
                 <ArrowRight className="w-5 h-5 ml-1" />
               </Link>
             </Button>
-            <Button variant="hero-outline" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild>
               <Link to="/calculator">
-                Calculate My Savings
+                Calculate Savings
               </Link>
             </Button>
           </motion.div>
