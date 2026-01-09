@@ -2,6 +2,8 @@ import { ReactNode, useState, useEffect } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { CallbackPopup } from "@/components/CallbackPopup";
+import { toast } from "sonner";
+import { Phone } from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,18 +11,26 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const [isCallbackOpen, setIsCallbackOpen] = useState(false);
-  const [hasShownPopup, setHasShownPopup] = useState(false);
+  const [hasShownToast, setHasShownToast] = useState(false);
 
-  // Show popup on page load after 3 seconds (only once per session)
+  // Show toast notification after 2 seconds (only once per session)
   useEffect(() => {
-    if (!hasShownPopup) {
+    if (!hasShownToast) {
       const timer = setTimeout(() => {
-        setIsCallbackOpen(true);
-        setHasShownPopup(true);
-      }, 3000);
+        toast("Need help with debt settlement?", {
+          description: "Get a free callback from our experts",
+          action: {
+            label: "Get Callback",
+            onClick: () => setIsCallbackOpen(true),
+          },
+          icon: <Phone className="w-5 h-5" />,
+          duration: 8000, // Show for 8 seconds
+        });
+        setHasShownToast(true);
+      }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [hasShownPopup]);
+  }, [hasShownToast]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -29,10 +39,11 @@ export function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
-      <CallbackPopup 
-        isOpen={isCallbackOpen} 
-        onClose={() => setIsCallbackOpen(false)} 
+      <CallbackPopup
+        isOpen={isCallbackOpen}
+        onClose={() => setIsCallbackOpen(false)}
       />
     </div>
   );
 }
+

@@ -27,7 +27,7 @@ const testimonials = [
     rating: 5,
     amount: "Credit Score",
     settled: "520 → 720",
-    quote: "My credit score went from 520 to 720 in just 12 months after settlement. Thank you DebtReliefHub!",
+    quote: "My credit score went from 520 to 720 in just 12 months after settlement. Thank you FairPaySolution!",
   },
 ];
 

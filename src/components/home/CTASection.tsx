@@ -26,7 +26,7 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
               Ready to Become Debt Free?
             </h2>
             <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-              Take the first step towards financial freedom. Get a free consultation 
+              Take the first step towards financial freedom. Get a free consultation
               and discover how much you can save.
             </p>
           </motion.div>
@@ -38,23 +38,23 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <Button 
-              size="xl" 
+            <Button
+              size="xl"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               onClick={onOpenCallback}
             >
               Get Free Consultation
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button 
-              variant="outline" 
-              size="xl" 
+            <Button
+              variant="outline"
+              size="xl"
               className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
-              <a href="tel:+919876543210">
-                <Phone className="w-5 h-5 mr-2" />
-                Call: +91 98765 43210
+              <a href="tel:+917821816193" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                <Phone className="w-5 h-5" />
+                Call: +91 7821816193
               </a>
             </Button>
           </motion.div>

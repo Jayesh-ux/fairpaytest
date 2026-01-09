@@ -59,22 +59,22 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl">
-                  Debt<span className="text-primary">Relief</span>Hub.in
+                  Fair<span className="text-primary">Pay</span>Solution.in
                 </span>
               </div>
             </Link>
             <p className="text-secondary-foreground/70 text-sm leading-relaxed mb-6 max-w-sm">
-              Legal Debt Relief, Made Simple. We help Indians settle their debts legally 
+              Legal Debt Relief, Made Simple. We help Indians settle their debts legally
               and rebuild their financial lives with expert negotiation and support.
             </p>
             <div className="space-y-3 text-sm text-secondary-foreground/70">
-              <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="tel:+917821816193" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
-                +91 98765 43210
+                +91 7821816193
               </a>
-              <a href="mailto:help@debtreliefhub.in" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="mailto:hsinghjayesh@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
-                help@debtreliefhub.in
+                hsinghjayesh@gmail.com
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
@@ -91,7 +91,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
                   >
@@ -110,7 +110,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
                   >
@@ -129,7 +129,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
                   >
@@ -146,10 +146,10 @@ export function Footer() {
       <div className="border-t border-secondary-foreground/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-secondary-foreground/60">
-            <p>© 2026 DebtReliefHub Solutions Pvt Ltd. All rights reserved.</p>
-            <p className="text-xs max-w-lg text-center md:text-right">
-              Disclaimer: DebtReliefHub is an advisory service only. We are not a bank or financial institution. 
-              Consult professionals for financial decisions.
+            <p>© 2026 FairPaySolution Pvt Ltd. All rights reserved.</p>
+            <p className="text-sm text-secondary-foreground/60 mt-2">
+              Disclaimer: FairPaySolution is an advisory service only. We are not a bank or financial institution.
+              We provide debt settlement consultation and negotiation services. Results may vary based on individual circumstances.
             </p>
           </div>
         </div>

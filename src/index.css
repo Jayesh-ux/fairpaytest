@@ -7,70 +7,71 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 20% 16%;
+    --foreground: 215 25% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 16%;
+    --card-foreground: 215 25% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 16%;
+    --popover-foreground: 215 25% 20%;
 
-    --primary: 151 100% 40%;
+    --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 28% 17%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 20%;
 
-    --muted: 210 20% 96%;
+    --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 204 94% 94%;
+    --accent-foreground: 199 89% 48%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 151 100% 40%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens - LoanClosure Theme */
-    --success: 151 100% 40%;
-    --success-light: 151 84% 50%;
+    /* Custom tokens - Sky Blue Theme */
+    --sky-blue: 199 89% 48%;
+    --sky-blue-light: 204 94% 94%;
+    --sky-blue-dark: 199 89% 38%;
+    --ocean: 200 80% 55%;
+    --ocean-light: 200 80% 65%;
     --navy: 215 28% 17%;
     --navy-light: 215 25% 27%;
     --slate: 215 16% 47%;
-    --teal: 199 89% 48%;
-    --teal-light: 199 85% 58%;
     --cream: 40 30% 98%;
-    --glass: 0 0% 100% / 0.85;
-    --glass-border: 0 0% 100% / 0.3;
+    --glass: 0 0% 100% / 0.85%;
+    --glass-border: 199 89% 48% / 0.2;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(215 28% 17%) 0%, hsl(215 25% 27%) 50%, hsl(199 89% 48%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95) 0%, hsl(0 0% 100% / 0.8) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(151 100% 40%) 0%, hsl(151 84% 50%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(151 100% 40%) 0%, hsl(199 89% 48%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(151 100% 40%) 0%, hsl(151 84% 45%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(204 94% 94%) 0%, hsl(199 89% 48% / 0.1) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95) 0%, hsl(204 94% 94% / 0.5) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(200 80% 55%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(200 80% 55%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(199 89% 38%) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(215 28% 17% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(215 28% 17% / 0.1), 0 2px 4px -2px hsl(215 28% 17% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(215 28% 17% / 0.1), 0 4px 6px -4px hsl(215 28% 17% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(215 28% 17% / 0.1), 0 8px 10px -6px hsl(215 28% 17% / 0.1);
-    --shadow-glass: 0 8px 32px 0 hsl(215 28% 17% / 0.12);
-    --shadow-glow: 0 0 40px hsl(151 100% 40% / 0.35);
+    --shadow-sm: 0 1px 2px 0 hsl(199 89% 48% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(199 89% 48% / 0.1), 0 2px 4px -2px hsl(199 89% 48% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(199 89% 48% / 0.1), 0 4px 6px -4px hsl(199 89% 48% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(199 89% 48% / 0.1), 0 8px 10px -6px hsl(199 89% 48% / 0.1);
+    --shadow-glass: 0 8px 32px 0 hsl(199 89% 48% / 0.12);
+    --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.35);
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 220 20% 16%;
-    --sidebar-primary: 151 100% 40%;
+    --sidebar-foreground: 215 25% 20%;
+    --sidebar-primary: 199 89% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 20% 96%;
-    --sidebar-accent-foreground: 220 20% 16%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 151 100% 40%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 215 25% 20%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 199 89% 48%;
   }
 
   .dark {

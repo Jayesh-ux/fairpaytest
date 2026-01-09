@@ -17,7 +17,7 @@ export function HeroSection({ onOpenCallback }: HeroSectionProps) {
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-muted">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-dots-pattern" />
-      
+
       {/* Gradient Orbs */}
       <motion.div
         animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -52,7 +52,7 @@ export function HeroSection({ onOpenCallback }: HeroSectionProps) {
           >
             Settle Your Loans Legally
             <br />
-            <span className="gradient-text">with DebtReliefHub</span>
+            <span className="gradient-text">with FairPaySolution</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -86,8 +86,8 @@ export function HeroSection({ onOpenCallback }: HeroSectionProps) {
               <ArrowRight className="w-5 h-5 ml-1" />
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <a href="tel:+919876543210">
-                Call Now: +91 98765 43210
+              <a href="tel:+917821816193">
+                Call Now: +91 7821816193
               </a>
             </Button>
           </motion.div>

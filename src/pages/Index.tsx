@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { StatsSection } from "@/components/home/StatsSection";
 import { HowItWorksSection } from "@/components/home/HowItWorksSection";
+import { LoanCalculator } from "@/components/home/LoanCalculator";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { CTASection } from "@/components/home/CTASection";
@@ -20,15 +21,18 @@ const Index = () => {
       <ServicesSection />
       <StatsSection />
       <HowItWorksSection onOpenCallback={openCallback} />
+      <LoanCalculator />
       <TestimonialsSection />
       <FAQSection />
       <CTASection onOpenCallback={openCallback} />
-      <CallbackPopup 
-        isOpen={isCallbackOpen} 
-        onClose={() => setIsCallbackOpen(false)} 
+      <CallbackPopup
+        isOpen={isCallbackOpen}
+        onClose={() => setIsCallbackOpen(false)}
       />
     </Layout>
   );
 };
 
 export default Index;
+
+

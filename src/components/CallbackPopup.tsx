@@ -23,13 +23,13 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     setIsSubmitting(false);
     setIsSuccess(true);
-    
+
     setTimeout(() => {
       onClose();
       setIsSuccess(false);
@@ -68,7 +68,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                     Get a Callback
                   </h2>
                 </div>
-                
+
                 <p className="text-muted-foreground text-center mb-6">
                   Please fill your details below
                 </p>
@@ -113,7 +113,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="98765 43210"
+                          placeholder="7821816193"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
                           className="pl-12"

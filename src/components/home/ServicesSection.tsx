@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  Wallet, 
-  CreditCard, 
-  ShieldAlert, 
-  TrendingUp, 
-  Home, 
-  Car, 
-  GraduationCap,
-  ArrowRight 
+import {
+  Wallet,
+  CreditCard,
+  ShieldAlert,
+  TrendingUp,
+  ArrowRight
 } from "lucide-react";
 
 const services = [
@@ -44,30 +41,6 @@ const services = [
     href: "/dashboard/credit-score",
     gradient: "from-accent/10 to-primary/10",
   },
-  {
-    icon: Home,
-    title: "Home Loan Resolution",
-    subtitle: "Avoid foreclosure",
-    description: "Prevent property seizure and negotiate better terms with your home loan lender.",
-    href: "/dashboard/home",
-    gradient: "from-primary/10 to-accent/10",
-  },
-  {
-    icon: Car,
-    title: "Vehicle Loan Settlement",
-    subtitle: "Keep your vehicle",
-    description: "Settle vehicle loans while retaining possession of your car or two-wheeler.",
-    href: "/dashboard/vehicle",
-    gradient: "from-accent/10 to-primary/10",
-  },
-  {
-    icon: GraduationCap,
-    title: "Education Loan Negotiation",
-    subtitle: "Manage student debt",
-    description: "Get relief from education loan burden with specialized student debt solutions.",
-    href: "/dashboard/education",
-    gradient: "from-primary/10 to-accent/10",
-  },
 ];
 
 export function ServicesSection() {
@@ -91,13 +64,13 @@ export function ServicesSection() {
             <span className="gradient-text">Solutions</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Expert assistance for all types of loans. We negotiate on your behalf 
+            Expert assistance for all types of loans. We negotiate on your behalf
             to get you the best possible settlement.
           </p>
         </motion.div>
 
-        {/* Services Grid - 7 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Services Grid - 4 Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -105,7 +78,6 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className={index === 6 ? "md:col-span-2 lg:col-span-1" : ""}
             >
               <Link to={service.href} className="group block h-full">
                 <div className={`relative overflow-hidden rounded-2xl p-6 h-full bg-gradient-to-br ${service.gradient} border border-border/50 hover:border-primary/50 transition-all duration-300 hover-lift`}>

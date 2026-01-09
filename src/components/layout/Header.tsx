@@ -4,21 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, CheckCircle, ChevronDown, Phone, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const mainNavItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/how-it-works" },
-  { 
-    label: "Services", 
+  {
+    label: "Services",
     href: "/dashboard",
     submenu: [
       { label: "Personal Loan Settlement", href: "/dashboard/personal" },
       { label: "Credit Card Loan Settlement", href: "/dashboard/credit-card" },
       { label: "Anti-Harassment Service", href: "/dashboard/harassment" },
       { label: "Credit Score Builder", href: "/dashboard/credit-score" },
-      { label: "Home Loan Settlement", href: "/dashboard/home" },
-      { label: "Vehicle Loan Settlement", href: "/dashboard/vehicle" },
-      { label: "Education Loan Settlement", href: "/dashboard/education" },
     ]
   },
   { label: "Categories", href: "/eligibility" },
@@ -58,19 +56,15 @@ export function Header({ onOpenCallback }: HeaderProps) {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-6">
-              <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="tel:+917821816193" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
-                +91 98765 43210
+                +91 7821816193
               </a>
-              <a href="mailto:help@debtreliefhub.in" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="mailto:hsinghjayesh@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
-                help@debtreliefhub.in
+                hsinghjayesh@gmail.com
               </a>
             </div>
-            <Button variant="accent" size="sm" className="gap-2">
-              <Download className="w-4 h-4" />
-              Install App
-            </Button>
           </div>
         </div>
       </div>
@@ -82,8 +76,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
           "sticky top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled 
-            ? "bg-card/95 backdrop-blur-xl border-b border-border shadow-md" 
+          isScrolled
+            ? "bg-card/95 backdrop-blur-xl border-b border-border shadow-md"
             : "bg-card"
         )}
       >
@@ -96,7 +90,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg lg:text-xl text-foreground leading-tight">
-                  Debt<span className="text-primary">Relief</span>Hub.in
+                  Fair<span className="text-primary">Pay</span>Solution.in
                 </span>
               </div>
             </Link>
@@ -151,15 +145,17 @@ export function Header({ onOpenCallback }: HeaderProps) {
               ))}
             </div>
 
-            {/* CTA Buttons */}
+            {/* Desktop: Theme Toggle & CTA Button */}
             <div className="hidden lg:flex items-center gap-3">
-              <Button variant="accent" size="default" onClick={onOpenCallback}>
+              <ThemeToggle />
+              <Button variant="accent" size="lg" onClick={onOpenCallback}>
                 Get Callback →
               </Button>
             </div>
 
-            {/* Mobile: Phone & Menu Toggle */}
+            {/* Mobile: Theme Toggle, Phone & Menu Toggle */}
             <div className="flex lg:hidden items-center gap-2">
+              <ThemeToggle />
               <Button variant="accent" size="sm" onClick={onOpenCallback}>
                 Get Callback
               </Button>
@@ -186,7 +182,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               className="fixed inset-0 bg-black/50 z-40 lg:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
-            
+
             {/* Drawer */}
             <motion.div
               initial={{ y: "100%" }}
@@ -198,7 +194,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <div className="p-4">
                 {/* Handle */}
                 <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mb-6" />
-                
+
                 <div className="space-y-1">
                   {mainNavItems.map((item) => (
                     <div key={item.label}>
@@ -224,7 +220,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
                               activeSubmenu === item.label && "rotate-180"
                             )} />
                           </button>
-                          
+
                           <AnimatePresence>
                             {activeSubmenu === item.label && (
                               <motion.div
@@ -270,13 +266,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
                 {/* Contact Info */}
                 <div className="mt-6 pt-6 border-t border-border space-y-3">
-                  <a href="tel:+919876543210" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
+                  <a href="tel:+917821816193" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Phone className="w-5 h-5" />
-                    +91 98765 43210
+                    +91 7821816193
                   </a>
-                  <a href="mailto:help@debtreliefhub.in" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
+                  <a href="mailto:hsinghjayesh@gmail.com" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Mail className="w-5 h-5" />
-                    help@debtreliefhub.in
+                    hsinghjayesh@gmail.com
                   </a>
                 </div>
               </div>
