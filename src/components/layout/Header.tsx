@@ -90,7 +90,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg lg:text-xl text-foreground leading-tight">
-                  Fair<span className="text-primary">Pay</span>Solution.in
+                  Fair<span className="text-primary">Pay</span>Solution.com
                 </span>
               </div>
             </Link>
