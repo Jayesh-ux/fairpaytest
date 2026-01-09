@@ -3,18 +3,18 @@ import { CheckCircle, Lock, Shield, Award, Mail, Phone, MapPin } from "lucide-re
 
 const footerLinks = {
   services: [
-    { label: "Loan Closure", href: "/dashboard" },
-    { label: "Loan Settlement", href: "/dashboard" },
-    { label: "Foreclosure Calculator", href: "/calculator" },
-    { label: "NOC Certificate", href: "/vault" },
-    { label: "No Dues Letter", href: "/vault" },
+    { label: "Personal Loan Settlement", href: "/dashboard/personal" },
+    { label: "Credit Card Relief", href: "/dashboard/credit-card" },
+    { label: "Anti-Harassment Service", href: "/dashboard/harassment" },
+    { label: "Credit Score Builder", href: "/dashboard/credit-score" },
+    { label: "Home Loan Resolution", href: "/dashboard/home" },
   ],
   company: [
+    { label: "About Us", href: "/how-it-works" },
     { label: "How It Works", href: "/how-it-works" },
-    { label: "Pricing", href: "/eligibility" },
-    { label: "About Us", href: "/about" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: "/vault" },
     { label: "Contact", href: "/vault" },
+    { label: "Careers", href: "/vault" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -25,10 +25,10 @@ const footerLinks = {
 };
 
 const trustBadges = [
-  { icon: CheckCircle, label: "100K+ Loans Closed" },
-  { icon: Shield, label: "Partnered with Major Banks" },
-  { icon: Lock, label: "256-bit SSL Encrypted" },
-  { icon: Award, label: "RBI Compliant" },
+  { icon: Shield, label: "CISA Certified" },
+  { icon: Award, label: "Experian Partner" },
+  { icon: Lock, label: "Escrow Safe" },
+  { icon: CheckCircle, label: "RBI Compliant" },
 ];
 
 export function Footer() {
@@ -59,22 +59,22 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl">
-                  Loan<span className="text-primary">Closure</span>.in
+                  Debt<span className="text-primary">Relief</span>Hub.in
                 </span>
               </div>
             </Link>
             <p className="text-secondary-foreground/70 text-sm leading-relaxed mb-6 max-w-sm">
-              India's trusted platform for hassle-free loan closure. Get your NOC, 
-              No Dues Certificate, and closure letters with expert guidance.
+              Legal Debt Relief, Made Simple. We help Indians settle their debts legally 
+              and rebuild their financial lives with expert negotiation and support.
             </p>
             <div className="space-y-3 text-sm text-secondary-foreground/70">
-              <a href="tel:1800-123-4567" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
-                1800-123-4567 (Toll Free)
+                +91 98765 43210
               </a>
-              <a href="mailto:support@loanclosure.in" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="mailto:help@debtreliefhub.in" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
-                support@loanclosure.in
+                help@debtreliefhub.in
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
@@ -146,10 +146,10 @@ export function Footer() {
       <div className="border-t border-secondary-foreground/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-secondary-foreground/60">
-            <p>© 2026 LoanClosure.in. All rights reserved.</p>
+            <p>© 2026 DebtReliefHub Solutions Pvt Ltd. All rights reserved.</p>
             <p className="text-xs max-w-lg text-center md:text-right">
-              Disclaimer: LoanClosure.in is an advisory service only. We are not a bank or financial institution. 
-              Please consult professionals for financial decisions.
+              Disclaimer: DebtReliefHub is an advisory service only. We are not a bank or financial institution. 
+              Consult professionals for financial decisions.
             </p>
           </div>
         </div>

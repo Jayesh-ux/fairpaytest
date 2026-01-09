@@ -3,40 +3,31 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Priya Sharma",
+    name: "Rahul Mehta",
     location: "Mumbai, Maharashtra",
-    avatar: "PS",
+    avatar: "RM",
     rating: 5,
-    loanType: "Home Loan",
-    duration: "7 days",
-    quote: "Closed my home loan in just 7 days! The team handled everything from documentation to bank liaison. Got my NOC without any hassle.",
+    amount: "₹10L",
+    settled: "₹4L",
+    quote: "Settled ₹10L debt for just ₹4L! The team handled everything professionally. Life-changing experience for my family.",
   },
   {
-    name: "Rajesh Kumar",
+    name: "Priya Krishnan",
     location: "Delhi NCR",
-    avatar: "RK",
+    avatar: "PK",
     rating: 5,
-    loanType: "Personal Loan",
-    duration: "3 days",
-    quote: "Quick and professional service. They helped me understand the foreclosure process and saved me a lot on interest payments.",
+    amount: "₹5L",
+    settled: "₹2.2L",
+    quote: "Recovery calls stopped within 1 week of enrolling. Professional team that truly cares about clients.",
   },
   {
-    name: "Anita Patel",
-    location: "Ahmedabad, Gujarat",
-    avatar: "AP",
-    rating: 5,
-    loanType: "Vehicle Loan",
-    duration: "5 days",
-    quote: "Got my car loan NOC and lien release in just 5 days. The team was very responsive and kept me updated throughout.",
-  },
-  {
-    name: "Suresh Nair",
+    name: "Arjun Sharma",
     location: "Bangalore, Karnataka",
-    avatar: "SN",
+    avatar: "AS",
     rating: 5,
-    loanType: "Business Loan",
-    duration: "10 days",
-    quote: "Complex business loan closure handled expertly. Their lawyer review service was invaluable for my case.",
+    amount: "Credit Score",
+    settled: "520 → 720",
+    quote: "My credit score went from 520 to 720 in just 12 months after settlement. Thank you DebtReliefHub!",
   },
 ];
 
@@ -56,17 +47,17 @@ export function TestimonialsSection() {
             Testimonials
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Trusted by
+            Real Stories from
             <br />
-            <span className="gradient-text">1 Lakh+ Indians</span>
+            <span className="gradient-text">Real Customers</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Real stories from customers who successfully closed their loans with us.
+            Thousands of Indians have achieved financial freedom with our help.
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Testimonials Grid - 3 Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
@@ -74,41 +65,41 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card rounded-2xl p-6 hover-lift"
+              className="glass-card rounded-2xl p-6 lg:p-8 hover-lift"
             >
               {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-primary/20 mb-4" />
+              <Quote className="w-10 h-10 text-primary/20 mb-4" />
 
               {/* Quote */}
-              <p className="text-foreground text-sm leading-relaxed mb-6">
+              <p className="text-foreground text-base leading-relaxed mb-6">
                 "{testimonial.quote}"
               </p>
 
               {/* Stats */}
-              <div className="flex gap-4 mb-4 p-3 rounded-xl bg-muted/50">
-                <div>
-                  <div className="text-xs text-muted-foreground">Loan Type</div>
-                  <div className="font-semibold text-sm text-foreground">{testimonial.loanType}</div>
+              <div className="flex gap-4 mb-6 p-4 rounded-xl bg-muted/50">
+                <div className="flex-1">
+                  <div className="text-xs text-muted-foreground mb-1">Original</div>
+                  <div className="font-bold text-foreground">{testimonial.amount}</div>
                 </div>
                 <div className="w-px bg-border" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Closed In</div>
-                  <div className="font-semibold text-sm text-primary">{testimonial.duration}</div>
+                <div className="flex-1">
+                  <div className="text-xs text-muted-foreground mb-1">Settled</div>
+                  <div className="font-bold text-primary">{testimonial.settled}</div>
                 </div>
               </div>
 
               {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
                   {testimonial.avatar}
                 </div>
                 <div className="flex-1">
-                  <div className="font-medium text-sm text-foreground">{testimonial.name}</div>
-                  <div className="text-xs text-muted-foreground">{testimonial.location}</div>
+                  <div className="font-semibold text-foreground">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.location}</div>
                 </div>
                 <div className="flex gap-0.5">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-primary text-primary" />
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
               </div>
