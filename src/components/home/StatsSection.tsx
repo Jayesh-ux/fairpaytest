@@ -5,7 +5,7 @@ import { MessageCircle, Users, IndianRupee, TrendingUp } from "lucide-react";
 const stats = [
   {
     icon: MessageCircle,
-    value: 10000,
+    value: 2700,
     suffix: "+",
     label: "Conversations",
     description: "Expert consultations provided",
