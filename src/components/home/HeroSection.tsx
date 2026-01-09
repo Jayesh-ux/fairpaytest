@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Shield, Users, Zap } from "lucide-react";
+import { ArrowRight, Shield, Users, CheckCircle, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const stats = [
-  { icon: Users, value: "100K+", label: "Loans Closed" },
-  { icon: Shield, value: "50+", label: "Bank Partners" },
-  { icon: Zap, value: "24hrs", label: "Fast Processing" },
-  { icon: CheckCircle, value: "99%", label: "Success Rate" },
+const trustBadges = [
+  { icon: Shield, label: "RBI Compliant" },
+  { icon: Users, label: "10K+ Clients" },
+  { icon: TrendingUp, label: "98% Success Rate" },
 ];
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onOpenCallback: () => void;
+}
+
+export function HeroSection({ onOpenCallback }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-muted">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-muted">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-dots-pattern" />
       
@@ -28,7 +30,7 @@ export function HeroSection() {
         className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-accent/10 blur-3xl"
       />
 
-      <div className="container mx-auto px-4 pt-28 lg:pt-32 pb-16 relative z-10">
+      <div className="container mx-auto px-4 pt-24 lg:pt-28 pb-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Trust Badge */}
           <motion.div
@@ -38,7 +40,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"
           >
             <Shield className="w-4 h-4" />
-            <span>Trusted by 1 Lakh+ Indians • RBI Compliant Process</span>
+            <span>Legal Debt Relief, Made Simple</span>
           </motion.div>
 
           {/* Headline */}
@@ -48,9 +50,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight mb-6"
           >
-            Close Your Loan in Minutes
+            Settle Your Loans Legally
             <br />
-            <span className="gradient-text">Get Your NOC Instantly</span>
+            <span className="gradient-text">with DebtReliefHub</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -58,10 +60,18 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance"
+            className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4 text-balance"
           >
-            Expert guidance for loan closure, foreclosure, and no-dues certificates. 
-            Hassle-free process with major banks across India.
+            Save 40-60% • Stop Recovery Calls • Debt Free in 18 Months
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="text-base text-muted-foreground max-w-xl mx-auto mb-10"
+          >
+            Expert negotiation with banks and NBFCs to settle your debts legally and rebuild your financial life.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -69,42 +79,31 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
-            <Button variant="accent" size="xl" asChild>
-              <Link to="/eligibility">
-                Start Closure Process
-                <ArrowRight className="w-5 h-5 ml-1" />
-              </Link>
+            <Button variant="accent" size="xl" onClick={onOpenCallback}>
+              Get Callback
+              <ArrowRight className="w-5 h-5 ml-1" />
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <Link to="/calculator">
-                Calculate Savings
-              </Link>
+              <a href="tel:+919876543210">
+                Call Now: +91 98765 43210
+              </a>
             </Button>
           </motion.div>
 
-          {/* Stats Grid */}
+          {/* Trust Badges */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+            className="flex flex-wrap items-center justify-center gap-6 lg:gap-10"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                className="glass-card rounded-2xl p-6 text-center hover-lift"
-              >
-                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
+            {trustBadges.map((badge, index) => (
+              <div key={badge.label} className="flex items-center gap-2 text-muted-foreground">
+                <badge.icon className="w-5 h-5 text-primary" />
+                <span className="text-sm font-medium">{badge.label}</span>
+              </div>
             ))}
           </motion.div>
         </div>
