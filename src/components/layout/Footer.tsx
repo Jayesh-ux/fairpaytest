@@ -68,13 +68,13 @@ export function Footer() {
               and rebuild their financial lives with expert negotiation and support.
             </p>
             <div className="space-y-3 text-sm text-secondary-foreground/70">
-              <a href="tel:+917821816193" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="tel:+918449653755" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
-                +91 7821816193
+                +91 8449653755
               </a>
-              <a href="mailto:hsinghjayesh@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
-                hsinghjayesh@gmail.com
+                support@fairpaysolution.com
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />

@@ -52,9 +52,9 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
               className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
-              <a href="tel:+917821816193" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+918449653755" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="w-5 h-5" />
-                Call: +91 7821816193
+                Call: +91 8449653755
               </a>
             </Button>
           </motion.div>
