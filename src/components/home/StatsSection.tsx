@@ -1,31 +1,26 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
-import { MessageCircle, Users, IndianRupee, TrendingUp } from "lucide-react";
 
 const stats = [
   {
-    icon: MessageCircle,
     value: 2700,
     suffix: "+",
     label: "Conversations",
     description: "Expert consultations provided",
   },
   {
-    icon: Users,
     value: 5000,
     suffix: "+",
     label: "Happy Customers",
     description: "Debt-free families",
   },
   {
-    icon: IndianRupee,
     value: 500,
     suffix: "Cr+",
     label: "Debt Handled",
     description: "Successfully settled",
   },
   {
-    icon: TrendingUp,
     value: 98,
     suffix: "%",
     label: "Success Rate",
@@ -65,9 +60,6 @@ export function StatsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-primary-foreground/10 flex items-center justify-center mx-auto mb-4">
-                <stat.icon className="w-7 h-7 lg:w-8 lg:h-8 text-primary-foreground" />
-              </div>
               <div className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-primary-foreground mb-1">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>

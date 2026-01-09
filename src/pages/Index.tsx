@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
-import { StatsSection } from "@/components/home/StatsSection";
 import { HowItWorksSection } from "@/components/home/HowItWorksSection";
 import { LoanCalculator } from "@/components/home/LoanCalculator";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
@@ -19,7 +18,6 @@ const Index = () => {
     <Layout>
       <HeroSection onOpenCallback={openCallback} />
       <ServicesSection />
-      <StatsSection />
       <HowItWorksSection onOpenCallback={openCallback} />
       <LoanCalculator />
       <TestimonialsSection />
