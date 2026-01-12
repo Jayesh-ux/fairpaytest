@@ -84,13 +84,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
         <div className="container mx-auto px-2 xs:px-3 sm:px-4">
           <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-1.5 xs:gap-2 group">
-              <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0">
-                <CheckCircle className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6 text-primary-foreground" />
+            <Link to="/" className="flex items-center gap-1 xs:gap-1.5 sm:gap-2 group">
+              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0">
+                <CheckCircle className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-primary-foreground" />
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="font-display font-bold text-sm xs:text-base sm:text-lg lg:text-xl text-foreground leading-tight truncate">
-                  Fair<span className="text-primary">Pay</span>Solution.com
+                <span className="font-display font-bold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-foreground leading-tight">
+                  Fair<span className="text-primary">Pay</span><span className="hidden xs:inline">Solution.com</span><span className="xs:hidden">Sol</span>
                 </span>
               </div>
             </Link>
@@ -154,19 +154,20 @@ export function Header({ onOpenCallback }: HeaderProps) {
             </div>
 
             {/* Mobile: Theme Toggle, Phone & Menu Toggle */}
-            <div className="flex lg:hidden items-center gap-1 xs:gap-1.5 sm:gap-2">
+            <div className="flex lg:hidden items-center gap-0.5 xs:gap-1 sm:gap-1.5">
               <ThemeToggle />
               <Button
                 variant="accent"
                 size="sm"
                 onClick={onOpenCallback}
-                className="text-xs xs:text-sm px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 h-auto whitespace-nowrap"
+                className="text-[0.6rem] xs:text-xs sm:text-sm px-1.5 xs:px-2 sm:px-3 md:px-4 py-1 xs:py-1.5 sm:py-2 h-auto whitespace-nowrap min-w-[45px] xs:min-w-[60px]"
               >
-                Get Callback
+                <span className="hidden xs:inline">Callback</span>
+                <span className="xs:hidden">Call</span>
               </Button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1 xs:p-1.5 sm:p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                className="p-1 xs:p-1.5 sm:p-2 rounded-lg hover:bg-muted/50 transition-colors flex-shrink-0"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6" />}
               </button>

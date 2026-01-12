@@ -265,12 +265,12 @@ export function TrustMediaSection() {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
                                 whileHover={{ scale: 1.05 }}
-                                className="glass-card p-3 xs:p-4 rounded-xl xs:rounded-2xl flex items-center gap-2 xs:gap-3 hover:shadow-lg transition-all"
+                                className="glass-card p-3 xs:p-4 rounded-xl xs:rounded-2xl flex items-start gap-2 xs:gap-3 hover:shadow-lg transition-all"
                             >
                                 <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                                     <Icon className="w-4 h-4 xs:w-4.5 xs:h-4.5 sm:w-5 sm:h-5 text-primary" />
                                 </div>
-                                <span className="text-[0.65rem] xs:text-xs sm:text-sm font-semibold text-foreground leading-tight">{badge.label}</span>
+                                <span className="text-[0.65rem] xs:text-xs sm:text-sm font-semibold text-foreground leading-tight flex-1">{badge.label}</span>
                             </motion.div>
                         );
                     })}
