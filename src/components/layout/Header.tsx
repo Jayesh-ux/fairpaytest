@@ -52,7 +52,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
   return (
     <>
       {/* Top Bar - Desktop */}
-      <div className="hidden lg:block bg-secondary text-secondary-foreground py-2">
+      <div className="hidden lg:block bg-muted/50 text-muted-foreground border-b border-border py-2">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-6">

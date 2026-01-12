@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { EnhancedHeroSection } from "@/components/home/EnhancedHeroSection";
+import { LoansWeWorkOnSection } from "@/components/home/LoansWeWorkOnSection";
 import { GlassmorphismServicesGrid } from "@/components/home/GlassmorphismServicesGrid";
 import { InteractiveProcessSection } from "@/components/home/InteractiveProcessSection";
 import { TrustMediaSection } from "@/components/home/TrustMediaSection";
@@ -19,6 +20,7 @@ const Index = () => {
     return (
         <Layout>
             <EnhancedHeroSection onOpenCallback={openCallback} />
+            <LoansWeWorkOnSection />
             <GlassmorphismServicesGrid />
             <InteractiveProcessSection onOpenCallback={openCallback} />
             <TrustMediaSection />

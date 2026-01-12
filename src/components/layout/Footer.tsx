@@ -17,10 +17,12 @@ const footerLinks = {
     { label: "Careers", href: "/vault" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Refund Policy", href: "/refund" },
     { label: "Disclaimer", href: "/disclaimer" },
+    { label: "Loan Type Policy", href: "/loan-policy" },
+    { label: "No Guarantee Policy", href: "/no-guarantee" },
+    { label: "Fees & Refund Policy", href: "/fees-refund" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
   ],
 };
 
@@ -33,15 +35,14 @@ const trustBadges = [
 
 export function Footer() {
   return (
-    <footer className="bg-secondary text-secondary-foreground">
-      {/* Trust Badges Bar */}
-      <div className="border-b border-secondary-foreground/10">
+    <footer className="bg-gradient-to-b from-background to-secondary/10 text-foreground border-t border-border">{/* Trust Badges Bar */}
+      <div className="border-b border-border">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-2 text-sm">
                 <badge.icon className="w-5 h-5 text-primary" />
-                <span className="text-secondary-foreground/80">{badge.label}</span>
+                <span className="text-muted-foreground">{badge.label}</span>
               </div>
             ))}
           </div>
@@ -63,11 +64,11 @@ export function Footer() {
                 </span>
               </div>
             </Link>
-            <p className="text-secondary-foreground/70 text-sm leading-relaxed mb-6 max-w-sm">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-sm">
               Legal Debt Relief, Made Simple. We help Indians settle their debts legally
               and rebuild their financial lives with expert negotiation and support.
             </p>
-            <div className="space-y-3 text-sm text-secondary-foreground/70">
+            <div className="space-y-3 text-sm text-muted-foreground">
               <a href="tel:+918449653755" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
                 +91 8449653755
@@ -85,7 +86,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-secondary-foreground/90">
+            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-foreground">
               Services
             </h4>
             <ul className="space-y-3">
@@ -93,7 +94,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -104,7 +105,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-secondary-foreground/90">
+            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-foreground">
               Company
             </h4>
             <ul className="space-y-3">
@@ -123,7 +124,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-secondary-foreground/90">
+            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-foreground">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -131,7 +132,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -143,13 +144,13 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-secondary-foreground/10">
+      <div className="border-t border-border">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-secondary-foreground/60">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
             <p>© 2026 FairPaySolution Pvt Ltd. All rights reserved.</p>
-            <p className="text-sm text-secondary-foreground/60 mt-2">
-              Disclaimer: FairPaySolution is an advisory service only. We are not a bank or financial institution.
-              We provide debt settlement consultation and negotiation services. Results may vary based on individual circumstances.
+            <p className="text-sm text-muted-foreground mt-2 text-center md:text-right max-w-2xl">
+              <strong>FairPay Solution</strong> - Independent Unsecured Loan Resolution & Advisory Consultancy.<br />
+              We are not a bank, NBFC, or lender. Consultancy services only.
             </p>
           </div>
         </div>
