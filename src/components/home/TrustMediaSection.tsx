@@ -134,7 +134,7 @@ export function TrustMediaSection() {
                         <Sparkles className="w-4 h-4 text-primary" />
                         <span className="text-sm font-medium text-primary">Trusted by Thousands</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+                    <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 xs:mb-5 sm:mb-6 px-2 xs:px-4">
                         India's Leading{" "}
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             Debt Advisory Platform
@@ -143,7 +143,7 @@ export function TrustMediaSection() {
                 </motion.div>
 
                 {/* Animated Stats Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 mb-12 sm:mb-16">
                     {stats.map((stat, index) => {
                         const Icon = stat.icon;
                         return (
@@ -158,7 +158,7 @@ export function TrustMediaSection() {
                                 <motion.div
                                     whileHover={{ y: -8, scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 300 }}
-                                    className="glass-card-strong p-6 lg:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all relative overflow-hidden"
+                                    className="glass-card-strong p-3 xs:p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl transition-all relative overflow-hidden"
                                 >
                                     {/* Gradient Background */}
                                     <div
@@ -171,22 +171,22 @@ export function TrustMediaSection() {
                                     {/* Icon */}
                                     <div
                                         className={cn(
-                                            "w-12 h-12 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-4 shadow-lg relative z-10",
+                                            "w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 shadow-lg relative z-10",
                                             stat.gradient
                                         )}
                                     >
-                                        <Icon className="w-6 h-6 text-white" />
+                                        <Icon className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white" />
                                     </div>
 
                                     {/* Value */}
-                                    <div className="text-3xl lg:text-4xl font-bold text-foreground mb-2 relative z-10 flex items-baseline gap-1">
-                                        {stat.prefix && <span>{stat.prefix}</span>}
+                                    <div className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground mb-1 xs:mb-1.5 sm:mb-2 relative z-10 flex items-baseline gap-0.5 xs:gap-1">
+                                        {stat.prefix && <span className="text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">{stat.prefix}</span>}
                                         <AnimatedCounter value={stat.value} />
-                                        {stat.suffix && <span>{stat.suffix}</span>}
+                                        {stat.suffix && <span className="text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">{stat.suffix}</span>}
                                     </div>
 
                                     {/* Label */}
-                                    <div className="text-sm text-muted-foreground relative z-10">{stat.label}</div>
+                                    <div className="text-[0.65rem] xs:text-xs sm:text-sm text-muted-foreground relative z-10 leading-tight">{stat.label}</div>
                                 </motion.div>
                             </motion.div>
                         );
@@ -200,30 +200,30 @@ export function TrustMediaSection() {
                     viewport={{ once: true }}
                     className="mb-16"
                 >
-                    <div className="glass-card-strong p-8 rounded-3xl shadow-xl">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center shadow-lg">
-                                <Newspaper className="w-6 h-6 text-white" />
+                    <div className="glass-card-strong p-4 xs:p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl">
+                        <div className="flex items-center gap-2 xs:gap-3 sm:gap-4 mb-4 xs:mb-5 sm:mb-6">
+                            <div className="w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                                <Newspaper className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-foreground">Media Presence</h3>
-                                <p className="text-sm text-muted-foreground">Latest achievements and milestones</p>
+                            <div className="min-w-0">
+                                <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-foreground truncate">Media Presence</h3>
+                                <p className="text-[0.65rem] xs:text-xs sm:text-sm text-muted-foreground truncate">Latest achievements and milestones</p>
                             </div>
                         </div>
 
                         {/* Animated Headlines */}
-                        <div className="relative h-24 overflow-hidden">
+                        <div className="relative min-h-[80px] xs:min-h-[90px] sm:min-h-[100px] md:h-24 overflow-hidden">
                             <motion.div
                                 key={currentHeadline}
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: -50, opacity: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className="absolute inset-0 flex items-center"
+                                className="absolute inset-0 flex items-center px-1"
                             >
-                                <div className="flex items-start gap-4">
-                                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0 animate-pulse" />
-                                    <p className="text-xl lg:text-2xl font-semibold text-foreground leading-relaxed">
+                                <div className="flex items-start gap-2 xs:gap-3 sm:gap-4 w-full">
+                                    <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-primary mt-1.5 xs:mt-2 flex-shrink-0 animate-pulse" />
+                                    <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-foreground leading-relaxed break-words">
                                         {mediaHeadlines[currentHeadline]}
                                     </p>
                                 </div>
@@ -231,7 +231,7 @@ export function TrustMediaSection() {
                         </div>
 
                         {/* Progress Dots */}
-                        <div className="flex items-center justify-center gap-2 mt-4">
+                        <div className="flex items-center justify-center gap-1.5 xs:gap-2 mt-3 xs:mt-4">
                             {mediaHeadlines.map((_, index) => (
                                 <button
                                     key={index}
@@ -239,8 +239,8 @@ export function TrustMediaSection() {
                                     className={cn(
                                         "transition-all rounded-full",
                                         index === currentHeadline
-                                            ? "w-8 h-2 bg-primary"
-                                            : "w-2 h-2 bg-muted hover:bg-muted-foreground"
+                                            ? "w-6 xs:w-8 h-1.5 xs:h-2 bg-primary"
+                                            : "w-1.5 xs:w-2 h-1.5 xs:h-2 bg-muted hover:bg-muted-foreground"
                                     )}
                                 />
                             ))}
@@ -253,7 +253,7 @@ export function TrustMediaSection() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+                    className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4"
                 >
                     {trustBadges.map((badge, index) => {
                         const Icon = badge.icon;
@@ -265,12 +265,12 @@ export function TrustMediaSection() {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
                                 whileHover={{ scale: 1.05 }}
-                                className="glass-card p-4 rounded-2xl flex items-center gap-3 hover:shadow-lg transition-all"
+                                className="glass-card p-3 xs:p-4 rounded-xl xs:rounded-2xl flex items-center gap-2 xs:gap-3 hover:shadow-lg transition-all"
                             >
-                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                    <Icon className="w-5 h-5 text-primary" />
+                                <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <Icon className="w-4 h-4 xs:w-4.5 xs:h-4.5 sm:w-5 sm:h-5 text-primary" />
                                 </div>
-                                <span className="text-sm font-semibold text-foreground">{badge.label}</span>
+                                <span className="text-[0.65rem] xs:text-xs sm:text-sm font-semibold text-foreground leading-tight">{badge.label}</span>
                             </motion.div>
                         );
                     })}

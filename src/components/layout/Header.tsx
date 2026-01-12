@@ -166,9 +166,9 @@ export function Header({ onOpenCallback }: HeaderProps) {
               </Button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 xs:p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                className="p-1 xs:p-1.5 sm:p-2 rounded-lg hover:bg-muted/50 transition-colors"
               >
-                {mobileMenuOpen ? <X className="w-5 h-5 xs:w-6 xs:h-6" /> : <Menu className="w-5 h-5 xs:w-6 xs:h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6" />}
               </button>
             </div>
           </nav>
