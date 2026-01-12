@@ -37,7 +37,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                         y: [0, -80, 0],
                     }}
                     transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-1/2 -left-1/4 w-[1000px] h-[1000px] bg-primary/40 rounded-full blur-3xl"
+                    className="absolute -top-1/2 -left-1/4 w-[500px] md:w-[800px] lg:w-[1000px] h-[500px] md:h-[800px] lg:h-[1000px] bg-primary/40 rounded-full blur-3xl"
                 />
                 <motion.div
                     animate={{
@@ -47,7 +47,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                         y: [0, 120, 0],
                     }}
                     transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-1/2 -right-1/4 w-[1200px] h-[1200px] bg-secondary/40 rounded-full blur-3xl"
+                    className="absolute -bottom-1/2 -right-1/4 w-[600px] md:w-[1000px] lg:w-[1200px] h-[600px] md:h-[1000px] lg:h-[1200px] bg-secondary/40 rounded-full blur-3xl"
                 />
                 <motion.div
                     animate={{
@@ -55,47 +55,47 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                         opacity: [0.2, 0.4, 0.2],
                     }}
                     transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/30 rounded-full blur-3xl"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] lg:w-[800px] h-[400px] md:h-[600px] lg:h-[800px] bg-accent/30 rounded-full blur-3xl"
                 />
             </div>
 
             {/* Grid Pattern Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:50px_50px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
-            <div className="container mx-auto px-4 relative z-10 py-20">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10 py-12 sm:py-16 md:py-20 3xl:max-w-[1920px]">
+                <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center">
                     {/* Left Content - Enhanced */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="space-y-8"
+                        className="space-y-4 sm:space-y-6 md:space-y-8"
                     >
                         {/* Trust Badge - More Prominent */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border-2 border-primary/30 backdrop-blur-md shadow-xl"
+                            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full bg-primary/10 border-2 border-primary/30 backdrop-blur-md shadow-xl"
                         >
-                            <Shield className="w-5 h-5 text-primary animate-pulse" />
-                            <span className="text-sm font-bold text-foreground">
+                            <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary animate-pulse flex-shrink-0" />
+                            <span className="text-xs sm:text-sm font-bold text-foreground leading-tight">
                                 Appointment-Based Consultation | Unsecured Loans Advisory
                             </span>
                         </motion.div>
 
                         {/* Main Headline - Larger & Bolder */}
-                        <div className="space-y-6">
+                        <div className="space-y-3 sm:space-y-4 md:space-y-6">
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-black leading-[1.1] tracking-tight"
+                                className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 3xl:text-9xl font-display font-black leading-[1.1] tracking-tight"
                             >
                                 <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-lg">
                                     FairPay
                                 </span>
-                                <span className="block text-foreground drop-shadow-lg mt-2">
+                                <span className="block text-foreground drop-shadow-lg mt-1 sm:mt-2">
                                     Solution
                                 </span>
                             </motion.h1>
@@ -104,12 +104,12 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className="space-y-4"
+                                className="space-y-2 sm:space-y-3 md:space-y-4"
                             >
-                                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary drop-shadow-md">
+                                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary drop-shadow-md">
                                     Ethical Unsecured Loan Resolution
                                 </h2>
-                                <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-2xl font-medium">
+                                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed max-w-2xl font-medium">
                                     Expert guidance for <span className="text-primary font-bold">lawful, transparent,</span> and{" "}
                                     <span className="text-primary font-bold">structured debt resolution</span>
                                 </p>
@@ -121,27 +121,27 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="flex flex-col sm:flex-row gap-6"
+                            className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6"
                         >
                             <Button
                                 size="lg"
                                 onClick={onOpenCallback}
-                                className="group relative bg-gradient-to-r from-primary via-secondary to-primary bg-size-200 hover:bg-pos-100 transition-all duration-500 text-primary-foreground font-bold text-lg px-10 py-8 rounded-2xl shadow-2xl hover:shadow-primary/50 hover:scale-105"
+                                className="group relative bg-gradient-to-r from-primary via-secondary to-primary bg-size-200 hover:bg-pos-100 transition-all duration-500 text-primary-foreground font-bold text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl shadow-2xl hover:shadow-primary/50 hover:scale-105"
                             >
-                                <span className="relative z-10 flex items-center gap-3">
-                                    Get Free Consultation
-                                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                                    <span className="whitespace-nowrap">Get Free Consultation</span>
+                                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform flex-shrink-0" />
                                 </span>
                             </Button>
                             <Button
                                 size="lg"
                                 variant="outline"
                                 asChild
-                                className="border-3 border-primary/30 hover:bg-primary/10 text-foreground font-bold text-lg px-10 py-8 rounded-2xl backdrop-blur-md hover:scale-105 transition-all"
+                                className="border-3 border-primary/30 hover:bg-primary/10 text-foreground font-bold text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl backdrop-blur-md hover:scale-105 transition-all"
                             >
-                                <a href="tel:+918449653755" className="flex items-center gap-3">
-                                    <Phone className="w-6 h-6" />
-                                    Call Expert Now
+                                <a href="tel:+918449653755" className="flex items-center justify-center gap-2 sm:gap-3">
+                                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
+                                    <span className="whitespace-nowrap">Call Expert Now</span>
                                 </a>
                             </Button>
                         </motion.div>
@@ -151,7 +151,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="text-base font-semibold bg-amber-500/10 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-4 py-3 rounded-xl border border-amber-500/30 backdrop-blur-sm"
+                            className="text-xs sm:text-sm md:text-base font-semibold bg-amber-500/10 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-3 sm:px-4 py-2 sm:py-3 rounded-lg md:rounded-xl border border-amber-500/30 backdrop-blur-sm"
                         >
                             ⚠️ We are not a bank or lender. Consultancy services only.
                         </motion.p>
@@ -161,7 +161,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7 }}
-                            className="grid grid-cols-3 gap-6 pt-8"
+                            className="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 md:pt-8"
                         >
                             {stats.map((stat, index) => (
                                 <motion.div
@@ -172,10 +172,10 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                     whileHover={{ scale: 1.1, y: -5 }}
                                     className="relative group"
                                 >
-                                    <div className="glass-card-strong p-6 rounded-2xl hover:shadow-2xl transition-all border-2 border-border hover:border-primary/50">
-                                        <stat.icon className={cn("w-8 h-8 mb-3", stat.color)} />
-                                        <div className="text-3xl font-black text-foreground mb-1">{stat.value}</div>
-                                        <div className="text-xs text-muted-foreground font-semibold">{stat.label}</div>
+                                    <div className="glass-card-strong p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl md:rounded-2xl hover:shadow-2xl transition-all border-2 border-border hover:border-primary/50">
+                                        <stat.icon className={cn("w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3", stat.color)} />
+                                        <div className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-foreground mb-0.5 sm:mb-1">{stat.value}</div>
+                                        <div className="text-[0.6rem] xs:text-[0.65rem] sm:text-xs text-muted-foreground font-semibold leading-tight">{stat.label}</div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -187,26 +187,26 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="relative"
+                        className="relative mt-8 lg:mt-0"
                     >
-                        <div className="relative glass-card-strong p-10 rounded-3xl shadow-2xl border-2 border-primary/30 backdrop-blur-2xl">
+                        <div className="relative glass-card-strong p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl md:rounded-3xl shadow-2xl border-2 border-primary/30 backdrop-blur-2xl">
                             {/* Glow Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl blur-xl -z-10" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl md:rounded-3xl blur-xl -z-10" />
 
-                            <div className="flex items-center gap-4 mb-8">
-                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-                                    <Calculator className="w-8 h-8 text-white" />
+                            <div className="flex items-center gap-2 xs:gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-8">
+                                <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg flex-shrink-0">
+                                    <Calculator className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                                 </div>
-                                <div>
-                                    <h3 className="text-2xl font-black text-foreground">Debt Calculator</h3>
-                                    <p className="text-sm text-muted-foreground font-medium">Calculate your savings instantly</p>
+                                <div className="min-w-0">
+                                    <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl font-black text-foreground truncate">Debt Calculator</h3>
+                                    <p className="text-xs sm:text-sm text-muted-foreground font-medium">Calculate your savings instantly</p>
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
+                            <div className="space-y-4 sm:space-y-6 md:space-y-8">
                                 {/* Loan Amount Input */}
                                 <div>
-                                    <label className="block text-base font-bold text-foreground mb-4">
+                                    <label className="block text-xs xs:text-sm sm:text-base font-bold text-foreground mb-2 sm:mb-3 md:mb-4">
                                         Your Current Loan Amount
                                     </label>
                                     <input
@@ -216,34 +216,34 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                         step="50000"
                                         value={loanAmount}
                                         onChange={(e) => setLoanAmount(Number(e.target.value))}
-                                        className="w-full h-4 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                                        className="w-full h-3 sm:h-4 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                                     />
-                                    <div className="mt-4 text-4xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                                    <div className="mt-2 sm:mt-3 md:mt-4 text-2xl xs:text-3xl sm:text-4xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                                         ₹{loanAmount.toLocaleString('en-IN')}
                                     </div>
                                 </div>
 
                                 {/* Savings Display - More Prominent */}
-                                <div className="relative bg-gradient-to-br from-emerald-500/20 to-teal-500/20 p-8 rounded-2xl border-2 border-emerald-500/30 shadow-xl">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl blur-xl" />
+                                <div className="relative bg-gradient-to-br from-emerald-500/20 to-teal-500/20 p-4 xs:p-5 sm:p-6 md:p-8 rounded-xl md:rounded-2xl border-2 border-emerald-500/30 shadow-xl">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl md:rounded-2xl blur-xl" />
                                     <div className="relative">
-                                        <div className="text-sm text-emerald-600 dark:text-emerald-300 font-bold mb-2">Potential Savings (40-60%)</div>
-                                        <div className="text-5xl font-black text-foreground mb-3">
+                                        <div className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-300 font-bold mb-1 sm:mb-2">Potential Savings (40-60%)</div>
+                                        <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-2 sm:mb-3">
                                             ₹{savings.toLocaleString('en-IN')}
                                         </div>
-                                        <div className="text-sm text-muted-foreground font-medium">
+                                        <div className="text-xs sm:text-sm text-muted-foreground font-medium">
                                             You could save up to this amount through structured settlement
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Progress Indicator */}
-                                <div className="space-y-3">
-                                    <div className="flex justify-between text-sm font-bold">
+                                <div className="space-y-2 sm:space-y-3">
+                                    <div className="flex justify-between text-xs sm:text-sm font-bold">
                                         <span className="text-muted-foreground">Steps to Debt Freedom</span>
                                         <span className="text-primary">5 Steps</span>
                                     </div>
-                                    <div className="h-3 bg-muted rounded-full overflow-hidden">
+                                    <div className="h-2 sm:h-3 bg-muted rounded-full overflow-hidden">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: "20%" }}
@@ -251,7 +251,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                             className="h-full bg-gradient-to-r from-primary to-secondary shadow-lg"
                                         />
                                     </div>
-                                    <p className="text-xs text-muted-foreground font-medium">
+                                    <p className="text-[0.65rem] xs:text-xs text-muted-foreground font-medium">
                                         Start with a free consultation today
                                     </p>
                                 </div>
@@ -259,7 +259,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 {/* CTA */}
                                 <Button
                                     onClick={onOpenCallback}
-                                    className="w-full bg-gradient-to-r from-primary to-secondary hover:shadow-2xl transition-all font-bold text-lg py-7 rounded-xl"
+                                    className="w-full bg-gradient-to-r from-primary to-secondary hover:shadow-2xl transition-all font-bold text-sm sm:text-base md:text-lg py-5 sm:py-6 md:py-7 rounded-lg md:rounded-xl"
                                     size="lg"
                                 >
                                     Calculate My Savings →
@@ -271,7 +271,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                         <motion.div
                             animate={{ y: [0, -15, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
-                            className="absolute -top-6 -right-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-4 rounded-2xl shadow-2xl text-base font-black border-2 border-white/20"
+                            className="hidden sm:block absolute -top-4 sm:-top-6 -right-3 sm:-right-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl text-xs sm:text-sm md:text-base font-black border-2 border-white/20"
                         >
                             ₹50 Cr+ Resolved
                         </motion.div>
@@ -284,12 +284,12 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 2 }}
-                className="fixed bottom-0 left-0 right-0 z-40 lg:hidden"
+                className="fixed bottom-0 left-0 right-0 z-40 lg:hidden safe-padding-x"
             >
-                <div className="bg-gradient-to-r from-primary via-secondary to-primary p-4 shadow-2xl border-t-2 border-primary/20">
+                <div className="bg-gradient-to-r from-primary via-secondary to-primary p-2 xs:p-3 sm:p-4 shadow-2xl border-t-2 border-primary/20">
                     <Button
                         onClick={onOpenCallback}
-                        className="w-full bg-background text-primary hover:bg-background/90 font-black text-lg py-6 rounded-xl shadow-lg"
+                        className="w-full bg-background text-primary hover:bg-background/90 font-black text-sm xs:text-base sm:text-lg py-4 xs:py-5 sm:py-6 rounded-lg sm:rounded-xl shadow-lg"
                         size="lg"
                     >
                         Get Free Consultation →

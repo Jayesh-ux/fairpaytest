@@ -50,7 +50,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 xs:p-3 sm:p-4 bg-black/60 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
@@ -58,20 +58,20 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-card rounded-2xl shadow-2xl overflow-y-auto"
+            className="relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] bg-card rounded-xl sm:rounded-2xl shadow-2xl overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col lg:flex-row">
               {/* Form Section */}
-              <div className="flex-1 p-6 lg:p-8">
+              <div className="flex-1 p-4 xs:p-5 sm:p-6 lg:p-8">
                 {/* Header */}
-                <div className="bg-primary rounded-xl p-4 mb-6">
-                  <h2 className="text-xl lg:text-2xl font-bold text-primary-foreground text-center">
+                <div className="bg-primary rounded-lg sm:rounded-xl p-3 sm:p-4 mb-4 sm:mb-6">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary-foreground text-center">
                     Get a Callback
                   </h2>
                 </div>
 
-                <p className="text-muted-foreground text-center mb-6">
+                <p className="text-sm sm:text-base text-muted-foreground text-center mb-4 sm:mb-6">
                   Please fill your details below
                 </p>
 
@@ -79,37 +79,37 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="text-center py-8"
+                    className="text-center py-6 sm:py-8"
                   >
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Phone className="w-8 h-8 text-primary" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                      <Phone className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">Thank You!</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Thank You!</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground">
                       Our expert will call you within 30 minutes.
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-foreground">Name *</Label>
+                  <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="name" className="text-foreground text-sm sm:text-base">Name *</Label>
                       <div className="relative">
-                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                        <User className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                         <Input
                           id="name"
                           placeholder="Enter your full name"
                           value={formData.name}
                           onChange={(e) => handleInputChange("name", e.target.value)}
-                          className="pl-10"
+                          className="pl-8 sm:pl-10 text-sm sm:text-base h-10 sm:h-11"
                           required
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-foreground">Phone *</Label>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="phone" className="text-foreground text-sm sm:text-base">Phone *</Label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm font-medium">
+                        <span className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs sm:text-sm font-medium">
                           +91
                         </span>
                         <Input
@@ -118,7 +118,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                           placeholder="8449653755"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
-                          className="pl-12"
+                          className="pl-10 sm:pl-12 text-sm sm:text-base h-10 sm:h-11"
                           required
                           pattern="[0-9]{10}"
                           maxLength={10}
@@ -126,45 +126,45 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-foreground">Email *</Label>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="email" className="text-foreground text-sm sm:text-base">Email *</Label>
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                        <Mail className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                         <Input
                           id="email"
                           type="email"
                           placeholder="your.email@example.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
-                          className="pl-10"
+                          className="pl-8 sm:pl-10 text-sm sm:text-base h-10 sm:h-11"
                           required
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="loanAmount" className="text-foreground">Loan Amount *</Label>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="loanAmount" className="text-foreground text-sm sm:text-base">Loan Amount *</Label>
                       <div className="relative">
-                        <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                        <IndianRupee className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                         <Input
                           id="loanAmount"
                           type="text"
                           placeholder="5,00,000"
                           value={formData.loanAmount}
                           onChange={(e) => handleInputChange("loanAmount", e.target.value)}
-                          className="pl-10"
+                          className="pl-8 sm:pl-10 text-sm sm:text-base h-10 sm:h-11"
                           required
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="loanType" className="text-foreground">Loan Type *</Label>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="loanType" className="text-foreground text-sm sm:text-base">Loan Type *</Label>
                       <select
                         id="loanType"
                         value={formData.loanType}
                         onChange={(e) => handleInputChange("loanType", e.target.value)}
-                        className="w-full h-10 px-3 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                        className="w-full h-10 sm:h-11 px-2.5 sm:px-3 rounded-md border border-input bg-background text-foreground text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-ring"
                         required
                       >
                         <option value="">Select loan type</option>
@@ -175,17 +175,17 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                       </select>
                     </div>
 
-                    <div className="space-y-3 pt-4 border-t border-border">
-                      <div className="flex items-start gap-3">
+                    <div className="space-y-2 sm:space-y-3 pt-3 sm:pt-4 border-t border-border">
+                      <div className="flex items-start gap-2 sm:gap-3">
                         <input
                           type="checkbox"
                           id="consent"
                           checked={formData.consent}
                           onChange={(e) => setFormData(prev => ({ ...prev, consent: e.target.checked }))}
-                          className="mt-1 w-4 h-4 rounded border-input text-primary focus:ring-2 focus:ring-primary"
+                          className="mt-0.5 sm:mt-1 w-4 h-4 rounded border-input text-primary focus:ring-2 focus:ring-primary flex-shrink-0"
                           required
                         />
-                        <Label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                        <Label htmlFor="consent" className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
                           I understand that FairPay Solution provides consultancy services only and does not guarantee loan settlement or credit score protection. *
                         </Label>
                       </div>
@@ -195,7 +195,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                       type="submit"
                       variant="accent"
                       size="lg"
-                      className="w-full mt-6"
+                      className="w-full mt-4 sm:mt-6 h-10 sm:h-11 text-sm sm:text-base"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -203,13 +203,13 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                           <motion.span
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                            className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
+                            className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
                           />
-                          Submitting...
+                          <span className="text-sm sm:text-base">Submitting...</span>
                         </span>
                       ) : (
                         <span className="flex items-center gap-2">
-                          Submit
+                          <span className="text-sm sm:text-base">Submit</span>
                           <span className="ml-1">→</span>
                         </span>
                       )}
@@ -241,9 +241,9 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors"
+              className="absolute top-2 right-2 xs:top-3 xs:right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors z-10"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </motion.div>
         </motion.div>

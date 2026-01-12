@@ -116,7 +116,7 @@ export function GlassmorphismServicesGrid() {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-secondary/5 to-background relative overflow-hidden">
+        <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-gradient-to-b from-secondary/5 to-background relative overflow-hidden">
             {/* Animated Background */}
             <div className="absolute inset-0">
                 <motion.div
@@ -125,7 +125,7 @@ export function GlassmorphismServicesGrid() {
                         opacity: [0.1, 0.2, 0.1],
                     }}
                     transition={{ duration: 20, repeat: Infinity }}
-                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+                    className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary/20 rounded-full blur-3xl"
                 />
                 <motion.div
                     animate={{
@@ -133,36 +133,36 @@ export function GlassmorphismServicesGrid() {
                         opacity: [0.1, 0.15, 0.1],
                     }}
                     transition={{ duration: 25, repeat: Infinity }}
-                    className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
+                    className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-secondary/20 rounded-full blur-3xl"
                 />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10 3xl:max-w-[1920px]">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-8 sm:mb-12 md:mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                        <Sparkles className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-medium text-primary">Our Services</span>
+                    <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 mb-4 sm:mb-6">
+                        <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                        <span className="text-xs sm:text-sm font-medium text-primary">Our Services</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+                    <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl font-display font-bold mb-3 sm:mb-4 md:mb-6">
                         Comprehensive{" "}
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             Advisory Services
                         </span>
                     </h2>
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
                         Expert guidance for unsecured loan challenges - transparent, ethical, and results-driven
                     </p>
                 </motion.div>
 
                 {/* Services Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 lg:gap-8">
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         const isHovered = hoveredId === service.id;
@@ -183,7 +183,7 @@ export function GlassmorphismServicesGrid() {
                                     whileHover={{ y: -8, scale: 1.02 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                     className={cn(
-                                        "relative h-full p-8 rounded-3xl transition-all duration-500 overflow-hidden",
+                                        "relative h-full p-4 xs:p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transition-all duration-500 overflow-hidden",
                                         "bg-card/60 backdrop-blur-xl border-2",
                                         isHovered
                                             ? "border-primary/50 shadow-2xl"
@@ -203,8 +203,8 @@ export function GlassmorphismServicesGrid() {
 
                                     {/* Badge */}
                                     {service.badge && (
-                                        <div className="absolute top-4 right-4">
-                                            <span className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold shadow-lg">
+                                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+                                            <span className="px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[0.65rem] xs:text-xs font-bold shadow-lg">
                                                 {service.badge}
                                             </span>
                                         </div>
@@ -215,29 +215,29 @@ export function GlassmorphismServicesGrid() {
                                         whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                                         transition={{ duration: 0.5 }}
                                         className={cn(
-                                            "w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-6 shadow-lg relative z-10",
+                                            "w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br flex items-center justify-center mb-4 sm:mb-6 shadow-lg relative z-10",
                                             service.gradient
                                         )}
                                     >
-                                        <Icon className="w-8 h-8 text-white" />
+                                        <Icon className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 text-white" />
                                     </motion.div>
 
                                     {/* Content */}
                                     <div className="relative z-10">
-                                        <div className="mb-4">
-                                            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                                        <div className="mb-3 sm:mb-4">
+                                            <span className="inline-block px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-primary/10 text-primary text-[0.65rem] xs:text-xs font-semibold mb-2 sm:mb-3">
                                                 {service.subtitle}
                                             </span>
-                                            <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                                            <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-primary transition-colors">
                                                 {service.title}
                                             </h3>
-                                            <p className="text-muted-foreground leading-relaxed">
+                                            <p className="text-xs xs:text-sm sm:text-base text-muted-foreground leading-relaxed">
                                                 {service.description}
                                             </p>
                                         </div>
 
                                         {/* Features */}
-                                        <div className="space-y-2 mb-6">
+                                        <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                                             {service.features.map((feature, idx) => (
                                                 <motion.div
                                                     key={idx}
@@ -245,9 +245,9 @@ export function GlassmorphismServicesGrid() {
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     viewport={{ once: true }}
                                                     transition={{ delay: 0.1 * idx }}
-                                                    className="flex items-center gap-2 text-sm"
+                                                    className="flex items-center gap-1.5 sm:gap-2 text-xs xs:text-sm"
                                                 >
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-primary flex-shrink-0" />
                                                     <span className="text-muted-foreground">{feature}</span>
                                                 </motion.div>
                                             ))}
@@ -256,10 +256,10 @@ export function GlassmorphismServicesGrid() {
                                         {/* CTA */}
                                         <Button
                                             variant="ghost"
-                                            className="group/btn w-full justify-between hover:bg-primary/10 hover:text-primary transition-all"
+                                            className="group/btn w-full justify-between hover:bg-primary/10 hover:text-primary transition-all text-xs xs:text-sm sm:text-base h-9 sm:h-10"
                                         >
                                             <span>Learn More</span>
-                                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                            <ArrowRight className="w-3 h-3 xs:w-4 xs:h-4 group-hover/btn:translate-x-1 transition-transform" />
                                         </Button>
                                     </div>
 
@@ -291,11 +291,11 @@ export function GlassmorphismServicesGrid() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-16 text-center"
+                    className="mt-8 sm:mt-12 md:mt-16 text-center"
                 >
-                    <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500/10 border border-amber-500/20">
-                        <AlertTriangle className="w-5 h-5 text-amber-600" />
-                        <span className="text-sm font-medium text-amber-700 dark:text-amber-400">
+                    <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full bg-amber-500/10 border border-amber-500/20">
+                        <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0" />
+                        <span className="text-xs xs:text-sm sm:text-base font-medium text-amber-700 dark:text-amber-400">
                             ❌ We do not assist with secured loans (Home, Car, Gold, Property Loans)
                         </span>
                     </div>
