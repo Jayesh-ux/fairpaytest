@@ -81,15 +81,15 @@ export function Header({ onOpenCallback }: HeaderProps) {
             : "bg-card"
         )}
       >
-        <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between h-16 lg:h-20">
+        <div className="container mx-auto px-2 xs:px-3 sm:px-4">
+          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow duration-300">
-                <CheckCircle className="w-6 h-6 text-primary-foreground" />
+            <Link to="/" className="flex items-center gap-1.5 xs:gap-2 group">
+              <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0">
+                <CheckCircle className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6 text-primary-foreground" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-lg lg:text-xl text-foreground leading-tight">
+              <div className="flex flex-col min-w-0">
+                <span className="font-display font-bold text-sm xs:text-base sm:text-lg lg:text-xl text-foreground leading-tight truncate">
                   Fair<span className="text-primary">Pay</span>Solution.com
                 </span>
               </div>
@@ -154,16 +154,21 @@ export function Header({ onOpenCallback }: HeaderProps) {
             </div>
 
             {/* Mobile: Theme Toggle, Phone & Menu Toggle */}
-            <div className="flex lg:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-1 xs:gap-1.5 sm:gap-2">
               <ThemeToggle />
-              <Button variant="accent" size="sm" onClick={onOpenCallback}>
+              <Button
+                variant="accent"
+                size="sm"
+                onClick={onOpenCallback}
+                className="text-xs xs:text-sm px-2 xs:px-3 sm:px-4 py-1.5 xs:py-2 h-auto whitespace-nowrap"
+              >
                 Get Callback
               </Button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                className="p-1.5 xs:p-2 rounded-lg hover:bg-muted/50 transition-colors"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 xs:w-6 xs:h-6" /> : <Menu className="w-5 h-5 xs:w-6 xs:h-6" />}
               </button>
             </div>
           </nav>

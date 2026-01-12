@@ -76,21 +76,21 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full bg-primary/10 border-2 border-primary/30 backdrop-blur-md shadow-xl"
+                            className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 xs:px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full bg-primary/10 border-2 border-primary/30 backdrop-blur-md shadow-xl max-w-full"
                         >
-                            <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary animate-pulse flex-shrink-0" />
-                            <span className="text-xs sm:text-sm font-bold text-foreground leading-tight">
-                                Appointment-Based Consultation | Unsecured Loans Advisory
+                            <Shield className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-primary animate-pulse flex-shrink-0" />
+                            <span className="text-[0.65rem] xs:text-xs sm:text-sm font-bold text-foreground leading-tight text-center">
+                                Appointment-Based | Unsecured Loans
                             </span>
                         </motion.div>
 
                         {/* Main Headline - Larger & Bolder */}
-                        <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                        <div className="space-y-2 xs:space-y-3 sm:space-y-4 md:space-y-6">
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 3xl:text-9xl font-display font-black leading-[1.1] tracking-tight"
+                                className="text-[2rem] xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 3xl:text-9xl font-display font-black leading-[1.1] tracking-tight"
                             >
                                 <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-lg">
                                     FairPay
@@ -106,10 +106,10 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 transition={{ delay: 0.4 }}
                                 className="space-y-2 sm:space-y-3 md:space-y-4"
                             >
-                                <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary drop-shadow-md">
+                                <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 3xl:text-5xl font-bold text-primary drop-shadow-md">
                                     Ethical Unsecured Loan Resolution
                                 </h2>
-                                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed max-w-2xl font-medium">
+                                <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-foreground/80 leading-relaxed max-w-2xl font-medium">
                                     Expert guidance for <span className="text-primary font-bold">lawful, transparent,</span> and{" "}
                                     <span className="text-primary font-bold">structured debt resolution</span>
                                 </p>
@@ -121,26 +121,26 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6"
+                            className="flex flex-col sm:flex-row gap-2.5 xs:gap-3 sm:gap-4 md:gap-6"
                         >
                             <Button
                                 size="lg"
                                 onClick={onOpenCallback}
-                                className="group relative bg-gradient-to-r from-primary via-secondary to-primary bg-size-200 hover:bg-pos-100 transition-all duration-500 text-primary-foreground font-bold text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl shadow-2xl hover:shadow-primary/50 hover:scale-105"
+                                className="group relative bg-gradient-to-r from-primary via-secondary to-primary bg-size-200 hover:bg-pos-100 transition-all duration-500 text-primary-foreground font-bold text-xs xs:text-sm sm:text-base md:text-lg px-4 xs:px-6 sm:px-8 md:px-10 py-4 xs:py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl shadow-2xl hover:shadow-primary/50 hover:scale-105 w-full sm:w-auto"
                             >
-                                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                                <span className="relative z-10 flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
                                     <span className="whitespace-nowrap">Get Free Consultation</span>
-                                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform flex-shrink-0" />
+                                    <ArrowRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform flex-shrink-0" />
                                 </span>
                             </Button>
                             <Button
                                 size="lg"
                                 variant="outline"
                                 asChild
-                                className="border-3 border-primary/30 hover:bg-primary/10 text-foreground font-bold text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl backdrop-blur-md hover:scale-105 transition-all"
+                                className="border-3 border-primary/30 hover:bg-primary/10 text-foreground font-bold text-xs xs:text-sm sm:text-base md:text-lg px-4 xs:px-6 sm:px-8 md:px-10 py-4 xs:py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl backdrop-blur-md hover:scale-105 transition-all w-full sm:w-auto"
                             >
-                                <a href="tel:+918449653755" className="flex items-center justify-center gap-2 sm:gap-3">
-                                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
+                                <a href="tel:+918449653755" className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
+                                    <Phone className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                                     <span className="whitespace-nowrap">Call Expert Now</span>
                                 </a>
                             </Button>
@@ -161,7 +161,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7 }}
-                            className="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 md:pt-8"
+                            className="grid grid-cols-3 gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 lg:gap-6 pt-4 sm:pt-6 md:pt-8"
                         >
                             {stats.map((stat, index) => (
                                 <motion.div
@@ -169,13 +169,13 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.8 + index * 0.1 }}
-                                    whileHover={{ scale: 1.1, y: -5 }}
+                                    whileHover={{ scale: 1.05, y: -3 }}
                                     className="relative group"
                                 >
-                                    <div className="glass-card-strong p-2 xs:p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl md:rounded-2xl hover:shadow-2xl transition-all border-2 border-border hover:border-primary/50">
-                                        <stat.icon className={cn("w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3", stat.color)} />
-                                        <div className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-foreground mb-0.5 sm:mb-1">{stat.value}</div>
-                                        <div className="text-[0.6rem] xs:text-[0.65rem] sm:text-xs text-muted-foreground font-semibold leading-tight">{stat.label}</div>
+                                    <div className="glass-card-strong p-1.5 xs:p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl md:rounded-2xl hover:shadow-2xl transition-all border-2 border-border hover:border-primary/50">
+                                        <stat.icon className={cn("w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 mb-1 sm:mb-2 md:mb-3", stat.color)} />
+                                        <div className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-foreground mb-0.5 sm:mb-1">{stat.value}</div>
+                                        <div className="text-[0.5rem] xs:text-[0.6rem] sm:text-xs text-muted-foreground font-semibold leading-tight">{stat.label}</div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -286,10 +286,10 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                 transition={{ delay: 2 }}
                 className="fixed bottom-0 left-0 right-0 z-40 lg:hidden safe-padding-x"
             >
-                <div className="bg-gradient-to-r from-primary via-secondary to-primary p-2 xs:p-3 sm:p-4 shadow-2xl border-t-2 border-primary/20">
+                <div className="bg-gradient-to-r from-primary via-secondary to-primary p-1.5 xs:p-2 sm:p-3 md:p-4 shadow-2xl border-t-2 border-primary/20">
                     <Button
                         onClick={onOpenCallback}
-                        className="w-full bg-background text-primary hover:bg-background/90 font-black text-sm xs:text-base sm:text-lg py-4 xs:py-5 sm:py-6 rounded-lg sm:rounded-xl shadow-lg"
+                        className="w-full bg-background text-primary hover:bg-background/90 font-black text-xs xs:text-sm sm:text-base md:text-lg py-3 xs:py-4 sm:py-5 md:py-6 rounded-lg sm:rounded-xl shadow-lg"
                         size="lg"
                     >
                         Get Free Consultation →
