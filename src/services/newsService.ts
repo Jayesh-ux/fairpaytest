@@ -29,9 +29,7 @@ export async function fetchFinancialNews(pageSize: number = 15): Promise<NewsArt
             language: 'en',
             sortBy: 'publishedAt',
             pageSize: '50', // Fetch more to have options after filtering
-            apiKey: NEWS_API_KEY,
-            // Prioritize Indian domains
-            domains: 'economictimes.indiatimes.com,moneycontrol.com,business-standard.com,livemint.com,financialexpress.com,thehindubusinessline.com'
+            apiKey: NEWS_API_KEY
         });
 
         const response = await fetch(`${NEWS_API_BASE_URL}/everything?${params}`);

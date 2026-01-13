@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -282,6 +282,7 @@
     padding: clamp(3rem, 7vw, 6rem);
   }
 }
+
 /* Fix toast notification button visibility */
 [data-sonner-toast] button[data-button] {
   background-color: hsl(var(--primary)) !important;
@@ -299,4 +300,3 @@
   background-color: hsl(151 100% 45%) !important;
   color: white !important;
 }
-
