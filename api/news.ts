@@ -12,7 +12,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const endpoint = country ? 'top-headlines' : 'everything';
 
     const params = new URLSearchParams();
-    if (q) params.append('q', q as string);
+    // Default search query if none provided to avoid NewsAPI 'parametersMissing' error
+    const searchQuery = (q as string) || (country ? '' : 'india finance');
+    if (searchQuery) params.append('q', searchQuery);
     if (language) params.append('language', language as string);
     if (sortBy) params.append('sortBy', sortBy as string);
     if (pageSize) params.append('pageSize', pageSize as string);

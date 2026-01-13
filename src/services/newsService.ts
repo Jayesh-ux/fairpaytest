@@ -33,7 +33,11 @@ export async function fetchFinancialNews(pageSize: number = 15): Promise<NewsArt
             apiKey: NEWS_API_KEY
         });
 
-        const response = await fetch(`${NEWS_API_BASE_URL}/everything?${params}`);
+        const fetchUrl = import.meta.env.PROD
+            ? `${NEWS_API_BASE_URL}?${params}`
+            : `${NEWS_API_BASE_URL}/everything?${params}`;
+
+        const response = await fetch(fetchUrl);
 
         if (!response.ok) {
             console.warn('NewsAPI request failed:', response.status);
@@ -107,7 +111,11 @@ export async function fetchIndianBusinessNews(pageSize: number = 15): Promise<Ne
             apiKey: NEWS_API_KEY,
         });
 
-        const response = await fetch(`${NEWS_API_BASE_URL}/top-headlines?${params}`);
+        const fetchUrl = import.meta.env.PROD
+            ? `${NEWS_API_BASE_URL}?${params}`
+            : `${NEWS_API_BASE_URL}/top-headlines?${params}`;
+
+        const response = await fetch(fetchUrl);
 
         if (!response.ok) {
             return getFallbackArticles();
