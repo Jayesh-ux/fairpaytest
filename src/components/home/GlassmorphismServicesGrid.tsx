@@ -22,6 +22,7 @@ interface Service {
     gradient: string;
     features: string[];
     badge?: string;
+    image?: string;
 }
 
 const services: Service[] = [
@@ -32,6 +33,7 @@ const services: Service[] = [
         description: "Expert guidance for resolving unsecured personal loan challenges through structured advisory",
         icon: Users,
         gradient: "from-blue-500 via-cyan-500 to-teal-500",
+        image: "/images/generated/personal-loan-settlement.png",
         features: [
             "Debt analysis & planning",
             "Lender negotiation support",
@@ -46,6 +48,7 @@ const services: Service[] = [
         description: "Comprehensive advisory for credit card debt management and settlement options",
         icon: CreditCard,
         gradient: "from-purple-500 via-pink-500 to-rose-500",
+        image: "/images/generated/credit-card-relief.png",
         features: [
             "Outstanding balance review",
             "Repayment restructuring",
@@ -61,6 +64,7 @@ const services: Service[] = [
         description: "Education on borrower rights and protection against unlawful recovery practices",
         icon: Shield,
         gradient: "from-emerald-500 via-green-500 to-teal-500",
+        image: "/images/generated/anti-harassment-protection.png",
         features: [
             "RBI guidelines education",
             "Legal rights training",
@@ -75,6 +79,7 @@ const services: Service[] = [
         description: "Comprehensive training on your rights as a borrower under Indian law",
         icon: FileText,
         gradient: "from-amber-500 via-orange-500 to-red-500",
+        image: "/images/generated/financial-consultation-hero.png",
         features: [
             "Consumer protection laws",
             "Fair practices code",
@@ -89,6 +94,7 @@ const services: Service[] = [
         description: "Strategic planning for sustainable debt repayment and settlement negotiations",
         icon: TrendingUp,
         gradient: "from-indigo-500 via-purple-500 to-pink-500",
+        image: "/images/generated/debt-free-celebration.png",
         features: [
             "Cash flow analysis",
             "Repayment scheduling",
@@ -103,6 +109,7 @@ const services: Service[] = [
         description: "Assistance with loan documentation and professional lender communication",
         icon: AlertTriangle,
         gradient: "from-cyan-500 via-blue-500 to-indigo-500",
+        image: "/images/generated/personal-loan-settlement.png",
         features: [
             "Document organization",
             "Letter drafting support",
@@ -203,10 +210,24 @@ export function GlassmorphismServicesGrid() {
 
                                     {/* Badge */}
                                     {service.badge && (
-                                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+                                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
                                             <span className="px-2 py-1 sm:px-3 sm:py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[0.65rem] xs:text-xs font-bold shadow-lg">
                                                 {service.badge}
                                             </span>
+                                        </div>
+                                    )}
+
+                                    {/* Service Image */}
+                                    {service.image && (
+                                        <div className="relative w-full h-32 xs:h-36 sm:h-40 md:h-48 mb-4 sm:mb-6 rounded-xl overflow-hidden">
+                                            <img
+                                                src={service.image}
+                                                alt={service.title}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                            <div className={cn(
+                                                "absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"
+                                            )} />
                                         </div>
                                     )}
 
