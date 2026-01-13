@@ -180,14 +180,21 @@ function getFallbackArticles(): NewsArticle[] {
 const CACHE_KEY = 'fairpay_news_cache';
 const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours (reduced from 6)
 
-export async function getCachedNews(): Promise<NewsArticle[]> {
+export async function getCachedNews(force: boolean = false): Promise<NewsArticle[]> {
     try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-            const { articles, timestamp } = JSON.parse(cached);
-            if (Date.now() - timestamp < CACHE_DURATION) {
-                console.log('Using cached news articles');
-                return articles;
+        if (!force) {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const { articles, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < CACHE_DURATION) {
+                    // If the cache contains fallback articles, ignore it so we can try fetching live news
+                    const isFallback = articles.some((a: NewsArticle) => a.source.name === "FairPaySolution Insights");
+                    if (!isFallback) {
+                        console.log('Using cached news articles');
+                        return articles;
+                    }
+                    console.log('Cache contains fallback articles, forcing fresh fetch...');
+                }
             }
         }
     } catch (error) {

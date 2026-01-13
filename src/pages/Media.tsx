@@ -15,10 +15,10 @@ export default function MediaPage() {
         loadNews();
     }, []);
 
-    const loadNews = async () => {
+    const loadNews = async (force: boolean = false) => {
         setLoading(true);
         try {
-            const news = await getCachedNews();
+            const news = await getCachedNews(force);
             setArticles(news);
         } catch (error) {
             console.error("Error loading news:", error);
@@ -85,7 +85,7 @@ export default function MediaPage() {
                             Stay informed with the latest news, insights, and expert opinions on debt relief and financial wellness in India.
                         </p>
                         <button
-                            onClick={loadNews}
+                            onClick={() => loadNews(true)}
                             disabled={loading}
                             className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted hover:bg-muted/80 text-sm font-medium transition-colors disabled:opacity-50"
                         >
