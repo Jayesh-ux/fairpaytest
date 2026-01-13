@@ -13,6 +13,7 @@ interface CallbackPopupProps {
 export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
   const [formData, setFormData] = useState({
     name: "",
+    countryCode: "+91",
     phone: "",
     email: "",
     loanAmount: "",
@@ -35,7 +36,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
     setTimeout(() => {
       onClose();
       setIsSuccess(false);
-      setFormData({ name: "", phone: "", email: "", loanAmount: "", loanType: "", consent: false });
+      setFormData({ name: "", countryCode: "+91", phone: "", email: "", loanAmount: "", loanType: "", consent: false });
     }, 2000);
   };
 
@@ -108,20 +109,33 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
 
                     <div className="space-y-1.5 sm:space-y-2">
                       <Label htmlFor="phone" className="text-foreground text-sm sm:text-base">Phone *</Label>
-                      <div className="relative">
-                        <span className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs sm:text-sm font-medium">
-                          +91
-                        </span>
+                      <div className="flex gap-2">
+                        <select
+                          value={formData.countryCode}
+                          onChange={(e) => handleInputChange("countryCode", e.target.value)}
+                          className="w-24 sm:w-28 h-10 sm:h-11 px-2 rounded-md border border-input bg-background text-foreground text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                        >
+                          <option value="+91">🇮🇳 +91</option>
+                          <option value="+1">🇺🇸 +1</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+971">🇦🇪 +971</option>
+                          <option value="+65">🇸🇬 +65</option>
+                          <option value="+61">🇦🇺 +61</option>
+                          <option value="+971">🇦🇪 +971</option>
+                          <option value="+966">🇸🇦 +966</option>
+                          <option value="+974">🇶🇦 +974</option>
+                          <option value="+60">🇲🇾 +60</option>
+                        </select>
                         <Input
                           id="phone"
                           type="tel"
                           placeholder="8449653755"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
-                          className="pl-10 sm:pl-12 text-sm sm:text-base h-10 sm:h-11"
+                          className="flex-1 text-sm sm:text-base h-10 sm:h-11"
                           required
-                          pattern="[0-9]{10}"
-                          maxLength={10}
+                          pattern="[0-9]{7,15}"
+                          maxLength={15}
                         />
                       </div>
                     </div>

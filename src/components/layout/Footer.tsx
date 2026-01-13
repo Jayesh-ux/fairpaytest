@@ -12,9 +12,9 @@ const footerLinks = {
   company: [
     { label: "About Us", href: "/how-it-works" },
     { label: "How It Works", href: "/how-it-works" },
-    { label: "Blog", href: "/vault" },
-    { label: "Contact", href: "/vault" },
-    { label: "Careers", href: "/vault" },
+    { label: "Blog", href: "/media" },
+    { label: "Contact", href: "/contact" },
+    { label: "Media Coverage", href: "/media" },
   ],
   legal: [
     { label: "Disclaimer", href: "/disclaimer" },

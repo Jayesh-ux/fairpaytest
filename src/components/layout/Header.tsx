@@ -8,7 +8,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const mainNavItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/how-it-works" },
+  { label: "How It Works", href: "/how-it-works" },
   {
     label: "Services",
     href: "/dashboard",
@@ -19,9 +19,9 @@ const mainNavItems = [
       { label: "Credit Score Builder", href: "/dashboard/credit-score" },
     ]
   },
-  { label: "Categories", href: "/eligibility" },
-  { label: "More", href: "/calculator" },
-  { label: "Blog", href: "/vault" },
+  { label: "Calculator", href: "/calculator" },
+  { label: "Blog", href: "/media" },
+  { label: "Contact", href: "/contact" },
 ];
 
 interface HeaderProps {

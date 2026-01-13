@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { 
-  ChevronRight, 
+import {
+  ChevronRight,
   ChevronLeft,
   Clock,
   Building2,
@@ -57,11 +57,11 @@ const hardshipOptions = [
 ];
 
 const debtAmountOptions = [
-  { value: "5000-10000", label: "$5,000 - $10,000" },
-  { value: "10000-25000", label: "$10,000 - $25,000" },
-  { value: "25000-50000", label: "$25,000 - $50,000" },
-  { value: "50000-100000", label: "$50,000 - $100,000" },
-  { value: "100000+", label: "Over $100,000" },
+  { value: "50000-200000", label: "₹50,000 - ₹2,00,000" },
+  { value: "200000-500000", label: "₹2,00,000 - ₹5,00,000" },
+  { value: "500000-1000000", label: "₹5,00,000 - ₹10,00,000" },
+  { value: "1000000-2500000", label: "₹10,00,000 - ₹25,00,000" },
+  { value: "2500000+", label: "Over ₹25,00,000" },
 ];
 
 export default function EligibilityPage() {
@@ -123,18 +123,16 @@ export default function EligibilityPage() {
               {wizardSteps.slice(0, 4).map((step) => (
                 <div
                   key={step.id}
-                  className={`flex flex-col items-center ${
-                    step.id <= currentStep ? "text-accent" : "text-muted-foreground"
-                  }`}
+                  className={`flex flex-col items-center ${step.id <= currentStep ? "text-accent" : "text-muted-foreground"
+                    }`}
                 >
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                      step.id < currentStep
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${step.id < currentStep
                         ? "bg-accent text-accent-foreground"
                         : step.id === currentStep
-                        ? "bg-accent/20 border-2 border-accent text-accent"
-                        : "bg-muted text-muted-foreground"
-                    }`}
+                          ? "bg-accent/20 border-2 border-accent text-accent"
+                          : "bg-muted text-muted-foreground"
+                      }`}
                   >
                     {step.id < currentStep ? (
                       <CheckCircle2 className="w-5 h-5" />
@@ -170,20 +168,18 @@ export default function EligibilityPage() {
                       <button
                         key={option.value}
                         onClick={() => handleSelect(currentStep, option.value)}
-                        className={`w-full p-4 rounded-xl border text-left transition-all ${
-                          answers[currentStep] === option.value
+                        className={`w-full p-4 rounded-xl border text-left transition-all ${answers[currentStep] === option.value
                             ? "border-accent bg-accent/10 text-foreground"
                             : "border-border bg-card hover:border-accent/50 hover:bg-muted/50 text-foreground"
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center justify-between">
                           <span className="font-medium">{option.label}</span>
                           <div
-                            className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                              answers[currentStep] === option.value
+                            className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${answers[currentStep] === option.value
                                 ? "border-accent bg-accent"
                                 : "border-border"
-                            }`}
+                              }`}
                           >
                             {answers[currentStep] === option.value && (
                               <CheckCircle2 className="w-3 h-3 text-accent-foreground" />
@@ -236,7 +232,7 @@ export default function EligibilityPage() {
                     Great News! You Qualify
                   </h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
-                    Based on your responses, you're eligible for our debt settlement program 
+                    Based on your responses, you're eligible for our debt settlement program
                     with potential savings of 40-60%.
                   </p>
 
