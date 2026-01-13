@@ -123,39 +123,55 @@ export default function MediaPage() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="glass-card-strong rounded-2xl p-8 md:p-12 mb-12"
                         >
-                            <div className="flex items-start gap-3 mb-4">
-                                <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                                    Featured
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <div className="flex items-start gap-3 mb-4">
+                                        <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                                            Featured
+                                        </div>
+                                        <div className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-semibold">
+                                            Latest
+                                        </div>
+                                    </div>
+                                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                                        {filteredArticles[0].title}
+                                    </h2>
+                                    <p className="text-muted-foreground text-lg mb-6">
+                                        {filteredArticles[0].description}
+                                    </p>
+                                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
+                                        <div className="flex items-center gap-2">
+                                            <Calendar className="w-4 h-4" />
+                                            <span>{formatDate(filteredArticles[0].publishedAt)}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Newspaper className="w-4 h-4" />
+                                            <span>{filteredArticles[0].source.name}</span>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href={filteredArticles[0].url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
+                                    >
+                                        Read Full Article
+                                        <ExternalLink className="w-4 h-4" />
+                                    </a>
                                 </div>
-                                <div className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-semibold">
-                                    Latest
-                                </div>
+                                {filteredArticles[0].urlToImage && (
+                                    <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                                        <img
+                                            src={filteredArticles[0].urlToImage}
+                                            alt={filteredArticles[0].title}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                e.currentTarget.parentElement?.style.setProperty('display', 'none');
+                                            }}
+                                        />
+                                    </div>
+                                )}
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                                {filteredArticles[0].title}
-                            </h2>
-                            <p className="text-muted-foreground text-lg mb-6">
-                                {filteredArticles[0].description}
-                            </p>
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-                                <div className="flex items-center gap-2">
-                                    <Calendar className="w-4 h-4" />
-                                    <span>{formatDate(articles[0].publishedAt)}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <Newspaper className="w-4 h-4" />
-                                    <span>{filteredArticles[0].source.name}</span>
-                                </div>
-                            </div>
-                            <a
-                                href={filteredArticles[0].url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
-                            >
-                                Read Full Article
-                                <ExternalLink className="w-4 h-4" />
-                            </a>
                         </motion.div>
                     )}
 

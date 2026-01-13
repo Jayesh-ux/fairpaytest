@@ -14,7 +14,8 @@ export interface NewsArticle {
 }
 
 const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY || 'demo';
-const NEWS_API_BASE_URL = 'https://newsapi.org/v2';
+// In production, we use a serverless proxy to bypass NewsAPI's localhost restriction
+const NEWS_API_BASE_URL = import.meta.env.PROD ? '/api/news' : 'https://newsapi.org/v2';
 
 /**
  * Fetch latest news articles related to finance and business in India
