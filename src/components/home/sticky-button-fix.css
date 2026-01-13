@@ -1,0 +1,12 @@
+// Quick fix for sticky button visibility
+// Add this CSS to make the button visible
+.sticky-cta-button {
+    background: white !important;
+    color: hsl(var(--primary)) !important;
+    border: 2px solid hsl(var(--primary) / 0.2) !important;
+}
+
+.dark .sticky-cta-button {
+    background: #1a1a1a !important;
+    color: white !important;
+}

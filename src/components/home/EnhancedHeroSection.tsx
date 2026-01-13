@@ -289,7 +289,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                 <div className="bg-gradient-to-r from-primary via-secondary to-primary p-1.5 xs:p-2 sm:p-3 md:p-4 shadow-2xl border-t-2 border-primary/20">
                     <Button
                         onClick={onOpenCallback}
-                        className="w-full bg-background text-primary hover:bg-background/90 font-black text-xs xs:text-sm sm:text-base md:text-lg py-3 xs:py-4 sm:py-5 md:py-6 rounded-lg sm:rounded-xl shadow-lg"
+                        className="w-full bg-white dark:bg-gray-900 text-primary dark:text-white hover:bg-white/90 dark:hover:bg-gray-800 font-black border-2 border-primary/20 text-xs xs:text-sm sm:text-base md:text-lg py-3 xs:py-4 sm:py-5 md:py-6 rounded-lg sm:rounded-xl shadow-lg"
                         size="lg"
                     >
                         Get Free Consultation →
@@ -299,3 +299,4 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
         </section>
     );
 }
+

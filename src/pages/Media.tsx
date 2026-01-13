@@ -1,63 +1,68 @@
 import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { Newspaper, ExternalLink, TrendingUp, Calendar } from "lucide-react";
-
-interface MediaArticle {
-    title: string;
-    source: string;
-    date: string;
-    url: string;
-    category: string;
-}
-
-const mediaArticles: MediaArticle[] = [
-    {
-        title: "Understanding Debt Relief Options in India: A Comprehensive Guide",
-        source: "Financial Express",
-        date: "January 2026",
-        url: "#",
-        category: "Debt Relief"
-    },
-    {
-        title: "How to Legally Settle Credit Card Debt in India",
-        source: "Economic Times",
-        date: "December 2025",
-        url: "#",
-        category: "Credit Cards"
-    },
-    {
-        title: "Borrower Rights: What You Need to Know About Loan Recovery",
-        source: "Money Control",
-        date: "December 2025",
-        url: "#",
-        category: "Legal Rights"
-    },
-    {
-        title: "The Rise of Debt Settlement Services in India",
-        source: "Business Standard",
-        date: "November 2025",
-        url: "#",
-        category: "Industry Trends"
-    },
-    {
-        title: "Protecting Yourself from Aggressive Loan Recovery Tactics",
-        source: "India Today",
-        date: "November 2025",
-        url: "#",
-        category: "Consumer Protection"
-    },
-    {
-        title: "RBI Guidelines on Fair Debt Collection Practices",
-        source: "The Hindu Business Line",
-        date: "October 2025",
-        url: "#",
-        category: "Regulations"
-    },
-];
+import { Newspaper, ExternalLink, TrendingUp, Calendar, RefreshCw } from "lucide-react";
+import { useState, useEffect } from "react";
+import { getCachedNews, type NewsArticle } from "@/services/newsService";
 
 const categories = ["All", "Debt Relief", "Credit Cards", "Legal Rights", "Industry Trends", "Consumer Protection", "Regulations"];
 
 export default function MediaPage() {
+    const [articles, setArticles] = useState<NewsArticle[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    useEffect(() => {
+        loadNews();
+    }, []);
+
+    const loadNews = async () => {
+        setLoading(true);
+        try {
+            const news = await getCachedNews();
+            setArticles(news);
+        } catch (error) {
+            console.error("Error loading news:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now.getTime() - date.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return "Today";
+        if (diffDays === 1) return "Yesterday";
+        if (diffDays < 7) return `${diffDays} days ago`;
+        if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+        return date.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+    };
+
+    // Filter articles based on selected category
+    const getFilteredArticles = () => {
+        if (selectedCategory === "All") return articles;
+
+        const categoryKeywords: Record<string, string[]> = {
+            "Debt Relief": ["debt", "settlement", "relief", "restructuring", "waiver"],
+            "Credit Cards": ["credit card", "card", "credit"],
+            "Legal Rights": ["legal", "rights", "law", "court", "regulation", "rbi"],
+            "Industry Trends": ["trend", "market", "industry", "sector", "growth"],
+            "Consumer Protection": ["consumer", "protection", "fraud", "scam", "harassment"],
+            "Regulations": ["regulation", "rbi", "policy", "guideline", "compliance", "reserve bank"]
+        };
+
+        const keywords = categoryKeywords[selectedCategory] || [];
+
+        return articles.filter(article => {
+            const text = `${article.title} ${article.description}`.toLowerCase();
+            return keywords.some(keyword => text.includes(keyword.toLowerCase()));
+        });
+    };
+
+    const filteredArticles = getFilteredArticles();
+
     return (
         <Layout>
             <section className="pt-28 lg:pt-36 pb-20 lg:pb-32 min-h-screen bg-gradient-to-b from-background to-secondary/5">
@@ -71,14 +76,22 @@ export default function MediaPage() {
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
                             <Newspaper className="w-4 h-4" />
-                            Media & Resources
+                            Live Financial News
                         </div>
                         <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-                            Media Coverage & Insights
+                            Latest Debt & Finance News
                         </h1>
                         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                             Stay informed with the latest news, insights, and expert opinions on debt relief and financial wellness in India.
                         </p>
+                        <button
+                            onClick={loadNews}
+                            disabled={loading}
+                            className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted hover:bg-muted/80 text-sm font-medium transition-colors disabled:opacity-50"
+                        >
+                            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                            {loading ? 'Updating...' : 'Refresh News'}
+                        </button>
                     </motion.div>
 
                     {/* Categories */}
@@ -91,9 +104,10 @@ export default function MediaPage() {
                         {categories.map((category) => (
                             <button
                                 key={category}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${category === "All"
-                                        ? "bg-primary text-primary-foreground"
-                                        : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                                onClick={() => setSelectedCategory(category)}
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${category === selectedCategory
+                                    ? "bg-primary text-primary-foreground"
+                                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
                                     }`}
                             >
                                 {category}
@@ -102,74 +116,105 @@ export default function MediaPage() {
                     </motion.div>
 
                     {/* Featured Article */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="glass-card-strong rounded-2xl p-8 md:p-12 mb-12"
-                    >
-                        <div className="flex items-start gap-3 mb-4">
-                            <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                                Featured
+                    {filteredArticles.length > 0 && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="glass-card-strong rounded-2xl p-8 md:p-12 mb-12"
+                        >
+                            <div className="flex items-start gap-3 mb-4">
+                                <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                                    Featured
+                                </div>
+                                <div className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-semibold">
+                                    Latest
+                                </div>
                             </div>
-                            <div className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-semibold">
-                                Trending
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                                {filteredArticles[0].title}
+                            </h2>
+                            <p className="text-muted-foreground text-lg mb-6">
+                                {filteredArticles[0].description}
+                            </p>
+                            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
+                                <div className="flex items-center gap-2">
+                                    <Calendar className="w-4 h-4" />
+                                    <span>{formatDate(articles[0].publishedAt)}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Newspaper className="w-4 h-4" />
+                                    <span>{filteredArticles[0].source.name}</span>
+                                </div>
                             </div>
+                            <a
+                                href={filteredArticles[0].url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold"
+                            >
+                                Read Full Article
+                                <ExternalLink className="w-4 h-4" />
+                            </a>
+                        </motion.div>
+                    )}
+
+                    {/* Loading State */}
+                    {loading && (
+                        <div className="text-center py-12">
+                            <div className="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+                            <p className="text-muted-foreground">Loading latest news...</p>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            The Complete Guide to Debt Settlement in India 2026
-                        </h2>
-                        <p className="text-muted-foreground text-lg mb-6">
-                            Everything you need to know about legally settling your unsecured debts, understanding your rights as a borrower, and navigating the debt resolution process in India.
-                        </p>
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-                            <div className="flex items-center gap-2">
-                                <Calendar className="w-4 h-4" />
-                                <span>January 13, 2026</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <TrendingUp className="w-4 h-4" />
-                                <span>15 min read</span>
-                            </div>
-                        </div>
-                        <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-semibold">
-                            Read Full Article
-                            <ExternalLink className="w-4 h-4" />
-                        </button>
-                    </motion.div>
+                    )}
 
                     {/* Articles Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {mediaArticles.map((article, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                            >
-                                <a
-                                    href={article.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block glass-card-strong rounded-xl p-6 h-full hover:shadow-xl transition-all group"
+                    {!loading && articles.length > 1 && (
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filteredArticles.slice(1).map((article, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                                 >
-                                    <div className="flex items-start justify-between mb-3">
-                                        <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                                            {article.category}
-                                        </span>
-                                        <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                                        {article.title}
-                                    </h3>
-                                    <div className="flex items-center justify-between text-sm text-muted-foreground">
-                                        <span className="font-medium">{article.source}</span>
-                                        <span>{article.date}</span>
-                                    </div>
-                                </a>
-                            </motion.div>
-                        ))}
-                    </div>
+                                    <a
+                                        href={article.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block glass-card-strong rounded-xl p-6 h-full hover:shadow-xl transition-all group"
+                                    >
+                                        {article.urlToImage && (
+                                            <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+                                                <img
+                                                    src={article.urlToImage}
+                                                    alt={article.title}
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    onError={(e) => {
+                                                        e.currentTarget.style.display = 'none';
+                                                    }}
+                                                />
+                                            </div>
+                                        )}
+                                        <div className="flex items-start justify-between mb-3">
+                                            <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                                                {article.source.name}
+                                            </span>
+                                            <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </div>
+                                        <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                                            {article.title}
+                                        </h3>
+                                        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                                            {article.description}
+                                        </p>
+                                        <div className="flex items-center justify-between text-sm text-muted-foreground">
+                                            <span>{formatDate(article.publishedAt)}</span>
+                                        </div>
+                                    </a>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
 
                     {/* Resources Section */}
                     <motion.div
@@ -220,7 +265,7 @@ export default function MediaPage() {
                                     Savings Calculator
                                 </h3>
                                 <p className="text-muted-foreground mb-4">
-                                    Calculate your potential savings with our AI-powered debt settlement calculator.
+                                    Calculate your potential savings with our simple debt settlement calculator.
                                 </p>
                                 <a href="/calculator" className="text-primary hover:underline font-semibold text-sm">
                                     Calculate Now →
@@ -260,7 +305,7 @@ export default function MediaPage() {
                     {/* Disclaimer */}
                     <div className="mt-8 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center">
                         <p className="text-sm text-muted-foreground">
-                            <strong className="text-foreground">Note:</strong> External articles are provided for informational purposes only. FairPaySolution is not responsible for the content of third-party websites.
+                            <strong className="text-foreground">Note:</strong> News articles are automatically curated from trusted sources. FairPaySolution is not responsible for the content of third-party websites. Articles are filtered to show debt, finance, and loan-related content only.
                         </p>
                     </div>
                 </div>
@@ -268,3 +313,4 @@ export default function MediaPage() {
         </Layout>
     );
 }
+

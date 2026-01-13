@@ -36,7 +36,7 @@ const sectorData: Record<string, {
       "Lump-sum settlement offers",
       "Extended payment plan options"
     ],
-    gradient: "from-accent to-teal-light",
+    gradient: "from-sky-600 to-blue-600",
   },
   "business-loans": {
     icon: Building2,
@@ -50,7 +50,7 @@ const sectorData: Record<string, {
       "Revenue-based payment plans",
       "SBA loan modification guidance"
     ],
-    gradient: "from-navy to-primary",
+    gradient: "from-blue-700 to-cyan-600",
   },
   "medical-debt": {
     icon: Stethoscope,
@@ -64,7 +64,7 @@ const sectorData: Record<string, {
       "Charity care applications",
       "Hospital financial assistance"
     ],
-    gradient: "from-accent to-teal-light",
+    gradient: "from-sky-600 to-blue-600",
   },
   "credit-cards": {
     icon: CreditCard,
@@ -78,7 +78,7 @@ const sectorData: Record<string, {
       "Payment plan negotiation",
       "Multiple card consolidation"
     ],
-    gradient: "from-navy to-primary",
+    gradient: "from-blue-700 to-cyan-600",
   },
   "student-loans": {
     icon: GraduationCap,
@@ -92,7 +92,7 @@ const sectorData: Record<string, {
       "Private loan negotiation",
       "Consolidation guidance"
     ],
-    gradient: "from-accent to-teal-light",
+    gradient: "from-sky-600 to-blue-600",
   },
 };
 
@@ -134,7 +134,7 @@ export default function DashboardPage() {
                     <Link to={`/dashboard/${sectorKey}`} className="group block h-full">
                       <div className="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-accent/50 transition-all">
                         <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${data.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                          <data.icon className="w-7 h-7 text-primary-foreground" />
+                          <data.icon className="w-7 h-7 text-white dark:text-white" />
                         </div>
                         <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                           {data.title}
@@ -142,7 +142,7 @@ export default function DashboardPage() {
                         <p className="text-sm text-muted-foreground mb-4">
                           {data.subtitle}
                         </p>
-                        <span className="inline-flex items-center gap-1 text-sm font-medium text-accent">
+                        <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
                           Avg. {data.avgReduction} reduction
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </span>
@@ -179,7 +179,7 @@ export default function DashboardPage() {
             <div className="glass-card-strong rounded-2xl p-8 lg:p-12">
               <div className="flex flex-col lg:flex-row gap-8 items-start">
                 <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${data.gradient} flex items-center justify-center shrink-0`}>
-                  <data.icon className="w-10 h-10 text-primary-foreground" />
+                  <data.icon className="w-10 h-10 text-white dark:text-white" />
                 </div>
                 <div className="flex-1">
                   <span className="text-accent text-sm font-medium uppercase tracking-wider">
@@ -312,3 +312,6 @@ export default function DashboardPage() {
     </Layout>
   );
 }
+
+
+

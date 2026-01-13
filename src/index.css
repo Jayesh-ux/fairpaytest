@@ -282,3 +282,21 @@
     padding: clamp(3rem, 7vw, 6rem);
   }
 }
+/* Fix toast notification button visibility */
+[data-sonner-toast] button[data-button] {
+  background-color: hsl(var(--primary)) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem !important;
+}
+
+[data-sonner-toast] button[data-button]:hover {
+  background-color: hsl(var(--primary) / 0.9) !important;
+}
+
+.dark [data-sonner-toast] button[data-button] {
+  background-color: hsl(151 100% 45%) !important;
+  color: white !important;
+}
+
