@@ -27,17 +27,50 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      if (scriptUrl) {
+        // Prepare the data to match what the script expects
+        const submissionData = {
+          name: formData.name,
+          email: formData.email,
+          // Prepend a single quote to the phone number string to prevent Google Sheets from interpreting it as a formula
+          phone: `'${formData.countryCode} ${formData.phone}`,
+          loanAmount: formData.loanAmount,
+          loanType: formData.loanType,
+          formType: "Callback Popup",
+          timestamp: new Date().toISOString()
+        };
 
-    setTimeout(() => {
-      onClose();
-      setIsSuccess(false);
-      setFormData({ name: "", countryCode: "+91", phone: "", email: "", loanAmount: "", loanType: "", consent: false });
-    }, 2000);
+        const response = await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors', // Apps Script requires no-cors for initial POST from different origin
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData),
+        });
+
+        console.log('Form submission response:', response);
+      } else {
+        // Fallback for development if URL is not set
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        console.warn('Google Sheets URL not found in environment variables');
+      }
+
+      setIsSuccess(true);
+      setTimeout(() => {
+        onClose();
+        setIsSuccess(false);
+        setFormData({ name: "", countryCode: "+91", phone: "", email: "", loanAmount: "", loanType: "", consent: false });
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting the form. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {

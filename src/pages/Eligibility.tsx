@@ -68,12 +68,53 @@ export default function EligibilityPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [leadData, setLeadData] = useState({ name: "", phone: "" });
+
   const handleSelect = (step: number, value: string) => {
     setAnswers({ ...answers, [step]: value });
     if (step < 4) {
       setTimeout(() => setCurrentStep(step + 1), 300);
     } else {
       setTimeout(() => setCurrentStep(5), 300);
+    }
+  };
+
+  const handleFinalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      if (scriptUrl) {
+        const submissionData = {
+          name: leadData.name,
+          phone: `'${leadData.phone}`,
+          debtAge: debtAgeOptions.find(o => o.value === answers[1])?.label,
+          creditorType: creditorOptions.find(o => o.value === answers[2])?.label,
+          hardship: hardshipOptions.find(o => o.value === answers[3])?.label,
+          debtAmount: debtAmountOptions.find(o => o.value === answers[4])?.label,
+          formType: "Eligibility Wizard",
+          timestamp: new Date().toISOString()
+        };
+
+        await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData),
+        });
+      }
+
+      setIsSuccess(true);
+    } catch (error) {
+      console.error('Error submitting eligibility form:', error);
+      alert('There was an error. Please try calling us directly.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -128,10 +169,10 @@ export default function EligibilityPage() {
                 >
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${step.id < currentStep
-                        ? "bg-accent text-accent-foreground"
-                        : step.id === currentStep
-                          ? "bg-accent/20 border-2 border-accent text-accent"
-                          : "bg-muted text-muted-foreground"
+                      ? "bg-accent text-accent-foreground"
+                      : step.id === currentStep
+                        ? "bg-accent/20 border-2 border-accent text-accent"
+                        : "bg-muted text-muted-foreground"
                       }`}
                   >
                     {step.id < currentStep ? (
@@ -169,16 +210,16 @@ export default function EligibilityPage() {
                         key={option.value}
                         onClick={() => handleSelect(currentStep, option.value)}
                         className={`w-full p-4 rounded-xl border text-left transition-all ${answers[currentStep] === option.value
-                            ? "border-accent bg-accent/10 text-foreground"
-                            : "border-border bg-card hover:border-accent/50 hover:bg-muted/50 text-foreground"
+                          ? "border-accent bg-accent/10 text-foreground"
+                          : "border-border bg-card hover:border-accent/50 hover:bg-muted/50 text-foreground"
                           }`}
                       >
                         <div className="flex items-center justify-between">
                           <span className="font-medium">{option.label}</span>
                           <div
                             className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${answers[currentStep] === option.value
-                                ? "border-accent bg-accent"
-                                : "border-border"
+                              ? "border-accent bg-accent"
+                              : "border-border"
                               }`}
                           >
                             {answers[currentStep] === option.value && (
@@ -218,71 +259,134 @@ export default function EligibilityPage() {
                   transition={{ duration: 0.5 }}
                   className="text-center"
                 >
-                  {/* Success Animation */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", duration: 0.6, delay: 0.2 }}
-                    className="w-20 h-20 rounded-full accent-gradient flex items-center justify-center mx-auto mb-6 shadow-glow"
-                  >
-                    <CheckCircle2 className="w-10 h-10 text-accent-foreground" />
-                  </motion.div>
-
-                  <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                    Great News! You Qualify
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
-                    Based on your responses, you're eligible for our debt settlement program
-                    with potential savings of 40-60%.
-                  </p>
-
-                  {/* Summary Card */}
-                  <div className="glass-card-strong rounded-2xl p-6 mb-8 text-left">
-                    <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
-                      <Shield className="w-5 h-5 text-accent" />
-                      Your Profile Summary
-                    </h3>
-                    <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <span className="text-muted-foreground">Debt Age:</span>
-                        <p className="font-medium text-foreground">
-                          {debtAgeOptions.find(o => o.value === answers[1])?.label}
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Creditor Type:</span>
-                        <p className="font-medium text-foreground">
-                          {creditorOptions.find(o => o.value === answers[2])?.label}
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Hardship:</span>
-                        <p className="font-medium text-foreground">
-                          {hardshipOptions.find(o => o.value === answers[3])?.label}
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground">Debt Amount:</span>
-                        <p className="font-medium text-foreground">
-                          {debtAmountOptions.find(o => o.value === answers[4])?.label}
-                        </p>
-                      </div>
+                  {isSuccess ? (
+                    <div className="glass-card-strong rounded-2xl p-10">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", duration: 0.6 }}
+                        className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6"
+                      >
+                        <CheckCircle2 className="w-10 h-10 text-primary" />
+                      </motion.div>
+                      <h2 className="font-display text-3xl font-bold text-foreground mb-4">Application Received!</h2>
+                      <p className="text-muted-foreground mb-8">
+                        Thank you for your interest. A debt specialist will review your details and call you shortly to discuss your options.
+                      </p>
+                      <Button variant="outline" onClick={() => setIsSuccess(false)}>
+                        View Results Again
+                      </Button>
                     </div>
-                  </div>
+                  ) : (
+                    <>
+                      {/* Success Animation */}
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", duration: 0.6, delay: 0.2 }}
+                        className="w-20 h-20 rounded-full accent-gradient flex items-center justify-center mx-auto mb-6 shadow-glow"
+                      >
+                        <CheckCircle2 className="w-10 h-10 text-accent-foreground" />
+                      </motion.div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button variant="hero" size="xl" asChild>
-                      <Link to="/calculator">
-                        Calculate My Savings
-                        <ArrowRight className="w-5 h-5" />
-                      </Link>
-                    </Button>
-                    <Button variant="outline" size="xl" asChild>
-                      <a href="tel:1-800-555-0123">
-                        Speak to an Advisor
-                      </a>
-                    </Button>
-                  </div>
+                      <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                        Great News! You Qualify
+                      </h2>
+                      <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
+                        Based on your responses, you're eligible for our debt settlement program
+                        with potential savings of 40-60%.
+                      </p>
+
+                      {/* Summary Card */}
+                      <div className="glass-card-strong rounded-2xl p-6 mb-8 text-left">
+                        <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
+                          <Shield className="w-5 h-5 text-accent" />
+                          Your Profile Summary
+                        </h3>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-muted-foreground">Debt Age:</span>
+                            <p className="font-medium text-foreground">
+                              {debtAgeOptions.find(o => o.value === answers[1])?.label}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Creditor Type:</span>
+                            <p className="font-medium text-foreground">
+                              {creditorOptions.find(o => o.value === answers[2])?.label || answers[2]}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Hardship:</span>
+                            <p className="font-medium text-foreground">
+                              {hardshipOptions.find(o => o.value === answers[3])?.label}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Debt Amount:</span>
+                            <p className="font-medium text-foreground">
+                              {debtAmountOptions.find(o => o.value === answers[4])?.label}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Lead Capture Form */}
+                      <div className="glass-card-strong rounded-2xl p-6 mb-8 text-left border-2 border-primary/20">
+                        <h3 className="font-display font-semibold text-foreground mb-4">
+                          Get Your Free Settlement Plan
+                        </h3>
+                        <form onSubmit={handleFinalSubmit} className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-medium text-foreground mb-1.5">Full Name *</label>
+                            <input
+                              type="text"
+                              required
+                              value={leadData.name}
+                              onChange={(e) => setLeadData({ ...leadData, name: e.target.value })}
+                              className="w-full h-11 px-4 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary outline-none transition-all"
+                              placeholder="Enter your name"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-foreground mb-1.5">Phone Number *</label>
+                            <input
+                              type="tel"
+                              required
+                              value={leadData.phone}
+                              onChange={(e) => setLeadData({ ...leadData, phone: e.target.value })}
+                              className="w-full h-11 px-4 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary outline-none transition-all"
+                              placeholder="+91 XXXXX XXXXX"
+                            />
+                          </div>
+                          <Button
+                            type="submit"
+                            variant="accent"
+                            size="lg"
+                            className="w-full"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? "Submitting..." : "Get Free Consultation"}
+                            {!isSubmitting && <ArrowRight className="w-5 h-5 ml-2" />}
+                          </Button>
+                        </form>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Button variant="hero" size="xl" asChild>
+                          <Link to="/calculator">
+                            Calculate My Savings
+                            <ArrowRight className="w-5 h-5" />
+                          </Link>
+                        </Button>
+                        <Button variant="outline" size="xl" asChild>
+                          <a href="tel:+918449653755">
+                            Speak to an Advisor
+                          </a>
+                        </Button>
+                      </div>
+                    </>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>

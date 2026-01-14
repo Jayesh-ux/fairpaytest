@@ -13,11 +13,48 @@ export default function ContactPage() {
         message: "",
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // For now, just show an alert. SMTP will be added later
-        alert("Thank you for your message! We will contact you soon via phone or email.");
-        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+        setIsSubmitting(true);
+
+        try {
+            const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+
+            if (scriptUrl) {
+                const submissionData = {
+                    ...formData,
+                    phone: `'${formData.phone}`,
+                    formType: "Contact Page",
+                    timestamp: new Date().toISOString()
+                };
+
+                await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(submissionData),
+                });
+            } else {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+            }
+
+            setIsSuccess(true);
+            setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+
+            setTimeout(() => {
+                setIsSuccess(false);
+            }, 5000);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('There was an error sending your message. Please try again or call us directly.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -177,105 +214,142 @@ export default function ContactPage() {
                                     Fill out the form below and we'll get back to you as soon as possible.
                                 </p>
 
-                                <form onSubmit={handleSubmit} className="space-y-5">
-                                    {/* Name */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-foreground mb-2">
-                                            Full Name *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                                            placeholder="Enter your full name"
-                                        />
-                                    </div>
-
-                                    {/* Email */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-foreground mb-2">
-                                            Email Address *
-                                        </label>
-                                        <input
-                                            type="email"
-                                            required
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                                            placeholder="your.email@example.com"
-                                        />
-                                    </div>
-
-                                    {/* Phone */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-foreground mb-2">
-                                            Phone Number *
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            required
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                                            placeholder="+91 XXXXX XXXXX"
-                                        />
-                                    </div>
-
-                                    {/* Subject */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-foreground mb-2">
-                                            Subject *
-                                        </label>
-                                        <select
-                                            required
-                                            value={formData.subject}
-                                            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                            className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                                        >
-                                            <option value="">Select a subject</option>
-                                            <option value="general">General Inquiry</option>
-                                            <option value="debt-settlement">Debt Settlement</option>
-                                            <option value="credit-card">Credit Card Debt</option>
-                                            <option value="harassment">Recovery Harassment</option>
-                                            <option value="consultation">Request Consultation</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-
-                                    {/* Message */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-foreground mb-2">
-                                            Message *
-                                        </label>
-                                        <textarea
-                                            required
-                                            value={formData.message}
-                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            rows={5}
-                                            className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none"
-                                            placeholder="Tell us about your situation..."
-                                        />
-                                    </div>
-
-                                    {/* Submit Button */}
-                                    <Button
-                                        type="submit"
-                                        className="w-full"
-                                        size="lg"
+                                {isSuccess ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="bg-primary/10 border border-primary/20 rounded-xl p-8 text-center"
                                     >
-                                        Send Message
-                                        <Send className="w-4 h-4 ml-2" />
-                                    </Button>
+                                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <Send className="w-6 h-6 text-primary-foreground" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-foreground mb-2">Message Sent!</h3>
+                                        <p className="text-muted-foreground">
+                                            Thank you for contacting us. Our team will get back to you within 24 hours.
+                                        </p>
+                                        <Button
+                                            variant="outline"
+                                            className="mt-6"
+                                            onClick={() => setIsSuccess(false)}
+                                        >
+                                            Send Another Message
+                                        </Button>
+                                    </motion.div>
+                                ) : (
+                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                        {/* Name */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-foreground mb-2">
+                                                Full Name *
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                                placeholder="Enter your full name"
+                                            />
+                                        </div>
 
-                                    <p className="text-xs text-muted-foreground text-center">
-                                        By submitting this form, you agree to our{" "}
-                                        <a href="/privacy" className="text-primary hover:underline">
-                                            Privacy Policy
-                                        </a>
-                                    </p>
-                                </form>
+                                        {/* Email */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-foreground mb-2">
+                                                Email Address *
+                                            </label>
+                                            <input
+                                                type="email"
+                                                required
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                                placeholder="your.email@example.com"
+                                            />
+                                        </div>
+
+                                        {/* Phone */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-foreground mb-2">
+                                                Phone Number *
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                required
+                                                value={formData.phone}
+                                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                                placeholder="+91 XXXXX XXXXX"
+                                            />
+                                        </div>
+
+                                        {/* Subject */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-foreground mb-2">
+                                                Subject *
+                                            </label>
+                                            <select
+                                                required
+                                                value={formData.subject}
+                                                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                                                className="w-full h-12 px-4 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                            >
+                                                <option value="">Select a subject</option>
+                                                <option value="general">General Inquiry</option>
+                                                <option value="debt-settlement">Debt Settlement</option>
+                                                <option value="credit-card">Credit Card Debt</option>
+                                                <option value="harassment">Recovery Harassment</option>
+                                                <option value="consultation">Request Consultation</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        {/* Message */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-foreground mb-2">
+                                                Message *
+                                            </label>
+                                            <textarea
+                                                required
+                                                value={formData.message}
+                                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                                rows={5}
+                                                className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none"
+                                                placeholder="Tell us about your situation..."
+                                            />
+                                        </div>
+
+                                        {/* Submit Button */}
+                                        <Button
+                                            type="submit"
+                                            className="w-full"
+                                            size="lg"
+                                            disabled={isSubmitting}
+                                        >
+                                            {isSubmitting ? (
+                                                <span className="flex items-center gap-2">
+                                                    <motion.span
+                                                        animate={{ rotate: 360 }}
+                                                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                                        className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
+                                                    />
+                                                    Sending...
+                                                </span>
+                                            ) : (
+                                                <>
+                                                    Send Message
+                                                    <Send className="w-4 h-4 ml-2" />
+                                                </>
+                                            )}
+                                        </Button>
+
+                                        <p className="text-xs text-muted-foreground text-center">
+                                            By submitting this form, you agree to our{" "}
+                                            <a href="/privacy" className="text-primary hover:underline">
+                                                Privacy Policy
+                                            </a>
+                                        </p>
+                                    </form>
+                                )}
                             </div>
 
                             {/* Note */}
