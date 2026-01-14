@@ -8,6 +8,7 @@ import { BorrowerRightsSection } from "@/components/home/BorrowerRightsSection";
 import { AutoRotatingTestimonials } from "@/components/home/AutoRotatingTestimonials";
 import { AboutUsSection } from "@/components/home/AboutUsSection";
 import { EnhancedFAQSection } from "@/components/home/EnhancedFAQSection";
+import { SubmitReviewForm } from "@/components/home/SubmitReviewForm";
 import { CTASection } from "@/components/home/CTASection";
 import { CallbackPopup } from "@/components/CallbackPopup";
 
@@ -25,6 +26,7 @@ const Index = () => {
             <AboutUsSection />
             <BorrowerRightsSection />
             <AutoRotatingTestimonials />
+            <SubmitReviewForm />
             <EnhancedFAQSection />
             <CTASection onOpenCallback={openCallback} />
             <CallbackPopup

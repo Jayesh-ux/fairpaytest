@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
     {
         id: 1,
         name: "Raj S.",
-        location: "Mumbai, Maharashtra",
+        location: "Sanjay Place, Agra",
         image: "RS",
         rating: 5,
         review: "FairPay Solution helped me understand my rights as a borrower. Their advisory was transparent and professional. I was able to settle my ₹10L personal loan for ₹4L through their guidance. Life-changing experience!",
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
     {
         id: 2,
         name: "Priyanka K.",
-        location: "Delhi NCR",
+        location: "Mathura, Uttar Pradesh",
         image: "PK",
         rating: 5,
         review: "The harassment calls stopped within a week of consulting with FairPay. Their team educated me about RBI guidelines and my legal rights. Professional, ethical, and results-driven advisory service.",
@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     {
         id: 3,
         name: "Arjun M.",
-        location: "Bangalore, Karnataka",
+        location: "Aligarh, Uttar Pradesh",
         image: "AM",
         rating: 5,
         review: "I was drowning in credit card debt with no way out. FairPay's structured advisory helped me negotiate a settlement and plan my finances better. My credit score improved from 520 to 720 over time. Thank you!",
@@ -61,7 +61,7 @@ const testimonials: Testimonial[] = [
     {
         id: 4,
         name: "Vikram P.",
-        location: "Pune, Maharashtra",
+        location: "Firozabad, Uttar Pradesh",
         image: "VP",
         rating: 5,
         review: "Excellent consultation service. They explained all my options clearly without any false promises. The team helped me understand the settlement process and supported me throughout. Highly recommended!",
@@ -74,7 +74,7 @@ const testimonials: Testimonial[] = [
     {
         id: 5,
         name: "Amir J.",
-        location: "Hyderabad, Telangana",
+        location: "Dayalbagh, Agra",
         image: "AJ",
         rating: 5,
         review: "FairPay Solution's advisory service is genuine and trustworthy. They helped me navigate through my loan crisis with proper legal guidance. The consultation was worth every penny. Debt-free now!",

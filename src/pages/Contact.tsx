@@ -139,7 +139,7 @@ export default function ContactPage() {
                                         <div>
                                             <h3 className="font-semibold text-foreground mb-1">Office</h3>
                                             <p className="text-muted-foreground">
-                                                Mumbai, Maharashtra 400001<br />
+                                                Agra, Uttar Pradesh 282007<br />
                                                 India
                                             </p>
                                         </div>

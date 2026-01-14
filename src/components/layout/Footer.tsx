@@ -79,7 +79,7 @@ export function Footer() {
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                Mumbai, Maharashtra 400001
+                Agra, Uttar Pradesh 282007
               </div>
             </div>
           </div>
