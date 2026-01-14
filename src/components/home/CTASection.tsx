@@ -40,7 +40,7 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
           >
             <Button
               size="xl"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-bold"
               onClick={onOpenCallback}
             >
               Get Free Consultation
@@ -49,10 +49,10 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
             <Button
               variant="outline"
               size="xl"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-bold"
               asChild
             >
-              <a href="tel:+918449653755" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+918449653755" className="flex items-center gap-2 transition-colors">
                 <Phone className="w-5 h-5" />
                 Call: +91 8449653755
               </a>
@@ -72,11 +72,11 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />
-              <span className="text-sm font-medium">Response within 30 mins</span>
+              <span className="text-sm font-medium">Fast Response</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-5 h-5" />
-              <span className="text-sm font-medium">Toll Free: 1800-XXX-XXXX</span>
+              <span className="text-sm font-medium">+91 8449653755</span>
             </div>
           </motion.div>
         </div>
