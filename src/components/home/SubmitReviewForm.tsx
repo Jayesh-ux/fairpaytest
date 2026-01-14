@@ -4,7 +4,11 @@ import { Star, Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export function SubmitReviewForm() {
+interface SubmitReviewFormProps {
+    onSuccess: (reviewData: { name: string; location: string; review: string; rating: number }) => void;
+}
+
+export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
     const [rating, setRating] = useState(5);
     const [hover, setHover] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,29 +24,13 @@ export function SubmitReviewForm() {
         setIsSubmitting(true);
 
         try {
-            const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
-            if (scriptUrl) {
-                const submissionData = {
-                    name: formData.name,
-                    location: formData.location,
-                    review: formData.review,
-                    rating: rating,
-                    // Mapping to standard fields for Google Sheet columns
-                    subject: `Location: ${formData.location} | Rating: ${rating}/5`,
-                    message: formData.review,
-                    formType: "Customer Review",
-                    timestamp: new Date().toISOString()
-                };
-
-                await fetch(scriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(submissionData),
-                });
-            }
+            // Call the callback to update the live UI immediately
+            onSuccess({
+                name: formData.name,
+                location: formData.location,
+                review: formData.review,
+                rating: rating
+            });
 
             setIsSuccess(true);
             setFormData({ name: "", location: "", review: "" });

@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight, TrendingUp, TrendingDown } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, TrendingUp, TrendingDown, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface Testimonial {
+export interface Testimonial {
     id: number;
     name: string;
     location: string;
     image: string;
     rating: number;
     review: string;
-    beforeAmount: number;
-    afterAmount: number;
-    savingsPercent: number;
-    timeframe: string;
-    loanType: string;
+    beforeAmount?: number;
+    afterAmount?: number;
+    savingsPercent?: number;
+    timeframe?: string;
+    loanType?: string;
 }
 
-const testimonials: Testimonial[] = [
+export const initialTestimonials: Testimonial[] = [
     {
         id: 1,
         name: "Raj S.",
@@ -86,7 +86,11 @@ const testimonials: Testimonial[] = [
     },
 ];
 
-export function AutoRotatingTestimonials() {
+interface AutoRotatingTestimonialsProps {
+    testimonials: Testimonial[];
+}
+
+export function AutoRotatingTestimonials({ testimonials }: AutoRotatingTestimonialsProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -225,51 +229,67 @@ export function AutoRotatingTestimonials() {
                                 <div className="space-y-4">
                                     {/* Loan Type Badge */}
                                     <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                                        {currentTestimonial.loanType}
+                                        {currentTestimonial.loanType || "Resolved User"}
                                     </div>
 
                                     {/* Before/After Metrics */}
                                     <div className="space-y-4">
-                                        {/* Before */}
-                                        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
-                                            <div className="flex items-center justify-between mb-2">
-                                                <span className="text-sm text-muted-foreground">Original Debt</span>
-                                                <TrendingDown className="w-4 h-4 text-red-500" />
-                                            </div>
-                                            <div className="text-3xl font-bold text-red-600">
-                                                ₹{(currentTestimonial.beforeAmount / 100000).toFixed(1)}L
-                                            </div>
-                                        </div>
+                                        {currentTestimonial.beforeAmount ? (
+                                            <>
+                                                {/* Before */}
+                                                <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
+                                                    <div className="flex items-center justify-between mb-2">
+                                                        <span className="text-sm text-muted-foreground">Original Debt</span>
+                                                        <TrendingDown className="w-4 h-4 text-red-500" />
+                                                    </div>
+                                                    <div className="text-3xl font-bold text-red-600">
+                                                        ₹{(currentTestimonial.beforeAmount / 100000).toFixed(1)}L
+                                                    </div>
+                                                </div>
 
-                                        {/* After */}
-                                        <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
-                                            <div className="flex items-center justify-between mb-2">
-                                                <span className="text-sm text-muted-foreground">Settled For</span>
-                                                <TrendingUp className="w-4 h-4 text-emerald-500" />
-                                            </div>
-                                            <div className="text-3xl font-bold text-emerald-600">
-                                                ₹{(currentTestimonial.afterAmount / 100000).toFixed(1)}L
-                                            </div>
-                                        </div>
+                                                {/* After */}
+                                                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+                                                    <div className="flex items-center justify-between mb-2">
+                                                        <span className="text-sm text-muted-foreground">Settled For</span>
+                                                        <TrendingUp className="w-4 h-4 text-emerald-500" />
+                                                    </div>
+                                                    <div className="text-3xl font-bold text-emerald-600">
+                                                        ₹{((currentTestimonial.afterAmount || 0) / 100000).toFixed(1)}L
+                                                    </div>
+                                                </div>
 
-                                        {/* Savings */}
-                                        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-lg">
-                                            <div className="text-sm text-white/80 mb-2">Total Savings</div>
-                                            <div className="text-4xl font-bold text-white mb-1">
-                                                {currentTestimonial.savingsPercent}%
-                                            </div>
-                                            <div className="text-sm text-white/80">
-                                                Saved ₹{((currentTestimonial.beforeAmount - currentTestimonial.afterAmount) / 100000).toFixed(1)}L
-                                            </div>
-                                        </div>
+                                                {/* Savings */}
+                                                <div className="p-6 rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-lg">
+                                                    <div className="text-sm text-white/80 mb-2">Total Savings</div>
+                                                    <div className="text-4xl font-bold text-white mb-1">
+                                                        {currentTestimonial.savingsPercent}%
+                                                    </div>
+                                                    <div className="text-sm text-white/80">
+                                                        Saved ₹{((currentTestimonial.beforeAmount - (currentTestimonial.afterAmount || 0)) / 100000).toFixed(1)}L
+                                                    </div>
+                                                </div>
 
-                                        {/* Timeframe */}
-                                        <div className="p-4 rounded-2xl bg-muted/50 border border-border">
-                                            <div className="text-sm text-muted-foreground mb-1">Resolution Time</div>
-                                            <div className="text-xl font-bold text-foreground">
-                                                {currentTestimonial.timeframe}
+                                                {/* Timeframe */}
+                                                {currentTestimonial.timeframe && (
+                                                    <div className="p-4 rounded-2xl bg-muted/50 border border-border">
+                                                        <div className="text-sm text-muted-foreground mb-1">Resolution Time</div>
+                                                        <div className="text-xl font-bold text-foreground">
+                                                            {currentTestimonial.timeframe}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </>
+                                        ) : (
+                                            <div className="p-8 rounded-3xl bg-primary/5 border-2 border-dashed border-primary/20 flex flex-col items-center justify-center text-center space-y-4">
+                                                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                                                    <CheckCircle2 className="w-8 h-8 text-primary" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-foreground">Verified Consultation</h4>
+                                                    <p className="text-sm text-muted-foreground">This user has successfully completed our advisory program.</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
