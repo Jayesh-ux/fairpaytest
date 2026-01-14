@@ -60,7 +60,7 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl">
-                  Fair<span className="text-primary">Pay</span>Solution.in
+                  Fair<span className="text-primary">Pay</span>Solution.com
                 </span>
               </div>
             </Link>
