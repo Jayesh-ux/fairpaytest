@@ -118,16 +118,18 @@ export default function ContactPage() {
                                             <Mail className="w-6 h-6 text-primary" />
                                         </div>
                                         <div>
-                                            <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                                            <a
-                                                href="mailto:support@fairpaysolution.com"
-                                                className="text-muted-foreground hover:text-primary transition-colors"
-                                            >
-                                                support@fairpaysolution.com
-                                            </a>
-                                            <p className="text-sm text-muted-foreground mt-1">
-                                                We'll respond within 24 hours
-                                            </p>
+                                            <h3 className="font-semibold text-foreground mb-1">Email Support</h3>
+                                            <div className="flex flex-col gap-1">
+                                                <a href="mailto:support@fairpaysolution.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                                    support@fairpaysolution.com
+                                                </a>
+                                                <a href="mailto:info@fairpaysolution.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                                    info@fairpaysolution.com
+                                                </a>
+                                                <a href="mailto:hr@fairpaysolution.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                                    hr@fairpaysolution.com
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
 

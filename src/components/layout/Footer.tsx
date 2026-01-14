@@ -77,6 +77,12 @@ export function Footer() {
                 <Mail className="w-4 h-4" />
                 support@fairpaysolution.com
               </a>
+              <a href="mailto:info@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors pl-6 text-[0.8rem]">
+                info@fairpaysolution.com
+              </a>
+              <a href="mailto:hr@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors pl-6 text-[0.8rem]">
+                hr@fairpaysolution.com
+              </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
                 Agra, Uttar Pradesh 282007

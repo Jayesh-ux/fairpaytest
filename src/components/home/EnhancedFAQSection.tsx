@@ -257,7 +257,7 @@ export function EnhancedFAQSection() {
                                 Call +91 8449653755
                             </a>
                             <a
-                                href="mailto:support@fairpaysolution.com"
+                                href="mailto:info@fairpaysolution.com"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary/10 transition-all"
                             >
                                 Email Us

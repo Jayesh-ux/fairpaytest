@@ -27,6 +27,9 @@ export function SubmitReviewForm() {
                     location: formData.location,
                     review: formData.review,
                     rating: rating,
+                    // Mapping to standard fields for Google Sheet columns
+                    subject: `Location: ${formData.location} | Rating: ${rating}/5`,
+                    message: formData.review,
                     formType: "Customer Review",
                     timestamp: new Date().toISOString()
                 };
