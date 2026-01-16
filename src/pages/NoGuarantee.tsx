@@ -42,7 +42,7 @@ export default function NoGuaranteePage() {
                                         Our Commitment to Transparency
                                     </h2>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        At FairPaySolution, we believe in complete transparency. While we work diligently to help our clients achieve the best possible outcomes, we cannot and do not guarantee specific results in debt resolution matters.
+                                        At FairPay Solutions, we believe in complete transparency. While we work diligently to help our clients achieve the best possible outcomes, we cannot and do not guarantee specific results in debt resolution matters.
                                     </p>
                                 </div>
                             </div>
@@ -263,7 +263,7 @@ export default function NoGuaranteePage() {
                                 Important Acknowledgment
                             </h3>
                             <p className="text-sm text-muted-foreground">
-                                By engaging our services, you acknowledge that you have read and understood this No Guarantee Policy. You understand that debt resolution outcomes vary and that FairPaySolution makes no guarantees regarding specific results, timelines, or outcomes.
+                                By engaging our services, you acknowledge that you have read and understood this No Guarantee Policy. You understand that debt resolution outcomes vary and that FairPay Solutions makes no guarantees regarding specific results, timelines, or outcomes.
                             </p>
                         </div>
 

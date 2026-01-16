@@ -33,6 +33,26 @@ export default function DisclaimerPage() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="glass-card-strong rounded-2xl p-8 md:p-12 space-y-8"
                     >
+                        {/* Summary Disclaimer */}
+                        <div className="p-6 rounded-xl bg-primary/5 border border-primary/20 mb-8">
+                            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                                <Shield className="w-5 h-5 text-primary" />
+                                Official Disclaimer
+                            </h2>
+                            <p className="text-muted-foreground leading-relaxed italic mb-4">
+                                "FairPay Solutions is a private legal consultancy and debt management firm. We are not a bank, NBFC, or government agency. We do not provide loans or financial aid. Our services are strictly limited to legal advisory, debt counselling, and settlement negotiation on behalf of our clients. While we strive to achieve the best possible outcome, settlement results depend on individual creditor policies and case specifics. We strictly adhere to RBI guidelines regarding fair practices."
+                            </p>
+                            <a
+                                href="/FairpaySolutions disclaimer.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+                            >
+                                <FileText className="w-4 h-4" />
+                                Download Official Disclaimer PDF
+                            </a>
+                        </div>
+
                         {/* Not a Lender */}
                         <div className="space-y-4">
                             <div className="flex items-start gap-3">
@@ -42,7 +62,7 @@ export default function DisclaimerPage() {
                                         We Are Not a Bank or Lender
                                     </h2>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        FairPaySolution is an independent consultancy firm providing advisory and educational services related to unsecured debt resolution. We are NOT:
+                                        FairPay Solutions is an independent consultancy firm providing advisory and educational services related to unsecured debt resolution. We are NOT:
                                     </p>
                                     <ul className="list-disc list-inside space-y-2 mt-3 text-muted-foreground">
                                         <li>A bank or financial institution</li>
@@ -198,7 +218,7 @@ export default function DisclaimerPage() {
                                 Limitation of Liability
                             </h2>
                             <p className="text-muted-foreground leading-relaxed">
-                                To the fullest extent permitted by law, FairPaySolution and its officers, employees, and agents shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of our services or reliance on our advice.
+                                To the fullest extent permitted by law, FairPay Solutions and its officers, employees, and agents shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of our services or reliance on our advice.
                             </p>
                         </div>
 

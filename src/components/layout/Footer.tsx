@@ -161,14 +161,22 @@ export function Footer() {
             </div>
             <div className="space-y-2">
               <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Important Disclaimer
+                Disclaimer:
               </h5>
               <p className="text-xs text-muted-foreground leading-relaxed max-w-5xl">
                 <strong className="text-foreground/80">FairPay Solutions</strong> is a private legal consultancy and debt management firm.
                 We are <strong className="text-foreground/80">not a bank, NBFC, or government agency</strong>. We do not provide loans or financial aid.
                 Our services are strictly limited to legal advisory, debt counselling, and settlement negotiation on behalf of our clients.
                 While we strive to achieve the best possible outcome, settlement results depend on individual creditor policies and case specifics.
-                We strictly adhere to <strong className="text-foreground/80">RBI guidelines</strong> regarding fair practices.
+                We strictly adhere to <strong className="text-foreground/80">RBI guidelines</strong> regarding fair practices.{" "}
+                <a
+                  href="/FairpaySolutions disclaimer.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline font-medium inline-flex items-center gap-1"
+                >
+                  View Official Disclaimer PDF
+                </a>
               </p>
             </div>
           </div>
@@ -179,9 +187,9 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>© 2026 FairPaySolution Pvt Ltd. All rights reserved.</p>
+            <p>© 2026 FairPay Solutions Pvt Ltd. All rights reserved.</p>
             <p className="text-sm text-muted-foreground mt-2 text-center md:text-right max-w-2xl">
-              <strong>FairPay Solution</strong> - Independent Unsecured Loan Resolution & Advisory Consultancy.<br />
+              <strong>FairPay Solutions</strong> - Independent Unsecured Loan Resolution & Advisory Consultancy.<br />
               We are not a bank, NBFC, or lender. Consultancy services only.
             </p>
           </div>
