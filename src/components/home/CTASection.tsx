@@ -49,7 +49,7 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
             <Button
               variant="outline"
               size="xl"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-bold"
+              className="border-2 border-white text-white hover:bg-white/20 font-bold"
               asChild
             >
               <a href="tel:+918449653755" className="flex items-center gap-2 transition-colors">
