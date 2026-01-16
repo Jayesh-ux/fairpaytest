@@ -7,11 +7,55 @@ import { Input } from "@/components/ui/input";
 interface FAQ {
     id: string;
     question: string;
+    questionHindi?: string;
     answer: string;
+    answerHindi?: string;
     category: string;
 }
 
 const faqs: FAQ[] = [
+    // New bilingual FAQs at the top
+    {
+        id: "legal-india",
+        question: "Is Debt Settlement legal in India?",
+        questionHindi: "क्या लोन सेटलमेंट (Debt Settlement) भारत में कानूनी है?",
+        answer: "Yes, absolutely. Debt Settlement is a legitimate financial process where a borrower and lender mutually agree to close a loan account for a reduced amount. It is a standard banking practice, and FairPay Solutions helps you navigate this legally.",
+        answerHindi: "जी हाँ, बिल्कुल। लोन सेटलमेंट एक पूरी तरह से कानूनी प्रक्रिया है जहाँ बैंक और आप आपसी सहमति से कम राशि पर लोन बंद करने का फैसला करते हैं। यह एक सामान्य बैंकिंग प्रक्रिया है और FairPay Solutions इसे कानूनी तरीके से पूरा करने में आपकी मदद करता है।",
+        category: "Legal",
+    },
+    {
+        id: "stop-harassment",
+        question: "Can you stop recovery agents from harassing me?",
+        questionHindi: "क्या आप रिकवरी एजेंटों की बदतमीजी रोक सकते हैं?",
+        answer: "Yes. According to RBI guidelines and Supreme Court verdicts, harassment and abusive language by recovery agents are illegal. As your legal consultants, we take over the communication with your creditors. If harassment continues, we take necessary legal action to protect you.",
+        answerHindi: "हाँ। आरबीआई (RBI) के नियमों और सुप्रीम कोर्ट के फैसले के अनुसार, रिकवरी एजेंटों द्वारा गाली-गलौज या परेशान करना गैर-कानूनी है। हमारे वकील सीधे आपके लेनदारों (Creditors) से बात करेंगे। अगर फिर भी कोई आपको परेशान करता है, तो हम आपकी सुरक्षा के लिए कानूनी कार्रवाई करेंगे।",
+        category: "Harassment",
+    },
+    {
+        id: "provide-loans",
+        question: "Do you provide loans to pay off my debts?",
+        questionHindi: "क्या आप कर्ज चुकाने के लिए नया लोन देते हैं?",
+        answer: "No, FairPay Solutions is not a bank, NBFC, or loan app. We are a legal consultancy firm. We do not offer money or new loans. Instead, we protect you from harassment and negotiate with banks to reduce your debt amount significantly.",
+        answerHindi: "नहीं, FairPay Solutions कोई बैंक या लोन ऐप नहीं है। हम एक लीगल कंसल्टेंसी फर्म हैं। हम कोई नया लोन या पैसा नहीं देते हैं। हमारा काम आपको कानूनी सुरक्षा देना और बैंक के साथ बातचीत करके आपके पुराने कर्ज की रकम को कम करवाना है।",
+        category: "Services",
+    },
+    {
+        id: "cibil-settlement",
+        question: "Will settling my loan affect my CIBIL score?",
+        questionHindi: "क्या सेटलमेंट से मेरा सिबिल (CIBIL) स्कोर खराब होगा?",
+        answer: "When a loan is \"Settled\" instead of fully paid, it may impact your credit score temporarily. However, staying in a \"Default\" status causes more long-term damage. Settlement stops the mounting interest and legal pressure, allowing you to become debt-free and rebuild your score later.",
+        answerHindi: "जब लोन पूरा चुकाने के बजाय \"सेटल\" किया जाता है, तो सिबिल स्कोर पर थोड़ा असर पड़ता है। लेकिन, लोन डिफ़ॉल्ट (Default) रखना उससे ज्यादा खतरनाक है। सेटलमेंट से आपका ब्याज बढ़ना रुक जाता है और मानसिक तनाव खत्म होता है। एक बार कर्ज मुक्त होने के बाद आप अपना स्कोर फिर से सुधार सकते हैं।",
+        category: "Credit Score",
+    },
+    {
+        id: "why-hire",
+        question: "Why should I hire FairPay Solutions instead of talking to the bank myself?",
+        questionHindi: "मुझे खुद बैंक से बात करने के बजाय आपकी मदद क्यों लेनी चाहिए?",
+        answer: "Banks have professional recovery teams trained to extract maximum money. Without legal knowledge, you might agree to unfavorable terms. We bring legal expertise and negotiation skills to ensure you get the best possible discount and protection from threats.",
+        answerHindi: "बैंकों के पास रिकवरी के लिए पूरी टीम होती है जो ज्यादा से ज्यादा पैसा निकलवाने की कोशिश करती है। कानूनी जानकारी के बिना आप दबाव में आ सकते हैं। हमारी लीगल टीम बैंक से बराबरी में बात करती है ताकि आपको कम से कम पैसे देने पड़ें और आपको धमकियों से भी बचाया जा सके।",
+        category: "Services",
+    },
+    // Existing FAQs below
     {
         id: "guarantee",
         question: "Do you guarantee loan settlement or closure?",
@@ -83,7 +127,9 @@ export function EnhancedFAQSection() {
 
     const filteredFaqs = faqs.filter((faq) => {
         const matchesSearch = faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
+            faq.answer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (faq.questionHindi && faq.questionHindi.includes(searchQuery)) ||
+            (faq.answerHindi && faq.answerHindi.includes(searchQuery));
         const matchesCategory = selectedCategory === "All" || faq.category === selectedCategory;
         return matchesSearch && matchesCategory;
     });
@@ -108,15 +154,18 @@ export function EnhancedFAQSection() {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
                         <HelpCircle className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-medium text-primary">Frequently Asked Questions</span>
+                        <span className="text-sm font-medium text-primary">FAQ</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-                        Got{" "}
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
+                        Frequently Asked{" "}
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                            Questions?
+                            Questions
                         </span>
                     </h2>
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-xl md:text-2xl text-muted-foreground mb-2">
+                        अक्सर पूछे जाने वाले सवाल
+                    </p>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                         Find answers to common questions about our services, process, and policies
                     </p>
                 </motion.div>
@@ -201,6 +250,11 @@ export function EnhancedFAQSection() {
                                                 <h3 className="text-lg font-bold text-foreground pr-4">
                                                     {faq.question}
                                                 </h3>
+                                                {faq.questionHindi && (
+                                                    <p className="text-sm text-muted-foreground mt-1 pr-4">
+                                                        {faq.questionHindi}
+                                                    </p>
+                                                )}
                                             </div>
                                             <motion.div
                                                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -220,12 +274,22 @@ export function EnhancedFAQSection() {
                                                     transition={{ duration: 0.3 }}
                                                     className="overflow-hidden"
                                                 >
-                                                    <div className="px-6 pb-6 pt-2">
+                                                    <div className="px-6 pb-6 pt-2 space-y-4">
+                                                        {/* English Answer */}
                                                         <div className="pl-4 border-l-2 border-primary/30">
-                                                            <p className="text-muted-foreground leading-relaxed">
+                                                            <p className="text-foreground leading-relaxed font-medium">
                                                                 {faq.answer}
                                                             </p>
                                                         </div>
+                                                        {/* Hindi Answer */}
+                                                        {faq.answerHindi && (
+                                                            <div className="pl-4 border-l-2 border-secondary/30 bg-muted/30 py-3 pr-3 rounded-r-lg">
+                                                                <p className="text-muted-foreground leading-relaxed text-sm">
+                                                                    <span className="text-xs font-semibold text-secondary/70 block mb-1">हिंदी में उत्तर:</span>
+                                                                    {faq.answerHindi}
+                                                                </p>
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </motion.div>
                                             )}

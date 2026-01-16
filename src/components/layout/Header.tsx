@@ -85,9 +85,11 @@ export function Header({ onOpenCallback }: HeaderProps) {
           <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-1 xs:gap-1.5 sm:gap-2 group">
-              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0">
-                <CheckCircle className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-primary-foreground" />
-              </div>
+              <img
+                src="/logo.jpg"
+                alt="FairPay Solutions"
+                className="w-8 h-8 xs:w-9 xs:h-9 sm:w-11 sm:h-11 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0"
+              />
               <div className="flex flex-col min-w-0">
                 <span className="font-display font-bold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-foreground leading-tight">
                   Fair<span className="text-primary">Pay</span><span className="hidden xs:inline">Solution.com</span><span className="xs:hidden">Sol</span>

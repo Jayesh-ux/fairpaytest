@@ -87,10 +87,10 @@ export const initialTestimonials: Testimonial[] = [
 ];
 
 interface AutoRotatingTestimonialsProps {
-    testimonials: Testimonial[];
+    testimonials?: Testimonial[];
 }
 
-export function AutoRotatingTestimonials({ testimonials }: AutoRotatingTestimonialsProps) {
+export function AutoRotatingTestimonials({ testimonials = initialTestimonials }: AutoRotatingTestimonialsProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 

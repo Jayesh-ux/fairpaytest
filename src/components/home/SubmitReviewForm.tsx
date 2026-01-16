@@ -24,7 +24,7 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
         setIsSubmitting(true);
 
         try {
-            // Call the callback to update the live UI immediately
+            // Call the callback to update the live UI and save to localStorage
             onSuccess({
                 name: formData.name,
                 location: formData.location,

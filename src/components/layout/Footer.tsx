@@ -54,14 +54,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-primary-foreground" />
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img
+                src="/logo.jpg"
+                alt="FairPay Solutions"
+                className="w-12 h-12 rounded-full object-cover shadow-md"
+              />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl">
                   Fair<span className="text-primary">Pay</span>Solution.com
                 </span>
+                <span className="text-xs text-muted-foreground">Legal Consultancy</span>
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-sm">
@@ -145,6 +148,29 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Disclaimer Section */}
+      <div className="border-t border-border bg-muted/30">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex gap-3 items-start">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center mt-0.5">
+              <Shield className="w-4 h-4 text-amber-600" />
+            </div>
+            <div className="space-y-2">
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Important Disclaimer
+              </h5>
+              <p className="text-xs text-muted-foreground leading-relaxed max-w-5xl">
+                <strong className="text-foreground/80">FairPay Solutions</strong> is a private legal consultancy and debt management firm.
+                We are <strong className="text-foreground/80">not a bank, NBFC, or government agency</strong>. We do not provide loans or financial aid.
+                Our services are strictly limited to legal advisory, debt counselling, and settlement negotiation on behalf of our clients.
+                While we strive to achieve the best possible outcome, settlement results depend on individual creditor policies and case specifics.
+                We strictly adhere to <strong className="text-foreground/80">RBI guidelines</strong> regarding fair practices.
+              </p>
+            </div>
           </div>
         </div>
       </div>
