@@ -86,19 +86,21 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
 
                         {/* Main Headline - Larger & Bolder */}
                         <div className="space-y-2 xs:space-y-3 sm:space-y-4 md:space-y-6">
-                            <motion.h1
+                            <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
                                 className="text-[2rem] xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 3xl:text-9xl font-display font-black leading-[1.1] tracking-tight"
                             >
-                                <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-lg">
-                                    FairPay
-                                </span>
-                                <span className="block text-foreground drop-shadow-lg mt-1 sm:mt-2">
-                                    Solution
-                                </span>
-                            </motion.h1>
+                                <h1 className="inherit">
+                                    <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-lg">
+                                        FairPay
+                                    </span>
+                                    <span className="block text-foreground drop-shadow-lg mt-1 sm:mt-2">
+                                        Solution
+                                    </span>
+                                </h1>
+                            </motion.div>
 
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
