@@ -163,7 +163,7 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                         </span>
                     </h2>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                        See how our advisory services have helped thousands achieve debt freedom
+                        See how our advisory services have helped clients explore their debt relief options
                     </p>
                 </motion.div>
 

@@ -22,7 +22,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
     const stats = [
         { icon: Users, value: "2500+", label: "Clients Helped", color: "text-primary" },
         { icon: TrendingUp, value: "₹50Cr+", label: "Debt Resolved", color: "text-emerald-500" },
-        { icon: Shield, value: "98%", label: "Success Rate", color: "text-blue-500" },
+        { icon: Shield, value: "98%", label: "Client Satisfaction", color: "text-blue-500" },
     ];
 
     return (
@@ -199,7 +199,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 </div>
                                 <div className="min-w-0">
                                     <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl font-black text-foreground truncate">Debt Calculator</h3>
-                                    <p className="text-xs sm:text-sm text-muted-foreground font-medium">Calculate your savings instantly</p>
+                                    <p className="text-xs sm:text-sm text-muted-foreground font-medium">Estimate potential reduction</p>
                                 </div>
                             </div>
 
@@ -232,7 +232,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                             ₹{savings.toLocaleString('en-IN')}
                                         </div>
                                         <div className="text-xs sm:text-sm text-muted-foreground font-medium">
-                                            You could save up to this amount through structured settlement
+                                            Estimated potential reduction through structured settlement
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 {/* Progress Indicator */}
                                 <div className="space-y-2 sm:space-y-3">
                                     <div className="flex justify-between text-xs sm:text-sm font-bold">
-                                        <span className="text-muted-foreground">Steps to Debt Freedom</span>
+                                        <span className="text-muted-foreground">Steps to Debt Resolution</span>
                                         <span className="text-primary">5 Steps</span>
                                     </div>
                                     <div className="h-2 sm:h-3 bg-muted rounded-full overflow-hidden">

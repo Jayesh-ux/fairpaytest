@@ -3,7 +3,6 @@ import { Layout } from "@/components/layout/Layout";
 import { EnhancedHeroSection } from "@/components/home/EnhancedHeroSection";
 import { CoreServicesHighlight } from "@/components/home/CoreServicesHighlight";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
-import { GlassmorphismServicesGrid } from "@/components/home/GlassmorphismServicesGrid";
 import { InteractiveProcessSection } from "@/components/home/InteractiveProcessSection";
 import { TrustMediaSection } from "@/components/home/TrustMediaSection";
 import { BorrowerRightsSection } from "@/components/home/BorrowerRightsSection";
@@ -149,7 +148,6 @@ const Index = () => {
             <EnhancedHeroSection onOpenCallback={openCallback} />
             <CoreServicesHighlight />
             <WhyChooseUs />
-            <GlassmorphismServicesGrid />
             <InteractiveProcessSection onOpenCallback={openCallback} />
             <TrustMediaSection />
             <AboutUsSection />

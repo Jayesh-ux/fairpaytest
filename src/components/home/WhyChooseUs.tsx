@@ -16,8 +16,8 @@ const benefits = [
         icon: ShieldOff,
         emoji: "🚫",
         number: "02",
-        title: "Stop Harassment, Start Living",
-        description: "Your peace of mind is our priority. Once you onboard with us, we step in to handle the communication with creditors. We act as your shield against abusive recovery agents, allowing you to focus on your work and family without fear.",
+        title: "Understand Your Rights Against Harassment",
+        description: "Your peace of mind is our priority. Once you onboard with us, we step in to help you understand your legal rights against abusive recovery practices. We guide you on how to handle creditor communication professionally.",
         color: "from-rose-500 to-pink-600",
         bgColor: "bg-rose-500/10",
         borderColor: "border-rose-500/20",
@@ -36,8 +36,8 @@ const benefits = [
         icon: Lock,
         emoji: "🔒",
         number: "04",
-        title: "100% Confidential & Transparent",
-        description: "We respect your privacy. Your financial details and personal information remain strictly confidential with us. We operate with complete transparency—no hidden charges, no false promises, just honest legal support.",
+        title: "Completely Confidential & Transparent",
+        description: "We respect your privacy. Your financial details and personal information remain strictly confidential with us. We operate with complete transparency—no hidden charges, just honest legal guidance and support.",
         color: "from-blue-500 to-cyan-600",
         bgColor: "bg-blue-500/10",
         borderColor: "border-blue-500/20",
@@ -174,7 +174,7 @@ export function WhyChooseUs() {
                     className="text-center mt-12"
                 >
                     <p className="text-muted-foreground">
-                        Join <span className="text-primary font-semibold">2700+</span> satisfied clients who chose the smart path to debt freedom
+                        Join <span className="text-primary font-semibold">2700+</span> clients who chose professional guidance for their debt concerns
                     </p>
                 </motion.div>
             </div>

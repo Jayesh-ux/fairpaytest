@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { 
-  ClipboardCheck, 
-  Users, 
-  FileSearch, 
-  Scale, 
-  MessageSquare, 
-  FileCheck2, 
+import {
+  ClipboardCheck,
+  Users,
+  FileSearch,
+  Scale,
+  MessageSquare,
+  FileCheck2,
   PartyPopper,
   ArrowRight,
   CheckCircle2
@@ -20,7 +20,7 @@ const steps = [
     icon: ClipboardCheck,
     title: "Free Consultation",
     description: "Complete our eligibility assessment to understand your debt situation and explore your options.",
-    details: ["10-minute online assessment", "No credit check required", "100% confidential"],
+    details: ["10-minute online assessment", "No credit check required", "Completely confidential"],
   },
   {
     number: "02",
@@ -60,8 +60,8 @@ const steps = [
   {
     number: "07",
     icon: PartyPopper,
-    title: "Debt Freedom",
-    description: "Make your final payment and receive documentation confirming your debt is settled.",
+    title: "Resolution",
+    description: "Complete your final payment and receive documentation confirming your debt situation is resolved.",
     details: ["Settlement confirmation", "Credit reporting updates", "Graduation support"],
   },
 ];
@@ -86,7 +86,7 @@ export default function HowItWorksPage() {
               How <span className="gradient-text">It Works</span>
             </h1>
             <p className="text-lg text-muted-foreground">
-              Our 7-step process combines AI technology with legal expertise to deliver 
+              Our 7-step process combines AI technology with legal expertise to deliver
               results that traditional debt settlement can't match.
             </p>
           </motion.div>

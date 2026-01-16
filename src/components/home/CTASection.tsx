@@ -23,11 +23,11 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-              Ready to Become Debt Free?
+              Ready to Explore Your Options?
             </h2>
             <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-              Take the first step towards financial freedom. Get a free consultation
-              and discover how much you can save.
+              Take the first step towards understanding your debt relief options. Get a free consultation
+              and discover what may be possible for your situation.
             </p>
           </motion.div>
 
@@ -68,7 +68,7 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
           >
             <div className="flex items-center gap-2">
               <Shield className="w-5 h-5" />
-              <span className="text-sm font-medium">100% Confidential</span>
+              <span className="text-sm font-medium">Completely Confidential</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />

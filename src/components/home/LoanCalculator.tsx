@@ -56,8 +56,8 @@ export function LoanCalculator() {
                         <span className="gradient-text">Calculator</span>
                     </h2>
                     <p className="text-lg text-muted-foreground text-balance">
-                        See how much you can save through our debt settlement program.
-                        Get an instant estimate of your potential savings.
+                        Explore potential savings through debt settlement guidance.
+                        Get an instant estimate based on typical outcomes.
                     </p>
                 </motion.div>
 
@@ -191,7 +191,7 @@ export function LoanCalculator() {
                                                 {formatCurrency(totalSavings)}
                                             </p>
                                             <p className="text-xs text-muted-foreground mt-2">
-                                                Save {Math.round(savingsPercentage * 100)}% on your debt
+                                                Potential reduction of ~{Math.round(savingsPercentage * 100)}%
                                             </p>
                                         </motion.div>
 
@@ -206,7 +206,7 @@ export function LoanCalculator() {
                                             <div className="flex items-center justify-center gap-2 mb-2">
                                                 <Calendar className="w-5 h-5 text-accent" />
                                                 <p className="text-sm font-medium text-muted-foreground">
-                                                    Debt Free In
+                                                    Estimated Timeline
                                                 </p>
                                             </div>
                                             <p className="text-4xl font-bold text-accent">
@@ -266,7 +266,7 @@ export function LoanCalculator() {
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-primary" />
-                            <span>100% Legal Settlement</span>
+                            <span>Legal Consultation</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-primary" />

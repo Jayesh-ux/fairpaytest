@@ -118,7 +118,7 @@ export function InteractiveProcessSection({ onOpenCallback }: InteractiveProcess
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
                         Your Journey to{" "}
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                            Debt Freedom
+                            Debt Resolution
                         </span>
                     </h2>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">

@@ -44,7 +44,7 @@ const stats: Stat[] = [
         icon: Award,
         value: 98,
         suffix: "%",
-        label: "Success Rate",
+        label: "Client Satisfaction",
         gradient: "from-amber-500 to-orange-500",
     },
     {
@@ -64,7 +64,7 @@ const mediaHeadlines = [
     "Leading the way in transparent debt resolution advisory",
     "98% success rate in client satisfaction and debt resolution",
     "Pioneering ethical practices in loan settlement advisory",
-    "Helping thousands achieve financial freedom through structured guidance",
+    "Helping thousands explore financial options through structured guidance",
     "Expert panel of advisors with 3+ years of combined experience",
 ];
 
@@ -285,7 +285,7 @@ export function TrustMediaSection() {
                 >
                     <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg">
                         <CheckCircle2 className="w-5 h-5" />
-                        <span className="font-semibold">Join 2500+ satisfied clients who achieved debt freedom</span>
+                        <span className="font-semibold">Join 2500+ clients who explored their debt relief options</span>
                     </div>
                 </motion.div>
             </div>
