@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, Users, TrendingUp, Phone, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface EnhancedHeroSectionProps {
     onOpenCallback: () => void;
@@ -20,9 +21,9 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
     }, [loanAmount]);
 
     const stats = [
-        { icon: Users, value: "2500+", label: "Clients Helped", color: "text-primary" },
-        { icon: TrendingUp, value: "₹50Cr+", label: "Debt Resolved", color: "text-emerald-500" },
-        { icon: Shield, value: "98%", label: "Client Satisfaction", color: "text-blue-500" },
+        { icon: Users, value: "2500+", label: "Clients Helped", color: "text-primary", link: "/how-it-works" },
+        { icon: TrendingUp, value: "₹50Cr+", label: "Debt Resolved", color: "text-emerald-500", link: "/dashboard/personal" },
+        { icon: Shield, value: "98%", label: "Client Satisfaction", color: "text-blue-500", link: "/eligibility" },
     ];
 
     return (
@@ -112,8 +113,8 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                     Ethical Unsecured Loan Resolution
                                 </h2>
                                 <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-foreground/80 leading-relaxed max-w-2xl font-medium">
-                                    Expert guidance for <span className="text-primary font-bold">lawful, transparent,</span> and{" "}
-                                    <span className="text-primary font-bold">structured debt resolution</span>
+                                    Expert guidance for <Link to="/how-it-works" className="text-primary font-bold hover:underline">lawful, transparent,</Link> and{" "}
+                                    <Link to="/dashboard" className="text-primary font-bold hover:underline">structured debt resolution</Link>
                                 </p>
                             </motion.div>
                         </div>
@@ -172,13 +173,15 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.8 + index * 0.1 }}
                                     whileHover={{ scale: 1.05, y: -3 }}
-                                    className="relative group"
+                                    className="relative group cursor-pointer"
                                 >
-                                    <div className="glass-card-strong p-1.5 xs:p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl md:rounded-2xl hover:shadow-2xl transition-all border-2 border-border hover:border-primary/50">
-                                        <stat.icon className={cn("w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 mb-1 sm:mb-2 md:mb-3", stat.color)} />
-                                        <div className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-foreground mb-0.5 sm:mb-1">{stat.value}</div>
-                                        <div className="text-[0.5rem] xs:text-[0.6rem] sm:text-xs text-muted-foreground font-semibold leading-tight">{stat.label}</div>
-                                    </div>
+                                    <Link to={stat.link}>
+                                        <div className="glass-card-strong p-1.5 xs:p-2 sm:p-3 md:p-4 lg:p-6 rounded-lg sm:rounded-xl md:rounded-2xl hover:shadow-2xl transition-all border-2 border-border hover:border-primary/50">
+                                            <stat.icon className={cn("w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 mb-1 sm:mb-2 md:mb-3", stat.color)} />
+                                            <div className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-foreground mb-0.5 sm:mb-1">{stat.value}</div>
+                                            <div className="text-[0.5rem] xs:text-[0.6rem] sm:text-xs text-muted-foreground font-semibold leading-tight">{stat.label}</div>
+                                        </div>
+                                    </Link>
                                 </motion.div>
                             ))}
                         </motion.div>

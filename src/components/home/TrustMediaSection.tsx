@@ -10,6 +10,7 @@ import {
     Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface Stat {
     id: string;
@@ -19,6 +20,7 @@ interface Stat {
     prefix?: string;
     label: string;
     gradient: string;
+    link?: string;
 }
 
 const stats: Stat[] = [
@@ -29,6 +31,7 @@ const stats: Stat[] = [
         suffix: "+",
         label: "Clients Helped",
         gradient: "from-blue-500 to-cyan-500",
+        link: "/how-it-works"
     },
     {
         id: "debt",
@@ -38,6 +41,7 @@ const stats: Stat[] = [
         prefix: "₹",
         label: "Debt Resolved",
         gradient: "from-emerald-500 to-teal-500",
+        link: "/dashboard/personal"
     },
     {
         id: "success",
@@ -46,6 +50,7 @@ const stats: Stat[] = [
         suffix: "%",
         label: "Client Satisfaction",
         gradient: "from-amber-500 to-orange-500",
+        link: "/how-it-works"
     },
     {
         id: "experience",
@@ -54,6 +59,7 @@ const stats: Stat[] = [
         suffix: "+",
         label: "Years Experience",
         gradient: "from-purple-500 to-pink-500",
+        link: "/eligibility"
     },
 ];
 
@@ -155,39 +161,41 @@ export function TrustMediaSection() {
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
                                 className="group"
                             >
-                                <motion.div
-                                    whileHover={{ y: -8, scale: 1.05 }}
-                                    transition={{ type: "spring", stiffness: 300 }}
-                                    className="glass-card-strong p-3 xs:p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl transition-all relative overflow-hidden"
-                                >
-                                    {/* Gradient Background */}
-                                    <div
-                                        className={cn(
-                                            "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity",
-                                            stat.gradient
-                                        )}
-                                    />
-
-                                    {/* Icon */}
-                                    <div
-                                        className={cn(
-                                            "w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 shadow-lg relative z-10",
-                                            stat.gradient
-                                        )}
+                                <Link to={(stat as any).link || "#"}>
+                                    <motion.div
+                                        whileHover={{ y: -8, scale: 1.05 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
+                                        className="glass-card-strong p-3 xs:p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl transition-all relative overflow-hidden"
                                     >
-                                        <Icon className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white" />
-                                    </div>
+                                        {/* Gradient Background */}
+                                        <div
+                                            className={cn(
+                                                "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity",
+                                                stat.gradient
+                                            )}
+                                        />
 
-                                    {/* Value */}
-                                    <div className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground mb-1 xs:mb-1.5 sm:mb-2 relative z-10 flex items-baseline gap-0.5 xs:gap-1">
-                                        {stat.prefix && <span className="text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">{stat.prefix}</span>}
-                                        <AnimatedCounter value={stat.value} />
-                                        {stat.suffix && <span className="text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">{stat.suffix}</span>}
-                                    </div>
+                                        {/* Icon */}
+                                        <div
+                                            className={cn(
+                                                "w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 shadow-lg relative z-10",
+                                                stat.gradient
+                                            )}
+                                        >
+                                            <Icon className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white" />
+                                        </div>
 
-                                    {/* Label */}
-                                    <div className="text-[0.65rem] xs:text-xs sm:text-sm text-muted-foreground relative z-10 leading-tight">{stat.label}</div>
-                                </motion.div>
+                                        {/* Value */}
+                                        <div className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground mb-1 xs:mb-1.5 sm:mb-2 relative z-10 flex items-baseline gap-0.5 xs:gap-1">
+                                            {stat.prefix && <span className="text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">{stat.prefix}</span>}
+                                            <AnimatedCounter value={stat.value} />
+                                            {stat.suffix && <span className="text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl">{stat.suffix}</span>}
+                                        </div>
+
+                                        {/* Label */}
+                                        <div className="text-[0.65rem] xs:text-xs sm:text-sm text-muted-foreground relative z-10 leading-tight">{stat.label}</div>
+                                    </motion.div>
+                                </Link>
                             </motion.div>
                         );
                     })}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Shield, Users, Target, Award, CheckCircle2, Sparkles } from "lucide-react";
+import { Shield, Users, Target, Award, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface Value {
     id: string;
@@ -85,15 +86,15 @@ export function AboutUsSection() {
 
                             <div className="space-y-4 text-muted-foreground leading-relaxed">
                                 <p>
-                                    <span className="font-semibold text-foreground">FairPay Solution</span> is an independent unsecured loan advisory consultancy created to support borrowers facing financial stress and recovery-related challenges.
+                                    <Link to="/how-it-works" className="font-semibold text-foreground hover:text-primary transition-colors">FairPay Solution</Link> is an independent unsecured loan advisory consultancy created to support borrowers facing financial stress and recovery-related challenges.
                                 </p>
 
                                 <p>
-                                    We focus on <span className="text-primary font-semibold">borrower education, legal awareness, and structured guidance</span> — enabling clients to engage with lenders lawfully and confidently.
+                                    We focus on <Link to="/how-it-works" className="text-primary font-semibold hover:underline">borrower education</Link>, <Link to="/dashboard/harassment" className="text-primary font-semibold hover:underline">legal awareness</Link>, and <Link to="/dashboard" className="text-primary font-semibold hover:underline">structured guidance</Link> — enabling clients to engage with lenders lawfully and confidently.
                                 </p>
 
                                 <p className="text-sm italic border-l-4 border-primary pl-4 py-2 bg-primary/5 rounded">
-                                    We are not a bank, NBFC, or lending institution. All services are advisory in nature.
+                                    We are not a bank, NBFC, or lending institution. All services are advisory in nature. View our <Link to="/loan-policy" className="underline">Loan Type Policy</Link>.
                                 </p>
                             </div>
 
@@ -208,7 +209,7 @@ export function AboutUsSection() {
                         <h3 className="text-xl font-bold text-foreground">Important Notice</h3>
                     </div>
                     <p className="text-muted-foreground max-w-3xl mx-auto">
-                        FairPay Solution is an independent advisory consultancy. We are <span className="font-semibold text-foreground">not a bank, NBFC, or lending institution</span>. We do not provide loans, credit, or financial products. Our services are purely advisory and educational in nature. All consultations are appointment-based.
+                        FairPay Solution is an independent advisory consultancy. We are <span className="font-semibold text-foreground">not a bank, NBFC, or lending institution</span>. We do not provide loans, credit, or financial products. Our services are purely advisory and educational in nature. All consultations are appointment-based. Learn more about <Link to="/eligibility" className="text-primary hover:underline">eligibility</Link> or use our <Link to="/calculator" className="text-primary hover:underline">debt calculator</Link>.
                     </p>
                 </motion.div>
             </div>

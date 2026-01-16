@@ -11,7 +11,7 @@ const services = [
         description: "Confused about your finances? We analyze your current debt structure and create a personalized roadmap to manage your liabilities. We don't just offer advice; we build a legal strategy to help you regain financial control.",
         color: "from-blue-500 to-cyan-500",
         bgGlow: "bg-blue-500/20",
-        link: "/contact",
+        link: "/how-it-works",
     },
     {
         icon: Handshake,
@@ -21,7 +21,7 @@ const services = [
         description: "Stop struggling with high interest and penalties. Our legal experts communicate directly with banks and financial institutions on your behalf. We negotiate for fair settlement amounts and affordable repayment terms, so you save money legally.",
         color: "from-emerald-500 to-teal-500",
         bgGlow: "bg-emerald-500/20",
-        link: "/contact",
+        link: "/eligibility",
     },
     {
         icon: Scale,
@@ -31,7 +31,7 @@ const services = [
         description: "Facing abusive recovery calls or legal threats? You have rights. We educate you on RBI guidelines and provide strong legal support to stop unethical harassment from recovery agents immediately. We stand between you and the creditors.",
         color: "from-amber-500 to-orange-500",
         bgGlow: "bg-amber-500/20",
-        link: "/contact",
+        link: "/dashboard/harassment",
     },
 ];
 
