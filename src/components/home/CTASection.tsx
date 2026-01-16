@@ -47,12 +47,11 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button
-              variant="outline"
               size="xl"
-              className="border-2 border-white text-white hover:bg-white/20 font-bold"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-bold"
               asChild
             >
-              <a href="tel:+918449653755" className="flex items-center gap-2 transition-colors">
+              <a href="tel:+918449653755" className="flex items-center gap-2">
                 <Phone className="w-5 h-5" />
                 Call: +91 8449653755
               </a>
@@ -75,8 +74,8 @@ export function CTASection({ onOpenCallback }: CTASectionProps) {
               <span className="text-sm font-medium">Fast Response</span>
             </div>
             <div className="flex items-center gap-2">
-              <Phone className="w-5 h-5" />
-              <span className="text-sm font-medium">+91 8449653755</span>
+              <Shield className="w-5 h-5" />
+              <span className="text-sm font-medium">RBI Compliant</span>
             </div>
           </motion.div>
         </div>
