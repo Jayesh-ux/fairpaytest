@@ -276,8 +276,8 @@ export default function NoGuaranteePage() {
                                     support@fairpaysolution.com
                                 </a>{" "}
                                 or call{" "}
-                                <a href="tel:+918449653755" className="text-primary hover:underline">
-                                    +91 8449653755
+                                <a href="tel:+919389815277" className="text-primary hover:underline">
+                                    +91 9389815277
                                 </a>
                             </p>
                         </div>

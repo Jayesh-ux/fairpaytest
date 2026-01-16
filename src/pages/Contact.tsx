@@ -101,10 +101,10 @@ export default function ContactPage() {
                                         <div>
                                             <h3 className="font-semibold text-foreground mb-1">Phone</h3>
                                             <a
-                                                href="tel:+918449653755"
+                                                href="tel:+919389815277"
                                                 className="text-muted-foreground hover:text-primary transition-colors"
                                             >
-                                                +91 8449653755
+                                                +91 9389815277
                                             </a>
                                             <p className="text-sm text-muted-foreground mt-1">
                                                 Mon-Sat: 9:00 AM - 7:00 PM IST
@@ -358,8 +358,8 @@ export default function ContactPage() {
                             <div className="mt-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
                                 <p className="text-sm text-muted-foreground">
                                     <strong className="text-foreground">Note:</strong> For urgent matters, please call us directly at{" "}
-                                    <a href="tel:+918449653755" className="text-primary hover:underline font-semibold">
-                                        +91 8449653755
+                                    <a href="tel:+919389815277" className="text-primary hover:underline font-semibold">
+                                        +91 9389815277
                                     </a>
                                 </p>
                             </div>

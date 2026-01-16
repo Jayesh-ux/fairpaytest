@@ -251,8 +251,8 @@ export default function PrivacyPolicy() {
                                 </p>
                                 <p className="text-muted-foreground leading-relaxed mt-4">
                                     Or call us at:{" "}
-                                    <a href="tel:+918449653755" className="text-primary hover:underline font-medium">
-                                        +91 8449653755
+                                    <a href="tel:+919389815277" className="text-primary hover:underline font-medium">
+                                        +91 9389815277
                                     </a>
                                 </p>
                             </div>

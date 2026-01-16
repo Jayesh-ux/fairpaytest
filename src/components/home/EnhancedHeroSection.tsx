@@ -142,7 +142,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 asChild
                                 className="border-3 border-primary/30 hover:bg-primary/10 text-foreground font-bold text-xs xs:text-sm sm:text-base md:text-lg px-4 xs:px-6 sm:px-8 md:px-10 py-4 xs:py-5 sm:py-6 md:py-8 rounded-xl md:rounded-2xl backdrop-blur-md hover:scale-105 transition-all w-full sm:w-auto"
                             >
-                                <a href="tel:+918449653755" className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
+                                <a href="tel:+919389815277" className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3">
                                     <Phone className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                                     <span className="whitespace-nowrap">Call Expert Now</span>
                                 </a>

@@ -113,7 +113,7 @@ const faqs: FAQ[] = [
     {
         id: "appointment",
         question: "How do I book a consultation?",
-        answer: "Consultations are strictly appointment-based. You can book by calling us at +91 8449653755, emailing support@fairpaysolution.com, or filling out the callback form on our website. We'll schedule a convenient time for your consultation and send you a confirmation with details of what to prepare.",
+        answer: "Consultations are strictly appointment-based. You can book by calling us at +91 9389815277, emailing support@fairpaysolution.com, or filling out the callback form on our website. We'll schedule a convenient time for your consultation and send you a confirmation with details of what to prepare.",
         category: "Process",
     },
 ];
@@ -315,10 +315,10 @@ export function EnhancedFAQSection() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
-                                href="tel:+918449653755"
+                                href="tel:+919389815277"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-glow transition-all"
                             >
-                                Call +91 8449653755
+                                Call +91 9389815277
                             </a>
                             <a
                                 href="mailto:info@fairpaysolution.com"

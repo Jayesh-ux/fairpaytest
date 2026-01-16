@@ -56,9 +56,9 @@ export function Header({ onOpenCallback }: HeaderProps) {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-6">
-              <a href="tel:+918449653755" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="tel:+919389815277" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" />
-                +91 8449653755
+                +91 9389815277
               </a>
               <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
@@ -274,9 +274,9 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
                 {/* Contact Info */}
                 <div className="mt-6 pt-6 border-t border-border space-y-3">
-                  <a href="tel:+918449653755" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
+                  <a href="tel:+919389815277" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Phone className="w-5 h-5" />
-                    +91 8449653755
+                    +91 9389815277
                   </a>
                   <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-3 px-4 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Mail className="w-5 h-5" />

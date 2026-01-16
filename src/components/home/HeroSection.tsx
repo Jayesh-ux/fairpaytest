@@ -81,8 +81,8 @@ export function HeroSection({ onOpenCallback }: HeroSectionProps) {
               <ArrowRight className="w-5 h-5 ml-1" />
             </Button>
             <Button variant="outline" size="xl" asChild className="border-white/20 text-white hover:bg-white/10 backdrop-blur-sm">
-              <a href="tel:+918449653755">
-                Call Now: +91 8449653755
+              <a href="tel:+919389815277">
+                Call Now: +91 9389815277
               </a>
             </Button>
           </motion.div>

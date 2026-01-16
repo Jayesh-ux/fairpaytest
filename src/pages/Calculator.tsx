@@ -260,7 +260,7 @@ export default function CalculatorPage() {
                         </Link>
                       </Button>
                       <Button variant="outline" size="xl" className="flex-1" asChild>
-                        <a href="tel:+918449653755">
+                        <a href="tel:+919389815277">
                           📞 Call Now
                         </a>
                       </Button>
@@ -311,8 +311,8 @@ export default function CalculatorPage() {
               <div className="p-4 rounded-xl bg-card border border-border text-center">
                 <div className="text-3xl mb-2">📞</div>
                 <h3 className="font-semibold text-foreground mb-1">Call Us</h3>
-                <a href="tel:+918449653755" className="text-sm text-primary hover:underline">
-                  +91 8449653755
+                <a href="tel:+919389815277" className="text-sm text-primary hover:underline">
+                  +91 9389815277
                 </a>
               </div>
               <div className="p-4 rounded-xl bg-card border border-border text-center">
@@ -325,7 +325,7 @@ export default function CalculatorPage() {
               <div className="p-4 rounded-xl bg-card border border-border text-center">
                 <div className="text-3xl mb-2">💬</div>
                 <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
-                <a href="https://wa.me/918449653755" className="text-sm text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/919389815277" className="text-sm text-primary hover:underline" target="_blank" rel="noopener noreferrer">
                   Chat with us
                 </a>
               </div>
