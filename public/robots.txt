@@ -3,13 +3,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
 # Sitemap location
 Sitemap: https://www.fairpaysolution.com/sitemap.xml
-
-# Crawl-delay (optional, be nice to servers)
-Crawl-delay: 1
-
-# Disallow admin or private paths if any
-Disallow: /api/
-Disallow: /admin/
