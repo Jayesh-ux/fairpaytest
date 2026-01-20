@@ -54,7 +54,7 @@ export default function ProfilePage() {
                             <div className="mt-4">
                                 <h2 className="text-xl font-bold">{session.user.name}</h2>
                                 <Badge variant="secondary" className="mt-1 rounded-full px-4 border-none bg-muted/50">
-                                    {session.user.role || 'CLIENT'}
+                                    {session.user.role || 'USER'}
                                 </Badge>
                             </div>
                         </CardContent>

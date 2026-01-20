@@ -3,6 +3,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import Google from 'next-auth/providers/google';
 import { prisma } from '@/lib/prisma';
 import type { Role } from '@prisma/client';
+import type { JWT as NextAuthJWT } from 'next-auth/jwt';
 
 // Extend the session types
 declare module 'next-auth' {
@@ -13,11 +14,15 @@ declare module 'next-auth' {
             email?: string | null;
             image?: string | null;
             role: Role;
+            phone?: string | null;
+            createdAt?: Date;
         };
     }
 
     interface User {
-        role: Role;
+        role?: Role;
+        phone?: string | null;
+        createdAt?: Date;
     }
 }
 
@@ -25,6 +30,8 @@ declare module 'next-auth/jwt' {
     interface JWT {
         id: string;
         role: Role;
+        phone?: string | null;
+        createdAt?: Date;
     }
 }
 
@@ -96,6 +103,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             if (user) {
                 token.id = user.id;
                 token.role = user.role || 'USER';
+                token.phone = user.phone;
+                token.createdAt = user.createdAt;
 
                 // Check if user email is in admin list and update role
                 if (user.email && ADMIN_EMAILS.includes(user.email.toLowerCase())) {
@@ -108,9 +117,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 }
             }
 
-            // Handle session update (e.g., when role changes)
-            if (trigger === 'update' && session?.role) {
-                token.role = session.role;
+            // Handle session update (e.g., when role changes or profile update)
+            if (trigger === 'update') {
+                if (session?.role) token.role = session.role;
+                if (session?.phone) token.phone = session.phone;
             }
 
             return token;
@@ -120,6 +130,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             if (session.user) {
                 session.user.id = token.id as string;
                 session.user.role = token.role as Role;
+                session.user.phone = token.phone as string | null;
+                session.user.createdAt = token.createdAt as Date;
             }
             return session;
         },

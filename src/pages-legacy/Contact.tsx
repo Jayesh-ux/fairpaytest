@@ -21,7 +21,7 @@ export default function ContactPage() {
         setIsSubmitting(true);
 
         try {
-            const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+            const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
 
             if (scriptUrl) {
                 const submissionData = {

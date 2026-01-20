@@ -182,7 +182,7 @@ const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours (reduced from 6)
 
 export async function getCachedNews(force: boolean = false): Promise<NewsArticle[]> {
     try {
-        if (!force) {
+        if (!force && typeof window !== 'undefined') {
             const cached = localStorage.getItem(CACHE_KEY);
             if (cached) {
                 const { articles, timestamp } = JSON.parse(cached);
@@ -213,11 +213,13 @@ export async function getCachedNews(force: boolean = false): Promise<NewsArticle
 
     // Cache the results
     try {
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-            articles,
-            timestamp: Date.now()
-        }));
-        console.log(`Cached ${articles.length} articles`);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({
+                articles,
+                timestamp: Date.now()
+            }));
+            console.log(`Cached ${articles.length} articles`);
+        }
     } catch (error) {
         console.error('Error writing cache:', error);
     }

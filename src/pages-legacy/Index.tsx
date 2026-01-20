@@ -40,7 +40,7 @@ const cacheReviews = (reviews: Testimonial[]) => {
 // Fetch reviews from Google Sheets
 const fetchReviewsFromSheet = async (): Promise<Testimonial[]> => {
     try {
-        const scriptUrl = import.meta.env.VITE_REVIEWS_SHEETS_URL;
+        const scriptUrl = process.env.NEXT_PUBLIC_REVIEWS_SHEETS_URL;
         if (!scriptUrl) return [];
 
         // Fetch reviews with action=getReviews
@@ -68,7 +68,7 @@ const fetchReviewsFromSheet = async (): Promise<Testimonial[]> => {
 // Save review to Google Sheets
 const saveReviewToSheet = async (reviewData: { name: string; location: string; review: string; rating: number }) => {
     try {
-        const scriptUrl = import.meta.env.VITE_REVIEWS_SHEETS_URL;
+        const scriptUrl = process.env.NEXT_PUBLIC_REVIEWS_SHEETS_URL;
         if (!scriptUrl) return;
 
         const formData = new FormData();

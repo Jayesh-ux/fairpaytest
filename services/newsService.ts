@@ -13,9 +13,9 @@ export interface NewsArticle {
     author?: string;
 }
 
-const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY || 'demo';
+const NEWS_API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY || 'demo';
 // In production, we use a serverless proxy to bypass NewsAPI's localhost restriction
-const NEWS_API_BASE_URL = import.meta.env.PROD ? '/api/news' : 'https://newsapi.org/v2';
+const NEWS_API_BASE_URL = process.env.NODE_ENV === 'production' ? '/api/news' : 'https://newsapi.org/v2';
 
 /**
  * Fetch latest news articles related to finance and business in India
@@ -33,7 +33,7 @@ export async function fetchFinancialNews(pageSize: number = 15): Promise<NewsArt
             apiKey: NEWS_API_KEY
         });
 
-        const fetchUrl = import.meta.env.PROD
+        const fetchUrl = process.env.NODE_ENV === 'production'
             ? `${NEWS_API_BASE_URL}?${params}`
             : `${NEWS_API_BASE_URL}/everything?${params}`;
 
@@ -111,7 +111,7 @@ export async function fetchIndianBusinessNews(pageSize: number = 15): Promise<Ne
             apiKey: NEWS_API_KEY,
         });
 
-        const fetchUrl = import.meta.env.PROD
+        const fetchUrl = process.env.NODE_ENV === 'production'
             ? `${NEWS_API_BASE_URL}?${params}`
             : `${NEWS_API_BASE_URL}/top-headlines?${params}`;
 
@@ -182,7 +182,7 @@ const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours (reduced from 6)
 
 export async function getCachedNews(force: boolean = false): Promise<NewsArticle[]> {
     try {
-        if (!force) {
+        if (!force && typeof window !== 'undefined') {
             const cached = localStorage.getItem(CACHE_KEY);
             if (cached) {
                 const { articles, timestamp } = JSON.parse(cached);
@@ -213,11 +213,13 @@ export async function getCachedNews(force: boolean = false): Promise<NewsArticle
 
     // Cache the results
     try {
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-            articles,
-            timestamp: Date.now()
-        }));
-        console.log(`Cached ${articles.length} articles`);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({
+                articles,
+                timestamp: Date.now()
+            }));
+            console.log(`Cached ${articles.length} articles`);
+        }
     } catch (error) {
         console.error('Error writing cache:', error);
     }

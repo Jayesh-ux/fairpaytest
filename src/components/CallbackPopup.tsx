@@ -28,7 +28,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
 
       if (scriptUrl) {
         // Prepare the data to match what the script expects
