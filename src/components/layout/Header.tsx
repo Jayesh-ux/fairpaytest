@@ -203,6 +203,17 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 {/* Handle */}
                 <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mb-6" />
 
+                {/* Get Started with Account Button - Always visible on mobile */}
+                <Link
+                  to="/signin"
+                  className="block w-full mb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Button variant="default" className="w-full py-6 text-base font-semibold shadow-lg">
+                    Get Started with Account →
+                  </Button>
+                </Link>
+
                 <div className="space-y-1">
                   {mainNavItems.map((item) => (
                     <div key={item.label}>
