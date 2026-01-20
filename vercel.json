@@ -1,16 +1,7 @@
 {
     "cleanUrls": true,
     "trailingSlash": false,
-    "rewrites": [
-        {
-            "source": "/api/news",
-            "destination": "/api/news"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ],
+    "rewrites": [],
     "headers": [
         {
             "source": "/(.*)",
