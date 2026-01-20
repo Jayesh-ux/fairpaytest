@@ -297,10 +297,10 @@ export default function AdminDashboard() {
             </motion.div>
 
             {/* Main Grid - 3 Column Bento Layout */}
-            <div className="grid lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
-                {/* Activity Feed - Spans 2 columns */}
-                <motion.div variants={item} className="lg:col-span-2">
-                    <Card className="border-white/5 bg-[#121214] h-full overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
+                {/* Activity Feed - Spans 2 columns on desktop */}
+                <motion.div variants={item} className="lg:col-span-2 min-w-0 w-full">
+                    <Card className="border-white/5 bg-[#121214] h-full overflow-hidden w-full">
                         <CardHeader className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 pb-2 px-3 xs:px-4 sm:px-6">
                             <div className="min-w-0">
                                 <CardTitle className="text-sm xs:text-base sm:text-lg font-bold flex items-center gap-1.5 xs:gap-2">
@@ -356,7 +356,7 @@ export default function AdminDashboard() {
                 </motion.div>
 
                 {/* Quick Actions Panel */}
-                <motion.div variants={item} className="space-y-3 xs:space-y-4">
+                <motion.div variants={item} className="space-y-3 xs:space-y-4 min-w-0 w-full">
                     {/* Performance Card */}
                     <Card className="border-white/5 bg-[#121214]">
                         <CardHeader className="pb-3 xs:pb-4 px-3 xs:px-4 sm:px-6">
