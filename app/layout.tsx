@@ -103,6 +103,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                <meta name="google-site-verification" content="google0a9ebcf8567c9895" />
                 <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
                 <link rel="preconnect" href="https://www.google.com" />
                 <meta name="theme-color" content="#C9A962" />
