@@ -218,60 +218,61 @@ export default function AdminDashboard() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-8 max-w-[1600px] mx-auto"
+            className="space-y-4 xs:space-y-6 sm:space-y-8 max-w-[1600px] mx-auto overflow-hidden"
         >
             {/* Header Section */}
-            <motion.div variants={item} className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                <div>
-                    <div className="flex items-center gap-3 mb-2">
-                        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Command Center</h1>
-                        <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full px-4 py-1.5 text-xs font-bold flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5" />
+            <motion.div variants={item} className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 xs:gap-4">
+                <div className="min-w-0">
+                    <div className="flex items-center gap-2 xs:gap-3 mb-1 xs:mb-2">
+                        <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight truncate">Command Center</h1>
+                        <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 text-[10px] xs:text-xs font-bold flex items-center gap-1 xs:gap-1.5 flex-shrink-0">
+                            <ShieldCheck className="w-3 h-3 xs:w-3.5 xs:h-3.5" />
                             ADMIN
                         </Badge>
                     </div>
-                    <p className="text-muted-foreground text-base">
-                        Real-time overview of FairPay Solution operations • Last updated: {new Date().toLocaleTimeString()}
+                    <p className="text-muted-foreground text-xs xs:text-sm sm:text-base truncate">
+                        Real-time overview • Last updated: {new Date().toLocaleTimeString()}
                     </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 xs:gap-3 flex-shrink-0">
                     <Button
                         variant="outline"
                         size="sm"
                         onClick={handleRefresh}
                         disabled={refreshing}
-                        className="rounded-full gap-2 border-border hover:bg-muted"
+                        className="rounded-full gap-1.5 xs:gap-2 border-border hover:bg-muted text-xs px-2 xs:px-3"
                     >
-                        <RefreshCw className={cn("w-4 h-4", refreshing && "animate-spin")} />
-                        Refresh
+                        <RefreshCw className={cn("w-3 h-3 xs:w-4 xs:h-4", refreshing && "animate-spin")} />
+                        <span className="hidden xs:inline">Refresh</span>
                     </Button>
-                    <Button size="sm" className="rounded-full gap-2 shadow-lg shadow-primary/20" asChild>
+                    <Button size="sm" className="rounded-full gap-1.5 xs:gap-2 shadow-lg shadow-primary/20 text-xs px-2 xs:px-3" asChild>
                         <Link href="/admin/tickets">
-                            <Eye className="w-4 h-4" />
-                            View All Cases
+                            <Eye className="w-3 h-3 xs:w-4 xs:h-4" />
+                            <span className="hidden xs:inline">View All Cases</span>
+                            <span className="xs:hidden">Cases</span>
                         </Link>
                     </Button>
                 </div>
             </motion.div>
 
             {/* Stats Grid - Bento Style */}
-            <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <motion.div variants={item} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
                 {statsCards.map((stat, idx) => (
                     <Card
                         key={idx}
                         className="group relative overflow-hidden border-border bg-card hover:bg-muted/50 transition-all duration-500 hover:border-border"
                     >
-                        <CardContent className="p-6">
-                            <div className="flex items-start justify-between mb-4">
-                                <div className={cn("p-3 rounded-2xl", stat.bgColor)}>
-                                    <stat.icon className={cn("w-5 h-5", stat.iconColor)} />
+                        <CardContent className="p-3 xs:p-4 sm:p-6">
+                            <div className="flex items-start justify-between mb-2 xs:mb-3 sm:mb-4">
+                                <div className={cn("p-1.5 xs:p-2 sm:p-3 rounded-lg xs:rounded-xl sm:rounded-2xl", stat.bgColor)}>
+                                    <stat.icon className={cn("w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5", stat.iconColor)} />
                                 </div>
-                                <div className="flex items-center gap-1">
-                                    {stat.trend === 'up' && <ArrowUpRight className="w-3.5 h-3.5 text-emerald-500" />}
-                                    {stat.trend === 'down' && <ArrowDownRight className="w-3.5 h-3.5 text-red-500" />}
-                                    {stat.trend === 'alert' && <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />}
+                                <div className="flex items-center gap-0.5 xs:gap-1">
+                                    {stat.trend === 'up' && <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-emerald-500" />}
+                                    {stat.trend === 'down' && <ArrowDownRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-red-500" />}
+                                    {stat.trend === 'alert' && <AlertTriangle className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-amber-500" />}
                                     <span className={cn(
-                                        "text-xs font-semibold",
+                                        "text-[9px] xs:text-[10px] sm:text-xs font-semibold hidden xs:inline",
                                         stat.trend === 'up' && "text-emerald-500",
                                         stat.trend === 'down' && "text-red-500",
                                         stat.trend === 'alert' && "text-amber-500",
@@ -281,9 +282,9 @@ export default function AdminDashboard() {
                                     </span>
                                 </div>
                             </div>
-                            <div className="space-y-1">
-                                <p className="text-4xl font-bold tracking-tight">{stat.value.toLocaleString()}</p>
-                                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{stat.label}</p>
+                            <div className="space-y-0.5 xs:space-y-1">
+                                <p className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{stat.value.toLocaleString()}</p>
+                                <p className="text-[9px] xs:text-[10px] sm:text-xs text-muted-foreground font-medium uppercase tracking-wider truncate">{stat.label}</p>
                             </div>
                             {/* Hover glow effect */}
                             <div className={cn(
@@ -296,27 +297,28 @@ export default function AdminDashboard() {
             </motion.div>
 
             {/* Main Grid - 3 Column Bento Layout */}
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
                 {/* Activity Feed - Spans 2 columns */}
                 <motion.div variants={item} className="lg:col-span-2">
-                    <Card className="border-white/5 bg-[#121214] h-full">
-                        <CardHeader className="flex flex-row items-center justify-between pb-2">
-                            <div>
-                                <CardTitle className="text-lg font-bold flex items-center gap-2">
-                                    <Activity className="w-5 h-5 text-primary" />
-                                    Live Activity Feed
+                    <Card className="border-white/5 bg-[#121214] h-full overflow-hidden">
+                        <CardHeader className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 pb-2 px-3 xs:px-4 sm:px-6">
+                            <div className="min-w-0">
+                                <CardTitle className="text-sm xs:text-base sm:text-lg font-bold flex items-center gap-1.5 xs:gap-2">
+                                    <Activity className="w-4 h-4 xs:w-5 xs:h-5 text-primary flex-shrink-0" />
+                                    <span className="truncate">Live Activity</span>
                                 </CardTitle>
-                                <CardDescription>Real-time updates from platform</CardDescription>
+                                <CardDescription className="text-xs hidden xs:block">Real-time updates</CardDescription>
                             </div>
-                            <Tabs defaultValue="all" className="w-auto">
-                                <TabsList className="bg-white/5 rounded-full p-1 h-9">
-                                    <TabsTrigger value="all" className="rounded-full text-xs px-3 data-[state=active]:bg-primary data-[state=active]:text-white">All</TabsTrigger>
-                                    <TabsTrigger value="tickets" className="rounded-full text-xs px-3 data-[state=active]:bg-primary data-[state=active]:text-white">Tickets</TabsTrigger>
-                                    <TabsTrigger value="leads" className="rounded-full text-xs px-3 data-[state=active]:bg-primary data-[state=active]:text-white">Leads</TabsTrigger>
+                            {/* Hide tabs on very small screens */}
+                            <Tabs defaultValue="all" className="w-auto hidden sm:block">
+                                <TabsList className="bg-white/5 rounded-full p-1 h-8 xs:h-9">
+                                    <TabsTrigger value="all" className="rounded-full text-[10px] xs:text-xs px-2 xs:px-3 data-[state=active]:bg-primary data-[state=active]:text-white">All</TabsTrigger>
+                                    <TabsTrigger value="tickets" className="rounded-full text-[10px] xs:text-xs px-2 xs:px-3 data-[state=active]:bg-primary data-[state=active]:text-white">Tickets</TabsTrigger>
+                                    <TabsTrigger value="leads" className="rounded-full text-[10px] xs:text-xs px-2 xs:px-3 data-[state=active]:bg-primary data-[state=active]:text-white">Leads</TabsTrigger>
                                 </TabsList>
                             </Tabs>
                         </CardHeader>
-                        <CardContent className="space-y-2">
+                        <CardContent className="space-y-1.5 xs:space-y-2 px-3 xs:px-4 sm:px-6">
                             <AnimatePresence>
                                 {recentActivities.map((activity, idx) => (
                                     <motion.div
@@ -324,28 +326,28 @@ export default function AdminDashboard() {
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: idx * 0.1 }}
-                                        className="group flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-300 border border-transparent hover:border-white/5 cursor-pointer"
+                                        className="group flex items-center gap-2 xs:gap-3 sm:gap-4 p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-300 border border-transparent hover:border-white/5 cursor-pointer"
                                     >
                                         <div className={cn(
-                                            "w-10 h-10 rounded-xl flex items-center justify-center shrink-0",
+                                            "w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0",
                                             activity.status === 'success' && "bg-emerald-500/10",
                                             activity.status === 'warning' && "bg-amber-500/10",
                                             activity.status === 'error' && "bg-red-500/10",
                                             activity.status === 'info' && "bg-blue-500/10"
                                         )}>
-                                            {activity.status === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
-                                            {activity.status === 'warning' && <AlertTriangle className="w-5 h-5 text-amber-500" />}
-                                            {activity.status === 'error' && <XCircle className="w-5 h-5 text-red-500" />}
-                                            {activity.status === 'info' && <Bell className="w-5 h-5 text-blue-500" />}
+                                            {activity.status === 'success' && <CheckCircle2 className="w-4 h-4 xs:w-5 xs:h-5 text-emerald-500" />}
+                                            {activity.status === 'warning' && <AlertTriangle className="w-4 h-4 xs:w-5 xs:h-5 text-amber-500" />}
+                                            {activity.status === 'error' && <XCircle className="w-4 h-4 xs:w-5 xs:h-5 text-red-500" />}
+                                            {activity.status === 'info' && <Bell className="w-4 h-4 xs:w-5 xs:h-5 text-blue-500" />}
                                         </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="font-semibold text-sm truncate">{activity.action}</p>
-                                            <p className="text-xs text-muted-foreground truncate">{activity.description}</p>
+                                        <div className="flex-1 min-w-0 overflow-hidden">
+                                            <p className="font-semibold text-xs xs:text-sm truncate">{activity.action}</p>
+                                            <p className="text-[10px] xs:text-xs text-muted-foreground truncate">{activity.description}</p>
                                         </div>
                                         <div className="text-right shrink-0">
-                                            <p className="text-xs text-muted-foreground">{activity.timestamp}</p>
+                                            <p className="text-[10px] xs:text-xs text-muted-foreground whitespace-nowrap">{activity.timestamp}</p>
                                         </div>
-                                        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity hidden xs:block" />
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
@@ -354,25 +356,25 @@ export default function AdminDashboard() {
                 </motion.div>
 
                 {/* Quick Actions Panel */}
-                <motion.div variants={item} className="space-y-4">
+                <motion.div variants={item} className="space-y-3 xs:space-y-4">
                     {/* Performance Card */}
                     <Card className="border-white/5 bg-[#121214]">
-                        <CardHeader className="pb-4">
-                            <CardTitle className="text-lg font-bold flex items-center gap-2">
-                                <Target className="w-5 h-5 text-primary" />
+                        <CardHeader className="pb-3 xs:pb-4 px-3 xs:px-4 sm:px-6">
+                            <CardTitle className="text-sm xs:text-base sm:text-lg font-bold flex items-center gap-1.5 xs:gap-2">
+                                <Target className="w-4 h-4 xs:w-5 xs:h-5 text-primary" />
                                 Performance
                             </CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-5">
+                        <CardContent className="space-y-3 xs:space-y-4 sm:space-y-5 px-3 xs:px-4 sm:px-6">
                             {performanceMetrics.map((metric, idx) => (
-                                <div key={idx} className="space-y-2">
-                                    <div className="flex items-center justify-between text-sm">
-                                        <span className="text-muted-foreground">{metric.label}</span>
-                                        <span className="font-bold">{metric.value}</span>
+                                <div key={idx} className="space-y-1.5 xs:space-y-2">
+                                    <div className="flex items-center justify-between text-xs xs:text-sm">
+                                        <span className="text-muted-foreground truncate">{metric.label}</span>
+                                        <span className="font-bold flex-shrink-0">{metric.value}</span>
                                     </div>
                                     <Progress
                                         value={(metric.current / metric.target) * 100}
-                                        className="h-2 bg-white/5"
+                                        className="h-1.5 xs:h-2 bg-white/5"
                                     />
                                 </div>
                             ))}
