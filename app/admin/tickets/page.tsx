@@ -93,29 +93,32 @@ export default function AdminTicketsPage() {
 
             {/* Filters */}
             <Card className="glass-card border-none">
-                <CardContent className="p-4 flex flex-col md:flex-row gap-4">
+                <CardContent className="p-3 xs:p-4 flex flex-col gap-3 xs:gap-4">
                     <div className="relative flex-1">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                        <Search className="absolute left-3 xs:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <input
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search by client, lender, or loan type..."
-                            className="w-full bg-[#121214] border-none rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 outline-none text-sm"
+                            className="w-full bg-[#121214] border-none rounded-xl py-2.5 xs:py-3 pl-10 xs:pl-12 pr-3 xs:pr-4 focus:ring-2 focus:ring-primary/20 outline-none text-xs xs:text-sm"
                         />
                     </div>
-                    <div className="flex gap-2">
-                        {['ALL', 'ASSESSMENT', 'REVIEW', 'STRATEGY', 'NEGOTIATION', 'SETTLEMENT'].map(stage => (
-                            <button
-                                key={stage}
-                                onClick={() => setStageFilter(stage)}
-                                className={cn(
-                                    "px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all",
-                                    stageFilter === stage ? "bg-primary text-white" : "bg-white/5 text-muted-foreground hover:bg-white/10"
-                                )}
-                            >
-                                {stage === 'ALL' ? 'Everything' : stage}
-                            </button>
-                        ))}
+                    {/* Horizontal scrollable filter tabs */}
+                    <div className="overflow-x-auto -mx-3 xs:-mx-4 px-3 xs:px-4 pb-1 scrollbar-hide">
+                        <div className="flex gap-1.5 xs:gap-2 min-w-max">
+                            {['ALL', 'ASSESSMENT', 'REVIEW', 'STRATEGY', 'NEGOTIATION', 'SETTLEMENT'].map(stage => (
+                                <button
+                                    key={stage}
+                                    onClick={() => setStageFilter(stage)}
+                                    className={cn(
+                                        "px-2.5 xs:px-3 sm:px-4 py-1.5 xs:py-2 rounded-lg xs:rounded-xl text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap flex-shrink-0",
+                                        stageFilter === stage ? "bg-primary text-white" : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                                    )}
+                                >
+                                    {stage === 'ALL' ? 'Everything' : stage}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </CardContent>
             </Card>

@@ -122,7 +122,7 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
     };
 
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+        <section className="py-12 xs:py-16 sm:py-20 lg:py-32 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0">
                 <motion.div
@@ -143,26 +143,26 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                 />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-3 xs:px-4 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-8 xs:mb-10 sm:mb-12 md:mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                        <Star className="w-4 h-4 text-primary fill-primary" />
-                        <span className="text-sm font-medium text-primary">Client Success Stories</span>
+                    <div className="inline-flex items-center gap-1.5 xs:gap-2 px-3 xs:px-4 py-1.5 xs:py-2 rounded-full bg-primary/10 border border-primary/20 mb-4 xs:mb-5 sm:mb-6">
+                        <Star className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-primary fill-primary" />
+                        <span className="text-xs xs:text-sm font-medium text-primary">Client Success Stories</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+                    <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-3 xs:mb-4 sm:mb-6 px-2">
                         Real Results from{" "}
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             Real People
                         </span>
                     </h2>
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
                         See how our advisory services have helped clients explore their debt relief options
                     </p>
                 </motion.div>
@@ -176,49 +176,49 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -100 }}
                             transition={{ duration: 0.5 }}
-                            className="glass-card-strong p-8 lg:p-12 rounded-3xl shadow-2xl"
+                            className="glass-card-strong p-4 xs:p-5 sm:p-6 md:p-8 lg:p-12 rounded-xl xs:rounded-2xl sm:rounded-3xl shadow-2xl"
                         >
-                            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                            <div className="grid lg:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-8 lg:gap-12">
                                 {/* Left: Review Content */}
-                                <div className="space-y-6">
+                                <div className="space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6">
                                     {/* Quote Icon */}
-                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-                                        <Quote className="w-8 h-8 text-white" />
+                                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
+                                        <Quote className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                                     </div>
 
                                     {/* Rating */}
-                                    <div className="flex items-center gap-1">
+                                    <div className="flex items-center gap-0.5 xs:gap-1">
                                         {[...Array(5)].map((_, i) => (
                                             <Star
                                                 key={i}
                                                 className={cn(
-                                                    "w-5 h-5",
+                                                    "w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5",
                                                     i < currentTestimonial.rating
                                                         ? "text-amber-500 fill-amber-500"
                                                         : "text-muted"
                                                 )}
                                             />
                                         ))}
-                                        <span className="ml-2 text-sm font-semibold text-muted-foreground">
+                                        <span className="ml-1.5 xs:ml-2 text-xs xs:text-sm font-semibold text-muted-foreground">
                                             {currentTestimonial.rating}.0
                                         </span>
                                     </div>
 
                                     {/* Review Text */}
-                                    <blockquote className="text-lg lg:text-xl text-foreground leading-relaxed">
+                                    <blockquote className="text-sm xs:text-base sm:text-lg lg:text-xl text-foreground leading-relaxed">
                                         "{currentTestimonial.review}"
                                     </blockquote>
 
                                     {/* Author */}
-                                    <div className="flex items-center gap-4 pt-4 border-t border-border">
-                                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                                    <div className="flex items-center gap-2.5 xs:gap-3 sm:gap-4 pt-3 xs:pt-4 border-t border-border">
+                                        <div className="w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm xs:text-base sm:text-lg shadow-lg flex-shrink-0">
                                             {currentTestimonial.image}
                                         </div>
-                                        <div>
-                                            <div className="font-bold text-lg text-foreground">
+                                        <div className="min-w-0">
+                                            <div className="font-bold text-sm xs:text-base sm:text-lg text-foreground truncate">
                                                 {currentTestimonial.name}
                                             </div>
-                                            <div className="text-sm text-muted-foreground">
+                                            <div className="text-xs xs:text-sm text-muted-foreground truncate">
                                                 {currentTestimonial.location}
                                             </div>
                                         </div>
@@ -228,7 +228,7 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                                 {/* Right: Metrics */}
                                 <div className="space-y-4">
                                     {/* Loan Type Badge */}
-                                    <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                                    <div className="inline-block px-2.5 xs:px-3 sm:px-4 py-1.5 xs:py-2 rounded-full bg-primary/10 text-primary text-xs xs:text-sm font-semibold">
                                         {currentTestimonial.loanType || "Resolved User"}
                                     </div>
 
@@ -237,43 +237,43 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                                         {currentTestimonial.beforeAmount ? (
                                             <>
                                                 {/* Before */}
-                                                <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20">
-                                                    <div className="flex items-center justify-between mb-2">
-                                                        <span className="text-sm text-muted-foreground">Original Debt</span>
-                                                        <TrendingDown className="w-4 h-4 text-red-500" />
+                                                <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-red-500/10 border border-red-500/20">
+                                                    <div className="flex items-center justify-between mb-1 xs:mb-2">
+                                                        <span className="text-xs xs:text-sm text-muted-foreground">Original Debt</span>
+                                                        <TrendingDown className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-red-500" />
                                                     </div>
-                                                    <div className="text-3xl font-bold text-red-600">
+                                                    <div className="text-xl xs:text-2xl sm:text-3xl font-bold text-red-600">
                                                         ₹{(currentTestimonial.beforeAmount / 100000).toFixed(1)}L
                                                     </div>
                                                 </div>
 
                                                 {/* After */}
-                                                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
-                                                    <div className="flex items-center justify-between mb-2">
-                                                        <span className="text-sm text-muted-foreground">Settled For</span>
-                                                        <TrendingUp className="w-4 h-4 text-emerald-500" />
+                                                <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+                                                    <div className="flex items-center justify-between mb-1 xs:mb-2">
+                                                        <span className="text-xs xs:text-sm text-muted-foreground">Settled For</span>
+                                                        <TrendingUp className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-emerald-500" />
                                                     </div>
-                                                    <div className="text-3xl font-bold text-emerald-600">
+                                                    <div className="text-xl xs:text-2xl sm:text-3xl font-bold text-emerald-600">
                                                         ₹{((currentTestimonial.afterAmount || 0) / 100000).toFixed(1)}L
                                                     </div>
                                                 </div>
 
                                                 {/* Savings */}
-                                                <div className="p-6 rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-lg">
-                                                    <div className="text-sm text-white/80 mb-2">Total Savings</div>
-                                                    <div className="text-4xl font-bold text-white mb-1">
+                                                <div className="p-3 xs:p-4 sm:p-5 md:p-6 rounded-xl xs:rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-lg">
+                                                    <div className="text-xs xs:text-sm text-white/80 mb-1 xs:mb-2">Total Savings</div>
+                                                    <div className="text-2xl xs:text-3xl sm:text-4xl font-bold text-white mb-0.5 xs:mb-1">
                                                         {currentTestimonial.savingsPercent}%
                                                     </div>
-                                                    <div className="text-sm text-white/80">
+                                                    <div className="text-xs xs:text-sm text-white/80">
                                                         Saved ₹{((currentTestimonial.beforeAmount - (currentTestimonial.afterAmount || 0)) / 100000).toFixed(1)}L
                                                     </div>
                                                 </div>
 
                                                 {/* Timeframe */}
                                                 {currentTestimonial.timeframe && (
-                                                    <div className="p-4 rounded-2xl bg-muted/50 border border-border">
-                                                        <div className="text-sm text-muted-foreground mb-1">Resolution Time</div>
-                                                        <div className="text-xl font-bold text-foreground">
+                                                    <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-muted/50 border border-border">
+                                                        <div className="text-xs xs:text-sm text-muted-foreground mb-0.5 xs:mb-1">Resolution Time</div>
+                                                        <div className="text-base xs:text-lg sm:text-xl font-bold text-foreground">
                                                             {currentTestimonial.timeframe}
                                                         </div>
                                                     </div>
@@ -297,18 +297,18 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                     </AnimatePresence>
 
                     {/* Navigation Controls */}
-                    <div className="flex items-center justify-center gap-4 mt-8">
+                    <div className="flex items-center justify-center gap-2 xs:gap-3 sm:gap-4 mt-4 xs:mt-6 sm:mt-8">
                         <Button
                             variant="outline"
                             size="icon"
                             onClick={goToPrevious}
-                            className="w-12 h-12 rounded-full hover:bg-primary hover:text-white transition-all"
+                            className="w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-full hover:bg-primary hover:text-white transition-all"
                         >
-                            <ChevronLeft className="w-5 h-5" />
+                            <ChevronLeft className="w-4 h-4 xs:w-5 xs:h-5" />
                         </Button>
 
                         {/* Dots */}
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1.5 xs:gap-2">
                             {testimonials.map((_, index) => (
                                 <button
                                     key={index}
@@ -316,8 +316,8 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                                     className={cn(
                                         "transition-all rounded-full",
                                         index === currentIndex
-                                            ? "w-8 h-2 bg-primary"
-                                            : "w-2 h-2 bg-muted hover:bg-muted-foreground"
+                                            ? "w-6 xs:w-8 h-1.5 xs:h-2 bg-primary"
+                                            : "w-1.5 xs:w-2 h-1.5 xs:h-2 bg-muted hover:bg-muted-foreground"
                                     )}
                                 />
                             ))}
@@ -327,9 +327,9 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
                             variant="outline"
                             size="icon"
                             onClick={goToNext}
-                            className="w-12 h-12 rounded-full hover:bg-primary hover:text-white transition-all"
+                            className="w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-full hover:bg-primary hover:text-white transition-all"
                         >
-                            <ChevronRight className="w-5 h-5" />
+                            <ChevronRight className="w-4 h-4 xs:w-5 xs:h-5" />
                         </Button>
                     </div>
 

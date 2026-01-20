@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, CheckCircle, ChevronDown, Phone, Mail, Download } from "lucide-react";
+import { Menu, X, CheckCircle, ChevronDown, Phone, Mail, Download, LogIn, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -147,17 +147,31 @@ export function Header({ onOpenCallback }: HeaderProps) {
               ))}
             </div>
 
-            {/* Desktop: Theme Toggle & CTA Button */}
-            <div className="hidden lg:flex items-center gap-3">
+            {/* Desktop: Theme Toggle, Portal/Login & CTA Button */}
+            <div className="hidden lg:flex items-center gap-2">
               <ThemeToggle />
+              <a
+                href="/auth/signin"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 flex items-center gap-2"
+              >
+                <LogIn className="w-4 h-4" />
+                Login
+              </a>
               <Button variant="accent" size="lg" onClick={onOpenCallback}>
                 Get Callback →
               </Button>
             </div>
 
-            {/* Mobile: Theme Toggle, Phone & Menu Toggle */}
+            {/* Mobile: Theme Toggle, Login, Phone & Menu Toggle */}
             <div className="flex lg:hidden items-center gap-0.5 xs:gap-1 sm:gap-1.5">
               <ThemeToggle />
+              <a
+                href="/auth/signin"
+                className="p-1 xs:p-1.5 sm:p-2 rounded-lg hover:bg-muted/50 transition-colors flex-shrink-0"
+                title="Login / Sign Up"
+              >
+                <User className="w-4 h-4 xs:w-5 xs:h-5 sm:w-5 sm:h-5 text-muted-foreground" />
+              </a>
               <Button
                 variant="accent"
                 size="sm"

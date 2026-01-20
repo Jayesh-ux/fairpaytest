@@ -68,7 +68,7 @@ const cardVariants = {
 
 export function WhyChooseUs() {
     return (
-        <section className="py-20 lg:py-28 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+        <section className="py-12 xs:py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
@@ -82,26 +82,26 @@ export function WhyChooseUs() {
                 />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-3 xs:px-4 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
+                    className="text-center mb-8 xs:mb-10 sm:mb-12 md:mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                        <CheckCircle className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-medium text-primary">Why Trust Us</span>
+                    <div className="inline-flex items-center gap-1.5 xs:gap-2 px-3 xs:px-4 py-1.5 xs:py-2 rounded-full bg-primary/10 border border-primary/20 mb-4 xs:mb-5 sm:mb-6">
+                        <CheckCircle className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-primary" />
+                        <span className="text-xs xs:text-sm font-medium text-primary">Why Trust Us</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
+                    <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-display font-bold mb-3 xs:mb-4 px-2">
                         Why Choose{" "}
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             FairPay Solutions?
                         </span>
                     </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground text-sm xs:text-base sm:text-lg max-w-2xl mx-auto px-2">
                         Your trusted partner in achieving financial freedom through legal expertise
                     </p>
                 </motion.div>
@@ -112,7 +112,7 @@ export function WhyChooseUs() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto"
                 >
                     {benefits.map((benefit, index) => (
                         <motion.div
@@ -120,26 +120,26 @@ export function WhyChooseUs() {
                             variants={cardVariants}
                             className="group"
                         >
-                            <div className={`relative h-full p-6 lg:p-8 rounded-2xl ${benefit.bgColor} border ${benefit.borderColor} hover:border-primary/40 transition-all duration-300 overflow-hidden`}>
+                            <div className={`relative h-full p-4 xs:p-5 sm:p-6 lg:p-8 rounded-xl xs:rounded-2xl ${benefit.bgColor} border ${benefit.borderColor} hover:border-primary/40 transition-all duration-300 overflow-hidden`}>
                                 {/* Hover glow effect */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
-                                {/* Number badge */}
-                                <div className="absolute top-6 right-6 lg:top-8 lg:right-8">
-                                    <span className={`text-5xl lg:text-6xl font-bold bg-gradient-to-br ${benefit.color} bg-clip-text text-transparent opacity-20 group-hover:opacity-30 transition-opacity`}>
+                                {/* Number badge - hidden on xs, visible on sm+ */}
+                                <div className="absolute top-4 right-4 xs:top-5 xs:right-5 sm:top-6 sm:right-6 lg:top-8 lg:right-8 hidden xs:block">
+                                    <span className={`text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-br ${benefit.color} bg-clip-text text-transparent opacity-20 group-hover:opacity-30 transition-opacity`}>
                                         {benefit.number}
                                     </span>
                                 </div>
 
                                 {/* Content */}
-                                <div className="relative space-y-4">
+                                <div className="relative space-y-2.5 xs:space-y-3 sm:space-y-4">
                                     {/* Icon & Emoji */}
-                                    <div className="flex items-center gap-3">
-                                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${benefit.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                            <benefit.icon className="w-6 h-6 text-white" />
+                                    <div className="flex items-center gap-2 xs:gap-3">
+                                        <div className={`w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 rounded-lg xs:rounded-xl bg-gradient-to-br ${benefit.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                            <benefit.icon className="w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6 text-white" />
                                         </div>
                                         <motion.span
-                                            className="text-2xl"
+                                            className="text-xl xs:text-2xl"
                                             animate={{ rotate: [0, 10, -10, 0] }}
                                             transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                                         >
@@ -147,13 +147,13 @@ export function WhyChooseUs() {
                                         </motion.span>
                                     </div>
 
-                                    {/* Title */}
-                                    <h3 className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors pr-16">
+                                    {/* Title - reduced right padding to work with hidden number on xs */}
+                                    <h3 className="text-base xs:text-lg sm:text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors pr-0 xs:pr-12 sm:pr-16">
                                         {benefit.title}
                                     </h3>
 
                                     {/* Description */}
-                                    <p className="text-muted-foreground leading-relaxed">
+                                    <p className="text-xs xs:text-sm sm:text-base text-muted-foreground leading-relaxed">
                                         {benefit.description}
                                     </p>
                                 </div>
@@ -171,9 +171,9 @@ export function WhyChooseUs() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="text-center mt-12"
+                    className="text-center mt-8 xs:mt-10 sm:mt-12"
                 >
-                    <p className="text-muted-foreground">
+                    <p className="text-xs xs:text-sm sm:text-base text-muted-foreground px-2">
                         Join <span className="text-primary font-semibold">2700+</span> clients who chose professional guidance for their debt concerns
                     </p>
                 </motion.div>

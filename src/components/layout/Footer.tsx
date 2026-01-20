@@ -35,13 +35,13 @@ const trustBadges = [
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-background to-secondary/10 text-foreground border-t border-border">{/* Trust Badges Bar */}
+    <footer className="bg-gradient-to-b from-background to-secondary/10 text-foreground border-t border-border pb-16 sm:pb-20 lg:pb-0">{/* Trust Badges Bar */}
       <div className="border-b border-border">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
+        <div className="container mx-auto px-3 xs:px-4 py-4 xs:py-5 sm:py-6">
+          <div className="flex flex-wrap items-center justify-center gap-3 xs:gap-4 sm:gap-6 lg:gap-12">
             {trustBadges.map((badge) => (
-              <div key={badge.label} className="flex items-center gap-2 text-sm">
-                <badge.icon className="w-5 h-5 text-primary" />
+              <div key={badge.label} className="flex items-center gap-1.5 xs:gap-2 text-xs xs:text-sm">
+                <badge.icon className="w-4 h-4 xs:w-5 xs:h-5 text-primary flex-shrink-0" />
                 <span className="text-muted-foreground">{badge.label}</span>
               </div>
             ))}
@@ -50,7 +50,7 @@ export function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-12 lg:py-16">
+      <div className="container mx-auto px-3 xs:px-4 py-8 xs:py-10 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
@@ -71,23 +71,23 @@ export function Footer() {
               Legal Debt Relief, Made Simple. We help Indians settle their debts legally
               and rebuild their financial lives with expert negotiation and support.
             </p>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <a href="tel:+919389815277" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Phone className="w-4 h-4" />
-                +91 9389815277
+            <div className="space-y-2 xs:space-y-3 text-xs xs:text-sm text-muted-foreground">
+              <a href="tel:+919389815277" className="flex items-center gap-1.5 xs:gap-2 hover:text-primary transition-colors">
+                <Phone className="w-3.5 h-3.5 xs:w-4 xs:h-4 flex-shrink-0" />
+                <span className="break-all">+91 9389815277</span>
               </a>
-              <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4" />
-                support@fairpaysolution.com
+              <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-1.5 xs:gap-2 hover:text-primary transition-colors">
+                <Mail className="w-3.5 h-3.5 xs:w-4 xs:h-4 flex-shrink-0" />
+                <span className="break-all text-[0.7rem] xs:text-xs sm:text-sm">support@fairpaysolution.com</span>
               </a>
-              <a href="mailto:info@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors pl-6 text-[0.8rem]">
-                info@fairpaysolution.com
+              <a href="mailto:info@fairpaysolution.com" className="flex items-center gap-1.5 xs:gap-2 hover:text-primary transition-colors pl-5 xs:pl-6 text-[0.65rem] xs:text-[0.8rem]">
+                <span className="break-all">info@fairpaysolution.com</span>
               </a>
-              <a href="mailto:hr@fairpaysolution.com" className="flex items-center gap-2 hover:text-primary transition-colors pl-6 text-[0.8rem]">
-                hr@fairpaysolution.com
+              <a href="mailto:hr@fairpaysolution.com" className="flex items-center gap-1.5 xs:gap-2 hover:text-primary transition-colors pl-5 xs:pl-6 text-[0.65rem] xs:text-[0.8rem]">
+                <span className="break-all">hr@fairpaysolution.com</span>
               </a>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
+              <div className="flex items-center gap-1.5 xs:gap-2">
+                <MapPin className="w-3.5 h-3.5 xs:w-4 xs:h-4 flex-shrink-0" />
                 Agra, Uttar Pradesh 282007
               </div>
             </div>
@@ -185,10 +185,10 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-border">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>© 2026 FairPay Solutions Pvt Ltd. All rights reserved.</p>
-            <p className="text-sm text-muted-foreground mt-2 text-center md:text-right max-w-2xl">
+        <div className="container mx-auto px-3 xs:px-4 py-4 xs:py-5 sm:py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4 text-xs xs:text-sm text-muted-foreground">
+            <p className="text-center md:text-left">© 2026 FairPay Solutions Pvt Ltd. All rights reserved.</p>
+            <p className="text-[0.65rem] xs:text-xs sm:text-sm text-muted-foreground mt-1 xs:mt-2 text-center md:text-right max-w-2xl">
               <strong>FairPay Solutions</strong> - Independent Unsecured Loan Resolution & Advisory Consultancy.<br />
               We are not a bank, NBFC, or lender. Consultancy services only.
             </p>
