@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 20%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 20%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 204 94% 94%;
+    --accent-foreground: 199 89% 48%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens - Sky Blue Theme */
+    --sky-blue: 199 89% 48%;
+    --sky-blue-light: 204 94% 94%;
+    --sky-blue-dark: 199 89% 38%;
+    --ocean: 200 80% 55%;
+    --ocean-light: 200 80% 65%;
+    --navy: 215 28% 17%;
+    --navy-light: 215 25% 27%;
+    --slate: 215 16% 47%;
+    --cream: 40 30% 98%;
+    --glass: 0 0% 100% / 0.85%;
+    --glass-border: 199 89% 48% / 0.2;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(204 94% 94%) 0%, hsl(199 89% 48% / 0.1) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.95) 0%, hsl(204 94% 94% / 0.5) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(200 80% 55%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(200 80% 55%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(199 89% 38%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(199 89% 48% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(199 89% 48% / 0.1), 0 2px 4px -2px hsl(199 89% 48% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(199 89% 48% / 0.1), 0 4px 6px -4px hsl(199 89% 48% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(199 89% 48% / 0.1), 0 8px 10px -6px hsl(199 89% 48% / 0.1);
+    --shadow-glass: 0 8px 32px 0 hsl(199 89% 48% / 0.12);
+    --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.35);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 215 25% 20%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 215 25% 20%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 20% 13%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 20% 13%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 151 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 215 16% 60%;
+
+    --accent: 151 84% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 151 100% 45%;
+
+    --glass: 220 20% 13% / 0.85;
+    --glass-border: 0 0% 100% / 0.1;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 151 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 151 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/90 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+
+  .glass-card-strong {
+    @apply bg-card/95 backdrop-blur-2xl border border-border/30 shadow-xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text);
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .accent-gradient {
+    background: var(--gradient-accent);
+  }
+
+  .cta-gradient {
+    background: var(--gradient-cta);
+  }
+
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Trust badge styling */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Responsive Text Utilities */
+  .text-responsive-xs {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  .text-responsive-sm {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  .text-responsive-base {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+  }
+
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .text-responsive-2xl {
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+  }
+
+  .text-responsive-3xl {
+    font-size: clamp(1.875rem, 5vw, 2.5rem);
+  }
+
+  .text-responsive-4xl {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .text-responsive-5xl {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  /* Container Max Widths for Large Screens */
+  .container-responsive {
+    max-width: min(100%, 1920px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Safe Area Padding for Mobile */
+  .safe-padding-x {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  /* Responsive Spacing */
+  .spacing-responsive-sm {
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .spacing-responsive-md {
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .spacing-responsive-lg {
+    padding: clamp(2rem, 5vw, 4rem);
+  }
+
+  .spacing-responsive-xl {
+    padding: clamp(3rem, 7vw, 6rem);
+  }
+}
+
+/* Fix toast notification button visibility */
+[data-sonner-toast] button[data-button] {
+  background-color: hsl(var(--primary)) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem !important;
+}
+
+[data-sonner-toast] button[data-button]:hover {
+  background-color: hsl(var(--primary) / 0.9) !important;
+}
+
+.dark [data-sonner-toast] button[data-button] {
+  background-color: hsl(151 100% 45%) !important;
+  color: white !important;
+}

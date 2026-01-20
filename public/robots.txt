@@ -1,0 +1,10 @@
+# Robots.txt for FairPay Solutions
+# https://www.fairpaysolution.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://www.fairpaysolution.com/sitemap.xml

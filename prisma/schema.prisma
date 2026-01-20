@@ -1,0 +1,290 @@
+// prisma/schema.prisma
+// FairPay Solution - Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              AUTH & USERS (NextAuth)
+// ══════════════════════════════════════════════════════════════════════════════
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  phone         String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts         Account[]
+  sessions         Session[]
+  tickets          Ticket[]
+  chatMessages     ChatMessage[]
+  ticketEvents     TicketEvent[]     @relation("CreatedByAdmin")
+  reviewedDocs     Document[]        @relation("ReviewedByAdmin")
+  handledCallbacks CallbackRequest[] @relation("HandledByAdmin")
+  approvedReviews  Review[]          @relation("ApprovedByAdmin")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              TICKETS (LOAN CASES)
+// ══════════════════════════════════════════════════════════════════════════════
+
+model Ticket {
+  id             String       @id @default(cuid())
+  
+  // Owner
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Loan details
+  loanType       String       // "Personal Loan", "Credit Card", "Home Loan", etc.
+  lenderName     String?      // Bank/NBFC name
+  loanAmount     Float?       // Outstanding amount in INR
+  
+  // Progress tracking
+  stage          Stage        @default(ASSESSMENT)
+  stagePercent   Int          @default(0)  // 0-100 progress within current stage
+  overallPercent Int          @default(0)  // 0-100 overall journey progress
+  status         TicketStatus @default(OPEN)
+  
+  // Settlement details
+  settledAmount  Float?       // Final negotiated amount
+  settledAt      DateTime?    // When settlement was reached
+  
+  // Timestamps
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  // Relations
+  events         TicketEvent[]
+  documents      Document[]
+  messages       ChatMessage[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([stage])
+}
+
+enum Stage {
+  ASSESSMENT   // Stage 0: Free initial consultation, intake, basic info
+  REVIEW       // Stage 1: Case review, eligibility, risk assessment
+  STRATEGY     // Stage 2: Repayment/settlement strategy design
+  NEGOTIATION  // Stage 3: Active negotiation with lenders
+  SETTLEMENT   // Stage 4: Final settlement/closure guidance
+  CLOSED       // Stage 5: Case resolved or closed
+  REJECTED     // Stage 6: Case rejected
+}
+
+enum TicketStatus {
+  OPEN
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              TICKET EVENTS (TIMELINE)
+// ══════════════════════════════════════════════════════════════════════════════
+
+model TicketEvent {
+  id          String      @id @default(cuid())
+  
+  // Parent ticket
+  ticketId    String
+  ticket      Ticket      @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  
+  // Event details
+  type        EventType
+  message     String      // Human-readable update for the client
+  
+  // Metadata
+  createdAt   DateTime    @default(now())
+  createdById String?
+  createdBy   User?       @relation("CreatedByAdmin", fields: [createdById], references: [id])
+
+  @@index([ticketId])
+  @@index([createdAt])
+}
+
+enum EventType {
+  INFO          // General information update
+  DOCUMENT      // Document-related event
+  STATUS_CHANGE // Status changed
+  STAGE_CHANGE  // Stage changed
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              DOCUMENTS
+// ══════════════════════════════════════════════════════════════════════════════
+
+model Document {
+  id              String         @id @default(cuid())
+  
+  // Parent ticket
+  ticketId        String
+  ticket          Ticket         @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  
+  // File details
+  name            String         // Display name: "PAN Card", "Salary Slip Jan 2024"
+  fileName        String?        // Original file name
+  fileUrl         String         // Storage URL (local path or S3 URL)
+  mimeType        String?
+  fileSize        Int?           // Size in bytes
+  
+  // Review status
+  status          DocumentStatus @default(PENDING)
+  rejectionReason String?
+  
+  // Timestamps
+  uploadedAt      DateTime       @default(now())
+  reviewedAt      DateTime?
+  reviewedById    String?
+  reviewedBy      User?          @relation("ReviewedByAdmin", fields: [reviewedById], references: [id])
+
+  @@index([ticketId])
+  @@index([status])
+}
+
+enum DocumentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              CHAT MESSAGES
+// ══════════════════════════════════════════════════════════════════════════════
+
+model ChatMessage {
+  id         String   @id @default(cuid())
+  
+  // Parent ticket
+  ticketId   String
+  ticket     Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  
+  // Sender
+  senderId   String
+  sender     User     @relation(fields: [senderId], references: [id])
+  senderRole Role     // USER or ADMIN
+  
+  // Content
+  content    String   @db.Text
+  
+  // Timestamps
+  createdAt  DateTime @default(now())
+  readAt     DateTime?
+
+  @@index([ticketId])
+  @@index([createdAt])
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              CALLBACK REQUESTS (LEADS)
+// ══════════════════════════════════════════════════════════════════════════════
+
+model CallbackRequest {
+  id               String         @id @default(cuid())
+  
+  // Contact info
+  name             String
+  phone            String
+  email            String?
+  city             String?
+  preferredTime    String?        // Preferred callback time
+  source           String         @default("website") // "landing_page", "widget", "popup"
+  loanAmount       String?
+  loanType         String?
+  
+  // Processing status
+  status           CallbackStatus @default(NEW)
+  notes            String?        @db.Text
+  
+  // Timestamps & admin handling
+  createdAt        DateTime       @default(now())
+  handledByAdminId String?
+  handledByAdmin   User?          @relation("HandledByAdmin", fields: [handledByAdminId], references: [id])
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum CallbackStatus {
+  NEW
+  CALLED
+  NO_ANSWER
+  QUALIFIED
+  DISQUALIFIED
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              REVIEWS
+// ══════════════════════════════════════════════════════════════════════════════
+
+model Review {
+  id                String   @id @default(cuid())
+  
+  // Review content
+  rating            Int      // 1-5 stars
+  name              String   // Reviewer's name
+  location          String?  // City/Location
+  text              String   @db.Text
+  
+  // Moderation
+  approved          Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  approvedAt        DateTime?
+  approvedByAdminId String?
+  approvedByAdmin   User?    @relation("ApprovedByAdmin", fields: [approvedByAdminId], references: [id])
+
+  @@index([approved])
+  @@index([createdAt])
+}

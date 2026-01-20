@@ -1,0 +1,897 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#                    FAIRPAY SOLUTION - FULL STACK MVP ROADMAP
+#                          Single Source of Truth Document
+# ═══════════════════════════════════════════════════════════════════════════════
+
+Last Updated: 2026-01-19 14:20 IST
+Project Start: 2026-01-18
+Reference Site: https://www.fairpaysolution.com/
+
+═══════════════════════════════════════════════════════════════════════════════
+                              PROJECT OVERVIEW
+═══════════════════════════════════════════════════════════════════════════════
+
+## What We're Building 
+
+A production-grade loan advisory platform for FairPay Solutions with:
+- Client Portal: Loan case tracking, document upload, real-time chat
+- Admin Dashboard: Case management, document review, leads, reviews moderation  
+- Public Site: Existing marketing pages + new database-backed forms
+- Backend APIs: Full REST API replacing Google Sheets
+
+## Current State (Before Migration)
+
+- Framework: Vite + React + TypeScript (SPA)
+- Styling: Tailwind CSS + shadcn/ui ✓ Already in place
+- Pages: 17 existing marketing/legal pages
+- Components: 80+ components
+- Forms: Currently using Google Sheets backend
+- Deployment: Vercel
+
+## Target State (After Migration)
+
+- Framework: Next.js 14 App Router (SSR + API Routes)
+- Styling: Tailwind CSS + shadcn/ui (preserved)
+- Database: PostgreSQL (local → AWS RDS)
+- File Storage: Local filesystem → AWS S3
+- Auth: NextAuth.js (Google OAuth + Email OTP ready)
+- ORM: Prisma
+
+═══════════════════════════════════════════════════════════════════════════════
+                              PROGRESS TRACKER
+═══════════════════════════════════════════════════════════════════════════════
+
+## Phase 1: Foundation & Setup
+Status: [x] COMPLETED ✅ (2026-01-18)
+
+[x] 1.1 Migrate from Vite to Next.js App Router
+    - [x] Install Next.js 14 dependencies
+    - [x] Create next.config.js
+    - [x] Setup app/ directory structure
+    - [x] Create app/(marketing)/ with layout and home page
+    - [x] Migrate components to /components (Header, Footer, home sections)
+    - [x] Update all components to use next/link instead of react-router-dom
+    - [x] Test build and dev server ✓ Running on localhost:3000
+
+[x] 1.2 Setup Prisma & Database
+    - [x] Install Prisma v5 and @prisma/client
+    - [x] Create prisma/schema.prisma (12 models, all enums, indexes)
+    - [x] Setup PostgreSQL via Docker (fairpay-postgres container)
+    - [x] Run prisma db push - all tables created
+    - [x] Create and run seed script (2 admins, 5 sample reviews)
+
+[x] 1.3 Setup NextAuth
+    - [x] Install next-auth v5 beta
+    - [x] Create auth configuration (lib/auth.ts)
+    - [x] Setup Google OAuth provider with credentials
+    - [x] Configure session/JWT with role extension
+    - [x] Create middleware for route protection (/portal, /admin)
+
+[x] 1.4 Environment Configuration
+    - [x] Create .env and .env.local with all variables
+    - [x] Configure DATABASE_URL for Docker PostgreSQL
+    - [x] Configure GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET
+    - [x] Configure NEXTAUTH_SECRET and NEXTAUTH_URL
+
+───────────────────────────────────────────────────────────────────────────────
+
+## Phase 2: API Layer
+Status: [x] COMPLETED ✅
+
+[x] 2.1 Auth APIs
+    - [x] /api/auth/[...nextauth] - NextAuth routes
+    - [x] getCurrentUser helper function (lib/auth.ts)
+    - [x] isAdmin helper function (lib/auth.ts)
+
+[x] 2.2 Ticket APIs ✅ COMPLETED
+    - [x] GET /api/tickets - List tickets (user's own / admin all)
+    - [x] POST /api/tickets - Create new ticket
+    - [x] GET /api/tickets/[id] - Get ticket with events, docs, messages
+    - [x] PATCH /api/tickets/[id] - Update stage, status (admin)
+    - [x] DELETE /api/tickets/[id] - Delete ticket (admin)
+    - [x] GET /api/tickets/[id]/events - Get timeline events
+    - [x] POST /api/tickets/[id]/events - Add timeline event (admin)
+    - [ ] POST /api/tickets/[id]/documents - Upload document (user)
+    - [x] GET /api/tickets/[id]/messages - Get chat messages
+    - [x] POST /api/tickets/[id]/messages - Send message
+
+[x] 2.3 Document APIs
+    - [x] PATCH /api/documents/[id] - Approve/reject (admin)
+
+[x] 2.4 Callback APIs
+    - [x] GET /api/callbacks - List leads (admin)
+    - [x] POST /api/callbacks - Submit lead (public)
+    - [x] PATCH /api/callbacks/[id] - Update status/notes (admin)
+
+[x] 2.5 Review APIs
+    - [x] GET /api/reviews - List approved (public) / all (admin)
+    - [x] POST /api/reviews - Submit review (public)
+    - [x] PATCH /api/reviews/[id] - Approve/reject (admin)
+
+[x] 2.4 Callback APIs
+    - [x] POST /api/callbacks - Submit callback (public)
+    - [ ] GET /api/callbacks - List all callbacks (admin) - route exists, needs auth
+    - [ ] PATCH /api/callbacks/[id] - Update status/notes (admin)
+
+[x] 2.5 Review APIs
+    - [x] POST /api/reviews - Submit review (public)
+    - [x] GET /api/reviews - Get approved reviews (public) ✓ Working on homepage
+    - [ ] PATCH /api/reviews/[id] - Approve/reject (admin)
+
+───────────────────────────────────────────────────────────────────────────────
+
+## Phase 3: Client Portal
+Status: [~] IN PROGRESS
+
+[x] 3.1 Portal Layout
+    - [x] Create /portal layout with sidebar
+    - [x] Navigation (Dashboard, Tickets, Documents, Messages, Profile)
+    - [x] Mobile responsive menu with slide-out drawer
+    - [x] User info display with avatar
+    - [x] Sign out functionality
+    - [x] Navigation sidebar
+    - [x] Top header with user profile
+    - [x] Mobile responsiveness
+
+[x] 3.2 Portal Dashboard (/portal)
+    - [x] Stats summary (tickets, documents, progress)
+    - [x] Recent tickets list
+    - [x] Quick actions (New Ticket, Upload Doc)
+
+[x] 3.3 Ticket List (/portal/tickets)
+    - [x] Grid/List view of all user tickets
+    - [x] Search and grouping
+
+[x] 3.4 New Ticket Form (/portal/tickets/new)
+    - [x] Multi-step wizard
+    - [x] Loan details and amounts
+
+[x] 3.5 Ticket Detail (/portal/tickets/[id])
+    - [x] Visual stage/progress tracker
+    - [x] Timeline view (TicketEvents)
+    - [x] Real-time chat panel
+    - [x] Document management tab
+
+[x] 3.6 Auth Pages
+    - [x] Sign-in page (/auth/signin) with Google OAuth
+
+[x] 3.7 Documents Page (/portal/documents)
+    - [x] Unified document management across all tickets
+
+[x] 3.8 Messages Page (/portal/messages - Placeholder)
+    - [x] Direct access to advisor chat via ticket list
+
+[x] 3.9 Profile Page (/portal/profile)
+    - [x] User details and security settings
+
+───────────────────────────────────────────────────────────────────────────────
+
+## Phase 4: Admin Dashboard
+Status: [x] COMPLETED ✅
+
+[x] 4.1 Admin Layout
+    - [x] Create /admin layout with dark theme sidebar
+    - [x] Navigation (Dashboard, Tickets, Callbacks, Reviews, Users)
+    - [x] Admin-only route protection via middleware
+
+[x] 4.2 Admin Dashboard (/admin)
+    - [x] Overview stats cards (Total Cases, Active, Leads, Reviews)
+    - [x] Recent activities feed
+    - [x] System health monitor widget
+
+[x] 4.3 Tickets Management (/admin/tickets)
+    - [x] Global tickets list with powerful filters
+    - [x] User-to-case mapping and status badges
+
+[x] 4.4 Ticket Detail (/admin/tickets/[id])
+    - [x] Administrative controls (Stage, Status, Progress)
+    - [x] Full Interaction Hub (Chat, Timeline logs)
+    - [x] Document review and download flow
+
+[x] 4.5 Callbacks Management (/admin/callbacks)
+    - [x] Responsive leads management table
+    - [x] Status processing (New -> Contacted -> Converted)
+
+[x] 4.6 Reviews Moderation (/admin/reviews)
+    - [x] Review grid with star ratings
+    - [x] One-click approval/rejection moderation
+
+───────────────────────────────────────────────────────────────────────────────
+
+## Phase 5: Integration & Polish
+Status: [ ] NOT STARTED
+
+[ ] 5.1 Connect Public Forms
+    - [ ] Update callback form → POST /api/callbacks
+    - [ ] Update review form → POST /api/reviews
+    - [ ] Display approved reviews from database
+
+[ ] 5.2 File Storage
+    - [ ] Implement local file storage (dev)
+    - [ ] Document upload flow
+    - [ ] Signed URL generation
+
+[ ] 5.3 Testing & Polish
+    - [ ] Test all API endpoints
+    - [ ] Test auth flows
+    - [ ] Test portal user journey
+    - [ ] Test admin workflows
+    - [ ] Mobile responsiveness check
+
+[ ] 5.4 Documentation
+    - [ ] Update README with setup steps
+    - [ ] Document environment variables
+    - [ ] Document deployment process
+
+───────────────────────────────────────────────────────────────────────────────
+
+## Phase 6: AWS Deployment (Future)
+Status: [ ] NOT STARTED
+
+[ ] 6.1 AWS RDS PostgreSQL
+    - [ ] Create RDS instance
+    - [ ] Update DATABASE_URL
+    - [ ] Run migrations on production
+
+[ ] 6.2 AWS S3
+    - [ ] Create S3 bucket
+    - [ ] Configure CORS
+    - [ ] Update file upload to use S3
+    - [ ] Implement signed URLs
+
+[ ] 6.3 Production Deployment
+    - [ ] Deploy to AWS (EC2/ECS/Amplify)
+    - [ ] Configure environment variables
+    - [ ] Setup domain and SSL
+    - [ ] Test production deployment
+
+═══════════════════════════════════════════════════════════════════════════════
+                            TECHNICAL SPECIFICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+## Tech Stack
+
+| Component       | Technology                              |
+|-----------------|----------------------------------------|
+| Framework       | Next.js 14 App Router                  |
+| Language        | TypeScript                             |
+| Styling         | Tailwind CSS + shadcn/ui               |
+| Charts          | Chart.js via react-chartjs-2          |
+| Auth            | NextAuth.js (Google + Email OTP ready) |
+| Database        | PostgreSQL (local → AWS RDS)          |
+| ORM             | Prisma                                 |
+| File Storage    | Local → AWS S3                         |
+| State           | TanStack Query (existing)              |
+
+## Environment Variables Required
+
+```env
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/fairpay"
+
+# NextAuth
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-here"
+
+# Google OAuth
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+
+# AWS S3 (Phase 6)
+AWS_ACCESS_KEY_ID=""
+AWS_SECRET_ACCESS_KEY=""
+AWS_REGION=""
+AWS_S3_BUCKET=""
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+                              FOLDER STRUCTURE
+═══════════════════════════════════════════════════════════════════════════════
+
+```
+fairpay-solution/
+├── app/                              # Next.js App Router
+│   ├── (marketing)/                  # Public marketing pages
+│   │   ├── page.tsx                  # Home page (/)
+│   │   ├── calculator/page.tsx
+│   │   ├── how-it-works/page.tsx
+│   │   ├── eligibility/page.tsx
+│   │   ├── contact/page.tsx
+│   │   ├── media/page.tsx
+│   │   ├── privacy/page.tsx
+│   │   ├── terms/page.tsx
+│   │   ├── disclaimer/page.tsx
+│   │   ├── loan-policy/page.tsx
+│   │   ├── no-guarantee/page.tsx
+│   │   ├── fees-refund/page.tsx
+│   │   └── layout.tsx                # Marketing layout (Navbar + Footer)
+│   │
+│   ├── portal/                       # Client Portal (protected)
+│   │   ├── page.tsx                  # Dashboard with progress chart
+│   │   ├── tickets/
+│   │   │   ├── page.tsx              # Ticket list
+│   │   │   └── [id]/page.tsx         # Ticket detail
+│   │   └── layout.tsx                # Portal sidebar layout
+│   │
+│   ├── admin/                        # Admin Dashboard (ADMIN only)
+│   │   ├── page.tsx                  # Overview
+│   │   ├── tickets/
+│   │   │   ├── page.tsx              # All tickets
+│   │   │   └── [id]/page.tsx         # Ticket management
+│   │   ├── callbacks/page.tsx        # Callback requests
+│   │   ├── reviews/page.tsx          # Review moderation
+│   │   └── layout.tsx                # Admin sidebar
+│   │
+│   ├── api/                          # API Route Handlers
+│   │   ├── auth/[...nextauth]/route.ts
+│   │   ├── tickets/
+│   │   │   ├── route.ts
+│   │   │   └── [id]/
+│   │   │       ├── route.ts
+│   │   │       ├── events/route.ts
+│   │   │       ├── documents/route.ts
+│   │   │       └── messages/route.ts
+│   │   ├── documents/[id]/route.ts
+│   │   ├── callbacks/
+│   │   │   ├── route.ts
+│   │   │   └── [id]/route.ts
+│   │   └── reviews/
+│   │       ├── route.ts
+│   │       └── [id]/route.ts
+│   │
+│   ├── layout.tsx                    # Root layout
+│   ├── globals.css                   # Global styles
+│   └── providers.tsx                 # Context providers
+│
+├── components/                       # Shared components
+│   ├── ui/                           # shadcn/ui (existing)
+│   ├── home/                         # Marketing (existing)
+│   ├── layout/                       # Header, Footer (existing)
+│   ├── portal/                       # Client portal (NEW)
+│   │   ├── ProgressChart.tsx
+│   │   ├── TicketCard.tsx
+│   │   ├── Timeline.tsx
+│   │   ├── DocumentUpload.tsx
+│   │   └── ChatWindow.tsx
+│   └── admin/                        # Admin (NEW)
+│       ├── TicketsTable.tsx
+│       ├── ProgressEditor.tsx
+│       ├── CallbacksTable.tsx
+│       └── ReviewsTable.tsx
+│
+├── lib/                              # Utilities
+│   ├── prisma.ts                     # Prisma client
+│   ├── auth.ts                       # NextAuth config
+│   ├── utils.ts                      # Existing utils
+│   └── s3.ts                         # S3 helpers (stub)
+│
+├── prisma/
+│   ├── schema.prisma                 # Database schema
+│   └── seed.ts                       # Seed admin users
+│
+├── public/                           # Static assets
+├── middleware.ts                     # Route protection
+├── next.config.js
+├── tailwind.config.ts
+└── package.json
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+                              PRISMA SCHEMA
+═══════════════════════════════════════════════════════════════════════════════
+
+```prisma
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ══════════════ AUTH & USERS ══════════════
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  phone         String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts         Account[]
+  sessions         Session[]
+  tickets          Ticket[]
+  chatMessages     ChatMessage[]
+  ticketEvents     TicketEvent[]     @relation("CreatedByAdmin")
+  reviewedDocs     Document[]        @relation("ReviewedByAdmin")
+  handledCallbacks CallbackRequest[] @relation("HandledByAdmin")
+  approvedReviews  Review[]          @relation("ApprovedByAdmin")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// ══════════════ TICKETS (LOAN CASES) ══════════════
+
+model Ticket {
+  id             String       @id @default(cuid())
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  loanType       String       // "Personal Loan", "Credit Card", etc.
+  lenderName     String?      // Bank/NBFC name
+  loanAmount     Float?       // Outstanding amount
+  
+  stage          Stage        @default(ASSESSMENT)
+  stagePercent   Int          @default(0)  // 0-100
+  overallPercent Int          @default(0)  // 0-100
+  status         TicketStatus @default(OPEN)
+  
+  settledAmount  Float?       // Final negotiated loan amount
+  settledAt      DateTime?    // When settlement was recorded
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  events         TicketEvent[]
+  documents      Document[]
+  messages       ChatMessage[]
+}
+
+enum Stage {
+  ASSESSMENT
+  REVIEW
+  STRATEGY
+  NEGOTIATION
+  SETTLEMENT
+  CLOSED
+  REJECTED
+}
+
+enum TicketStatus {
+  OPEN
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+// ══════════════ TICKET EVENTS (TIMELINE) ══════════════
+
+model TicketEvent {
+  id          String      @id @default(cuid())
+  ticketId    String
+  ticket      Ticket      @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  
+  type        EventType
+  message     String      // Human-readable update
+  
+  createdAt   DateTime    @default(now())
+  createdById String?
+  createdBy   User?       @relation("CreatedByAdmin", fields: [createdById], references: [id])
+}
+
+enum EventType {
+  INFO
+  DOCUMENT
+  STATUS_CHANGE
+  STAGE_CHANGE
+}
+
+// ══════════════ DOCUMENTS ══════════════
+
+model Document {
+  id              String         @id @default(cuid())
+  ticketId        String
+  ticket          Ticket         @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  
+  name            String         // "PAN Card", "Salary Slip"
+  fileUrl         String
+  mimeType        String?
+  fileSize        Int?
+  
+  status          DocumentStatus @default(PENDING)
+  rejectionReason String?
+  
+  uploadedAt      DateTime       @default(now())
+  reviewedAt      DateTime?
+  reviewedById    String?
+  reviewedBy      User?          @relation("ReviewedByAdmin", fields: [reviewedById], references: [id])
+}
+
+enum DocumentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// ══════════════ CHAT MESSAGES ══════════════
+
+model ChatMessage {
+  id         String   @id @default(cuid())
+  ticketId   String
+  ticket     Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  
+  senderId   String
+  sender     User     @relation(fields: [senderId], references: [id])
+  senderRole Role
+  content    String   @db.Text
+  
+  createdAt  DateTime @default(now())
+  readAt     DateTime?
+}
+
+// ══════════════ CALLBACK REQUESTS (LEADS) ══════════════
+
+model CallbackRequest {
+  id               String         @id @default(cuid())
+  name             String
+  phone            String
+  email            String?
+  city             String?
+  preferredTime    String?
+  source           String         @default("website")
+  
+  status           CallbackStatus @default(NEW)
+  notes            String?        @db.Text
+  
+  createdAt        DateTime       @default(now())
+  handledByAdminId String?
+  handledByAdmin   User?          @relation("HandledByAdmin", fields: [handledByAdminId], references: [id])
+}
+
+enum CallbackStatus {
+  NEW
+  CALLED
+  NO_ANSWER
+  QUALIFIED
+  DISQUALIFIED
+}
+
+// ══════════════ REVIEWS ══════════════
+
+model Review {
+  id                String   @id @default(cuid())
+  rating            Int      // 1-5
+  name              String
+  location          String?
+  text              String   @db.Text
+  
+  approved          Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  approvedAt        DateTime?
+  approvedByAdminId String?
+  approvedByAdmin   User?    @relation("ApprovedByAdmin", fields: [approvedByAdminId], references: [id])
+}
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+                              API ENDPOINTS
+═══════════════════════════════════════════════════════════════════════════════
+
+| Method | Endpoint                        | Access     | Description                             |
+|--------|--------------------------------|------------|----------------------------------------|
+| AUTH   |                                |            |                                        |
+| *      | /api/auth/*                    | Public     | NextAuth routes                        |
+|        |                                |            |                                        |
+| TICKETS|                                |            |                                        |
+| GET    | /api/tickets                   | USER/ADMIN | List tickets                           |
+| POST   | /api/tickets                   | USER       | Create new ticket                      |
+| GET    | /api/tickets/[id]              | Owner/ADMIN| Get ticket detail                      |
+| PATCH  | /api/tickets/[id]              | ADMIN      | Update stage/status                    |
+| POST   | /api/tickets/[id]/events       | ADMIN      | Add timeline event                     |
+| POST   | /api/tickets/[id]/documents    | USER       | Upload document                        |
+| GET    | /api/tickets/[id]/messages     | Owner/ADMIN| Get chat messages                      |
+| POST   | /api/tickets/[id]/messages     | Owner/ADMIN| Send message                           |
+|        |                                |            |                                        |
+| DOCS   |                                |            |                                        |
+| PATCH  | /api/documents/[id]            | ADMIN      | Approve/reject document                |
+|        |                                |            |                                        |
+| CALLBACKS|                              |            |                                        |
+| POST   | /api/callbacks                 | Public     | Submit callback request                |
+| GET    | /api/callbacks                 | ADMIN      | List all callbacks                     |
+| PATCH  | /api/callbacks/[id]            | ADMIN      | Update status/notes                    |
+|        |                                |            |                                        |
+| REVIEWS|                                |            |                                        |
+| POST   | /api/reviews                   | Public     | Submit review                          |
+| GET    | /api/reviews                   | Public     | Get approved reviews                   |
+| PATCH  | /api/reviews/[id]              | ADMIN      | Approve/reject review                  |
+
+═══════════════════════════════════════════════════════════════════════════════
+                           BUSINESS LOGIC NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+## 5-Stage Loan Journey
+
+1. ASSESSMENT  - Free initial consultation, intake, basic info, documents
+2. REVIEW      - Case review, eligibility, risk, checking lender options
+3. STRATEGY    - Structured repayment/settlement strategy design
+4. NEGOTIATION - Active negotiation with lenders, offers/counter-offers
+5. SETTLEMENT  - Final settlement/closure guidance, post-settlement advisory
+
+## Overall Progress Calculation
+
+Formula: overallPercent = (stageIndex × 20) + (stagePercent / 5)
+
+Where stageIndex is:
+- ASSESSMENT  = 0
+- REVIEW      = 1
+- STRATEGY    = 2
+- NEGOTIATION = 3
+- SETTLEMENT  = 4
+
+Examples:
+- ASSESSMENT at 50% = (0 × 20) + (50 / 5) = 10%
+- REVIEW at 100%    = (1 × 20) + (100 / 5) = 40%
+- STRATEGY at 50%   = (2 × 20) + (50 / 5) = 50%
+- SETTLEMENT at 100%= (4 × 20) + (100 / 5) = 100%
+
+## Auto-Generated Timeline Events
+
+When admin changes stage/status, auto-create TicketEvent:
+- Stage change: "Your case has moved to [STAGE_NAME]. [Stage description]"
+- Status change: "Case status updated to [STATUS]."
+- Document approved: "Your [DOC_NAME] has been verified successfully."
+- Document rejected: "Your [DOC_NAME] needs revision: [reason]"
+
+═══════════════════════════════════════════════════════════════════════════════
+                              UI WIREFRAMES
+═══════════════════════════════════════════════════════════════════════════════
+
+## Client Portal - Ticket Detail (/portal/tickets/[id])
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  📋 Portal > Tickets > Personal Loan #TK-2024-001                            │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────────────────────────┐ │
+│  │  🏦 Personal Loan - HDFC Bank        [OPEN] ●                           │ │
+│  │  ₹3,50,000 Outstanding                                                  │ │
+│  │                                                                         │ │
+│  │  [●] Assessment  [●] Review  [◐] Strategy  [ ] Negotiation  [ ] Settle  │ │
+│  │                                                                         │ │
+│  │  ┌────────────┐   Overall Progress: 45%                                │ │
+│  │  │   45%      │   "We're preparing your settlement strategy."          │ │
+│  │  │  🍩 CHART  │   ████████████░░░░░░░░░░░░░░░░░░                       │ │
+│  │  └────────────┘                                                        │ │
+│  └─────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  ┌───────────────────────────────┐  ┌─────────────────────────────────────┐ │
+│  │        📜 TIMELINE            │  │  [Documents] [💬 Chat]              │ │
+│  │                               │  ├─────────────────────────────────────┤ │
+│  │  ● 18 Jan - Strategy begun    │  │  📄 PAN Card        [✓ Approved]   │ │
+│  │  ● 15 Jan - Doc approved      │  │  📄 Salary Slip     [⏳ Pending]    │ │
+│  │  ● 12 Jan - Review complete   │  │  📄 Bank Statement  [✗ Rejected]   │ │
+│  │  ● 10 Jan - Case opened       │  │                                     │ │
+│  │                               │  │  [📤 Upload Document]               │ │
+│  └───────────────────────────────┘  └─────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+## Admin Dashboard - Ticket Management (/admin/tickets/[id])
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ┌──────────┐  Admin > Tickets > TK-2024-001                                  │
+│ │ 🏠 Home  │ ────────────────────────────────────────────────────────────── │
+│ │ 📋 Tickets│                                                                │
+│ │ 📞 Leads │  ┌────────────────────────────────────────────────────────────┐│
+│ │ ⭐ Reviews│  │  👤 Rajesh Kumar | Personal Loan | ₹3,50,000  [Save]      ││
+│ └──────────┘  │                                                            ││
+│               │  Stage:   [▼ STRATEGY    ]   Stage %: [====●====] 45%      ││
+│               │  Status:  [▼ OPEN        ]   Overall:  ███████░░░░ 45%     ││
+│               └────────────────────────────────────────────────────────────┘│
+│                                                                              │
+│  ┌────────────────────────────────┐  ┌─────────────────────────────────────┐│
+│  │  📝 TIMELINE EDITOR            │  │  📁 DOCUMENTS                       ││
+│  │  [Enter update...] [+ Add]     │  │  PAN Card     ✓ Approved   [View]  ││
+│  │                                │  │  Salary Slip  ⏳ Pending   [✓] [✗] ││
+│  │  ● 18 Jan - Strategy started   │  │  Bank Stmt    ✗ Rejected   [View]  ││
+│  │  ● 15 Jan - Doc approved       │  └─────────────────────────────────────┘│
+│  │  ● 12 Jan - Review complete    │                                         │
+│  └────────────────────────────────┘  ┌─────────────────────────────────────┐│
+│                                      │  💬 CHAT                             ││
+│                                      │  User: Can you update me?           ││
+│                                      │  You: Working on strategy now       ││
+│                                      │  [Type reply...            ] [Send] ││
+│                                      └─────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+                           EXISTING PAGES TO MIGRATE
+═══════════════════════════════════════════════════════════════════════════════
+
+Current Vite Routes → Next.js App Router Routes:
+
+| Current Route     | Next.js Route                    | Status      |
+|------------------|----------------------------------|-------------|
+| /                | app/(marketing)/page.tsx         | [ ] Pending |
+| /calculator      | app/(marketing)/calculator/      | [ ] Pending |
+| /how-it-works    | app/(marketing)/how-it-works/    | [ ] Pending |
+| /eligibility     | app/(marketing)/eligibility/     | [ ] Pending |
+| /contact         | app/(marketing)/contact/         | [ ] Pending |
+| /media           | app/(marketing)/media/           | [ ] Pending |
+| /privacy         | app/(marketing)/privacy/         | [ ] Pending |
+| /terms           | app/(marketing)/terms/           | [ ] Pending |
+| /disclaimer      | app/(marketing)/disclaimer/      | [ ] Pending |
+| /loan-policy     | app/(marketing)/loan-policy/     | [ ] Pending |
+| /no-guarantee    | app/(marketing)/no-guarantee/    | [ ] Pending |
+| /fees-refund     | app/(marketing)/fees-refund/     | [ ] Pending |
+| /dashboard       | (Remove - replaced by /portal)   | [ ] Pending |
+| /vault           | (Review if needed)               | [ ] Pending |
+
+═══════════════════════════════════════════════════════════════════════════════
+                              COMPLIANCE NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+From existing site - MUST maintain:
+
+✓ "We are not a bank, NBFC, or lender. Consultancy services only."
+✓ Clear disclaimers on all advisory-related pages
+✓ "Know Your Rights" orientation
+✓ "No Guarantee" policy - don't promise settlement outcomes
+✓ "Fees & Refund" policy in content structure
+✓ RBI-compliant, ethical, advisory-only positioning
+✓ Transparent, reassuring, rights-aware messaging tone
+
+═══════════════════════════════════════════════════════════════════════════════
+                              SETUP INSTRUCTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+## Prerequisites
+
+1. Node.js 18+ installed
+2. PostgreSQL installed locally (or use Docker)
+3. Google Cloud Console account (for OAuth)
+
+## Google OAuth Setup (Step-by-Step)
+
+1. Go to https://console.cloud.google.com/
+2. Create new project or select existing
+3. Go to "APIs & Services" > "Credentials"
+4. Click "Create Credentials" > "OAuth client ID"
+5. Configure consent screen if prompted
+6. Application type: "Web application"
+7. Authorized redirect URIs:
+   - http://localhost:3000/api/auth/callback/google (dev)
+   - https://yourdomain.com/api/auth/callback/google (prod)
+8. Copy Client ID and Client Secret to .env
+
+## Local PostgreSQL Setup
+
+Option A: Install PostgreSQL directly
+Option B: Use Docker:
+```bash
+docker run --name fairpay-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=fairpay -p 5432:5432 -d postgres
+```
+
+## Initial Setup Commands
+
+```bash
+# Install dependencies
+npm install
+
+# Setup Prisma
+npx prisma generate
+npx prisma db push
+
+# Seed admin user
+npx prisma db seed
+
+# Run development server
+npm run dev
+```
+
+═══════════════════════════════════════════════════════════════════════════════
+                                CHANGE LOG
+═══════════════════════════════════════════════════════════════════════════════
+
+2026-01-18 10:12 - Initial roadmap created
+                 - Defined full spec, folder structure, Prisma schema
+                 - Created progress tracker for all phases
+                 - Documented API endpoints and UI wireframes
+
+2026-01-18 11:20 - PHASE 1 COMPLETED ✅
+                 - Migrated from Vite to Next.js 14 App Router
+                 - All react-router-dom replaced with next/link
+                 - Created app/(marketing)/ with layout and home page
+                 - Setup PostgreSQL via Docker container (fairpay-postgres)
+                 - Ran `prisma db push` - all 12 tables created
+                 - Seeded database: 2 admin users, 5 sample reviews
+                 - Configured Google OAuth credentials in .env.local
+                 - NextAuth configured with role-based access
+                 - Middleware protecting /portal and /admin routes
+                 - API routes working: /api/reviews, /api/callbacks
+                 - Homepage now fetches reviews from PostgreSQL ✓
+
+2026-01-18 13:06 - PHASE 2 & 3 PROGRESS (Transition from Claude to Antigravity)
+                 - Built Client Portal Layout with Navigation
+                 - Created Portal Dashboard with dynamic stats
+                 - Developed My Tickets list and New Ticket Form flow
+                 - Implemented full Ticket API suite (/api/tickets and /api/tickets/[id])
+                 - Implemented Chat Message and Ticket Event APIs
+                 - Fixed Prisma schema mismatches in API routes
+                 - Created professional Auth Sign-in page with Google integration
+                 - Verified portal shell rendering and 401 protection
+
+2026-01-18 13:45 - PHASE 3 & 4 COMPLETED ✅ (Platform Full Integration)
+                 - COMPLETED CLIENT PORTAL: Added Ticket Detail with Chat, Timeline, and Docs.
+                 - ADDED Documents Page and Profile Page to the portal.
+                 - COMPLETED ADMIN COMMAND CENTER: Built /admin layout and dashboard.
+                 - IMPLEMENTED Admin Ticket Management: Global list and Case Control Panel.
+                 - IMPLEMENTED Lead Management: Callback tracking CRM and status processing.
+                 - IMPLEMENTED Review Moderation: One-click approval system for testimonials.
+                 - DATABASE MIGRATION: Added loanAmount/loanType to CallbackRequest model.
+                 - FINAL INTEGRATION: Connected public forms (Contact/Popups) to PostgreSQL.
+                 - SEO & PWA: Created manifest.json and optimized metadata.
+                 - DOCUMENTATION: Fully overhauled README.md for the new architecture.
+
+2026-01-19 14:20 - DOCUMENT PERSISTENCE & LIFECYCLE REFINEMENT ✅
+                 - STORAGE ARCHITECTURE: Introduced `StorageProvider` (lib/storage.ts) for local vs S3 flexibility.
+                 - DOCUMENT UPLOAD FIX: Resolved "Invalid time value" crashes; switched logic to use `uploadedAt`.
+                 - LIFECYCLE ENHANCEMENT: Added `CLOSED` and `REJECTED` terminal stages to PostgreSQL schema.
+                 - SETTLEMENT LOGIC: Added `settledAmount` tracking and "Settlement Reached!" UI for clients.
+                 - ADVISOR CONTROLS: Added dedicated "Resolve Case" and "Reject Case" buttons for one-click closure.
+                 - ADMIN FIXES: Created missing /admin/users/[id] detail page to fix 404 errors in dashboard.
+                 - PROGRESS MATH: Updated overall progress logic to handle terminal states at 100%.
+                 - API STABILITY: Fixed PATCH response consistency to prevent frontend state crashes.
+
+2026-01-19 16:30 - END-TO-END LIFECYCLE VERIFICATION ✅ (Live Browser Testing)
+                 - AUTOMATED TESTING: Implemented temporary CredentialsProvider for browser automation.
+                 - USER FLOW VERIFIED: Created "mpoket" ticket (₹2,00,000) as jayeshsinghwork@gmail.com.
+                   • Document upload successful with correct `uploadedAt` formatting (19 Jan 2026).
+                   • Initial progress correctly shown at 0% in Assessment stage.
+                 - ADMIN FLOW VERIFIED: Managed ticket as hsinghjayesh@gmail.com.
+                   • User profile navigation (no 404 errors).
+                   • Message communication working bidirectionally.
+                   • Settlement amount input (₹1,00,000) recorded correctly.
+                   • "Resolve Case" button successfully closed ticket.
+                 - CLIENT SUCCESS VERIFIED: Returned to user portal.
+                   • "Settlement Reached!" alert displayed prominently.
+                   • All progress stages marked complete (100%).
+                   • Final stage correctly shown as "Closed".
+                 - CLEANUP: Removed temporary authentication bypass, restored production OAuth.
+                 - RESULT: Full ticket lifecycle verified working end-to-end with visual evidence.
+
+═══════════════════════════════════════════════════════════════════════════════
+#                              END OF DOCUMENT
+═══════════════════════════════════════════════════════════════════════════════
