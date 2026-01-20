@@ -155,9 +155,19 @@ export function Header({ onOpenCallback }: HeaderProps) {
               </Button>
             </div>
 
-            {/* Mobile: Theme Toggle, Phone & Menu Toggle */}
+            {/* Mobile: Theme Toggle, Sign In, Callback & Menu Toggle */}
             <div className="flex lg:hidden items-center gap-0.5 xs:gap-1 sm:gap-1.5">
               <ThemeToggle />
+              <Link to="/signin">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="text-[0.6rem] xs:text-xs sm:text-sm px-1.5 xs:px-2 sm:px-3 py-1 xs:py-1.5 sm:py-2 h-auto whitespace-nowrap"
+                >
+                  <span className="hidden sm:inline">Sign In</span>
+                  <span className="sm:hidden">Login</span>
+                </Button>
+              </Link>
               <Button
                 variant="accent"
                 size="sm"
@@ -202,17 +212,6 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <div className="p-4">
                 {/* Handle */}
                 <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mb-6" />
-
-                {/* Get Started with Account Button - Always visible on mobile */}
-                <Link
-                  to="/signin"
-                  className="block w-full mb-4"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Button variant="default" className="w-full py-6 text-base font-semibold shadow-lg">
-                    Get Started with Account →
-                  </Button>
-                </Link>
 
                 <div className="space-y-1">
                   {mainNavItems.map((item) => (
