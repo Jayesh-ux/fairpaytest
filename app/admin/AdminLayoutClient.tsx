@@ -90,27 +90,27 @@ export default function AdminLayoutClient({
     return (
         <div className="min-h-screen bg-background text-foreground">
             {/* Mobile Header */}
-            <header className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border px-4 py-3">
+            <header className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border px-2 xs:px-3 sm:px-4 py-2 xs:py-3">
                 <div className="flex items-center justify-between">
                     <button
                         onClick={() => setSidebarOpen(true)}
-                        className="p-2 rounded-xl hover:bg-muted transition-colors"
+                        className="p-1.5 xs:p-2 rounded-lg xs:rounded-xl hover:bg-muted transition-colors"
                     >
-                        <Menu className="w-5 h-5" />
+                        <Menu className="w-4 h-4 xs:w-5 xs:h-5" />
                     </button>
 
-                    <Link href="/admin" className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/20">
-                            <ShieldCheck className="w-4 h-4 text-white" />
+                    <Link href="/admin" className="flex items-center gap-1.5 xs:gap-2">
+                        <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/20">
+                            <ShieldCheck className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-white" />
                         </div>
-                        <span className="font-bold text-lg">Admin</span>
+                        <span className="font-bold text-sm xs:text-base sm:text-lg">Admin</span>
                     </Link>
 
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 xs:gap-1">
                         <ThemeToggle />
-                        <button className="p-2 rounded-xl hover:bg-muted transition-colors relative">
-                            <Bell className="w-5 h-5" />
-                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full" />
+                        <button className="p-1.5 xs:p-2 rounded-lg xs:rounded-xl hover:bg-muted transition-colors relative">
+                            <Bell className="w-4 h-4 xs:w-5 xs:h-5" />
+                            <span className="absolute top-1 right-1 w-1.5 h-1.5 xs:w-2 xs:h-2 bg-primary rounded-full" />
                         </button>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ export default function AdminLayoutClient({
                             animate={{ x: 0 }}
                             exit={{ x: '-100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed left-0 top-0 bottom-0 w-80 bg-card border-r border-border z-50 lg:hidden"
+                            className="fixed left-0 top-0 bottom-0 w-[260px] xs:w-[280px] sm:w-80 bg-card border-r border-border z-50 lg:hidden overflow-y-auto"
                         >
                             <AdminSidebarContent
                                 session={session}
@@ -254,7 +254,7 @@ export default function AdminLayoutClient({
                 </header>
 
                 {/* Page Content */}
-                <div className="p-4 lg:p-8">{children}</div>
+                <div className="p-2 xs:p-3 sm:p-4 lg:p-8">{children}</div>
             </main>
         </div>
     );

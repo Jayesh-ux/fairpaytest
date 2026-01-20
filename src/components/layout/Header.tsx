@@ -162,15 +162,15 @@ export function Header({ onOpenCallback }: HeaderProps) {
               </Button>
             </div>
 
-            {/* Mobile: Theme Toggle, Login, Phone & Menu Toggle */}
+            {/* Mobile: Theme Toggle, Login, Callback & Menu Toggle */}
             <div className="flex lg:hidden items-center gap-0.5 xs:gap-1 sm:gap-1.5">
               <ThemeToggle />
               <a
                 href="/auth/signin"
-                className="p-1 xs:p-1.5 sm:p-2 rounded-lg hover:bg-muted/50 transition-colors flex-shrink-0"
-                title="Login / Sign Up"
+                className="flex items-center gap-1 px-2 xs:px-2.5 py-1 xs:py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex-shrink-0 text-[10px] xs:text-xs font-semibold"
               >
-                <User className="w-4 h-4 xs:w-5 xs:h-5 sm:w-5 sm:h-5 text-muted-foreground" />
+                <LogIn className="w-3 h-3 xs:w-3.5 xs:h-3.5" />
+                <span>Login</span>
               </a>
               <Button
                 variant="accent"

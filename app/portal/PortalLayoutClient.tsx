@@ -79,31 +79,31 @@ export default function PortalLayoutClient({
     return (
         <div className="min-h-screen bg-background">
             {/* Mobile Header */}
-            <header className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border px-4 py-3">
+            <header className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border px-2 xs:px-3 sm:px-4 py-2 xs:py-3">
                 <div className="flex items-center justify-between">
                     <button
                         onClick={() => setSidebarOpen(true)}
-                        className="p-2 rounded-xl hover:bg-muted transition-colors"
+                        className="p-1.5 xs:p-2 rounded-lg xs:rounded-xl hover:bg-muted transition-colors"
                     >
-                        <Menu className="w-5 h-5" />
+                        <Menu className="w-4 h-4 xs:w-5 xs:h-5" />
                     </button>
 
-                    <Link href="/portal" className="flex items-center gap-2">
+                    <Link href="/portal" className="flex items-center gap-1.5 xs:gap-2">
                         <img
                             src="/logo.jpg"
                             alt="FairPay"
-                            className="w-8 h-8 rounded-lg shadow-md"
+                            className="w-7 h-7 xs:w-8 xs:h-8 rounded-lg shadow-md"
                         />
-                        <span className="font-bold text-lg">
+                        <span className="font-bold text-sm xs:text-base sm:text-lg">
                             Fair<span className="text-primary">Pay</span>
                         </span>
                     </Link>
 
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 xs:gap-1">
                         <ThemeToggle />
-                        <button className="p-2 rounded-xl hover:bg-muted transition-colors relative">
-                            <Bell className="w-5 h-5" />
-                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full" />
+                        <button className="p-1.5 xs:p-2 rounded-lg xs:rounded-xl hover:bg-muted transition-colors relative">
+                            <Bell className="w-4 h-4 xs:w-5 xs:h-5" />
+                            <span className="absolute top-1 right-1 w-1.5 h-1.5 xs:w-2 xs:h-2 bg-primary rounded-full" />
                         </button>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ export default function PortalLayoutClient({
                             animate={{ x: 0 }}
                             exit={{ x: '-100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed left-0 top-0 bottom-0 w-80 bg-card border-r border-border z-50 lg:hidden"
+                            className="fixed left-0 top-0 bottom-0 w-[260px] xs:w-[280px] sm:w-80 bg-card border-r border-border z-50 lg:hidden overflow-y-auto"
                         >
                             <SidebarContent
                                 session={session}
@@ -234,7 +234,7 @@ export default function PortalLayoutClient({
                 </header>
 
                 {/* Page Content */}
-                <div className="p-4 lg:p-8">{children}</div>
+                <div className="p-2 xs:p-3 sm:p-4 lg:p-8">{children}</div>
             </main>
         </div>
     );

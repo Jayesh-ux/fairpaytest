@@ -123,63 +123,63 @@ export default function PortalDashboard() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-6 max-w-6xl mx-auto"
+            className="space-y-4 xs:space-y-5 sm:space-y-6 max-w-6xl mx-auto overflow-hidden"
         >
             {/* Welcome Hero Section */}
             <motion.div variants={item}>
                 <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-primary/20 via-primary/10 to-background">
-                    <CardContent className="p-6 lg:p-8">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                            <div className="flex items-center gap-4">
+                    <CardContent className="p-3 xs:p-4 sm:p-6 lg:p-8">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 xs:gap-4 sm:gap-6">
+                            <div className="flex items-center gap-2 xs:gap-3 sm:gap-4">
                                 <div className="relative">
-                                    <Avatar className="w-16 h-16 lg:w-20 lg:h-20 border-4 border-background shadow-xl">
+                                    <Avatar className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 border-2 xs:border-4 border-background shadow-xl">
                                         <AvatarImage src={session?.user?.image || ''} />
-                                        <AvatarFallback className="bg-primary text-2xl font-bold">
+                                        <AvatarFallback className="bg-primary text-lg xs:text-xl sm:text-2xl font-bold">
                                             {session?.user?.name?.charAt(0) || 'U'}
                                         </AvatarFallback>
                                     </Avatar>
-                                    <span className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-4 border-background flex items-center justify-center">
-                                        <CheckCircle2 className="w-3 h-3 text-white" />
+                                    <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 bg-emerald-500 rounded-full border-2 xs:border-4 border-background flex items-center justify-center">
+                                        <CheckCircle2 className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 text-white" />
                                     </span>
                                 </div>
-                                <div>
-                                    <p className="text-sm text-muted-foreground flex items-center gap-2">
+                                <div className="min-w-0">
+                                    <p className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground flex items-center gap-1 xs:gap-2">
                                         {getGreeting()}
-                                        <Sparkles className="w-4 h-4 text-amber-500" />
+                                        <Sparkles className="w-3 h-3 xs:w-4 xs:h-4 text-amber-500" />
                                     </p>
-                                    <h1 className="text-2xl lg:text-3xl font-bold">
+                                    <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold truncate">
                                         {session?.user?.name?.split(' ')[0] || 'Guest'}
                                     </h1>
                                     <Badge variant="secondary" className={cn(
-                                        "mt-2 rounded-full px-3 py-1 flex items-center gap-1.5 border-none text-xs font-semibold",
+                                        "mt-1 xs:mt-2 rounded-full px-2 xs:px-3 py-0.5 xs:py-1 flex items-center gap-1 xs:gap-1.5 border-none text-[10px] xs:text-xs font-semibold w-fit",
                                         session?.user?.role === 'ADMIN'
                                             ? "bg-primary text-white"
                                             : "bg-primary/10 text-primary"
                                     )}>
                                         {session?.user?.role === 'ADMIN' ? (
                                             <>
-                                                <ShieldCheck className="w-3 h-3" />
+                                                <ShieldCheck className="w-2.5 h-2.5 xs:w-3 xs:h-3" />
                                                 Admin Access
                                             </>
                                         ) : (
                                             <>
-                                                <UserIcon className="w-3 h-3" />
+                                                <UserIcon className="w-2.5 h-2.5 xs:w-3 xs:h-3" />
                                                 Client Portal
                                             </>
                                         )}
                                     </Badge>
                                 </div>
                             </div>
-                            <Button size="lg" className="w-full md:w-auto gap-2 rounded-full shadow-lg shadow-primary/20" asChild>
+                            <Button size="sm" className="w-full sm:w-auto gap-1.5 xs:gap-2 rounded-full shadow-lg shadow-primary/20 text-xs xs:text-sm" asChild>
                                 <Link href="/portal/tickets/new">
-                                    <Plus className="w-4 h-4" />
+                                    <Plus className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
                                     New Case
                                 </Link>
                             </Button>
                         </div>
                         {/* Decorative elements */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+                        <div className="absolute top-0 right-0 w-32 xs:w-48 sm:w-64 h-32 xs:h-48 sm:h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                        <div className="absolute bottom-0 left-0 w-16 xs:w-24 sm:w-32 h-16 xs:h-24 sm:h-32 bg-secondary/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
                     </CardContent>
                 </Card>
             </motion.div>
@@ -188,23 +188,23 @@ export default function PortalDashboard() {
             {tickets.length > 0 && (
                 <motion.div variants={item}>
                     <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
-                        <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                        <Target className="w-5 h-5 text-primary" />
+                        <CardContent className="p-3 xs:p-4 sm:p-6">
+                            <div className="flex items-center justify-between mb-2 xs:mb-3 sm:mb-4 gap-2">
+                                <div className="flex items-center gap-2 xs:gap-3 min-w-0">
+                                    <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                        <Target className="w-4 h-4 xs:w-5 xs:h-5 text-primary" />
                                     </div>
-                                    <div>
-                                        <h3 className="font-semibold">Overall Journey Progress</h3>
-                                        <p className="text-sm text-muted-foreground">Average across all your cases</p>
+                                    <div className="min-w-0">
+                                        <h3 className="font-semibold text-xs xs:text-sm sm:text-base truncate">Journey Progress</h3>
+                                        <p className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground hidden xs:block">Average across all cases</p>
                                     </div>
                                 </div>
-                                <span className="text-3xl font-bold text-primary">{stats.averageProgress}%</span>
+                                <span className="text-xl xs:text-2xl sm:text-3xl font-bold text-primary flex-shrink-0">{stats.averageProgress}%</span>
                             </div>
-                            <Progress value={stats.averageProgress} className="h-3" />
-                            <div className="flex justify-between mt-3 text-xs text-muted-foreground">
+                            <Progress value={stats.averageProgress} className="h-2 xs:h-2.5 sm:h-3" />
+                            <div className="flex justify-between mt-2 xs:mt-3 text-[8px] xs:text-[10px] sm:text-xs text-muted-foreground">
                                 <span>Started</span>
-                                <span>Assessment</span>
+                                <span className="hidden xs:inline">Assessment</span>
                                 <span>Negotiation</span>
                                 <span>Settled</span>
                             </div>
@@ -214,7 +214,7 @@ export default function PortalDashboard() {
             )}
 
             {/* Stats Grid - Bento Style */}
-            <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
                 {[
                     {
                         label: 'Active Cases',
@@ -256,12 +256,12 @@ export default function PortalDashboard() {
                         transition={{ delay: index * 0.1 }}
                     >
                         <Card className="border-border/50 hover:border-primary/30 transition-all duration-300 group">
-                            <CardContent className="p-4 lg:p-5">
-                                <div className={cn("w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110", stat.bgColor)}>
-                                    <stat.icon className={cn("w-5 h-5 lg:w-6 lg:h-6", stat.iconColor)} />
+                            <CardContent className="p-2.5 xs:p-3 sm:p-4 lg:p-5">
+                                <div className={cn("w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg xs:rounded-xl flex items-center justify-center mb-2 xs:mb-3 transition-transform group-hover:scale-110", stat.bgColor)}>
+                                    <stat.icon className={cn("w-4 h-4 xs:w-5 xs:h-5 lg:w-6 lg:h-6", stat.iconColor)} />
                                 </div>
-                                <p className="text-2xl lg:text-3xl font-bold">{stat.value}</p>
-                                <p className="text-xs lg:text-sm text-muted-foreground mt-1">{stat.label}</p>
+                                <p className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold truncate">{stat.value}</p>
+                                <p className="text-[9px] xs:text-[10px] sm:text-xs lg:text-sm text-muted-foreground mt-0.5 xs:mt-1 truncate">{stat.label}</p>
                             </CardContent>
                         </Card>
                     </motion.div>
@@ -269,7 +269,7 @@ export default function PortalDashboard() {
             </motion.div>
 
             {/* Main Content Grid */}
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
                 {/* Tickets List */}
                 <motion.div variants={item} className="lg:col-span-2">
                     <Card className="border-border/50 h-full">

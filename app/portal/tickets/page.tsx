@@ -76,50 +76,52 @@ export default function TicketsPage() {
     );
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-3 xs:space-y-4 sm:space-y-6 overflow-hidden">
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                    <h1 className="text-2xl font-bold text-foreground">My Tickets</h1>
-                    <p className="text-muted-foreground">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 xs:gap-3 sm:gap-4">
+                <div className="min-w-0">
+                    <h1 className="text-lg xs:text-xl sm:text-2xl font-bold text-foreground truncate">My Tickets</h1>
+                    <p className="text-xs xs:text-sm text-muted-foreground truncate">
                         Track all your debt resolution cases
                     </p>
                 </div>
-                <Button asChild>
+                <Button asChild size="sm" className="w-full sm:w-auto text-xs xs:text-sm">
                     <Link href="/portal/tickets/new">
-                        <Plus className="w-4 h-4 mr-2" />
+                        <Plus className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1 xs:mr-2" />
                         New Ticket
                     </Link>
                 </Button>
             </div>
 
             {/* Filters */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-2 xs:gap-3 sm:gap-4">
                 <div className="relative flex-1">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                    <Search className="absolute left-2.5 xs:left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 xs:w-4 xs:h-4 text-muted-foreground" />
                     <input
                         type="text"
                         placeholder="Search by lender or loan type..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        className="w-full pl-8 xs:pl-10 pr-3 xs:pr-4 py-2 xs:py-2.5 rounded-lg xs:rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-xs xs:text-sm"
                     />
                 </div>
-                <div className="flex gap-2 flex-wrap">
-                    {['All', 'OPEN', 'ON_HOLD', 'COMPLETED'].map((status) => (
-                        <button
-                            key={status}
-                            onClick={() => setStatusFilter(status === 'All' ? null : status)}
-                            className={cn(
-                                'px-4 py-2 rounded-lg text-sm font-medium transition-all',
-                                (status === 'All' && !statusFilter) || statusFilter === status
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                            )}
-                        >
-                            {status.replace('_', ' ')}
-                        </button>
-                    ))}
+                <div className="overflow-x-auto -mx-2 xs:-mx-3 px-2 xs:px-3 pb-1 scrollbar-hide">
+                    <div className="flex gap-1.5 xs:gap-2 min-w-max">
+                        {['All', 'OPEN', 'ON_HOLD', 'COMPLETED'].map((status) => (
+                            <button
+                                key={status}
+                                onClick={() => setStatusFilter(status === 'All' ? null : status)}
+                                className={cn(
+                                    'px-2.5 xs:px-3 sm:px-4 py-1.5 xs:py-2 rounded-lg text-[10px] xs:text-xs sm:text-sm font-medium transition-all whitespace-nowrap',
+                                    (status === 'All' && !statusFilter) || statusFilter === status
+                                        ? 'bg-primary text-primary-foreground'
+                                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                                )}
+                            >
+                                {status.replace('_', ' ')}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -160,17 +162,17 @@ export default function TicketsPage() {
                             transition={{ delay: index * 0.05 }}
                         >
                             <Link href={`/portal/tickets/${ticket.id}`}>
-                                <div className="glass-card-strong p-6 rounded-2xl hover:shadow-lg hover:border-primary/30 transition-all">
-                                    <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+                                <div className="glass-card-strong p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl hover:shadow-lg hover:border-primary/30 transition-all">
+                                    <div className="flex flex-col gap-3 xs:gap-4">
                                         {/* Main Info */}
                                         <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <h3 className="font-bold text-lg text-foreground truncate">
+                                            <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-3 mb-1.5 xs:mb-2">
+                                                <h3 className="font-bold text-sm xs:text-base sm:text-lg text-foreground truncate max-w-[150px] xs:max-w-[200px] sm:max-w-none">
                                                     {ticket.lenderName || ticket.loanType}
                                                 </h3>
                                                 <span
                                                     className={cn(
-                                                        'px-2.5 py-0.5 text-xs font-medium rounded-full text-white',
+                                                        'px-1.5 xs:px-2 sm:px-2.5 py-0.5 text-[9px] xs:text-[10px] sm:text-xs font-medium rounded-full text-white flex-shrink-0',
                                                         stageInfo[ticket.stage as keyof typeof stageInfo]?.color
                                                     )}
                                                 >
@@ -178,7 +180,7 @@ export default function TicketsPage() {
                                                 </span>
                                                 <span
                                                     className={cn(
-                                                        'px-2.5 py-0.5 text-xs font-medium rounded-full border',
+                                                        'px-1.5 xs:px-2 sm:px-2.5 py-0.5 text-[9px] xs:text-[10px] sm:text-xs font-medium rounded-full border flex-shrink-0',
                                                         statusColors[ticket.status as keyof typeof statusColors]
                                                     )}
                                                 >
@@ -186,7 +188,7 @@ export default function TicketsPage() {
                                                 </span>
                                             </div>
 
-                                            <p className="text-sm text-muted-foreground mb-3">
+                                            <p className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground mb-2 xs:mb-3">
                                                 {ticket.loanType.replace(/_/g, ' ')}
                                                 {ticket.loanAmount && (
                                                     <> • ₹{ticket.loanAmount.toLocaleString('en-IN')}</>
@@ -195,11 +197,11 @@ export default function TicketsPage() {
 
                                             {/* Progress Bar */}
                                             <div className="max-w-md">
-                                                <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                                                <div className="flex justify-between text-[10px] xs:text-xs text-muted-foreground mb-1">
                                                     <span>Progress</span>
                                                     <span>{ticket.overallPercent}%</span>
                                                 </div>
-                                                <div className="h-2 bg-muted rounded-full overflow-hidden">
+                                                <div className="h-1.5 xs:h-2 bg-muted rounded-full overflow-hidden">
                                                     <div
                                                         className="h-full bg-gradient-to-r from-primary to-secondary transition-all"
                                                         style={{ width: `${ticket.overallPercent}%` }}
@@ -209,20 +211,22 @@ export default function TicketsPage() {
                                         </div>
 
                                         {/* Stats */}
-                                        <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                                            <div className="flex items-center gap-1.5">
-                                                <Clock className="w-4 h-4" />
-                                                <span>{ticket._count.events} events</span>
+                                        <div className="flex items-center justify-between pt-2 xs:pt-0">
+                                            <div className="flex items-center gap-3 xs:gap-4 sm:gap-6 text-[10px] xs:text-xs sm:text-sm text-muted-foreground overflow-x-auto scrollbar-hide">
+                                                <div className="flex items-center gap-1 xs:gap-1.5 whitespace-nowrap">
+                                                    <Clock className="w-3 h-3 xs:w-4 xs:h-4" />
+                                                    <span>{ticket._count.events}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1 xs:gap-1.5 whitespace-nowrap">
+                                                    <FileText className="w-3 h-3 xs:w-4 xs:h-4" />
+                                                    <span>{ticket._count.documents}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1 xs:gap-1.5 whitespace-nowrap">
+                                                    <MessageSquare className="w-3 h-3 xs:w-4 xs:h-4" />
+                                                    <span>{ticket._count.messages}</span>
+                                                </div>
                                             </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <FileText className="w-4 h-4" />
-                                                <span>{ticket._count.documents} docs</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <MessageSquare className="w-4 h-4" />
-                                                <span>{ticket._count.messages} msgs</span>
-                                            </div>
-                                            <ArrowRight className="w-5 h-5 text-primary" />
+                                            <ArrowRight className="w-4 h-4 xs:w-5 xs:h-5 text-primary flex-shrink-0" />
                                         </div>
                                     </div>
                                 </div>
