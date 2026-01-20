@@ -1,8 +1,9 @@
+'use client';
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Calculator as CalcIcon,
   IndianRupee,
@@ -64,7 +65,7 @@ export default function CalculatorPage() {
   const savingsPercent = settlement ? ((savings / inputs.totalDebt) * 100).toFixed(0) : 0;
 
   return (
-    <Layout>
+    <>
       <section className="pt-28 lg:pt-36 pb-20 lg:pb-32 min-h-screen">
         <div className="container mx-auto px-4">
           {/* Header */}
@@ -254,7 +255,7 @@ export default function CalculatorPage() {
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button variant="hero" size="xl" className="flex-1" asChild>
-                        <Link to="/contact">
+                        <Link href="/contact">
                           Get Free Consultation
                           <ArrowRight className="w-5 h-5" />
                         </Link>
@@ -333,6 +334,6 @@ export default function CalculatorPage() {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

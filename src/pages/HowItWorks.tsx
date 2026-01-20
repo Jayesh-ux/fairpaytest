@@ -1,7 +1,8 @@
+'use client';
+
 import { motion } from "framer-motion";
-import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   ClipboardCheck,
   Users,
@@ -68,7 +69,7 @@ const steps = [
 
 export default function HowItWorksPage() {
   return (
-    <Layout>
+    <>
       <section className="pt-28 lg:pt-36 pb-20 lg:pb-32">
         <div className="container mx-auto px-4">
           {/* Header */}
@@ -154,7 +155,7 @@ export default function HowItWorksPage() {
             className="text-center mt-12"
           >
             <Button variant="accent" size="xl" asChild>
-              <Link to="/eligibility">
+              <Link href="/eligibility">
                 Start Your Journey
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -162,6 +163,6 @@ export default function HowItWorksPage() {
           </motion.div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

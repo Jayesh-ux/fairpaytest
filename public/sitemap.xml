@@ -2,62 +2,75 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.fairpaysolution.com/</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.fairpaysolution.com/how-it-works</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.fairpaysolution.com/eligibility</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.fairpaysolution.com/calculator</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.fairpaysolution.com/contact</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.fairpaysolution.com/media</loc>
-    <lastmod>2026-01-16</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.fairpaysolution.com/dashboard/personal</loc>
-    <lastmod>2026-01-16</lastmod>
+    <loc>https://www.fairpaysolution.com/privacy</loc>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.fairpaysolution.com/dashboard/credit-card</loc>
-    <lastmod>2026-01-16</lastmod>
+    <loc>https://www.fairpaysolution.com/terms</loc>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.fairpaysolution.com/dashboard/harassment</loc>
-    <lastmod>2026-01-16</lastmod>
+    <loc>https://www.fairpaysolution.com/disclaimer</loc>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.fairpaysolution.com/dashboard/credit-score</loc>
-    <lastmod>2026-01-16</lastmod>
+    <loc>https://www.fairpaysolution.com/loan-policy</loc>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.fairpaysolution.com/no-guarantee</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.fairpaysolution.com/fees-refund</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
+

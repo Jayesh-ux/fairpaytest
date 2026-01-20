@@ -1,8 +1,9 @@
+'use client';
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   ChevronRight,
   ChevronLeft,
@@ -86,7 +87,7 @@ export default function EligibilityPage() {
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
       if (scriptUrl) {
         const submissionData = {
           name: leadData.name,
@@ -131,7 +132,7 @@ export default function EligibilityPage() {
   const progress = ((currentStep - 1) / 4) * 100;
 
   return (
-    <Layout>
+    <>
       <section className="pt-28 lg:pt-36 pb-20 lg:pb-32 min-h-screen">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
@@ -374,7 +375,7 @@ export default function EligibilityPage() {
 
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button variant="hero" size="xl" asChild>
-                          <Link to="/calculator">
+                          <Link href="/calculator">
                             Calculate My Savings
                             <ArrowRight className="w-5 h-5" />
                           </Link>
@@ -393,6 +394,6 @@ export default function EligibilityPage() {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

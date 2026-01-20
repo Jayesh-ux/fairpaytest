@@ -1,10 +1,11 @@
-import { Layout } from "@/components/layout/Layout";
+'use client';
+
 import { motion } from "framer-motion";
 import { AlertTriangle, Info, TrendingDown, Scale } from "lucide-react";
 
 export default function NoGuaranteePage() {
     return (
-        <Layout>
+        <>
             <section className="pt-28 lg:pt-36 pb-20 lg:pb-32 min-h-screen bg-gradient-to-b from-background to-secondary/5">
                 <div className="container mx-auto px-4 max-w-4xl">
                     {/* Header */}
@@ -284,6 +285,6 @@ export default function NoGuaranteePage() {
                     </motion.div>
                 </div>
             </section>
-        </Layout>
+        </>
     );
 }

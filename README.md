@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+# FairPay Solutions - Client Portal & Admin Dashboard
 
-## Project info
+A comprehensive, production-grade debt advisory platform built with Next.js 14, Prisma, and NextAuth.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Key Features
 
-## How can I edit this code?
+### Client Portal
+- **Case Dashboard**: Real-time overview of debt settlement progress.
+- **Ticket Management**: Create and track multiple loan settlement cases.
+- **Interaction Hub**: Secure real-time chat with debt advisors.
+- **Case Timeline**: Automated logs of every step in the settlement journey.
+- **Document Management**: Upload and track verification documents.
 
-There are several ways of editing your application.
+### Admin Dashboard
+- **Command Center**: High-level statistics on active cases, leads, and reviews.
+- **Case Management**: Full control over ticket stages, status, and progress.
+- **Lead Tracking**: Manage callback requests from public landing pages.
+- **Review Moderation**: Approve or reject client testimonials before they go live.
+- **User Directory**: Unified view of all registered clients and their activity.
 
-**Use Lovable**
+### Technical Excellence
+- **Next.js 14 App Router**: Server-side rendering for optimal performance and SEO.
+- **Prisma ORM**: Robust database management with PostgreSQL.
+- **NextAuth (Google OAuth)**: Secure, enterprise-grade authentication.
+- **Modern UI**: High-fidelity dark mode interface with Framer Motion animations.
+- **Glassmorphism**: Premium aesthetic and responsive design using Tailwind CSS.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🛠️ Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### 1. Prerequisites
+- Node.js 18+ 
+- PostgreSQL database
+- Google Cloud Console Project (for OAuth)
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+### 2. Installation
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 3. Environment Setup
+Create a `.env` file in the root directory:
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/fairpay"
 
-# Step 3: Install the necessary dependencies.
-npm i
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-here"
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+```
+
+### 4. Database Initialization
+```sh
+npx prisma db push
+npx prisma db seed # To create initial admin users
+```
+
+### 5. Running the App
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 📂 Project Structure
+- `app/`: Next.js 14 App Router routes.
+  - `(marketing)/`: Public-facing website pages.
+  - `portal/`: Client-facing dashboard and tools.
+  - `admin/`: Staff-only management dashboard.
+  - `api/`: REST API endpoints.
+  - `auth/`: Customized authentication pages.
+- `components/`: Reusable UI components (shadcn/ui + custom).
+- `lib/`: Utility functions, auth config, and Prisma client.
+- `prisma/`: Database schema and seed scripts.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## ⚖️ License
+Proprietary - FairPay Solutions

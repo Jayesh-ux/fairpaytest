@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { FileText, AlertTriangle, Shield, DollarSign, RefreshCw, Scale } from "lucide-react";
 
