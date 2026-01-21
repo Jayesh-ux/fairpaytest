@@ -271,42 +271,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mb-6" />
 
                 {/* Mobile Auth Action */}
-                <div className="px-4 mb-6">
-                  {status === 'authenticated' ? (
-                    <div className="bg-muted/30 p-4 rounded-2x">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                            {session.user?.name?.[0]}
-                          </div>
-                          <div>
-                            <p className="text-sm font-bold">{session.user?.name}</p>
-                            <Badge className="text-[10px] h-4 bg-primary text-white border-none uppercase tracking-tighter">
-                              {session.user?.role}
-                            </Badge>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <Link href="/portal" className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-primary/10 text-primary font-bold text-sm">
-                          <LayoutDashboard className="w-4 h-4" />
-                          Portal
-                        </Link>
-                        {session.user?.role === 'ADMIN' && (
-                          <Link href="/admin" className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-primary text-white font-bold text-sm">
-                            <ShieldCheck className="w-4 h-4" />
-                            Admin
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link href="/auth/signin" className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-white font-bold">
-                      <LogIn className="w-5 h-5" />
-                      Sign In to Portal
-                    </Link>
-                  )}
-                </div>
+
 
                 <div className="space-y-1">
                   {mainNavItems.map((item) => (
