@@ -210,14 +210,14 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
               {status === 'authenticated' ? (
                 <Link href="/portal">
-                  <Button variant="ghost" size="icon" className="w-8 h-8 xs:w-9 xs:h-9 rounded-full text-foreground hover:text-primary transition-colors">
-                    <LayoutDashboard className="w-4 h-4 xs:w-5 xs:h-5" />
+                  <Button variant="ghost" size="sm" className="px-2 h-8 text-xs xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                    Portal
                   </Button>
                 </Link>
               ) : (
                 <Link href="/auth/signin">
-                  <Button variant="ghost" size="icon" className="w-8 h-8 xs:w-9 xs:h-9 rounded-full text-foreground hover:text-primary transition-colors">
-                    <LogIn className="w-4 h-4 xs:w-5 xs:h-5" />
+                  <Button variant="ghost" size="sm" className="px-2 h-8 text-xs xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                    Login
                   </Button>
                 </Link>
               )}
