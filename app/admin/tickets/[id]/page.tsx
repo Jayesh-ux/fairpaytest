@@ -199,36 +199,40 @@ export default function AdminTicketDetailPage() {
     return (
         <div className="space-y-8 max-w-7xl mx-auto">
             {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                <div className="space-y-2">
-                    <Link href="/admin/tickets" className="inline-flex items-center gap-2 text-xs font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
-                        <ArrowLeft className="w-4 h-4" /> Back to All Cases
+            <div className="flex flex-col gap-4">
+                <div className="space-y-2 w-full overflow-hidden">
+                    <Link href="/admin/tickets" className="inline-flex items-center gap-2 text-[10px] font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
+                        <ArrowLeft className="w-3 h-3" /> Back to All Cases
                     </Link>
-                    <div className="flex items-center gap-4">
-                        <h1 className="text-3xl font-bold">{ticket.lenderName || ticket.loanType}</h1>
-                        <Badge className="bg-primary/20 text-primary border-primary/30 uppercase text-[10px] tracking-widest px-3 py-1">Case #{ticket.id.slice(0, 8)}</Badge>
+                    <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-1">
+                            <h1 className="text-xl font-bold truncate leading-tight">{ticket.lenderName || ticket.loanType}</h1>
+                            <Badge className="w-fit bg-primary/20 text-primary border-primary/30 uppercase text-[10px] tracking-widest px-2 py-0.5">#{ticket.id.slice(0, 8)}</Badge>
+                        </div>
+                        <p className="text-muted-foreground flex items-center gap-2 text-xs truncate">
+                            <User className="w-3 h-3 shrink-0" /> <span className="truncate">{ticket.user.name}</span>
+                        </p>
                     </div>
-                    <p className="text-muted-foreground flex items-center gap-2">
-                        <User className="w-4 h-4" /> {ticket.user.name} ({ticket.user.email})
-                    </p>
                 </div>
-                <div className="flex gap-3">
-                    <Button variant="outline" className="rounded-xl border-white/10" disabled={updating}>Manage Documents</Button>
-                    <Button variant="destructive" className="rounded-xl" disabled={updating}>
+
+                {/* Action Buttons - Stacked on mobile, Row on md */}
+                <div className="flex flex-col sm:flex-row gap-2 w-full">
+                    <Button variant="outline" className="w-full sm:w-auto rounded-xl border-white/10 text-xs h-10" disabled={updating}>Manage Documents</Button>
+                    <Button variant="destructive" className="w-full sm:w-auto rounded-xl text-xs h-10" disabled={updating}>
                         <Trash2 className="w-4 h-4 mr-2" /> Delete
                     </Button>
                 </div>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
                 {/* Left Column: Stats & Controls */}
                 <div className="lg:col-span-1 space-y-6">
                     <Card className="glass-card-strong border-none">
-                        <CardHeader>
+                        <CardHeader className="p-4 xs:p-6">
                             <CardTitle className="text-lg">Control Panel</CardTitle>
                             <CardDescription>Adjust case parameters</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-4">
+                        <CardContent className="p-4 xs:p-6 space-y-4">
                             <div className="space-y-2">
                                 <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Case Stage</label>
                                 <Select
@@ -236,7 +240,7 @@ export default function AdminTicketDetailPage() {
                                     onValueChange={(val) => handleUpdateTicket({ stage: val })}
                                     disabled={updating}
                                 >
-                                    <SelectTrigger className="bg-background border-white/5 rounded-xl h-12">
+                                    <SelectTrigger className="bg-background border-white/5 rounded-xl h-10 xs:h-12 text-xs xs:text-sm">
                                         <SelectValue />
                                     </SelectTrigger>
                                     <SelectContent className="bg-[#121214] border-white/5 text-white">
@@ -252,7 +256,7 @@ export default function AdminTicketDetailPage() {
                                     onValueChange={(val) => handleUpdateTicket({ status: val })}
                                     disabled={updating}
                                 >
-                                    <SelectTrigger className="bg-background border-white/5 rounded-xl h-12">
+                                    <SelectTrigger className="bg-background border-white/5 rounded-xl h-10 xs:h-12 text-xs xs:text-sm">
                                         <SelectValue />
                                     </SelectTrigger>
                                     <SelectContent className="bg-[#121214] border-white/5 text-white">
@@ -264,7 +268,7 @@ export default function AdminTicketDetailPage() {
                             <div className="space-y-2">
                                 <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Settlement Amount (INR)</label>
                                 <div className="relative">
-                                    <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                    <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 xs:w-4 xs:h-4 text-muted-foreground" />
                                     <input
                                         type="number"
                                         placeholder="Enter final amount"
@@ -275,7 +279,7 @@ export default function AdminTicketDetailPage() {
                                                 handleUpdateTicket({ settledAmount: val });
                                             }
                                         }}
-                                        className="w-full bg-background border border-white/5 rounded-xl h-12 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                        className="w-full bg-background border border-white/5 rounded-xl h-10 xs:h-12 pl-9 xs:pl-10 pr-4 text-xs xs:text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     />
                                 </div>
                             </div>
@@ -293,9 +297,9 @@ export default function AdminTicketDetailPage() {
                                 />
                             </div>
 
-                            <div className="pt-4 grid grid-cols-2 gap-3">
+                            <div className="pt-4 grid grid-cols-1 xs:grid-cols-2 gap-3">
                                 <Button
-                                    className="rounded-xl bg-green-500/10 text-green-500 border border-green-500/20 hover:bg-green-500/20 h-10 text-xs font-bold uppercase"
+                                    className="rounded-xl bg-green-500/10 text-green-500 border border-green-500/20 hover:bg-green-500/20 h-9 xs:h-10 text-[10px] xs:text-xs font-bold uppercase"
                                     onClick={() => handleUpdateTicket({ stage: 'CLOSED', status: 'COMPLETED' })}
                                     disabled={updating || ticket.stage === 'CLOSED'}
                                 >
@@ -303,7 +307,7 @@ export default function AdminTicketDetailPage() {
                                 </Button>
                                 <Button
                                     variant="outline"
-                                    className="rounded-xl border-red-500/20 text-red-400 hover:bg-red-500/5 h-10 text-xs font-bold uppercase text-[10px]"
+                                    className="rounded-xl border-red-500/20 text-red-400 hover:bg-red-500/5 h-9 xs:h-10 text-[10px] xs:text-xs font-bold uppercase"
                                     onClick={() => handleUpdateTicket({ stage: 'REJECTED', status: 'CANCELLED' })}
                                     disabled={updating || ticket.stage === 'REJECTED'}
                                 >
@@ -314,19 +318,19 @@ export default function AdminTicketDetailPage() {
                     </Card>
 
                     <Card className="glass-card border-none">
-                        <CardHeader className="pb-2">
+                        <CardHeader className="pb-2 p-4 xs:p-6">
                             <CardTitle className="text-sm font-medium">Client Info</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-4 text-sm">
+                        <CardContent className="space-y-4 text-sm p-4 xs:p-6 pt-0 xs:pt-0">
                             <div className="flex items-center justify-between">
-                                <span className="text-muted-foreground">Phone</span>
-                                <span className="font-bold">{ticket.user.phone || 'N/A'}</span>
+                                <span className="text-muted-foreground text-xs xs:text-sm">Phone</span>
+                                <span className="font-bold text-xs xs:text-sm">{ticket.user.phone || 'N/A'}</span>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-muted-foreground">Registered</span>
-                                <span className="font-bold">{formatDate(ticket.user.createdAt || '')}</span>
+                                <span className="text-muted-foreground text-xs xs:text-sm">Registered</span>
+                                <span className="font-bold text-xs xs:text-sm">{formatDate(ticket.user.createdAt || '')}</span>
                             </div>
-                            <Button variant="secondary" className="w-full h-10 text-xs font-bold uppercase rounded-xl" asChild>
+                            <Button variant="secondary" className="w-full h-9 xs:h-10 text-xs font-bold uppercase rounded-xl" asChild>
                                 <Link href={`/admin/users/${ticket.userId}`}>View Full Profile</Link>
                             </Button>
                         </CardContent>
@@ -336,10 +340,10 @@ export default function AdminTicketDetailPage() {
                 {/* Right Column: Interaction Hub */}
                 <div className="lg:col-span-2 space-y-6">
                     <Tabs defaultValue="chat" className="w-full">
-                        <TabsList className="bg-white/5 border border-white/5 p-1 rounded-xl w-full max-w-md">
-                            <TabsTrigger value="chat" className="rounded-lg px-6">Chat Hub</TabsTrigger>
-                            <TabsTrigger value="events" className="rounded-lg px-6">Timeline</TabsTrigger>
-                            <TabsTrigger value="docs" className="rounded-lg px-6">Documents</TabsTrigger>
+                        <TabsList className="bg-white/5 border border-white/5 p-1 rounded-xl w-full grid grid-cols-3 h-auto">
+                            <TabsTrigger value="chat" className="rounded-lg text-[10px] xs:text-xs py-2">Chat</TabsTrigger>
+                            <TabsTrigger value="events" className="rounded-lg text-[10px] xs:text-xs py-2">Timeline</TabsTrigger>
+                            <TabsTrigger value="docs" className="rounded-lg text-[10px] xs:text-xs py-2">Docs</TabsTrigger>
                         </TabsList>
 
                         {/* Chat Hub */}

@@ -274,37 +274,39 @@ export default function TicketDetailPage() {
                         </div>
 
                         {/* Visual Stage Tracker */}
-                        <div className="relative pt-12 pb-4">
-                            <Progress value={ticket.overallPercent} className="h-2" />
-                            <div className="absolute top-0 w-full flex justify-between">
-                                {STAGES.map((stage, idx) => {
-                                    const isCompleted = idx < currentStageIndex;
-                                    const isActive = idx === currentStageIndex;
-                                    return (
-                                        <div key={stage} className="flex flex-col items-center gap-2 -mt-2">
-                                            <div
-                                                className={cn(
-                                                    "w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all duration-500 z-10",
-                                                    isCompleted ? "bg-primary border-primary" :
-                                                        isActive ? "bg-background border-primary scale-125 ring-4 ring-primary/20" :
-                                                            "bg-background border-muted"
-                                                )}
-                                            >
-                                                {isCompleted ? (
-                                                    <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
-                                                ) : (
-                                                    <div className={cn("w-2 h-2 rounded-full", isActive ? "bg-primary" : "bg-muted")} />
-                                                )}
+                        <div className="relative pt-12 pb-4 overflow-x-auto pb-12 -mx-4 px-4 xs:-mx-6 xs:px-6 md:overflow-visible md:pb-4 md:px-0 md:mx-0 scrollbar-hide">
+                            <div className="min-w-[600px] md:min-w-0 relative">
+                                <Progress value={ticket.overallPercent} className="h-2" />
+                                <div className="absolute top-0 w-full flex justify-between">
+                                    {STAGES.map((stage, idx) => {
+                                        const isCompleted = idx < currentStageIndex;
+                                        const isActive = idx === currentStageIndex;
+                                        return (
+                                            <div key={stage} className="flex flex-col items-center gap-2 -mt-2">
+                                                <div
+                                                    className={cn(
+                                                        "w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all duration-500 z-10",
+                                                        isCompleted ? "bg-primary border-primary" :
+                                                            isActive ? "bg-background border-primary scale-125 ring-4 ring-primary/20" :
+                                                                "bg-background border-muted"
+                                                    )}
+                                                >
+                                                    {isCompleted ? (
+                                                        <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
+                                                    ) : (
+                                                        <div className={cn("w-2 h-2 rounded-full", isActive ? "bg-primary" : "bg-muted")} />
+                                                    )}
+                                                </div>
+                                                <span className={cn(
+                                                    "text-[10px] md:text-xs font-medium absolute -bottom-8 whitespace-nowrap",
+                                                    isActive ? "text-primary font-bold" : "text-muted-foreground"
+                                                )}>
+                                                    {STAGE_NAMES[stage]}
+                                                </span>
                                             </div>
-                                            <span className={cn(
-                                                "text-[10px] md:text-xs font-medium absolute -bottom-8 whitespace-nowrap",
-                                                isActive ? "text-primary font-bold" : "text-muted-foreground"
-                                            )}>
-                                                {STAGE_NAMES[stage]}
-                                            </span>
-                                        </div>
-                                    );
-                                })}
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
