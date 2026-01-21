@@ -207,6 +207,20 @@ export function Header({ onOpenCallback }: HeaderProps) {
             {/* Mobile: Theme Toggle, Phone & Menu Toggle */}
             <div className="flex lg:hidden items-center gap-0.5 xs:gap-1 sm:gap-1.5">
               <ThemeToggle />
+
+              {status === 'authenticated' ? (
+                <Link href="/portal">
+                  <Button variant="ghost" size="icon" className="w-8 h-8 xs:w-9 xs:h-9 rounded-full text-foreground hover:text-primary transition-colors">
+                    <LayoutDashboard className="w-4 h-4 xs:w-5 xs:h-5" />
+                  </Button>
+                </Link>
+              ) : (
+                <Link href="/auth/signin">
+                  <Button variant="ghost" size="icon" className="w-8 h-8 xs:w-9 xs:h-9 rounded-full text-foreground hover:text-primary transition-colors">
+                    <LogIn className="w-4 h-4 xs:w-5 xs:h-5" />
+                  </Button>
+                </Link>
+              )}
               <Button
                 variant="accent"
                 size="sm"
