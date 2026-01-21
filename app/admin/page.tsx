@@ -300,25 +300,25 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
                 {/* Activity Feed - Spans 2 columns on desktop */}
                 <motion.div variants={item} className="lg:col-span-2 min-w-0 w-full">
-                    <Card className="border-white/5 bg-[#121214] h-full overflow-hidden w-full">
-                        <CardHeader className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 pb-2 px-3 xs:px-4 sm:px-6">
+                    <Card className="h-full overflow-hidden w-full border-border/50">
+                        <CardHeader className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 pb-2 px-2.5 xs:px-4 sm:px-6">
                             <div className="min-w-0">
                                 <CardTitle className="text-sm xs:text-base sm:text-lg font-bold flex items-center gap-1.5 xs:gap-2">
-                                    <Activity className="w-4 h-4 xs:w-5 xs:h-5 text-primary flex-shrink-0" />
+                                    <Activity className="w-3.5 h-3.5 xs:w-5 xs:h-5 text-primary flex-shrink-0" />
                                     <span className="truncate">Live Activity</span>
                                 </CardTitle>
-                                <CardDescription className="text-xs hidden xs:block">Real-time updates</CardDescription>
+                                <CardDescription className="text-[10px] xs:text-xs text-muted-foreground hidden xs:block">Real-time updates</CardDescription>
                             </div>
                             {/* Hide tabs on very small screens */}
                             <Tabs defaultValue="all" className="w-auto hidden sm:block">
-                                <TabsList className="bg-white/5 rounded-full p-1 h-8 xs:h-9">
+                                <TabsList className="bg-muted rounded-full p-1 h-8 xs:h-9">
                                     <TabsTrigger value="all" className="rounded-full text-[10px] xs:text-xs px-2 xs:px-3 data-[state=active]:bg-primary data-[state=active]:text-white">All</TabsTrigger>
                                     <TabsTrigger value="tickets" className="rounded-full text-[10px] xs:text-xs px-2 xs:px-3 data-[state=active]:bg-primary data-[state=active]:text-white">Tickets</TabsTrigger>
                                     <TabsTrigger value="leads" className="rounded-full text-[10px] xs:text-xs px-2 xs:px-3 data-[state=active]:bg-primary data-[state=active]:text-white">Leads</TabsTrigger>
                                 </TabsList>
                             </Tabs>
                         </CardHeader>
-                        <CardContent className="space-y-1.5 xs:space-y-2 px-3 xs:px-4 sm:px-6">
+                        <CardContent className="space-y-1.5 xs:space-y-2 px-2.5 xs:px-4 sm:px-6 pb-4">
                             <AnimatePresence>
                                 {recentActivities.map((activity, idx) => (
                                     <motion.div
@@ -326,7 +326,7 @@ export default function AdminDashboard() {
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: idx * 0.1 }}
-                                        className="group flex items-center gap-2 xs:gap-3 sm:gap-4 p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-300 border border-transparent hover:border-white/5 cursor-pointer"
+                                        className="group flex items-center gap-2 xs:gap-3 sm:gap-4 p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-muted/30 hover:bg-muted/50 transition-all duration-300 border border-transparent hover:border-border/50 cursor-pointer"
                                     >
                                         <div className={cn(
                                             "w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0",
@@ -342,7 +342,7 @@ export default function AdminDashboard() {
                                         </div>
                                         <div className="flex-1 min-w-0 overflow-hidden">
                                             <p className="font-semibold text-xs xs:text-sm truncate">{activity.action}</p>
-                                            <p className="text-[10px] xs:text-xs text-muted-foreground truncate">{activity.description}</p>
+                                            <p className="text-[10px] xs:text-xs text-gray-400 truncate">{activity.description}</p>
                                         </div>
                                         <div className="text-right shrink-0">
                                             <p className="text-[10px] xs:text-xs text-muted-foreground whitespace-nowrap">{activity.timestamp}</p>
@@ -358,7 +358,7 @@ export default function AdminDashboard() {
                 {/* Quick Actions Panel */}
                 <motion.div variants={item} className="space-y-3 xs:space-y-4 min-w-0 w-full">
                     {/* Performance Card */}
-                    <Card className="border-white/5 bg-[#121214]">
+                    <Card className="border-border/50">
                         <CardHeader className="pb-3 xs:pb-4 px-3 xs:px-4 sm:px-6">
                             <CardTitle className="text-sm xs:text-base sm:text-lg font-bold flex items-center gap-1.5 xs:gap-2">
                                 <Target className="w-4 h-4 xs:w-5 xs:h-5 text-primary" />
@@ -369,12 +369,12 @@ export default function AdminDashboard() {
                             {performanceMetrics.map((metric, idx) => (
                                 <div key={idx} className="space-y-1.5 xs:space-y-2">
                                     <div className="flex items-center justify-between text-xs xs:text-sm">
-                                        <span className="text-muted-foreground truncate">{metric.label}</span>
+                                        <span className="text-gray-400 truncate">{metric.label}</span>
                                         <span className="font-bold flex-shrink-0">{metric.value}</span>
                                     </div>
                                     <Progress
                                         value={(metric.current / metric.target) * 100}
-                                        className="h-1.5 xs:h-2 bg-white/5"
+                                        className="h-1.5 xs:h-2 bg-muted"
                                     />
                                 </div>
                             ))}
@@ -382,7 +382,7 @@ export default function AdminDashboard() {
                     </Card>
 
                     {/* Quick Links */}
-                    <Card className="border-white/5 bg-[#121214]">
+                    <Card className="border-border/50">
                         <CardHeader className="pb-2">
                             <CardTitle className="text-lg font-bold flex items-center gap-2">
                                 <Zap className="w-5 h-5 text-primary" />
@@ -398,14 +398,14 @@ export default function AdminDashboard() {
                                 <Link
                                     key={idx}
                                     href={action.href}
-                                    className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all group"
+                                    className="flex items-center justify-between p-3 rounded-xl hover:bg-muted transition-all group"
                                 >
                                     <div className="flex items-center gap-3">
                                         <action.icon className={cn("w-4 h-4", action.color)} />
                                         <span className="text-sm font-medium">{action.label}</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <Badge className="bg-white/5 text-white hover:bg-white/10 rounded-full border-none">
+                                        <Badge variant="secondary" className="rounded-full border-none">
                                             {action.count}
                                         </Badge>
                                         <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -417,31 +417,31 @@ export default function AdminDashboard() {
 
                     {/* System Status */}
                     <Card className="border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent overflow-hidden relative">
-                        <CardContent className="p-6">
-                            <div className="flex items-center gap-3 mb-4">
+                        <CardContent className="p-4 xs:p-6">
+                            <div className="flex items-center gap-2 xs:gap-3 mb-4">
                                 <div className="relative">
-                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                                        <Globe className="w-5 h-5 text-emerald-500" />
+                                    <div className="w-8 h-8 xs:w-10 xs:h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                                        <Globe className="w-4 h-4 xs:w-5 xs:h-5 text-emerald-500" />
                                     </div>
-                                    <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#121214] animate-pulse" />
+                                    <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-card animate-pulse" />
                                 </div>
-                                <div>
-                                    <p className="font-bold text-sm">System Operational</p>
-                                    <p className="text-xs text-muted-foreground">All services healthy</p>
+                                <div className="min-w-0 flex-1">
+                                    <p className="font-bold text-xs xs:text-sm truncate">System Operational</p>
+                                    <p className="text-[10px] text-muted-foreground truncate">All services healthy</p>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-3 gap-3 text-center">
-                                <div className="p-2 rounded-lg bg-white/5">
-                                    <p className="text-lg font-bold text-emerald-500">45ms</p>
-                                    <p className="text-[10px] text-muted-foreground uppercase">Response</p>
+                            <div className="grid grid-cols-3 gap-1.5 xs:gap-3 text-center">
+                                <div className="p-1 px-1.5 rounded-lg bg-muted/50">
+                                    <p className="text-xs xs:text-lg font-bold text-emerald-500">45ms</p>
+                                    <p className="text-[8px] xs:text-[10px] text-muted-foreground uppercase truncate">Response</p>
                                 </div>
-                                <div className="p-2 rounded-lg bg-white/5">
-                                    <p className="text-lg font-bold">99.9%</p>
-                                    <p className="text-[10px] text-muted-foreground uppercase">Uptime</p>
+                                <div className="p-1 px-1.5 rounded-lg bg-muted/50">
+                                    <p className="text-xs xs:text-lg font-bold">99.9%</p>
+                                    <p className="text-[8px] xs:text-[10px] text-muted-foreground uppercase truncate">Uptime</p>
                                 </div>
-                                <div className="p-2 rounded-lg bg-white/5">
-                                    <p className="text-lg font-bold text-blue-400">12%</p>
-                                    <p className="text-[10px] text-muted-foreground uppercase">Load</p>
+                                <div className="p-1 px-1.5 rounded-lg bg-muted/50">
+                                    <p className="text-xs xs:text-lg font-bold text-blue-400">12%</p>
+                                    <p className="text-[8px] xs:text-[10px] text-muted-foreground uppercase truncate">Load</p>
                                 </div>
                             </div>
                         </CardContent>
@@ -452,7 +452,7 @@ export default function AdminDashboard() {
             {/* Revenue & Analytics Row */}
             <motion.div variants={item} className="grid md:grid-cols-2 gap-6">
                 {/* Revenue Card */}
-                <Card className="border-white/5 bg-[#121214] overflow-hidden">
+                <Card className="overflow-hidden border-border/50">
                     <CardContent className="p-6">
                         <div className="flex items-center justify-between mb-6">
                             <div className="flex items-center gap-3">
@@ -487,7 +487,7 @@ export default function AdminDashboard() {
                 </Card>
 
                 {/* Case Distribution */}
-                <Card className="border-white/5 bg-[#121214]">
+                <Card className="border-border/50">
                     <CardHeader className="pb-4">
                         <CardTitle className="text-lg font-bold flex items-center gap-2">
                             <BarChart3 className="w-5 h-5 text-primary" />
@@ -507,7 +507,7 @@ export default function AdminDashboard() {
                             return (
                                 <div key={idx} className="flex items-center gap-4">
                                     <div className="w-24 text-sm text-muted-foreground">{item.stage}</div>
-                                    <div className="flex-1 h-3 bg-white/5 rounded-full overflow-hidden">
+                                    <div className="flex-1 h-3 bg-muted rounded-full overflow-hidden">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: `${(count / maxCount) * 100}%` }}

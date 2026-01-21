@@ -90,7 +90,7 @@ export default function AdminLayoutClient({
     return (
         <div className="min-h-screen bg-background text-foreground">
             {/* Mobile Header */}
-            <header className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border px-2 xs:px-3 sm:px-4 py-2 xs:py-3">
+            <header className="lg:hidden sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border px-1.5 xs:px-3 sm:px-4 py-2 xs:py-3">
                 <div className="flex items-center justify-between">
                     <button
                         onClick={() => setSidebarOpen(true)}
@@ -99,11 +99,11 @@ export default function AdminLayoutClient({
                         <Menu className="w-4 h-4 xs:w-5 xs:h-5" />
                     </button>
 
-                    <Link href="/admin" className="flex items-center gap-1.5 xs:gap-2">
-                        <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/20">
+                    <Link href="/admin" className="flex items-center gap-1.5 xs:gap-2 min-w-0">
+                        <div className="w-6 h-6 xs:w-8 xs:h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/20 shrink-0">
                             <ShieldCheck className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-white" />
                         </div>
-                        <span className="font-bold text-sm xs:text-base sm:text-lg">Admin</span>
+                        <span className="font-bold text-xs xs:text-base sm:text-lg truncate">FairPay Admin</span>
                     </Link>
 
                     <div className="flex items-center gap-0.5 xs:gap-1">

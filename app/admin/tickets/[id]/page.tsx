@@ -207,7 +207,7 @@ export default function AdminTicketDetailPage() {
                     <div className="flex flex-col gap-3 w-full min-w-0">
                         <div className="flex flex-col gap-2 w-full min-w-0">
                             <h1 className="text-xl xs:text-2xl font-bold truncate leading-tight break-all">{ticket.lenderName || ticket.loanType}</h1>
-                            <Badge className="w-fit bg-primary/20 text-primary border-primary/30 uppercase text-[10px] tracking-widest px-2 py-0.5">#{ticket.id.slice(0, 8)}</Badge>
+                            <Badge className="w-fit bg-primary/20 text-primary border-primary/30 uppercase text-[10px] tracking-widest px-2 py-0.5 border">#{ticket.id.slice(0, 8)}</Badge>
                         </div>
                         <p className="text-muted-foreground flex items-center gap-2 text-xs truncate w-full min-w-0">
                             <User className="w-3 h-3 shrink-0" /> <span className="truncate">{ticket.user.name} ({ticket.user.email})</span>
@@ -217,7 +217,7 @@ export default function AdminTicketDetailPage() {
 
                 {/* Action Buttons - Stacked on mobile, Row on sm */}
                 <div className="flex flex-col sm:flex-row gap-3 w-full">
-                    <Button variant="outline" className="w-full sm:flex-1 rounded-xl border-white/10 text-xs h-12 font-bold uppercase" disabled={updating}>Manage Documents</Button>
+                    <Button variant="outline" className="w-full sm:flex-1 rounded-xl border-border text-xs h-12 font-bold uppercase" disabled={updating}>Manage Documents</Button>
                     <Button variant="destructive" className="w-full sm:flex-1 rounded-xl text-xs h-12 font-bold uppercase" disabled={updating}>
                         <Trash2 className="w-4 h-4 mr-2" /> Delete Case
                     </Button>
@@ -240,10 +240,10 @@ export default function AdminTicketDetailPage() {
                                     onValueChange={(val) => handleUpdateTicket({ stage: val })}
                                     disabled={updating}
                                 >
-                                    <SelectTrigger className="bg-background border-white/5 rounded-xl h-10 xs:h-12 text-xs xs:text-sm">
+                                    <SelectTrigger className="bg-background border-border rounded-xl h-10 xs:h-12 text-xs xs:text-sm">
                                         <SelectValue />
                                     </SelectTrigger>
-                                    <SelectContent className="bg-[#121214] border-white/5 text-white">
+                                    <SelectContent className="bg-card border-border text-foreground">
                                         {STAGES.map(s => <SelectItem key={s} value={s}>{STAGE_NAMES[s as keyof typeof STAGE_NAMES]}</SelectItem>)}
                                     </SelectContent>
                                 </Select>
@@ -256,10 +256,10 @@ export default function AdminTicketDetailPage() {
                                     onValueChange={(val) => handleUpdateTicket({ status: val })}
                                     disabled={updating}
                                 >
-                                    <SelectTrigger className="bg-background border-white/5 rounded-xl h-10 xs:h-12 text-xs xs:text-sm">
+                                    <SelectTrigger className="bg-background border-border rounded-xl h-10 xs:h-12 text-xs xs:text-sm">
                                         <SelectValue />
                                     </SelectTrigger>
-                                    <SelectContent className="bg-[#121214] border-white/5 text-white">
+                                    <SelectContent className="bg-card border-border text-foreground">
                                         {STATUSES.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                                     </SelectContent>
                                 </Select>
@@ -279,7 +279,7 @@ export default function AdminTicketDetailPage() {
                                                 handleUpdateTicket({ settledAmount: val });
                                             }
                                         }}
-                                        className="w-full bg-background border border-white/5 rounded-xl h-10 xs:h-12 pl-9 xs:pl-10 pr-4 text-xs xs:text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                        className="w-full bg-background border border-border rounded-xl h-10 xs:h-12 pl-9 xs:pl-10 pr-4 text-xs xs:text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
                                     />
                                 </div>
                             </div>
@@ -293,7 +293,7 @@ export default function AdminTicketDetailPage() {
                                     type="range" min="0" max="100"
                                     defaultValue={ticket.overallPercent}
                                     onMouseUp={(e) => handleUpdateTicket({ overallPercent: parseInt((e.target as HTMLInputElement).value) })}
-                                    className="w-full accent-primary h-1.5 rounded-full appearance-none bg-white/5"
+                                    className="w-full accent-primary h-1.5 rounded-full appearance-none bg-muted"
                                 />
                             </div>
 
@@ -340,18 +340,18 @@ export default function AdminTicketDetailPage() {
                 {/* Right Column: Interaction Hub */}
                 <div className="lg:col-span-2 space-y-6">
                     <Tabs defaultValue="chat" className="w-full">
-                        <TabsList className="bg-white/5 border border-white/5 p-1 rounded-xl w-full grid grid-cols-3 h-auto">
-                            <TabsTrigger value="chat" className="rounded-lg text-[10px] xs:text-xs py-2">Chat</TabsTrigger>
-                            <TabsTrigger value="events" className="rounded-lg text-[10px] xs:text-xs py-2">Timeline</TabsTrigger>
-                            <TabsTrigger value="docs" className="rounded-lg text-[10px] xs:text-xs py-2">Docs</TabsTrigger>
+                        <TabsList className="bg-muted border border-border p-1 rounded-xl w-full grid grid-cols-3 h-auto">
+                            <TabsTrigger value="chat" className="rounded-lg text-[10px] xs:text-xs py-2 data-[state=active]:bg-card">Chat</TabsTrigger>
+                            <TabsTrigger value="events" className="rounded-lg text-[10px] xs:text-xs py-2 data-[state=active]:bg-card">Timeline</TabsTrigger>
+                            <TabsTrigger value="docs" className="rounded-lg text-[10px] xs:text-xs py-2 data-[state=active]:bg-card">Docs</TabsTrigger>
                         </TabsList>
 
                         {/* Chat Hub */}
                         <TabsContent value="chat" className="mt-4">
-                            <Card className="bg-[#121214] border-none h-[600px] flex flex-col overflow-hidden">
-                                <div className="p-4 border-b border-white/5 bg-white/5 flex items-center justify-between">
+                            <Card className="h-[600px] flex flex-col overflow-hidden border-border/50">
+                                <div className="p-4 border-b border-border bg-muted/50 flex items-center justify-between">
                                     <h3 className="font-bold">Message Client</h3>
-                                    <Badge className="bg-primary/10 text-primary border-primary/20">Active Session</Badge>
+                                    <Badge className="bg-primary/10 text-primary border-primary/20 border">Active Session</Badge>
                                 </div>
                                 <CardContent className="flex-1 overflow-y-auto p-6 space-y-6">
                                     {ticket.messages.map((msg) => {
@@ -359,8 +359,8 @@ export default function AdminTicketDetailPage() {
                                         return (
                                             <div key={msg.id} className={cn("flex", isMe ? "justify-end" : "justify-start")}>
                                                 <div className={cn(
-                                                    "max-w-[85%] rounded-2xl p-4 shadow-xl",
-                                                    isMe ? "bg-primary text-white rounded-tr-none" : "bg-[#1j1j20] text-white border border-white/5 rounded-tl-none"
+                                                    "max-w-[85%] rounded-2xl p-4 shadow-xl border",
+                                                    isMe ? "bg-primary text-primary-foreground rounded-tr-none border-primary/20" : "bg-muted text-foreground border-border rounded-tl-none"
                                                 )}>
                                                     <p className="text-sm leading-relaxed">{msg.content}</p>
                                                     <div className="mt-2 flex items-center justify-between gap-4">
@@ -381,7 +381,7 @@ export default function AdminTicketDetailPage() {
                                             value={message}
                                             onChange={(e) => setMessage(e.target.value)}
                                             placeholder="Type high-priority message..."
-                                            className="flex-1 bg-background border border-white/5 px-6 py-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm"
+                                            className="flex-1 bg-background border border-border px-6 py-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm"
                                         />
                                         <Button type="submit" disabled={!message.trim()} className="h-12 w-12 rounded-2xl p-0">
                                             <Send className="w-5 h-5" />
@@ -393,19 +393,19 @@ export default function AdminTicketDetailPage() {
 
                         {/* Timeline */}
                         <TabsContent value="events" className="mt-4">
-                            <Card className="bg-[#121214] border-none">
+                            <Card className="border-border/50">
                                 <CardHeader>
                                     <CardTitle>Case Timeline</CardTitle>
                                     <CardDescription>System and manual events</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-6">
-                                    <div className="relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-white/5 before:h-full ml-1">
+                                    <div className="relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-muted before:h-full ml-1">
                                         {ticket.events.map((event) => (
                                             <div key={event.id} className="relative pl-10 pb-8">
                                                 <div className="absolute left-0 w-6 h-6 rounded-full bg-background border-2 border-primary flex items-center justify-center -translate-x-1.5 z-10 shadow-lg shadow-primary/20">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                                                 </div>
-                                                <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
+                                                <div className="p-4 rounded-2xl bg-muted/50 border border-border/50 hover:bg-muted transition-all">
                                                     <div className="flex justify-between items-start mb-1">
                                                         <p className="font-bold text-sm">{event.message}</p>
                                                         <span className="text-[9px] font-bold uppercase text-muted-foreground">{formatDate(event.createdAt)}</span>
@@ -425,7 +425,7 @@ export default function AdminTicketDetailPage() {
                         <TabsContent value="docs" className="mt-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {ticket.documents.map(doc => (
-                                    <Card key={doc.id} className="bg-[#121214] border-none hover:ring-1 ring-primary/30 transition-all">
+                                    <Card key={doc.id} className="group hover:ring-1 ring-primary/30 transition-all border-border/50">
                                         <CardContent className="p-4 flex flex-col gap-4">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-4">

@@ -210,7 +210,7 @@ export default function UserDetailPage() {
                                     <Link key={ticket.id} href={`/admin/tickets/${ticket.id}`} className="block">
                                         <motion.div
                                             whileHover={{ x: 5 }}
-                                            className="group relative p-6 rounded-3xl bg-[#121214] border border-white/5 hover:border-primary/30 transition-all"
+                                            className="group relative p-4 xs:p-6 rounded-2xl xs:rounded-3xl bg-card border border-border/50 hover:border-primary/30 transition-all shadow-sm"
                                         >
                                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                                 <div className="flex items-center gap-4">
@@ -231,16 +231,16 @@ export default function UserDetailPage() {
                                                         <p className="text-sm font-bold">{ticket.overallPercent}%</p>
                                                         <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest">{STAGE_NAMES[ticket.stage as keyof typeof STAGE_NAMES]}</p>
                                                     </div>
-                                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-lg shadow-black/20">
+                                                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-sm border border-border/50">
                                                         <ArrowRight className="w-4 h-4" />
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="mt-4 pt-4 border-t border-white/5 grid grid-cols-2 md:grid-cols-3 gap-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                                                <span className="flex items-center gap-2"><MessageSquare className="w-3 h-3" /> {ticket._count.messages} Messages</span>
-                                                <span className="flex items-center gap-2"><FileText className="w-3 h-3" /> {ticket._count.documents} Documents</span>
-                                                <span className="hidden md:flex items-center gap-2"><Calendar className="w-3 h-3" /> Created {formatDate(ticket.createdAt)}</span>
+                                            <div className="mt-4 pt-4 border-t border-border/20 grid grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 text-[9px] xs:text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                                                <span className="flex items-center gap-1.5 xs:gap-2"><MessageSquare className="w-3 h-3" /> {ticket._count.messages} Msgs</span>
+                                                <span className="flex items-center gap-1.5 xs:gap-2"><FileText className="w-3 h-3" /> {ticket._count.documents} Docs</span>
+                                                <span className="hidden lg:flex items-center gap-1.5 xs:gap-2"><Calendar className="w-3 h-3" /> {formatDate(ticket.createdAt)}</span>
                                             </div>
                                         </motion.div>
                                     </Link>

@@ -74,7 +74,7 @@ export default function AdminUsersPage() {
                     <h1 className="text-3xl font-bold">User Management</h1>
                     <p className="text-muted-foreground mt-1 text-sm uppercase font-bold tracking-widest">Client Base • {users.length} Active Accounts</p>
                 </div>
-                <Button variant="outline" className="rounded-xl bg-white/5 border-white/10">Invite New User</Button>
+                <Button variant="outline" className="rounded-xl bg-muted/50 border-border">Invite New User</Button>
             </div>
 
             <Card className="glass-card border-none">
@@ -85,7 +85,7 @@ export default function AdminUsersPage() {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search by name or email..."
-                            className="w-full bg-[#121214] border-none rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 outline-none text-sm"
+                            className="w-full bg-muted/50 border border-border/50 rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 outline-none text-sm"
                         />
                     </div>
                     <div className="flex gap-2">
@@ -95,7 +95,7 @@ export default function AdminUsersPage() {
                                 onClick={() => setRoleFilter(role)}
                                 className={cn(
                                     "px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all",
-                                    roleFilter === role ? "bg-primary text-white" : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                                    roleFilter === role ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
                                 )}
                             >
                                 {role}
@@ -115,7 +115,7 @@ export default function AdminUsersPage() {
                     </div>
                 ) : (
                     filteredUsers.map(user => (
-                        <Card key={user.id} className="bg-[#121214] border-none group hover:ring-1 ring-primary/30 transition-all">
+                        <Card key={user.id} className="group hover:ring-1 ring-primary/30 transition-all border-border/50">
                             <CardContent className="p-4 xs:p-6 space-y-4 xs:space-y-6">
                                 <div className="flex items-start justify-between">
                                     <div className="flex items-center gap-4">
@@ -132,19 +132,19 @@ export default function AdminUsersPage() {
                                         </div>
                                     </div>
                                     <Badge className={cn(
-                                        "rounded-full p-1",
-                                        user.role === 'ADMIN' ? "bg-primary text-white" : "bg-white/5 text-muted-foreground"
+                                        "rounded-full p-1 border",
+                                        user.role === 'ADMIN' ? "bg-primary text-primary-foreground border-primary/20" : "bg-muted text-muted-foreground border-border"
                                     )}>
                                         {user.role === 'ADMIN' ? <ShieldCheck className="w-3 h-3" /> : <Shield className="w-3 h-3" />}
                                     </Badge>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="bg-white/5 p-3 rounded-2xl text-center">
+                                    <div className="bg-muted p-3 rounded-2xl text-center">
                                         <p className="text-xl font-bold">{user._count.tickets}</p>
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Tickets</p>
                                     </div>
-                                    <div className="bg-white/5 p-3 rounded-2xl text-center">
+                                    <div className="bg-muted p-3 rounded-2xl text-center">
                                         <p className="text-xl font-bold">{user._count.chatMessages}</p>
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Messages</p>
                                     </div>

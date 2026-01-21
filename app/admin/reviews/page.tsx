@@ -113,7 +113,7 @@ export default function AdminReviewsPage() {
                         onClick={() => setFilter(s)}
                         className={cn(
                             "px-6 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all",
-                            filter === s ? "bg-primary text-white" : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                            filter === s ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
                         )}
                     >
                         {s}
@@ -132,13 +132,13 @@ export default function AdminReviewsPage() {
                 ) : (
                     reviews.map(review => (
                         <Card key={review.id} className={cn(
-                            "bg-[#121214] border-none overflow-hidden relative group transition-all",
+                            "overflow-hidden relative group transition-all border-border/50",
                             !review.approved && "opacity-80 grayscale-[0.5]"
                         )}>
                             <CardContent className="p-6">
                                 <div className="flex justify-between items-start mb-6">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5">
+                                        <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center border border-border/50">
                                             <User className="w-6 h-6 text-primary" />
                                         </div>
                                         <div>
@@ -148,14 +148,14 @@ export default function AdminReviewsPage() {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-lg">
+                                    <div className="flex items-center gap-1 bg-muted px-2 py-1 rounded-lg border border-border/50">
                                         <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                                         <span className="font-bold text-sm tracking-tighter">{review.rating}.0</span>
                                     </div>
                                 </div>
 
-                                <div className="bg-white/5 p-4 rounded-2xl mb-6 min-h-[100px]">
-                                    <p className="text-sm leading-relaxed italic text-white/90">"{review.text}"</p>
+                                <div className="bg-muted/50 p-4 rounded-2xl mb-6 min-h-[100px] border border-border/30">
+                                    <p className="text-sm leading-relaxed italic text-foreground/90">"{review.text}"</p>
                                 </div>
 
                                 <div className="flex items-center justify-between">
@@ -169,7 +169,7 @@ export default function AdminReviewsPage() {
                                                 <Check className="w-4 h-4 mr-2" /> Approve
                                             </Button>
                                         ) : (
-                                            <Button size="sm" variant="outline" className="rounded-xl border-white/10" onClick={() => handleApprove(review.id, false)}>
+                                            <Button size="sm" variant="outline" className="rounded-xl border-border" onClick={() => handleApprove(review.id, false)}>
                                                 <X className="w-4 h-4 mr-2" /> Unapprove
                                             </Button>
                                         )}

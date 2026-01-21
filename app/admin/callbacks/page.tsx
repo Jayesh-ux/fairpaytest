@@ -105,7 +105,7 @@ export default function AdminCallbacksPage() {
                         onClick={() => setFilter(s)}
                         className={cn(
                             "px-6 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap",
-                            filter === s ? "bg-primary text-white" : "bg-white/5 text-muted-foreground hover:bg-white/10"
+                            filter === s ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
                         )}
                     >
                         {s}
@@ -123,14 +123,14 @@ export default function AdminCallbacksPage() {
                     </div>
                 ) : (
                     callbacks.map(cb => (
-                        <Card key={cb.id} className="bg-[#121214] border-none overflow-hidden hover:bg-[#1a1a1c] transition-all group">
+                        <Card key={cb.id} className="overflow-hidden hover:bg-muted/30 transition-all group border-border/50">
                             <CardContent className="p-6">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                                     <div className="flex items-center gap-6">
                                         <div className={cn(
-                                            "w-16 h-16 rounded-2xl flex items-center justify-center",
-                                            cb.status === 'NEW' ? "bg-amber-500/10 text-amber-500" :
-                                                cb.status === 'CONVERTED' ? "bg-emerald-500/10 text-emerald-500" : "bg-white/5 text-muted-foreground"
+                                            "w-16 h-16 rounded-2xl flex items-center justify-center border",
+                                            cb.status === 'NEW' ? "bg-amber-500/10 text-amber-600 dark:text-amber-500 border-amber-500/20" :
+                                                cb.status === 'CONVERTED' ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-emerald-500/20" : "bg-muted text-muted-foreground border-border"
                                         )}>
                                             <PhoneCall className="w-8 h-8" />
                                         </div>
@@ -166,22 +166,22 @@ export default function AdminCallbacksPage() {
                                     </div>
                                 </div>
 
-                                <div className="mt-6 pt-6 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="mt-6 pt-6 border-t border-border/50 grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div className="space-y-1">
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Preferred Time</p>
                                         <p className="text-sm font-bold text-primary">{cb.preferredTime || 'Anytime'}</p>
                                     </div>
                                     <div className="space-y-1">
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Source</p>
-                                        <p className="text-sm font-bold uppercase text-white/70">{cb.source}</p>
+                                        <p className="text-sm font-bold uppercase text-foreground/70">{cb.source}</p>
                                     </div>
                                     <div className="space-y-1">
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Status</p>
                                         <Badge className={cn(
-                                            "rounded-full px-4 py-0.5",
-                                            cb.status === 'NEW' ? "bg-amber-500/10 text-amber-500 border-amber-500/20" :
-                                                cb.status === 'CONVERTED' ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" :
-                                                    "bg-white/5 text-muted-foreground border-white/5"
+                                            "rounded-full px-4 py-0.5 border",
+                                            cb.status === 'NEW' ? "bg-amber-500/10 text-amber-600 dark:text-amber-500 border-amber-500/20" :
+                                                cb.status === 'CONVERTED' ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-emerald-500/20" :
+                                                    "bg-muted text-muted-foreground border-border"
                                         )}>
                                             {cb.status}
                                         </Badge>
