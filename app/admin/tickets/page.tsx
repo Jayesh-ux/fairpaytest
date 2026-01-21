@@ -85,9 +85,9 @@ export default function AdminTicketsPage() {
                     <h1 className="text-3xl font-bold">Case Management</h1>
                     <p className="text-muted-foreground mt-1 text-sm uppercase font-bold tracking-widest">Master Control Panel • {tickets.length} Tickets</p>
                 </div>
-                <div className="flex gap-4">
-                    <Button variant="outline" className="rounded-xl border-white/10 bg-white/5 hover:bg-white/10">Export Report</Button>
-                    <Button className="rounded-xl shadow-lg shadow-primary/20">Create Manual Ticket</Button>
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    <Button variant="outline" className="w-full sm:w-auto rounded-xl border-white/10 bg-white/5 hover:bg-white/10">Export Report</Button>
+                    <Button className="w-full sm:w-auto rounded-xl shadow-lg shadow-primary/20">Create Manual Ticket</Button>
                 </div>
             </div>
 
@@ -139,22 +139,22 @@ export default function AdminTicketsPage() {
                             <Card className="bg-[#121214] border-none hover:bg-[#1a1a1c] transition-all duration-300 group overflow-hidden relative">
                                 <CardContent className="p-0">
                                     <div className="p-6 space-y-4">
-                                        <div className="flex items-start justify-between">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 overflow-hidden">
+                                        <div className="flex flex-col xs:flex-row items-start justify-between gap-4">
+                                            <div className="flex items-center gap-4 min-w-0">
+                                                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 overflow-hidden flex-shrink-0">
                                                     {ticket.user.image ? (
                                                         <img src={ticket.user.image} className="w-full h-full object-cover" />
                                                     ) : (
                                                         <User className="w-6 h-6 text-muted-foreground" />
                                                     )}
                                                 </div>
-                                                <div>
-                                                    <h3 className="font-bold text-lg">{ticket.user.name}</h3>
-                                                    <p className="text-xs text-muted-foreground">{ticket.user.email}</p>
+                                                <div className="min-w-0">
+                                                    <h3 className="font-bold text-lg truncate">{ticket.user.name}</h3>
+                                                    <p className="text-xs text-muted-foreground truncate">{ticket.user.email}</p>
                                                 </div>
                                             </div>
                                             <Badge className={cn(
-                                                "rounded-full px-3 py-1",
+                                                "rounded-full px-3 py-1 whitespace-nowrap",
                                                 ticket.status === 'OPEN' ? "bg-green-500/10 text-green-500" : "bg-amber-500/10 text-amber-500"
                                             )}>
                                                 {ticket.status}
