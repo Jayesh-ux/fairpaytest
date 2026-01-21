@@ -67,6 +67,29 @@ export default function AdminUsersPage() {
         (u.email || '').toLowerCase().includes(search.toLowerCase())
     );
 
+    const handleDeleteUser = async (userId: string, userName: string) => {
+        if (!confirm(`Are you sure you want to delete user ${userName}? This action cannot be undone.`)) {
+            return;
+        }
+
+        try {
+            const res = await fetch(`/api/users/${userId}`, {
+                method: 'DELETE',
+            });
+
+            if (res.ok) {
+                toast.success(`User ${userName} deleted successfully`);
+                fetchUsers(); // Refresh list
+            } else {
+                const data = await res.json();
+                toast.error(data.error || 'Failed to delete user');
+            }
+        } catch (error) {
+            console.error('Error deleting user:', error);
+            toast.error('An error occurred while deleting the user');
+        }
+    };
+
     return (
         <div className="space-y-8 max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -74,7 +97,7 @@ export default function AdminUsersPage() {
                     <h1 className="text-3xl font-bold">User Management</h1>
                     <p className="text-muted-foreground mt-1 text-sm uppercase font-bold tracking-widest">Client Base • {users.length} Active Accounts</p>
                 </div>
-                <Button variant="outline" className="rounded-xl bg-muted/50 border-border">Invite New User</Button>
+                {/* <Button variant="outline" className="rounded-xl bg-muted/50 border-border">Invite New User</Button> */}
             </div>
 
             <Card className="glass-card border-none">
@@ -152,9 +175,19 @@ export default function AdminUsersPage() {
 
                                 <div className="pt-2 flex items-center justify-between text-[10px] font-bold text-muted-foreground uppercase">
                                     <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> Joined {formatDate(user.createdAt)}</span>
-                                    <Button variant="ghost" size="sm" className="h-8 rounded-lg hover:bg-primary/10 hover:text-primary p-0 px-2 group">
-                                        Details <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                                    </Button>
+                                    <div className="flex gap-2">
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => handleDeleteUser(user.id, user.name || 'User')}
+                                            className="h-8 rounded-lg border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-300 p-0 px-3"
+                                        >
+                                            Delete
+                                        </Button>
+                                        <Button variant="ghost" size="sm" className="h-8 rounded-lg hover:bg-primary/10 hover:text-primary p-0 px-2 group">
+                                            Details <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                                        </Button>
+                                    </div>
                                 </div>
                             </CardContent>
                         </Card>

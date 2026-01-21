@@ -38,9 +38,7 @@ declare module 'next-auth/jwt' {
 // Admin emails - these users will automatically get ADMIN role
 // IMPORTANT: Add your Gmail address here to access the Admin Dashboard
 const ADMIN_EMAILS = [
-    'admin@fairpaysolution.com',
-    'support@fairpaysolution.com',
-    'hsinghjayesh@gmail.com', // Primary admin
+    ...(process.env.ADMIN_EMAILS?.split(',').map(e => e.trim()) || [])
 ];
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
