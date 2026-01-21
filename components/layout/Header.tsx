@@ -104,10 +104,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 className="w-8 h-8 xs:w-9 xs:h-9 sm:w-11 sm:h-11 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0 border border-primary/20"
               />
               <div className="flex flex-col min-w-0">
-                <span className="font-display font-bold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-foreground leading-tight">
-                  FAIR<span className="text-primary">PAY</span>
-                  <span className="hidden sm:inline"> SOLUTIONS</span>
-                  <span className="hidden xs:inline sm:hidden"> SOL</span>
+                <span className="font-display font-bold text-[10px] xs:text-xs sm:text-base md:text-lg lg:text-xl text-foreground leading-tight">
+                  FAIR<span className="text-primary">PAY</span> SOLUTIONS
                 </span>
               </div>
             </Link>
