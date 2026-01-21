@@ -112,7 +112,7 @@ export function WhyChooseUs() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-6 lg:gap-8 max-w-6xl mx-auto"
                 >
                     {benefits.map((benefit, index) => (
                         <motion.div
@@ -120,7 +120,7 @@ export function WhyChooseUs() {
                             variants={cardVariants}
                             className="group"
                         >
-                            <div className={`relative h-full p-6 lg:p-8 rounded-2xl ${benefit.bgColor} border ${benefit.borderColor} hover:border-primary/40 transition-all duration-300 overflow-hidden`}>
+                            <div className={`relative h-full p-4 xs:p-6 lg:p-8 rounded-2xl ${benefit.bgColor} border ${benefit.borderColor} hover:border-primary/40 transition-all duration-300 overflow-hidden`}>
                                 {/* Hover glow effect */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 

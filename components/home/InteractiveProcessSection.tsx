@@ -232,7 +232,7 @@ export function InteractiveProcessSection({ onOpenCallback }: InteractiveProcess
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="glass-card-strong p-8 rounded-3xl shadow-2xl"
+                                className="glass-card-strong p-4 xs:p-6 md:p-8 rounded-3xl shadow-2xl"
                             >
                                 {/* Header */}
                                 <div className="mb-8">
