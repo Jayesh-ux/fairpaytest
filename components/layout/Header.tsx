@@ -106,8 +106,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <div className="flex flex-col min-w-0">
                 <span className="font-display font-bold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-foreground leading-tight">
                   FAIR<span className="text-primary">PAY</span>
-                  <span className="hidden xs:inline"> SOLUTIONS</span>
-                  <span className="xs:hidden">SOL</span>
+                  <span className="hidden sm:inline"> SOLUTIONS</span>
+                  <span className="hidden xs:inline sm:hidden"> SOL</span>
                 </span>
               </div>
             </Link>
@@ -210,13 +210,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
               {status === 'authenticated' ? (
                 <Link href="/portal">
-                  <Button variant="ghost" size="sm" className="px-2 h-8 text-xs xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                  <Button variant="ghost" size="sm" className="px-1.5 xs:px-2 h-7 xs:h-8 text-[10px] xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
                     Portal
                   </Button>
                 </Link>
               ) : (
                 <Link href="/auth/signin">
-                  <Button variant="ghost" size="sm" className="px-2 h-8 text-xs xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                  <Button variant="ghost" size="sm" className="px-1.5 xs:px-2 h-7 xs:h-8 text-[10px] xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
                     Login
                   </Button>
                 </Link>
