@@ -143,7 +143,7 @@ export default function DocumentsPage() {
                     <h1 className="text-2xl md:text-3xl font-bold">My Documents</h1>
                     <p className="text-muted-foreground">Manage and track your submitted documents</p>
                 </div>
-                <Button onClick={() => setUploadOpen(true)}>
+                <Button onClick={() => setUploadOpen(true)} className="w-full md:w-auto">
                     <Plus className="w-4 h-4 mr-2" />
                     Upload New
                 </Button>
@@ -207,7 +207,8 @@ export default function DocumentsPage() {
             </div>
 
             <div className="bg-background rounded-2xl overflow-hidden shadow-sm border border-border/50">
-                <table className="w-full text-left">
+                {/* Desktop Table View */}
+                <table className="w-full text-left hidden md:table">
                     <thead className="bg-muted/50 border-b border-border/50">
                         <tr>
                             <th className="px-6 py-4 font-bold text-xs uppercase tracking-wider text-muted-foreground">Document Name</th>
@@ -273,6 +274,55 @@ export default function DocumentsPage() {
                         )}
                     </tbody>
                 </table>
+
+                {/* Mobile Card View */}
+                <div className="md:hidden space-y-4 p-4">
+                    {loading ? (
+                        [1, 2, 3].map(i => (
+                            <div key={i} className="h-32 bg-muted/20 animate-pulse rounded-xl" />
+                        ))
+                    ) : filteredDocs.length === 0 ? (
+                        <div className="text-center py-12 text-muted-foreground">
+                            <FileText className="w-12 h-12 mx-auto mb-2 opacity-20" />
+                            <p>No documents found</p>
+                        </div>
+                    ) : (
+                        filteredDocs.map((doc) => (
+                            <div key={doc.id} className="bg-muted/10 border border-border/50 rounded-xl p-4 space-y-3">
+                                <div className="flex items-start justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                                            <FileText className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-sm line-clamp-1">{doc.name}</p>
+                                            <p className="text-xs text-muted-foreground">{formatDate(doc.createdAt)}</p>
+                                        </div>
+                                    </div>
+                                    <Badge className={cn(
+                                        "rounded-full px-2 text-[10px]",
+                                        doc.status === 'APPROVED' ? "bg-green-500/10 text-green-500 border-green-500/20" :
+                                            doc.status === 'REJECTED' ? "bg-red-500/10 text-red-500 border-red-500/20" :
+                                                "bg-amber-500/10 text-amber-500 border-amber-500/20"
+                                    )}>
+                                        {doc.status}
+                                    </Badge>
+                                </div>
+                                <div className="flex items-center justify-between pt-2 border-t border-border/30">
+                                    <Link href={`/portal/tickets/${doc.ticket.id}`} className="text-primary hover:underline text-xs font-medium flex items-center gap-1">
+                                        Related to {doc.ticket.lenderName || doc.ticket.loanType}
+                                        <ArrowRight className="w-3 h-3" />
+                                    </Link>
+                                    <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
+                                        <a href={doc.fileUrl} target="_blank" rel="noopener noreferrer">
+                                            <Download className="w-4 h-4" />
+                                        </a>
+                                    </Button>
+                                </div>
+                            </div>
+                        ))
+                    )}
+                </div>
             </div>
 
             {/* Upload Dialog */}
