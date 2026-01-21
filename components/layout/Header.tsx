@@ -94,17 +94,17 @@ export function Header({ onOpenCallback }: HeaderProps) {
             : 'bg-card'
         )}
       >
-        <div className="container mx-auto px-2 xs:px-3 sm:px-4">
-          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
+        <div className="container mx-auto px-2 sm:px-4">
+          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20 gap-2">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-1 xs:gap-1.5 sm:gap-2 group">
+            <Link href="/" className="flex items-center gap-1.5 sm:gap-2 group min-w-0 shrink-1">
               <img
                 src="/logo-fairpay.jpg"
                 alt="FairPay Solutions"
-                className="w-8 h-8 xs:w-9 xs:h-9 sm:w-11 sm:h-11 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0 border border-primary/20"
+                className="w-7 h-7 xs:w-9 xs:h-9 sm:w-11 sm:h-11 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 flex-shrink-0 border border-primary/20"
               />
-              <div className="flex flex-col min-w-0">
-                <span className="font-display font-bold text-[10px] xs:text-xs sm:text-base md:text-lg lg:text-xl text-foreground leading-tight">
+              <div className="flex flex-col min-w-0 shrink-1">
+                <span className="font-display font-bold text-[0.6rem] xs:text-xs sm:text-base md:text-lg lg:text-xl text-foreground leading-tight truncate">
                   FAIR<span className="text-primary">PAY</span> SOLUTIONS
                 </span>
               </div>
