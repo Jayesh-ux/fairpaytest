@@ -161,7 +161,7 @@ export default function AdminLayoutClient({
 
             {/* Main Content */}
             <main className={cn(
-                "min-h-screen transition-all duration-300",
+                "min-h-screen transition-all duration-300 w-full overflow-hidden flex flex-col",
                 isCollapsed ? "lg:ml-20" : "lg:ml-72"
             )}>
                 {/* Top Header */}
@@ -254,7 +254,7 @@ export default function AdminLayoutClient({
                 </header>
 
                 {/* Page Content */}
-                <div className="p-2 xs:p-3 sm:p-4 lg:p-8">{children}</div>
+                <div className="flex-1 p-4 xs:p-5 sm:p-6 lg:p-8 w-full min-w-0">{children}</div>
             </main>
         </div>
     );

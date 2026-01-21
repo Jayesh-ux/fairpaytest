@@ -197,29 +197,29 @@ export default function AdminTicketDetailPage() {
     if (!ticket) return <div className="text-center py-12">Ticket not found</div>;
 
     return (
-        <div className="space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-8 max-w-7xl mx-auto w-full min-w-0">
             {/* Header */}
-            <div className="flex flex-col gap-4">
-                <div className="space-y-2 w-full overflow-hidden">
+            <div className="flex flex-col gap-6 w-full min-w-0">
+                <div className="space-y-2 w-full min-w-0">
                     <Link href="/admin/tickets" className="inline-flex items-center gap-2 text-[10px] font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
                         <ArrowLeft className="w-3 h-3" /> Back to All Cases
                     </Link>
-                    <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-1">
-                            <h1 className="text-xl font-bold truncate leading-tight">{ticket.lenderName || ticket.loanType}</h1>
+                    <div className="flex flex-col gap-3 w-full min-w-0">
+                        <div className="flex flex-col gap-2 w-full min-w-0">
+                            <h1 className="text-xl xs:text-2xl font-bold truncate leading-tight break-all">{ticket.lenderName || ticket.loanType}</h1>
                             <Badge className="w-fit bg-primary/20 text-primary border-primary/30 uppercase text-[10px] tracking-widest px-2 py-0.5">#{ticket.id.slice(0, 8)}</Badge>
                         </div>
-                        <p className="text-muted-foreground flex items-center gap-2 text-xs truncate">
-                            <User className="w-3 h-3 shrink-0" /> <span className="truncate">{ticket.user.name}</span>
+                        <p className="text-muted-foreground flex items-center gap-2 text-xs truncate w-full min-w-0">
+                            <User className="w-3 h-3 shrink-0" /> <span className="truncate">{ticket.user.name} ({ticket.user.email})</span>
                         </p>
                     </div>
                 </div>
 
-                {/* Action Buttons - Stacked on mobile, Row on md */}
-                <div className="flex flex-col sm:flex-row gap-2 w-full">
-                    <Button variant="outline" className="w-full sm:w-auto rounded-xl border-white/10 text-xs h-10" disabled={updating}>Manage Documents</Button>
-                    <Button variant="destructive" className="w-full sm:w-auto rounded-xl text-xs h-10" disabled={updating}>
-                        <Trash2 className="w-4 h-4 mr-2" /> Delete
+                {/* Action Buttons - Stacked on mobile, Row on sm */}
+                <div className="flex flex-col sm:flex-row gap-3 w-full">
+                    <Button variant="outline" className="w-full sm:flex-1 rounded-xl border-white/10 text-xs h-12 font-bold uppercase" disabled={updating}>Manage Documents</Button>
+                    <Button variant="destructive" className="w-full sm:flex-1 rounded-xl text-xs h-12 font-bold uppercase" disabled={updating}>
+                        <Trash2 className="w-4 h-4 mr-2" /> Delete Case
                     </Button>
                 </div>
             </div>
