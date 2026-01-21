@@ -162,33 +162,35 @@ export default function TicketsPage() {
                             transition={{ delay: index * 0.05 }}
                         >
                             <Link href={`/portal/tickets/${ticket.id}`}>
-                                <div className="glass-card-strong p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl hover:shadow-lg hover:border-primary/30 transition-all">
-                                    <div className="flex flex-col gap-3 xs:gap-4">
+                                <div className="glass-card-strong p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl hover:shadow-lg hover:border-primary/30 transition-all relative overflow-hidden">
+                                    <div className="flex flex-col gap-3 xs:gap-4 relative z-10">
                                         {/* Main Info */}
                                         <div className="flex-1 min-w-0">
                                             <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-3 mb-1.5 xs:mb-2">
                                                 <h3 className="font-bold text-sm xs:text-base sm:text-lg text-foreground truncate max-w-[150px] xs:max-w-[200px] sm:max-w-none">
                                                     {ticket.lenderName || ticket.loanType}
                                                 </h3>
-                                                <span
-                                                    className={cn(
-                                                        'px-1.5 xs:px-2 sm:px-2.5 py-0.5 text-[9px] xs:text-[10px] sm:text-xs font-medium rounded-full text-white flex-shrink-0',
-                                                        stageInfo[ticket.stage as keyof typeof stageInfo]?.color
-                                                    )}
-                                                >
-                                                    {stageInfo[ticket.stage as keyof typeof stageInfo]?.label}
-                                                </span>
-                                                <span
-                                                    className={cn(
-                                                        'px-1.5 xs:px-2 sm:px-2.5 py-0.5 text-[9px] xs:text-[10px] sm:text-xs font-medium rounded-full border flex-shrink-0',
-                                                        statusColors[ticket.status as keyof typeof statusColors]
-                                                    )}
-                                                >
-                                                    {ticket.status.replace('_', ' ')}
-                                                </span>
+                                                <div className="flex items-center gap-1.5 shrink-0">
+                                                    <span
+                                                        className={cn(
+                                                            'px-1.5 xs:px-2 sm:px-2.5 py-0.5 text-[9px] xs:text-[10px] sm:text-xs font-medium rounded-full text-white flex-shrink-0',
+                                                            stageInfo[ticket.stage as keyof typeof stageInfo]?.color
+                                                        )}
+                                                    >
+                                                        {stageInfo[ticket.stage as keyof typeof stageInfo]?.label}
+                                                    </span>
+                                                    <span
+                                                        className={cn(
+                                                            'px-1.5 xs:px-2 sm:px-2.5 py-0.5 text-[9px] xs:text-[10px] sm:text-xs font-medium rounded-full border flex-shrink-0',
+                                                            statusColors[ticket.status as keyof typeof statusColors]
+                                                        )}
+                                                    >
+                                                        {ticket.status.replace('_', ' ')}
+                                                    </span>
+                                                </div>
                                             </div>
 
-                                            <p className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground mb-2 xs:mb-3">
+                                            <p className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground mb-2 xs:mb-3 truncate">
                                                 {ticket.loanType.replace(/_/g, ' ')}
                                                 {ticket.loanAmount && (
                                                     <> • ₹{ticket.loanAmount.toLocaleString('en-IN')}</>
@@ -211,7 +213,7 @@ export default function TicketsPage() {
                                         </div>
 
                                         {/* Stats */}
-                                        <div className="flex items-center justify-between pt-2 xs:pt-0">
+                                        <div className="flex items-center justify-between pt-2 xs:pt-0 gap-2">
                                             <div className="flex items-center gap-3 xs:gap-4 sm:gap-6 text-[10px] xs:text-xs sm:text-sm text-muted-foreground overflow-x-auto scrollbar-hide">
                                                 <div className="flex items-center gap-1 xs:gap-1.5 whitespace-nowrap">
                                                     <Clock className="w-3 h-3 xs:w-4 xs:h-4" />
@@ -226,7 +228,9 @@ export default function TicketsPage() {
                                                     <span>{ticket._count.messages}</span>
                                                 </div>
                                             </div>
-                                            <ArrowRight className="w-4 h-4 xs:w-5 xs:h-5 text-primary flex-shrink-0" />
+                                            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                                <ArrowRight className="w-4 h-4 text-primary" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

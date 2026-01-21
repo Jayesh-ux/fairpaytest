@@ -276,12 +276,12 @@ function SignInContent() {
             </div>
 
             {/* Right Side - Sign In Form */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 bg-background">
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-4 xs:p-6 lg:p-12 bg-background min-h-[100dvh]">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="w-full max-w-md"
+                    className="w-full max-w-[min(100%,28rem)] mx-auto"
                 >
                     {/* Mobile Logo */}
                     <div className="lg:hidden text-center mb-8">

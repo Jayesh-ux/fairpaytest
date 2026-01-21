@@ -207,13 +207,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <ThemeToggle />
 
               {status === 'authenticated' ? (
-                <Link href="/portal">
+                <Link href="/portal" className="hidden sm:block">
                   <Button variant="ghost" size="sm" className="px-1.5 xs:px-2 h-7 xs:h-8 text-[10px] xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
                     Portal
                   </Button>
                 </Link>
               ) : (
-                <Link href="/auth/signin">
+                <Link href="/auth/signin" className="hidden sm:block">
                   <Button variant="ghost" size="sm" className="px-1.5 xs:px-2 h-7 xs:h-8 text-[10px] xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
                     Login
                   </Button>
@@ -223,7 +223,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 variant="accent"
                 size="sm"
                 onClick={onOpenCallback}
-                className="text-[0.6rem] xs:text-xs sm:text-sm px-1.5 xs:px-2 sm:px-3 md:px-4 py-1 xs:py-1.5 sm:py-2 h-auto whitespace-nowrap min-w-[45px] xs:min-w-[60px]"
+                className="hidden sm:flex text-[0.6rem] xs:text-xs sm:text-sm px-1.5 xs:px-2 sm:px-3 md:px-4 py-1 xs:py-1.5 sm:py-2 h-auto whitespace-nowrap min-w-[45px] xs:min-w-[60px]"
               >
                 <span className="hidden xs:inline">Callback</span>
                 <span className="xs:hidden">Call</span>
@@ -269,7 +269,35 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mb-6" />
 
                 {/* Mobile Auth Action */}
+                <div className="mb-6 space-y-3">
+                  {status === 'authenticated' ? (
+                    <Link href="/portal" className="block">
+                      <Button className="w-full justify-start gap-2 h-12 text-base font-semibold" variant="default">
+                        <LayoutDashboard className="w-5 h-5" />
+                        Go to Portal
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link href="/auth/signin" className="block">
+                      <Button className="w-full justify-start gap-2 h-12 text-base font-semibold" variant="default">
+                        <LogIn className="w-5 h-5" />
+                        Sign In / Register
+                      </Button>
+                    </Link>
+                  )}
 
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2 h-12 text-base font-semibold border-primary/20 text-primary hover:bg-primary/5"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenCallback();
+                    }}
+                  >
+                    <Phone className="w-5 h-5" />
+                    Request Callback
+                  </Button>
+                </div>
 
                 <div className="space-y-1">
                   {mainNavItems.map((item) => (
