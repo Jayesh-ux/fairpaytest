@@ -256,7 +256,7 @@ export default function AdminDashboard() {
             </motion.div>
 
             {/* Stats Grid - Bento Style */}
-            <motion.div variants={item} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
+            <motion.div variants={item} className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
                 {statsCards.map((stat, idx) => (
                     <Card
                         key={idx}

@@ -116,7 +116,7 @@ export default function AdminUsersPage() {
                 ) : (
                     filteredUsers.map(user => (
                         <Card key={user.id} className="bg-[#121214] border-none group hover:ring-1 ring-primary/30 transition-all">
-                            <CardContent className="p-6 space-y-6">
+                            <CardContent className="p-4 xs:p-6 space-y-4 xs:space-y-6">
                                 <div className="flex items-start justify-between">
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 overflow-hidden">

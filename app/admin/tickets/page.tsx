@@ -138,7 +138,7 @@ export default function AdminTicketsPage() {
                         <Link key={ticket.id} href={`/admin/tickets/${ticket.id}`}>
                             <Card className="bg-[#121214] border-none hover:bg-[#1a1a1c] transition-all duration-300 group overflow-hidden relative">
                                 <CardContent className="p-0">
-                                    <div className="p-6 space-y-4">
+                                    <div className="p-4 xs:p-6 space-y-4">
                                         <div className="flex flex-col xs:flex-row items-start justify-between gap-4">
                                             <div className="flex items-center gap-4 min-w-0">
                                                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 overflow-hidden flex-shrink-0">
