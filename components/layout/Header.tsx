@@ -207,13 +207,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <ThemeToggle />
 
               {status === 'authenticated' ? (
-                <Link href="/portal" className="hidden sm:block">
+                <Link href="/portal">
                   <Button variant="ghost" size="sm" className="px-1.5 xs:px-2 h-7 xs:h-8 text-[10px] xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
                     Portal
                   </Button>
                 </Link>
               ) : (
-                <Link href="/auth/signin" className="hidden sm:block">
+                <Link href="/auth/signin">
                   <Button variant="ghost" size="sm" className="px-1.5 xs:px-2 h-7 xs:h-8 text-[10px] xs:text-sm font-semibold text-foreground hover:text-primary transition-colors">
                     Login
                   </Button>
@@ -223,7 +223,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 variant="accent"
                 size="sm"
                 onClick={onOpenCallback}
-                className="hidden sm:flex text-[0.6rem] xs:text-xs sm:text-sm px-1.5 xs:px-2 sm:px-3 md:px-4 py-1 xs:py-1.5 sm:py-2 h-auto whitespace-nowrap min-w-[45px] xs:min-w-[60px]"
+                className="flex text-[0.6rem] xs:text-xs sm:text-sm px-1.5 xs:px-2 sm:px-3 md:px-4 py-1 xs:py-1.5 sm:py-2 h-auto whitespace-nowrap min-w-[35px] xs:min-w-[60px]"
               >
                 <span className="hidden xs:inline">Callback</span>
                 <span className="xs:hidden">Call</span>
