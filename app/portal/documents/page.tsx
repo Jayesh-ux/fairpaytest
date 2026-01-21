@@ -34,10 +34,35 @@ interface Document {
     };
 }
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+} from '@/components/ui/dialog';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+
 export default function DocumentsPage() {
     const [documents, setDocuments] = useState<Document[]>([]);
+    const [tickets, setTickets] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
+
+    // Upload State
+    const [uploadOpen, setUploadOpen] = useState(false);
+    const [selectedTicketId, setSelectedTicketId] = useState<string>('');
+    const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
         fetchDocuments();
@@ -45,10 +70,10 @@ export default function DocumentsPage() {
 
     const fetchDocuments = async () => {
         try {
-            // For now, we fetch tickets and flat map documents, or if we have a direct API...
-            // Let's use the tickets API and get all docs.
             const res = await fetch('/api/tickets');
             const data = await res.json();
+
+            setTickets(data.tickets || []);
 
             const allDocs: Document[] = [];
             data.tickets.forEach((ticket: any) => {
@@ -75,6 +100,37 @@ export default function DocumentsPage() {
         }
     };
 
+    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file || !selectedTicketId) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('name', file.name.split('.')[0]);
+
+        setUploading(true);
+        const toastId = toast.loading('Uploading document...');
+
+        try {
+            const res = await fetch(`/api/tickets/${selectedTicketId}/documents`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!res.ok) throw new Error('Upload failed');
+
+            toast.success('Document uploaded successfully', { id: toastId });
+            setUploadOpen(false);
+            fetchDocuments(); // Refresh list
+            setSelectedTicketId('');
+        } catch (error) {
+            console.error(error);
+            toast.error('Failed to upload document', { id: toastId });
+        } finally {
+            setUploading(false);
+        }
+    };
+
     const filteredDocs = documents.filter(doc =>
         doc.name.toLowerCase().includes(search.toLowerCase()) ||
         (doc.ticket.lenderName || '').toLowerCase().includes(search.toLowerCase())
@@ -87,7 +143,7 @@ export default function DocumentsPage() {
                     <h1 className="text-2xl md:text-3xl font-bold">My Documents</h1>
                     <p className="text-muted-foreground">Manage and track your submitted documents</p>
                 </div>
-                <Button variant="outline" disabled className="cursor-not-allowed">
+                <Button onClick={() => setUploadOpen(true)}>
                     <Plus className="w-4 h-4 mr-2" />
                     Upload New
                 </Button>
@@ -218,6 +274,64 @@ export default function DocumentsPage() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Upload Dialog */}
+            <Dialog open={uploadOpen} onOpenChange={setUploadOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Upload Document</DialogTitle>
+                        <DialogDescription>
+                            Select the case you want to upload documents for.
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <div className="space-y-4 py-4">
+                        <div className="space-y-2">
+                            <Label>Select Case</Label>
+                            <Select value={selectedTicketId} onValueChange={setSelectedTicketId}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a case..." />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {tickets.map((t) => (
+                                        <SelectItem key={t.id} value={t.id}>
+                                            {t.lenderName || t.loanType} - {t.id.slice(0, 8)}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        {selectedTicketId && (
+                            <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
+                                <Label>Choose File</Label>
+                                <div className="border-2 border-dashed border-muted rounded-xl p-8 text-center hover:bg-muted/50 transition-colors relative">
+                                    <input
+                                        type="file"
+                                        onChange={handleFileUpload}
+                                        disabled={uploading}
+                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+                                        accept=".pdf,.jpg,.jpeg,.png"
+                                    />
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                            {uploading ? (
+                                                <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                                            ) : (
+                                                <Plus className="w-5 h-5" />
+                                            )}
+                                        </div>
+                                        <p className="text-sm font-medium">
+                                            {uploading ? 'Uploading...' : 'Click to select file'}
+                                        </p>
+                                        <p className="text-xs text-muted-foreground">PDF, JPG or PNG (Max 10MB)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
