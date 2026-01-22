@@ -180,8 +180,10 @@ export function EnhancedFAQSection() {
                     <div className="glass-card-strong p-6 rounded-2xl shadow-lg mb-6">
                         <div className="relative">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                            <label htmlFor="faq-search" className="sr-only">Search questions</label>
                             <Input
                                 id="faq-search"
+                                name="search"
                                 aria-label="Search questions"
                                 type="text"
                                 placeholder="Search questions..."
