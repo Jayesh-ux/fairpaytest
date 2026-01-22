@@ -72,7 +72,6 @@ export const metadata: Metadata = {
         shortcut: '/logo.jpg',
         apple: '/logo.jpg',
     },
-    manifest: '/manifest.json',
 };
 
 // JSON-LD structured data

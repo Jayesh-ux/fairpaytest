@@ -1,0 +1,25 @@
+import { MetadataRoute } from 'next';
+
+export default function manifest(): MetadataRoute.Manifest {
+    return {
+        name: 'FairPay Solutions',
+        short_name: 'FairPay',
+        description: 'Expert Debt Settlement & Relief in India',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#0a0a0b',
+        theme_color: '#C9A962',
+        icons: [
+            {
+                src: '/logo.jpg',
+                sizes: '192x192',
+                type: 'image/jpeg',
+            },
+            {
+                src: '/logo.jpg',
+                sizes: '512x512',
+                type: 'image/jpeg',
+            },
+        ],
+    };
+}
