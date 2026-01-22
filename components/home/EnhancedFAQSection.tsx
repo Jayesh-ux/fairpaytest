@@ -186,6 +186,7 @@ export function EnhancedFAQSection() {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="pl-12 h-12 text-base bg-background/50"
+                                aria-label="Search questions"
                             />
                         </div>
                     </div>

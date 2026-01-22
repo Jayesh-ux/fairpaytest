@@ -213,10 +213,12 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                             <div className="space-y-4 sm:space-y-6 md:space-y-8">
                                 {/* Loan Amount Input */}
                                 <div>
-                                    <label className="block text-xs xs:text-sm sm:text-base font-bold text-foreground mb-2 sm:mb-3 md:mb-4">
+                                    <label htmlFor="loan-amount" className="block text-xs xs:text-sm sm:text-base font-bold text-foreground mb-2 sm:mb-3 md:mb-4">
                                         Your Current Loan Amount
                                     </label>
                                     <input
+                                        id="loan-amount"
+                                        name="loanAmount"
                                         type="range"
                                         min="50000"
                                         max="5000000"

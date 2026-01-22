@@ -117,8 +117,10 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
 
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label className="text-sm font-semibold ml-1">Your Name</label>
+                                        <label htmlFor="review-name" className="text-sm font-semibold ml-1">Your Name</label>
                                         <input
+                                            id="review-name"
+                                            name="name"
                                             type="text"
                                             required
                                             placeholder="John D."
@@ -128,8 +130,10 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-semibold ml-1">Your Location</label>
+                                        <label htmlFor="review-location" className="text-sm font-semibold ml-1">Your Location</label>
                                         <input
+                                            id="review-location"
+                                            name="location"
                                             type="text"
                                             required
                                             placeholder="Agra, UP"
@@ -141,8 +145,10 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm font-semibold ml-1">Your Review</label>
+                                    <label htmlFor="review-text" className="text-sm font-semibold ml-1">Your Review</label>
                                     <textarea
+                                        id="review-text"
+                                        name="review"
                                         required
                                         rows={4}
                                         placeholder="Tell us about your experience with our services..."
