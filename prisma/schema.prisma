@@ -288,3 +288,19 @@ model Review {
   @@index([approved])
   @@index([createdAt])
 }
+
+// ══════════════════════════════════════════════════════════════════════════════
+//                              EMERGENCY CONTACTS
+// ══════════════════════════════════════════════════════════════════════════════
+
+model EmergencyContact {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  message   String?
+  status    String   @default("PENDING") // PENDING, CALLED, RESOLVED
+  createdAt DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+}

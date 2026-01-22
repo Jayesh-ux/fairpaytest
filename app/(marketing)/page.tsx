@@ -50,6 +50,10 @@ const CallbackPopup = dynamic(() => import('@/components/CallbackPopup').then(mo
     ssr: false
 });
 
+const EmergencyStickyBar = dynamic(() => import('@/components/home/EmergencyStickyBar').then(mod => ({ default: mod.EmergencyStickyBar })), {
+    ssr: false
+});
+
 const REVIEWS_CACHE_KEY = 'fairpay_reviews_cache';
 
 // Helper to load cached reviews from localStorage (fallback)
@@ -227,6 +231,7 @@ export default function HomePage() {
                 isOpen={isCallbackOpen}
                 onClose={() => setIsCallbackOpen(false)}
             />
+            <EmergencyStickyBar />
         </>
     );
 }
