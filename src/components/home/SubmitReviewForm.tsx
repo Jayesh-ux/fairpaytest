@@ -100,9 +100,9 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
 
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label htmlFor="review-name" className="text-sm font-semibold ml-1">Your Name</label>
+                                        <label htmlFor="review-name-src" className="text-sm font-semibold ml-1">Your Name</label>
                                         <input
-                                            id="review-name"
+                                            id="review-name-src"
                                             name="name"
                                             autoComplete="name"
                                             type="text"
@@ -114,9 +114,9 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label htmlFor="review-location" className="text-sm font-semibold ml-1">Your Location</label>
+                                        <label htmlFor="review-location-src" className="text-sm font-semibold ml-1">Your Location</label>
                                         <input
-                                            id="review-location"
+                                            id="review-location-src"
                                             name="location"
                                             autoComplete="address-level2"
                                             type="text"
