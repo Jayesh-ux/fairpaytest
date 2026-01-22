@@ -170,7 +170,7 @@ export const EmergencyStickyBar = () => {
                             initial={{ y: 20, opacity: 0, scale: 0.95 }}
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 20, opacity: 0, scale: 0.95 }}
-                            className="w-[90vw] sm:w-[380px] bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-zinc-800 overflow-hidden"
+                            className="w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-zinc-800 overflow-hidden"
                         >
                             {/* Premium Header */}
                             <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-5 relative overflow-hidden">
