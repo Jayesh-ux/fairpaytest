@@ -297,10 +297,18 @@ model EmergencyContact {
   id        String   @id @default(cuid())
   name      String
   phone     String
-  message   String?
-  status    String   @default("PENDING") // PENDING, CALLED, RESOLVED
-  createdAt DateTime @default(now())
+  message       String?
+  status        String   @default("PENDING") // PENDING, CALLED, RESOLVED
+  
+  // Payment Details
+  paymentStatus String   @default("PENDING") // PENDING, PAID, FAILED
+  amount        Float    @default(0)
+  orderId       String?  // Razorpay Order ID
+  paymentId     String?  // Razorpay Payment ID
+  
+  createdAt     DateTime @default(now())
 
   @@index([status])
+  @@index([paymentStatus])
   @@index([createdAt])
 }
