@@ -74,7 +74,7 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="flex flex-col items-center mb-6">
-                                    <label className="text-sm font-semibold mb-3 text-muted-foreground uppercase tracking-wider">Select Rating</label>
+                                    <span className="text-sm font-semibold mb-3 text-muted-foreground uppercase tracking-wider">Select Rating</span>
                                     <div className="flex gap-2">
                                         {[1, 2, 3, 4, 5].map((star) => (
                                             <button
