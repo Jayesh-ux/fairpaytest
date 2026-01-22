@@ -22,6 +22,7 @@ import {
     Search,
     Command,
     ChevronDown,
+    AlertTriangle,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -74,6 +75,13 @@ const adminSidebarItems = [
         href: '/admin/messages',
         icon: MessageSquare,
         description: 'Message Center',
+    },
+    {
+        label: 'Emergency',
+        href: '/admin/emergency',
+        icon: AlertTriangle,
+        description: 'Priority Requests',
+        badge: 'Alert',
     },
 ];
 
