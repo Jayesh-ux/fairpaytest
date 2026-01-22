@@ -121,6 +121,7 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
                                         <input
                                             id="review-name"
                                             name="name"
+                                            autoComplete="name"
                                             type="text"
                                             required
                                             placeholder="John D."
@@ -134,6 +135,7 @@ export function SubmitReviewForm({ onSuccess }: SubmitReviewFormProps) {
                                         <input
                                             id="review-location"
                                             name="location"
+                                            autoComplete="address-level2"
                                             type="text"
                                             required
                                             placeholder="Agra, UP"
