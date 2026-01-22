@@ -235,7 +235,10 @@ export const EmergencyStickyBar = () => {
 
                                         <div className="space-y-3">
                                             <div className="relative">
+                                                <label htmlFor="emergency-name" className="sr-only">Your Name</label>
                                                 <input
+                                                    id="emergency-name"
+                                                    name="name"
                                                     type="text"
                                                     value={formData.name}
                                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -244,7 +247,10 @@ export const EmergencyStickyBar = () => {
                                                 />
                                             </div>
                                             <div className="relative">
+                                                <label htmlFor="emergency-phone" className="sr-only">Phone Number</label>
                                                 <input
+                                                    id="emergency-phone"
+                                                    name="phone"
                                                     type="tel"
                                                     value={formData.phone}
                                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -253,7 +259,10 @@ export const EmergencyStickyBar = () => {
                                                 />
                                             </div>
                                             <div className="relative">
+                                                <label htmlFor="emergency-message" className="sr-only">Message</label>
                                                 <textarea
+                                                    id="emergency-message"
+                                                    name="message"
                                                     value={formData.message}
                                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                                     placeholder="What's your emergency? (Optional)"
