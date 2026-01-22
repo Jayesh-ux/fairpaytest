@@ -79,11 +79,11 @@ export default function AdminTicketsPage() {
     );
 
     return (
-        <div className="space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-8 max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl xs:text-3xl font-bold">Case Management</h1>
-                    <p className="text-muted-foreground mt-1 text-[10px] xs:text-sm uppercase font-bold tracking-widest truncate">Master Control Panel • {tickets.length} Tickets</p>
+                    <h1 className="text-2xl xs:text-3xl 3xl:text-4xl font-bold">Case Management</h1>
+                    <p className="text-muted-foreground mt-1 text-[10px] xs:text-sm 3xl:text-base uppercase font-bold tracking-widest truncate">Master Control Panel • {tickets.length} Tickets</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                     <Button variant="outline" className="w-full sm:w-auto rounded-xl border-border bg-muted/50 hover:bg-muted">Export Report</Button>
@@ -93,25 +93,25 @@ export default function AdminTicketsPage() {
 
             {/* Filters */}
             <Card className="glass-card border-none">
-                <CardContent className="p-3 xs:p-4 flex flex-col gap-3 xs:gap-4">
+                <CardContent className="p-3 xs:p-4 3xl:p-6 flex flex-col gap-3 xs:gap-4">
                     <div className="relative flex-1 min-w-0">
                         <Search className="absolute left-3 xs:left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 xs:w-4 xs:h-4 text-muted-foreground" />
                         <input
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search client, lender..."
-                            className="w-full bg-muted/30 border border-border/50 rounded-xl py-2 xs:py-2.5 sm:py-3 pl-9 xs:pl-10 sm:pl-12 pr-3 xs:pr-4 focus:ring-2 focus:ring-primary/20 outline-none text-[11px] xs:text-xs sm:text-sm"
+                            className="w-full bg-muted/30 border border-border/50 rounded-xl py-2 xs:py-2.5 sm:py-3 3xl:py-3.5 pl-9 xs:pl-10 sm:pl-12 pr-3 xs:pr-4 focus:ring-2 focus:ring-primary/20 outline-none text-[11px] xs:text-xs sm:text-sm 3xl:text-base"
                         />
                     </div>
                     {/* Horizontal scrollable filter tabs */}
                     <div className="overflow-x-auto -mx-2 xs:-mx-4 px-2 xs:px-4 pb-1 scrollbar-hide">
-                        <div className="flex gap-1.5 xs:gap-2 min-w-max">
+                        <div className="flex gap-1.5 xs:gap-2 3xl:gap-3 min-w-max">
                             {['ALL', 'ASSESSMENT', 'REVIEW', 'STRATEGY', 'NEGOTIATION', 'SETTLEMENT'].map(stage => (
                                 <button
                                     key={stage}
                                     onClick={() => setStageFilter(stage)}
                                     className={cn(
-                                        "px-2.5 xs:px-3 sm:px-4 py-1.5 xs:py-2 rounded-lg xs:rounded-xl text-[8px] xs:text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap flex-shrink-0",
+                                        "px-2.5 xs:px-3 sm:px-4 3xl:px-5 py-1.5 xs:py-2 3xl:py-2.5 rounded-lg xs:rounded-xl text-[8px] xs:text-[9px] sm:text-[10px] 3xl:text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap flex-shrink-0",
                                         stageFilter === stage ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
                                     )}
                                 >
@@ -124,7 +124,7 @@ export default function AdminTicketsPage() {
             </Card>
 
             {/* Tickets Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 xs:gap-5 sm:gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3 gap-3.5 xs:gap-5 sm:gap-6 3xl:gap-8">
                 {loading ? (
                     [1, 2, 3, 4].map(i => <div key={i} className="h-64 rounded-3xl bg-muted animate-pulse" />)
                 ) : filteredTickets.length === 0 ? (

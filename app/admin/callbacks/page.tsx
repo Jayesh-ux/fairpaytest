@@ -90,21 +90,21 @@ export default function AdminCallbacksPage() {
     };
 
     return (
-        <div className="space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-8 max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold">Callback Requests</h1>
-                    <p className="text-muted-foreground mt-1 text-sm uppercase font-bold tracking-widest">Leads Management • {callbacks.length} Submissions</p>
+                    <h1 className="text-3xl 3xl:text-4xl font-bold">Callback Requests</h1>
+                    <p className="text-muted-foreground mt-1 text-sm 3xl:text-base uppercase font-bold tracking-widest">Leads Management • {callbacks.length} Submissions</p>
                 </div>
             </div>
 
-            <div className="flex gap-2 overflow-x-auto pb-2">
+            <div className="flex gap-2 3xl:gap-3 overflow-x-auto pb-2">
                 {['ALL', 'NEW', 'CONTACTED', 'CONVERTED', 'DISCARDED'].map(s => (
                     <button
                         key={s}
                         onClick={() => setFilter(s)}
                         className={cn(
-                            "px-6 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap",
+                            "px-6 3xl:px-8 py-2 3xl:py-2.5 rounded-xl text-[10px] 3xl:text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap",
                             filter === s ? "bg-primary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"
                         )}
                     >
@@ -113,7 +113,7 @@ export default function AdminCallbacksPage() {
                 ))}
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid gap-6 3xl:gap-8">
                 {loading ? (
                     [1, 2, 3].map(i => <div key={i} className="h-48 rounded-3xl bg-white/5 animate-pulse" />)
                 ) : callbacks.length === 0 ? (

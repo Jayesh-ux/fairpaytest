@@ -97,11 +97,11 @@ export default function AdminReviewsPage() {
     }, [loading, reviews]);
 
     return (
-        <div className="space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-8 max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold">Review Moderation</h1>
-                    <p className="text-muted-foreground mt-1 text-sm uppercase font-bold tracking-widest">Public Testimonials • {reviews.length} Total</p>
+                    <h1 className="text-3xl 3xl:text-4xl font-bold">Review Moderation</h1>
+                    <p className="text-muted-foreground mt-1 text-sm 3xl:text-base uppercase font-bold tracking-widest">Public Testimonials • {reviews.length} Total</p>
                 </div>
                 <Button className="rounded-xl shadow-lg shadow-primary/20">Add Manual Review</Button>
             </div>
@@ -121,7 +121,7 @@ export default function AdminReviewsPage() {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-3 gap-6 3xl:gap-8">
                 {loading ? (
                     [1, 2, 3, 4].map(i => <div key={i} className="h-64 rounded-3xl bg-white/5 animate-pulse" />)
                 ) : reviews.length === 0 ? (

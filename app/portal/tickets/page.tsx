@@ -76,12 +76,12 @@ export default function TicketsPage() {
     );
 
     return (
-        <div className="space-y-3 xs:space-y-4 sm:space-y-6 overflow-hidden">
+        <div className="space-y-3 xs:space-y-4 sm:space-y-6 overflow-hidden max-w-6xl 3xl:max-w-[1400px] 4xl:max-w-[1600px] mx-auto">
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 xs:gap-3 sm:gap-4">
                 <div className="min-w-0">
-                    <h1 className="text-lg xs:text-xl sm:text-2xl font-bold text-foreground truncate">My Tickets</h1>
-                    <p className="text-xs xs:text-sm text-muted-foreground truncate">
+                    <h1 className="text-lg xs:text-xl sm:text-2xl 3xl:text-3xl font-bold text-foreground truncate">My Tickets</h1>
+                    <p className="text-xs xs:text-sm 3xl:text-base text-muted-foreground truncate">
                         Track all your debt resolution cases
                     </p>
                 </div>
@@ -153,7 +153,7 @@ export default function TicketsPage() {
                     </Button>
                 </motion.div>
             ) : (
-                <div className="grid gap-4">
+                <div className="grid gap-4 3xl:gap-6">
                     {filteredTickets.map((ticket, index) => (
                         <motion.div
                             key={ticket.id}

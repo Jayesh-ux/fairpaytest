@@ -123,7 +123,7 @@ export default function PortalDashboard() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-4 xs:space-y-5 sm:space-y-6 max-w-6xl mx-auto overflow-hidden"
+            className="space-y-4 xs:space-y-5 sm:space-y-6 max-w-6xl 3xl:max-w-[1400px] 4xl:max-w-[1600px] mx-auto overflow-hidden"
         >
             {/* Welcome Hero Section */}
             <motion.div variants={item}>

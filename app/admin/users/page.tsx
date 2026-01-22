@@ -91,11 +91,11 @@ export default function AdminUsersPage() {
     };
 
     return (
-        <div className="space-y-8 max-w-7xl mx-auto">
+        <div className="space-y-8 max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold">User Management</h1>
-                    <p className="text-muted-foreground mt-1 text-sm uppercase font-bold tracking-widest">Client Base • {users.length} Active Accounts</p>
+                    <h1 className="text-3xl 3xl:text-4xl font-bold">User Management</h1>
+                    <p className="text-muted-foreground mt-1 text-sm 3xl:text-base uppercase font-bold tracking-widest">Client Base • {users.length} Active Accounts</p>
                 </div>
                 {/* <Button variant="outline" className="rounded-xl bg-muted/50 border-border">Invite New User</Button> */}
             </div>
@@ -128,7 +128,7 @@ export default function AdminUsersPage() {
                 </CardContent>
             </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-6 3xl:gap-8">
                 {loading ? (
                     [1, 2, 3, 4, 5, 6].map(i => <div key={i} className="h-64 rounded-3xl bg-white/5 animate-pulse" />)
                 ) : filteredUsers.length === 0 ? (

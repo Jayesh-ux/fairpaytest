@@ -145,12 +145,12 @@ export default function PortalLayoutClient({
             {/* Main Content */}
             <main className="lg:ml-72 min-h-screen">
                 {/* Desktop Header */}
-                <header className="hidden lg:flex sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border px-8 py-4 items-center justify-between">
+                <header className="hidden lg:flex sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border px-8 3xl:px-12 4xl:px-16 py-4 items-center justify-between">
                     <div>
-                        <h1 className="text-xl font-bold">
+                        <h1 className="text-xl 3xl:text-2xl font-bold">
                             {sidebarItems.find((item) => item.href === pathname)?.label || 'Portal'}
                         </h1>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm 3xl:text-base text-muted-foreground">
                             {sidebarItems.find((item) => item.href === pathname)?.description || `Welcome, ${session?.user?.name?.split(' ')[0] || 'User'}`}
                         </p>
                     </div>
@@ -234,7 +234,11 @@ export default function PortalLayoutClient({
                 </header>
 
                 {/* Page Content */}
-                <div className="p-2 xs:p-3 sm:p-4 lg:p-8">{children}</div>
+                <div className="p-2 xs:p-3 sm:p-4 lg:p-8 3xl:p-10 4xl:p-12">
+                    <div className="w-full max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+                        {children}
+                    </div>
+                </div>
             </main>
         </div>
     );

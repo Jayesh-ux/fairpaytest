@@ -18,9 +18,13 @@ export default {
         lg: "2rem",
         xl: "3rem",
         "2xl": "4rem",
+        "3xl": "5rem",
+        "4xl": "6rem",
       },
       screens: {
         "2xl": "1400px",
+        "3xl": "1600px",
+        "4xl": "1800px",
       },
     },
     screens: {

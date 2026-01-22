@@ -218,7 +218,7 @@ export default function AdminDashboard() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-4 xs:space-y-6 sm:space-y-8 max-w-[1600px] mx-auto overflow-hidden"
+            className="space-y-4 xs:space-y-6 sm:space-y-8 max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[2000px] mx-auto overflow-hidden"
         >
             {/* Header Section */}
             <motion.div variants={item} className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 xs:gap-4">

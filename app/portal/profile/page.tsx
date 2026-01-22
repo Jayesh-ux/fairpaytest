@@ -28,13 +28,13 @@ export default function ProfilePage() {
     if (!session?.user) return null;
 
     return (
-        <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="space-y-6 max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto">
             <div>
-                <h1 className="text-2xl md:text-3xl font-bold">Account Profile</h1>
-                <p className="text-muted-foreground">Manage your personal information and security settings</p>
+                <h1 className="text-2xl md:text-3xl 3xl:text-4xl font-bold">Account Profile</h1>
+                <p className="text-muted-foreground 3xl:text-lg">Manage your personal information and security settings</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 3xl:gap-8">
                 {/* Left Column - Main Info */}
                 <div className="md:col-span-1 space-y-6">
                     <Card className="glass-card-strong border-none text-center">

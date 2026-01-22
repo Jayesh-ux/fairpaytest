@@ -137,11 +137,11 @@ export default function DocumentsPage() {
     );
 
     return (
-        <div className="space-y-6 max-w-6xl mx-auto">
+        <div className="space-y-6 max-w-6xl 3xl:max-w-[1400px] 4xl:max-w-[1600px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl md:text-3xl font-bold">My Documents</h1>
-                    <p className="text-muted-foreground">Manage and track your submitted documents</p>
+                    <h1 className="text-2xl md:text-3xl 3xl:text-4xl font-bold">My Documents</h1>
+                    <p className="text-muted-foreground 3xl:text-lg">Manage and track your submitted documents</p>
                 </div>
                 <Button onClick={() => setUploadOpen(true)} className="w-full md:w-auto">
                     <Plus className="w-4 h-4 mr-2" />
@@ -149,7 +149,7 @@ export default function DocumentsPage() {
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 3xl:gap-6">
                 <Card className="glass-card border-none">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium opacity-70 uppercase">Total Files</CardTitle>

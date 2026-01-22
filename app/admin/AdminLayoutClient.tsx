@@ -173,13 +173,13 @@ export default function AdminLayoutClient({
                 isCollapsed ? "lg:ml-20" : "lg:ml-72"
             )}>
                 {/* Top Header */}
-                <header className="hidden lg:flex sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border px-8 py-4 items-center justify-between">
+                <header className="hidden lg:flex sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border px-8 3xl:px-12 4xl:px-16 py-4 items-center justify-between">
                     <div className="flex items-center gap-6">
                         <div>
-                            <h1 className="text-xl font-bold flex items-center gap-2">
+                            <h1 className="text-xl 3xl:text-2xl font-bold flex items-center gap-2">
                                 {adminSidebarItems.find((item) => item.href === pathname)?.label || 'Administration'}
                             </h1>
-                            <p className="text-xs text-muted-foreground mt-0.5">
+                            <p className="text-xs 3xl:text-sm text-muted-foreground mt-0.5">
                                 {adminSidebarItems.find((item) => item.href === pathname)?.description || 'Control Center'}
                             </p>
                         </div>
@@ -262,7 +262,11 @@ export default function AdminLayoutClient({
                 </header>
 
                 {/* Page Content */}
-                <div className="flex-1 p-4 xs:p-5 sm:p-6 lg:p-8 w-full min-w-0">{children}</div>
+                <div className="flex-1 p-4 xs:p-5 sm:p-6 lg:p-8 3xl:p-10 4xl:p-12 w-full min-w-0">
+                    <div className="w-full max-w-[1800px] 4xl:max-w-[2000px] mx-auto">
+                        {children}
+                    </div>
+                </div>
             </main>
         </div>
     );
