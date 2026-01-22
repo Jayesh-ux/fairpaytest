@@ -131,6 +131,8 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                         <User className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                         <Input
                           id="name"
+                          name="name"
+                          autoComplete="name"
                           placeholder="Enter your full name"
                           value={formData.name}
                           onChange={(e) => handleInputChange("name", e.target.value)}
@@ -144,6 +146,8 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                       <Label htmlFor="phone" className="text-foreground text-sm sm:text-base">Phone *</Label>
                       <div className="flex gap-2">
                         <select
+                          id="countryCode"
+                          aria-label="Country Code"
                           value={formData.countryCode}
                           onChange={(e) => handleInputChange("countryCode", e.target.value)}
                           className="w-24 sm:w-28 h-10 sm:h-11 px-2 rounded-md border border-input bg-background text-foreground text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -161,7 +165,9 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                         </select>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
+                          autoComplete="tel"
                           placeholder="9389815277"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
@@ -179,7 +185,9 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                         <Mail className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                         <Input
                           id="email"
+                          name="email"
                           type="email"
+                          autoComplete="email"
                           placeholder="your.email@example.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
@@ -195,6 +203,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
                         <IndianRupee className="absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                         <Input
                           id="loanAmount"
+                          name="loanAmount"
                           type="text"
                           placeholder="5,00,000"
                           value={formData.loanAmount}

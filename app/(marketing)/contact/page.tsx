@@ -188,8 +188,11 @@ export default function ContactPage() {
                                 <form onSubmit={handleSubmit} className="space-y-5">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Name</label>
+                                            <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Name</label>
                                             <input
+                                                id="contact-name"
+                                                name="name"
+                                                autoComplete="name"
                                                 type="text"
                                                 required
                                                 value={formData.name}
@@ -199,8 +202,11 @@ export default function ContactPage() {
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Phone</label>
+                                            <label htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Phone</label>
                                             <input
+                                                id="contact-phone"
+                                                name="phone"
+                                                autoComplete="tel"
                                                 type="tel"
                                                 required
                                                 value={formData.phone}
@@ -212,8 +218,11 @@ export default function ContactPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
+                                        <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
                                         <input
+                                            id="contact-email"
+                                            name="email"
+                                            autoComplete="email"
                                             type="email"
                                             required
                                             value={formData.email}
@@ -224,8 +233,10 @@ export default function ContactPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Subject</label>
+                                        <label htmlFor="contact-subject" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Subject</label>
                                         <select
+                                            id="contact-subject"
+                                            name="subject"
                                             required
                                             value={formData.subject}
                                             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -239,8 +250,10 @@ export default function ContactPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
+                                        <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
                                         <textarea
+                                            id="contact-message"
+                                            name="message"
                                             required
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
