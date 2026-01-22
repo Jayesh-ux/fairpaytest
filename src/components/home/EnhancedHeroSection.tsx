@@ -217,6 +217,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                     <input
                                         id="loan-amount"
                                         name="loanAmount"
+                                        aria-label="Your Current Loan Amount"
                                         type="range"
                                         min="50000"
                                         max="5000000"
