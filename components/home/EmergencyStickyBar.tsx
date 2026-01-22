@@ -27,24 +27,22 @@ export const EmergencyStickyBar = () => {
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
-        // Intersection Observer to hide when footer or CTA is visible
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const isAnyIntersecting = entries.some(entry => entry.isIntersecting);
-                setIsFooterVisible(isAnyIntersecting);
-            },
-            { threshold: 0.1 }
-        );
+        const handleScroll = () => {
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            const bodyHeight = document.documentElement.scrollHeight;
 
-        const footer = document.getElementById('main-footer');
-        const cta = document.getElementById('cta-section');
-        if (footer) observer.observe(footer);
-        if (cta) observer.observe(cta);
+            // Hide if we are within 500px of the bottom
+            const isNearBottom = (windowHeight + scrollY) >= (bodyHeight - 500);
+            setIsFooterVisible(isNearBottom);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial check
 
         return () => {
             window.removeEventListener('resize', checkMobile);
-            if (footer) observer.unobserve(footer);
-            if (cta) observer.unobserve(cta);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
@@ -162,7 +160,7 @@ export const EmergencyStickyBar = () => {
     return (
         <div className={cn(
             "fixed bottom-16 right-4 sm:bottom-12 sm:right-10 z-[60] flex flex-col items-end pointer-events-none transition-all duration-500",
-            isFooterVisible ? "opacity-0 translate-y-10 scale-90" : "opacity-100 translate-y-0 scale-100"
+            isFooterVisible ? "opacity-0 translate-y-20 scale-90 pointer-events-none invisible" : "opacity-100 translate-y-0 scale-100"
         )}>
             <div className="pointer-events-auto">
                 <AnimatePresence mode="wait">
