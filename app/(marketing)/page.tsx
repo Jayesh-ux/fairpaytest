@@ -231,6 +231,7 @@ export default function HomePage() {
                 isOpen={isCallbackOpen}
                 onClose={() => setIsCallbackOpen(false)}
             />
+            <EmergencyStickyBar />
         </>
     );
 }
