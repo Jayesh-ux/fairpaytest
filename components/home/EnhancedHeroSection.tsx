@@ -285,24 +285,6 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                     </motion.div>
                 </div>
             </div>
-
-            {/* Sticky CTA Bar - Enhanced */}
-            <motion.div
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 2 }}
-                className="fixed bottom-0 left-0 right-0 z-40 lg:hidden safe-padding-x"
-            >
-                <div className="bg-gradient-to-r from-primary via-secondary to-primary p-1.5 xs:p-2 sm:p-3 md:p-4 shadow-2xl border-t-2 border-primary/20">
-                    <Button
-                        onClick={onOpenCallback}
-                        className="w-full bg-white dark:bg-gray-900 text-primary dark:text-white hover:bg-white/90 dark:hover:bg-gray-800 font-black border-2 border-primary/20 text-xs xs:text-sm sm:text-base md:text-lg py-3 xs:py-4 sm:py-5 md:py-6 rounded-lg sm:rounded-xl shadow-lg"
-                        size="lg"
-                    >
-                        Get Free Consultation →
-                    </Button>
-                </div>
-            </motion.div>
         </section>
     );
 }
