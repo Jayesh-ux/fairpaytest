@@ -37,7 +37,7 @@ const trustBadges = [
 
 export function Footer() {
   return (
-    <footer className="bg-transparent text-foreground border-t border-border">
+    <footer id="main-footer" className="bg-transparent text-foreground border-t border-border">
       {/* Trust Badges Bar */}
       <div className="border-b border-border">
         <div className="container mx-auto px-4 py-6">

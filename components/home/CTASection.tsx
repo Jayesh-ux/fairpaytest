@@ -8,7 +8,7 @@ interface CTASectionProps {
 
 export function CTASection({ onOpenCallback }: CTASectionProps) {
   return (
-    <section className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
+    <section id="cta-section" className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

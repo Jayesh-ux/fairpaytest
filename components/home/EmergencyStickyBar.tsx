@@ -3,9 +3,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertCircle, X, Check, Phone, Loader2, ShieldCheck, Clock, CreditCard } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export const EmergencyStickyBar = () => {
     const [isVisible, setIsVisible] = useState(true);
+    const [isFooterVisible, setIsFooterVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -24,7 +26,26 @@ export const EmergencyStickyBar = () => {
         const checkMobile = () => setIsMobile(window.innerWidth < 640);
         checkMobile();
         window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
+
+        // Intersection Observer to hide when footer or CTA is visible
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const isAnyIntersecting = entries.some(entry => entry.isIntersecting);
+                setIsFooterVisible(isAnyIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+
+        const footer = document.getElementById('main-footer');
+        const cta = document.getElementById('cta-section');
+        if (footer) observer.observe(footer);
+        if (cta) observer.observe(cta);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+            if (footer) observer.unobserve(footer);
+            if (cta) observer.unobserve(cta);
+        };
     }, []);
 
     // Load Razorpay script dynamically
@@ -139,7 +160,10 @@ export const EmergencyStickyBar = () => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-16 right-4 sm:bottom-12 sm:right-10 z-[60] flex flex-col items-end pointer-events-none">
+        <div className={cn(
+            "fixed bottom-16 right-4 sm:bottom-12 sm:right-10 z-[60] flex flex-col items-end pointer-events-none transition-all duration-500",
+            isFooterVisible ? "opacity-0 translate-y-10 scale-90" : "opacity-100 translate-y-0 scale-100"
+        )}>
             <div className="pointer-events-auto">
                 <AnimatePresence mode="wait">
                     {!isExpanded ? (
