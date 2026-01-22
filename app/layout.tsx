@@ -110,7 +110,7 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
             </head>
-            <body>
+            <body className="mesh-gradient min-h-screen">
                 <Providers>{children}</Providers>
                 <Analytics />
             </body>

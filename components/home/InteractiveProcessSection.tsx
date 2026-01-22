@@ -98,7 +98,7 @@ export function InteractiveProcessSection({ onOpenCallback }: InteractiveProcess
     const currentStep = processSteps.find((step) => step.id === activeStep) || processSteps[0];
 
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-background to-secondary/5 relative overflow-hidden">
+        <section className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-dots-pattern opacity-30" />
 

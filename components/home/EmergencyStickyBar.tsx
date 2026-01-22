@@ -139,7 +139,7 @@ export const EmergencyStickyBar = () => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end pointer-events-none">
+        <div className="fixed bottom-16 right-4 sm:bottom-12 sm:right-10 z-[60] flex flex-col items-end pointer-events-none">
             <div className="pointer-events-auto">
                 <AnimatePresence mode="wait">
                     {!isExpanded ? (
@@ -149,8 +149,9 @@ export const EmergencyStickyBar = () => {
                             exit={{ scale: 0.8, opacity: 0 }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            key="collapsed"
                             onClick={() => setIsExpanded(true)}
-                            className="group relative flex items-center gap-3 bg-white dark:bg-zinc-900 border-2 border-red-100 dark:border-red-900/30 pl-4 pr-2 py-2 rounded-full shadow-xl shadow-red-500/10 hover:shadow-red-500/20 transition-all"
+                            className="group relative flex items-center gap-3 glass-card pl-4 pr-2 py-2 rounded-full shadow-glow border-red-500/30 transition-all pointer-events-auto"
                         >
                             {/* Pulse Effect */}
                             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping" />
@@ -158,7 +159,7 @@ export const EmergencyStickyBar = () => {
 
                             <div className="flex flex-col items-start mr-2">
                                 <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Emergency?</span>
-                                <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 whitespace-nowrap">Talk to Expert Now</span>
+                                <span className="text-sm font-semibold text-foreground whitespace-nowrap">Talk to Expert Now</span>
                             </div>
 
                             <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center text-white shadow-lg">
@@ -170,7 +171,8 @@ export const EmergencyStickyBar = () => {
                             initial={{ y: 20, opacity: 0, scale: 0.95 }}
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 20, opacity: 0, scale: 0.95 }}
-                            className="w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-zinc-800 overflow-hidden"
+                            key="expanded"
+                            className="w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] glass-card-strong rounded-2xl shadow-2xl border-red-500/20 overflow-hidden pointer-events-auto"
                         >
                             {/* Premium Header */}
                             <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-5 relative overflow-hidden">
@@ -235,7 +237,6 @@ export const EmergencyStickyBar = () => {
 
                                         <div className="space-y-3">
                                             <div className="relative">
-                                                <label htmlFor="emergency-name" className="sr-only">Your Name</label>
                                                 <input
                                                     id="emergency-name"
                                                     name="name"
@@ -247,7 +248,6 @@ export const EmergencyStickyBar = () => {
                                                 />
                                             </div>
                                             <div className="relative">
-                                                <label htmlFor="emergency-phone" className="sr-only">Phone Number</label>
                                                 <input
                                                     id="emergency-phone"
                                                     name="phone"
@@ -259,7 +259,6 @@ export const EmergencyStickyBar = () => {
                                                 />
                                             </div>
                                             <div className="relative">
-                                                <label htmlFor="emergency-message" className="sr-only">Message</label>
                                                 <textarea
                                                     id="emergency-message"
                                                     name="message"

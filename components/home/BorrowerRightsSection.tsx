@@ -68,7 +68,7 @@ const borrowerRights: Right[] = [
 
 export function BorrowerRightsSection() {
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-secondary/10 to-background relative overflow-hidden">
+        <section className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-dots-pattern opacity-30" />
 

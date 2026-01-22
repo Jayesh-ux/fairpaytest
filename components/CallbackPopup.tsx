@@ -80,7 +80,7 @@ export function CallbackPopup({ isOpen, onClose }: CallbackPopupProps) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] bg-card rounded-xl sm:rounded-2xl shadow-2xl overflow-y-auto"
+            className="relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] glass-card-strong rounded-xl sm:rounded-2xl shadow-2xl overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col lg:flex-row">

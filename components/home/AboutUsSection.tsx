@@ -46,7 +46,7 @@ const values: Value[] = [
 
 export function AboutUsSection() {
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-background to-secondary/10 relative overflow-hidden">
+        <section className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-dots-pattern opacity-20" />
 

@@ -29,7 +29,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
     ];
 
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-primary/10 to-secondary/10">
+        <section className="relative min-h-screen flex items-center overflow-hidden bg-transparent">
             {/* Animated Background Orbs - More Vibrant */}
             <div className="absolute inset-0 overflow-hidden">
                 <motion.div

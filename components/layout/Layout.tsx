@@ -33,7 +33,7 @@ export function Layout({ children }: LayoutProps) {
   }, [hasShownToast]);
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden mesh-gradient">
       <Header onOpenCallback={() => setIsCallbackOpen(true)} />
       <main className="flex-1 overflow-x-hidden">
         {children}

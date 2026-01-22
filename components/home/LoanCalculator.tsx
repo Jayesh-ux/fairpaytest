@@ -34,7 +34,7 @@ export function LoanCalculator() {
     };
 
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
+        <section className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-dots-pattern opacity-30" />
 
@@ -179,7 +179,7 @@ export function LoanCalculator() {
                                             whileInView={{ scale: 1, opacity: 1 }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 0.3, delay: 0.1 }}
-                                            className="bg-card rounded-xl p-6 text-center shadow-lg"
+                                            className="glass-card rounded-xl p-6 text-center shadow-lg"
                                         >
                                             <div className="flex items-center justify-center gap-2 mb-2">
                                                 <TrendingDown className="w-5 h-5 text-primary" />
@@ -201,7 +201,7 @@ export function LoanCalculator() {
                                             whileInView={{ scale: 1, opacity: 1 }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 0.3, delay: 0.2 }}
-                                            className="bg-card rounded-xl p-6 text-center shadow-lg"
+                                            className="glass-card rounded-xl p-6 text-center shadow-lg"
                                         >
                                             <div className="flex items-center justify-center gap-2 mb-2">
                                                 <Calendar className="w-5 h-5 text-accent" />
@@ -223,7 +223,7 @@ export function LoanCalculator() {
                                             whileInView={{ scale: 1, opacity: 1 }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 0.3, delay: 0.3 }}
-                                            className="bg-card rounded-xl p-6 text-center shadow-lg"
+                                            className="glass-card rounded-xl p-6 text-center shadow-lg"
                                         >
                                             <div className="flex items-center justify-center gap-2 mb-2">
                                                 <IndianRupee className="w-5 h-5 text-foreground" />

@@ -122,7 +122,7 @@ export function AutoRotatingTestimonials({ testimonials = initialTestimonials }:
     };
 
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+        <section className="py-20 lg:py-32 bg-transparent relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0">
                 <motion.div

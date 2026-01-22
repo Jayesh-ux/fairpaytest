@@ -68,7 +68,7 @@ const cardVariants = {
 
 export function WhyChooseUs() {
     return (
-        <section className="py-20 lg:py-28 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+        <section className="py-20 lg:py-28 bg-transparent relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />

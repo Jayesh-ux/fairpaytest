@@ -61,7 +61,7 @@ const cardVariants = {
 
 export function CoreServicesHighlight() {
     return (
-        <section className="py-16 lg:py-20 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+        <section className="py-16 lg:py-20 bg-transparent relative overflow-hidden">
             {/* Background decorations */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
