@@ -44,6 +44,18 @@ export default function AdminReviewsPage() {
         fetchReviews();
     }, [filter]);
 
+    // Handle deep linking/auto-scroll
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetId = urlParams.get('id');
+        if (targetId && !loading && reviews.length > 0) {
+            const element = document.getElementById(`review-${targetId}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }, [loading, reviews]);
+
     const fetchReviews = async () => {
         try {
             setLoading(true);
@@ -131,7 +143,7 @@ export default function AdminReviewsPage() {
                     </div>
                 ) : (
                     reviews.map(review => (
-                        <Card key={review.id} className={cn(
+                        <Card key={review.id} id={`review-${review.id}`} className={cn(
                             "overflow-hidden relative group transition-all border-border/50",
                             !review.approved && "opacity-80 grayscale-[0.5]"
                         )}>

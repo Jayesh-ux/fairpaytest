@@ -43,6 +43,9 @@ export async function GET(request: NextRequest) {
             prisma.user.count({ where: { role: 'USER' } }),
             // Recent 5 tickets with user info
             prisma.ticket.findMany({
+                where: {
+                    status: { not: 'CANCELLED' },
+                },
                 take: 5,
                 orderBy: { updatedAt: 'desc' },
                 include: {
@@ -53,6 +56,9 @@ export async function GET(request: NextRequest) {
             }),
             // Recent 5 callbacks
             prisma.callbackRequest.findMany({
+                where: {
+                    status: { not: 'DISQUALIFIED' },
+                },
                 take: 5,
                 orderBy: { createdAt: 'desc' },
             }),

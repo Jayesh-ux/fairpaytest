@@ -364,10 +364,10 @@ export default function AdminDashboard() {
                             <AnimatePresence>
                                 {recentActivities.map((activity, idx) => {
                                     const activityHref =
-                                        activity.type === 'ticket' ? '/admin/tickets' :
-                                            activity.type === 'callback' ? '/admin/callbacks' :
-                                                activity.type === 'review' ? '/admin/reviews' :
-                                                    activity.type === 'user' ? '/admin/users' : '/admin';
+                                        activity.type === 'ticket' ? `/admin/tickets/${activity.id}` :
+                                            activity.type === 'callback' ? `/admin/callbacks?id=${activity.id}` :
+                                                activity.type === 'review' ? `/admin/reviews?id=${activity.id}` :
+                                                    activity.type === 'user' ? `/admin/users/${activity.id}` : '/admin';
 
                                     return (
                                         <motion.div

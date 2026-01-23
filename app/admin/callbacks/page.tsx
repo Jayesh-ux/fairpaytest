@@ -33,7 +33,7 @@ interface Callback {
     city: string | null;
     preferredTime: string | null;
     source: string;
-    status: 'NEW' | 'CONTACTED' | 'CONVERTED' | 'DISCARDED';
+    status: 'NEW' | 'CALLED' | 'NO_ANSWER' | 'QUALIFIED' | 'DISQUALIFIED';
     notes: string | null;
     createdAt: string;
     handledByAdmin?: { name: string | null };
@@ -47,6 +47,18 @@ export default function AdminCallbacksPage() {
     useEffect(() => {
         fetchCallbacks();
     }, [filter]);
+
+    // Handle deep linking/auto-scroll
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetId = urlParams.get('id');
+        if (targetId && !loading && callbacks.length > 0) {
+            const element = document.getElementById(`callback-${targetId}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }, [loading, callbacks]);
 
     const fetchCallbacks = async () => {
         try {
@@ -99,7 +111,7 @@ export default function AdminCallbacksPage() {
             </div>
 
             <div className="flex gap-2 3xl:gap-3 overflow-x-auto pb-2">
-                {['ALL', 'NEW', 'CONTACTED', 'CONVERTED', 'DISCARDED'].map(s => (
+                {['ALL', 'NEW', 'CALLED', 'QUALIFIED', 'DISQUALIFIED'].map(s => (
                     <button
                         key={s}
                         onClick={() => setFilter(s)}
@@ -125,12 +137,12 @@ export default function AdminCallbacksPage() {
                     callbacks.map(cb => (
                         <Card key={cb.id} className="overflow-hidden hover:bg-muted/30 transition-all group border-border/50">
                             <CardContent className="p-6">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6" id={`callback-${cb.id}`}>
                                     <div className="flex items-center gap-6">
                                         <div className={cn(
                                             "w-16 h-16 rounded-2xl flex items-center justify-center border",
                                             cb.status === 'NEW' ? "bg-amber-500/10 text-amber-600 dark:text-amber-500 border-amber-500/20" :
-                                                cb.status === 'CONVERTED' ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-emerald-500/20" : "bg-muted text-muted-foreground border-border"
+                                                cb.status === 'QUALIFIED' ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-emerald-500/20" : "bg-muted text-muted-foreground border-border"
                                         )}>
                                             <PhoneCall className="w-8 h-8" />
                                         </div>
@@ -147,13 +159,13 @@ export default function AdminCallbacksPage() {
                                     <div className="flex flex-col items-end gap-2">
                                         <div className="flex gap-2">
                                             {cb.status === 'NEW' && (
-                                                <Button size="sm" className="rounded-xl bg-emerald-600 hover:bg-emerald-700" onClick={() => handleUpdateStatus(cb.id, 'CONTACTED')}>
-                                                    Mark Contacted
+                                                <Button size="sm" className="rounded-xl bg-primary" onClick={() => handleUpdateStatus(cb.id, 'CALLED')}>
+                                                    Mark Called
                                                 </Button>
                                             )}
-                                            {cb.status === 'CONTACTED' && (
-                                                <Button size="sm" className="rounded-xl bg-primary" onClick={() => handleUpdateStatus(cb.id, 'CONVERTED')}>
-                                                    Mark Converted
+                                            {cb.status === 'CALLED' && (
+                                                <Button size="sm" className="rounded-xl bg-emerald-600 hover:bg-emerald-700" onClick={() => handleUpdateStatus(cb.id, 'QUALIFIED')}>
+                                                    Mark Qualified
                                                 </Button>
                                             )}
                                             <Button variant="ghost" size="icon" className="rounded-xl text-red-500 hover:bg-red-500/10" onClick={() => handleDelete(cb.id)}>
@@ -178,9 +190,9 @@ export default function AdminCallbacksPage() {
                                     <div className="space-y-1">
                                         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-50">Status</p>
                                         <Badge className={cn(
-                                            "rounded-full px-4 py-0.5 border",
+                                            "rounded-full px-4 py-0.5 border text-[10px] uppercase font-bold",
                                             cb.status === 'NEW' ? "bg-amber-500/10 text-amber-600 dark:text-amber-500 border-amber-500/20" :
-                                                cb.status === 'CONVERTED' ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-emerald-500/20" :
+                                                cb.status === 'QUALIFIED' ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border-emerald-500/20" :
                                                     "bg-muted text-muted-foreground border-border"
                                         )}>
                                             {cb.status}
