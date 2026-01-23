@@ -57,7 +57,7 @@ export function HeroSection({ onOpenCallback }: HeroSectionProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl lg:text-2xl text-slate-300 max-w-2xl mx-auto mb-4 text-balance"
           >
-            May Help Reduce Debt by 40-60% • Understand Your Legal Rights • Professional Guidance
+            May Help Reduce Debt by  • Understand Your Legal Rights • Professional Guidance
           </motion.p>
 
           <motion.p

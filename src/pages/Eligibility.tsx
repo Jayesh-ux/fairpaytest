@@ -295,7 +295,7 @@ export default function EligibilityPage() {
                       </h2>
                       <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
                         Based on your responses, you're eligible for our debt settlement program
-                        with potential savings of 40-60%.
+                        with substantial potential savings.
                       </p>
 
                       {/* Summary Card */}

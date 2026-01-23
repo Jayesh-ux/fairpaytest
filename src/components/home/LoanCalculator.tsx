@@ -14,7 +14,7 @@ export function LoanCalculator() {
     // Calculate total debt
     const totalDebt = creditCardDebt + personalLoanDebt;
 
-    // Calculate savings (40-60% based on debt amount and missed EMI)
+    // Calculate savings based on debt amount and missed EMI
     const savingsPercentage = missedEMI === "yes" ? 0.55 : 0.50;
     const totalSavings = Math.round(totalDebt * savingsPercentage);
 

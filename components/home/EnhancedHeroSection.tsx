@@ -16,7 +16,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
     const [savings, setSavings] = useState(0);
 
     useEffect(() => {
-        // Calculate 40-60% savings
+        // Calculate  savings
         const minSavings = loanAmount * 0.4;
         const maxSavings = loanAmount * 0.6;
         setSavings(Math.round((minSavings + maxSavings) / 2));
@@ -234,7 +234,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                                 <div className="relative bg-gradient-to-br from-emerald-500/20 to-teal-500/20 p-4 xs:p-5 sm:p-6 md:p-8 rounded-xl md:rounded-2xl border-2 border-emerald-500/30 shadow-xl">
                                     <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl md:rounded-2xl blur-xl" />
                                     <div className="relative">
-                                        <div className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-300 font-bold mb-1 sm:mb-2">Potential Savings (40-60%)</div>
+                                        <div className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-300 font-bold mb-1 sm:mb-2">Potential Savings ()</div>
                                         <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-2 sm:mb-3">
                                             ₹{savings.toLocaleString('en-IN')}
                                         </div>

@@ -9,7 +9,7 @@ import {
 const faqs = [
   {
     question: "How much can I save through debt settlement?",
-    answer: "Typically, clients save 40-60% on their outstanding debt amount. The exact savings depend on factors like the type of loan, outstanding amount, and your lender. Our experts analyze your case to maximize your savings.",
+    answer: "Typically, clients find substantial savings on their outstanding debt amount. The exact savings depend on factors like the type of loan, outstanding amount, and your lender. Our experts analyze your case to maximize your resolution.",
   },
   {
     question: "Is debt settlement legal in India?",

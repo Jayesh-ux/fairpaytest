@@ -21,7 +21,7 @@ interface SimpleCalculatorInputs {
 function calculateSimpleSettlement(inputs: SimpleCalculatorInputs): number {
   const { totalDebt, monthlyIncome } = inputs;
 
-  // Simple calculation: 40-60% settlement based on debt-to-income ratio
+  // Simple calculation: settlement based on debt-to-income ratio
   const yearlyIncome = monthlyIncome * 12;
   const debtToIncomeRatio = totalDebt / yearlyIncome;
 
