@@ -208,6 +208,7 @@ export default function AdminDashboard() {
             color: 'from-blue-500 to-cyan-400',
             bgColor: 'bg-blue-500/10',
             iconColor: 'text-blue-500',
+            href: '/admin/tickets',
         },
         {
             label: 'Active Clients',
@@ -218,6 +219,7 @@ export default function AdminDashboard() {
             color: 'from-emerald-500 to-teal-400',
             bgColor: 'bg-emerald-500/10',
             iconColor: 'text-emerald-500',
+            href: '/admin/users',
         },
         {
             label: 'Pending Leads',
@@ -228,6 +230,7 @@ export default function AdminDashboard() {
             color: 'from-amber-500 to-orange-400',
             bgColor: 'bg-amber-500/10',
             iconColor: 'text-amber-500',
+            href: '/admin/callbacks',
         },
         {
             label: 'Reviews',
@@ -238,6 +241,7 @@ export default function AdminDashboard() {
             color: 'from-purple-500 to-pink-400',
             bgColor: 'bg-purple-500/10',
             iconColor: 'text-purple-500',
+            href: '/admin/reviews',
         },
     ];
 
@@ -292,41 +296,45 @@ export default function AdminDashboard() {
             {/* Stats Grid - Bento Style */}
             <motion.div variants={item} className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
                 {statsCards.map((stat, idx) => (
-                    <Card
-                        key={idx}
-                        className="group relative overflow-hidden border-border bg-card hover:bg-muted/50 transition-all duration-500 hover:border-border"
-                    >
-                        <CardContent className="p-3 xs:p-4 sm:p-6">
-                            <div className="flex items-start justify-between mb-2 xs:mb-3 sm:mb-4">
-                                <div className={cn("p-1.5 xs:p-2 sm:p-3 rounded-lg xs:rounded-xl sm:rounded-2xl", stat.bgColor)}>
-                                    <stat.icon className={cn("w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5", stat.iconColor)} />
+                    <Link key={idx} href={stat.href} className="block">
+                        <Card
+                            className="group relative h-full overflow-hidden border-border bg-card hover:bg-muted/50 transition-all duration-500 hover:border-border cursor-pointer shadow-sm hover:shadow-md"
+                        >
+                            <CardContent className="p-3 xs:p-4 sm:p-6">
+                                <div className="flex items-start justify-between mb-2 xs:mb-3 sm:mb-4">
+                                    <div className={cn("p-1.5 xs:p-2 sm:p-3 rounded-lg xs:rounded-xl sm:rounded-2xl shrink-0", stat.bgColor)}>
+                                        <stat.icon className={cn("w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5", stat.iconColor)} />
+                                    </div>
+                                    <div className="flex items-center gap-0.5 xs:gap-1">
+                                        {stat.trend === 'up' && <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-emerald-500" />}
+                                        {stat.trend === 'down' && <ArrowDownRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-red-500" />}
+                                        {stat.trend === 'alert' && <AlertTriangle className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-amber-500" />}
+                                        <span className={cn(
+                                            "text-[9px] xs:text-[10px] sm:text-xs font-semibold hidden xs:inline",
+                                            stat.trend === 'up' && "text-emerald-500",
+                                            stat.trend === 'down' && "text-red-500",
+                                            stat.trend === 'alert' && "text-amber-500",
+                                            stat.trend === 'info' && "text-muted-foreground"
+                                        )}>
+                                            {stat.change}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-0.5 xs:gap-1">
-                                    {stat.trend === 'up' && <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-emerald-500" />}
-                                    {stat.trend === 'down' && <ArrowDownRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-red-500" />}
-                                    {stat.trend === 'alert' && <AlertTriangle className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-amber-500" />}
-                                    <span className={cn(
-                                        "text-[9px] xs:text-[10px] sm:text-xs font-semibold hidden xs:inline",
-                                        stat.trend === 'up' && "text-emerald-500",
-                                        stat.trend === 'down' && "text-red-500",
-                                        stat.trend === 'alert' && "text-amber-500",
-                                        stat.trend === 'info' && "text-muted-foreground"
-                                    )}>
-                                        {stat.change}
-                                    </span>
+                                <div className="space-y-0.5 xs:space-y-1">
+                                    <p className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{stat.value.toLocaleString()}</p>
+                                    <div className="flex items-center justify-between gap-1">
+                                        <p className="text-[9px] xs:text-[10px] sm:text-xs text-muted-foreground font-medium uppercase tracking-wider truncate">{stat.label}</p>
+                                        <ArrowUpRight className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="space-y-0.5 xs:space-y-1">
-                                <p className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">{stat.value.toLocaleString()}</p>
-                                <p className="text-[9px] xs:text-[10px] sm:text-xs text-muted-foreground font-medium uppercase tracking-wider truncate">{stat.label}</p>
-                            </div>
-                            {/* Hover glow effect */}
-                            <div className={cn(
-                                "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br",
-                                stat.color
-                            )} />
-                        </CardContent>
-                    </Card>
+                                {/* Hover glow effect */}
+                                <div className={cn(
+                                    "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br",
+                                    stat.color
+                                )} />
+                            </CardContent>
+                        </Card>
+                    </Link>
                 ))}
             </motion.div>
 
@@ -354,36 +362,50 @@ export default function AdminDashboard() {
                         </CardHeader>
                         <CardContent className="space-y-1.5 xs:space-y-2 px-2.5 xs:px-4 sm:px-6 pb-4">
                             <AnimatePresence>
-                                {recentActivities.map((activity, idx) => (
-                                    <motion.div
-                                        key={activity.id}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: idx * 0.1 }}
-                                        className="group flex items-center gap-2 xs:gap-3 sm:gap-4 p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-muted/30 hover:bg-muted/50 transition-all duration-300 border border-transparent hover:border-border/50 cursor-pointer"
-                                    >
-                                        <div className={cn(
-                                            "w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0",
-                                            activity.status === 'success' && "bg-emerald-500/10",
-                                            activity.status === 'warning' && "bg-amber-500/10",
-                                            activity.status === 'error' && "bg-red-500/10",
-                                            activity.status === 'info' && "bg-blue-500/10"
-                                        )}>
-                                            {activity.status === 'success' && <CheckCircle2 className="w-4 h-4 xs:w-5 xs:h-5 text-emerald-500" />}
-                                            {activity.status === 'warning' && <AlertTriangle className="w-4 h-4 xs:w-5 xs:h-5 text-amber-500" />}
-                                            {activity.status === 'error' && <XCircle className="w-4 h-4 xs:w-5 xs:h-5 text-red-500" />}
-                                            {activity.status === 'info' && <Bell className="w-4 h-4 xs:w-5 xs:h-5 text-blue-500" />}
-                                        </div>
-                                        <div className="flex-1 min-w-0 overflow-hidden">
-                                            <p className="font-semibold text-xs xs:text-sm truncate">{activity.action}</p>
-                                            <p className="text-[10px] xs:text-xs text-gray-400 truncate">{activity.description}</p>
-                                        </div>
-                                        <div className="text-right shrink-0">
-                                            <p className="text-[10px] xs:text-xs text-muted-foreground whitespace-nowrap">{activity.timestamp}</p>
-                                        </div>
-                                        <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity hidden xs:block" />
-                                    </motion.div>
-                                ))}
+                                {recentActivities.map((activity, idx) => {
+                                    const activityHref =
+                                        activity.type === 'ticket' ? '/admin/tickets' :
+                                            activity.type === 'callback' ? '/admin/callbacks' :
+                                                activity.type === 'review' ? '/admin/reviews' :
+                                                    activity.type === 'user' ? '/admin/users' : '/admin';
+
+                                    return (
+                                        <motion.div
+                                            key={activity.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: idx * 0.1 }}
+                                        >
+                                            <Link
+                                                href={activityHref}
+                                                className="group flex items-center gap-2 xs:gap-3 sm:gap-4 p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-muted/30 hover:bg-muted/50 transition-all duration-300 border border-transparent hover:border-border/50 cursor-pointer block"
+                                            >
+                                                <div className="flex items-center gap-2 xs:gap-3 sm:gap-4 flex-1 min-w-0">
+                                                    <div className={cn(
+                                                        "w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0",
+                                                        activity.status === 'success' && "bg-emerald-500/10",
+                                                        activity.status === 'warning' && "bg-amber-500/10",
+                                                        activity.status === 'error' && "bg-red-500/10",
+                                                        activity.status === 'info' && "bg-blue-500/10"
+                                                    )}>
+                                                        {activity.status === 'success' && <CheckCircle2 className="w-4 h-4 xs:w-5 xs:h-5 text-emerald-500" />}
+                                                        {activity.status === 'warning' && <AlertTriangle className="w-4 h-4 xs:w-5 xs:h-5 text-amber-500" />}
+                                                        {activity.status === 'error' && <XCircle className="w-4 h-4 xs:w-5 xs:h-5 text-red-500" />}
+                                                        {activity.status === 'info' && <Bell className="w-4 h-4 xs:w-5 xs:h-5 text-blue-500" />}
+                                                    </div>
+                                                    <div className="flex-1 min-w-0 overflow-hidden">
+                                                        <p className="font-semibold text-xs xs:text-sm truncate">{activity.action}</p>
+                                                        <p className="text-[10px] xs:text-xs text-gray-400 truncate">{activity.description}</p>
+                                                    </div>
+                                                    <div className="text-right shrink-0">
+                                                        <p className="text-[10px] xs:text-xs text-muted-foreground whitespace-nowrap">{activity.timestamp}</p>
+                                                    </div>
+                                                    <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-1" />
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
                             </AnimatePresence>
                         </CardContent>
                     </Card>
