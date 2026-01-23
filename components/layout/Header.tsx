@@ -21,6 +21,7 @@ import {
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -276,6 +277,9 @@ export function Header({ onOpenCallback }: HeaderProps) {
                           </div>
                         </Link>
                       </SheetTitle>
+                      <SheetDescription className="sr-only">
+                        Mobile navigation menu for FairPay Solutions. Access services, tools, and company information.
+                      </SheetDescription>
                     </SheetHeader>
 
                     <div className="flex-1 overflow-y-auto py-6 px-4">
