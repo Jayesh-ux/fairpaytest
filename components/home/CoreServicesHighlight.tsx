@@ -33,7 +33,7 @@ const services = [
         description: "Facing abusive recovery calls or legal threats? You have rights. We educate you on RBI guidelines and provide strong legal support to stop unethical harassment from recovery agents immediately. We stand between you and the creditors.",
         color: "from-amber-500 to-orange-500",
         bgGlow: "bg-amber-500/20",
-        link: "/dashboard/harassment",
+        link: "/eligibility",
     },
 ];
 

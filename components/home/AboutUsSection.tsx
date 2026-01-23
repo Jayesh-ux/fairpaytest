@@ -92,7 +92,7 @@ export function AboutUsSection() {
                                 </p>
 
                                 <p>
-                                    We focus on <Link href="/how-it-works" className="text-primary font-semibold hover:underline">borrower education</Link>, <Link href="/dashboard/harassment" className="text-primary font-semibold hover:underline">legal awareness</Link>, and <Link href="/dashboard" className="text-primary font-semibold hover:underline">structured guidance</Link> — enabling clients to engage with lenders lawfully and confidently.
+                                    We focus on <Link href="/how-it-works" className="text-primary font-semibold hover:underline">borrower education</Link>, <Link href="/eligibility" className="text-primary font-semibold hover:underline">legal awareness</Link>, and <Link href="/how-it-works" className="text-primary font-semibold hover:underline">structured guidance</Link> — enabling clients to engage with lenders lawfully and confidently.
                                 </p>
 
                                 <p className="text-sm italic border-l-4 border-primary pl-4 py-2 bg-primary/5 rounded">
