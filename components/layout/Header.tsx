@@ -92,14 +92,15 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
       {/* Main Header */}
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className={cn(
-          'sticky top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled
+          'fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 lg:top-0 lg:bottom-auto',
+          isScrolled || typeof window !== 'undefined' && window.innerWidth < 1024
             ? 'glass-nav shadow-lg'
-            : 'bg-transparent'
+            : 'bg-transparent',
+          'lg:sticky'
         )}
       >
         <div className="container mx-auto px-1 sm:px-4">
@@ -259,7 +260,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
                       {mobileMenuOpen ? <X className="w-4 h-4 text-primary" /> : <Menu className="w-4 h-4 min-[340px]:w-5 min-[340px]:h-5" />}
                     </button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="w-[300px] p-0 flex flex-col bg-card border-l border-border">
+                  <SheetContent side="bottom" className="h-[85vh] rounded-t-[2rem] p-0 flex flex-col bg-card border-t border-border overflow-hidden">
+                    <div className="w-12 h-1.5 bg-muted rounded-full mx-auto mt-3 mb-1 flex-shrink-0" />
                     <SheetHeader className="p-6 border-b border-border text-left">
                       <SheetTitle>
                         <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
