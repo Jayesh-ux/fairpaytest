@@ -26,6 +26,8 @@ export async function GET(request: NextRequest) {
             recentCallbacks,
             recentReviews,
             stageDistribution,
+            pendingEmergency,
+            recentEmergency,
         ] = await Promise.all([
             // Total tickets count
             prisma.ticket.count(),
@@ -67,10 +69,22 @@ export async function GET(request: NextRequest) {
                 take: 5,
                 orderBy: { createdAt: 'desc' },
             }),
-            // Stage distribution
             prisma.ticket.groupBy({
                 by: ['stage'],
                 _count: { stage: true },
+            }),
+            // Pending emergency requests (PAID and PENDING status)
+            prisma.emergencyContact.count({
+                where: {
+                    paymentStatus: 'PAID',
+                    status: 'PENDING'
+                }
+            }),
+            // Recent 5 emergency requests
+            prisma.emergencyContact.findMany({
+                where: { paymentStatus: 'PAID' },
+                take: 5,
+                orderBy: { createdAt: 'desc' },
             }),
         ]);
 
@@ -119,6 +133,14 @@ export async function GET(request: NextRequest) {
                 timestamp: r.createdAt.toISOString(),
                 status: r.approved ? 'success' as const : 'info' as const,
             })),
+            ...recentEmergency.map((e) => ({
+                id: e.id,
+                type: 'emergency' as const,
+                action: 'Emergency Consultation',
+                description: `${e.name} - Priority Lead`,
+                timestamp: e.createdAt.toISOString(),
+                status: 'error' as const,
+            })),
         ]
             .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
             .slice(0, 10);
@@ -130,6 +152,7 @@ export async function GET(request: NextRequest) {
                 completedCases: completedTickets,
                 pendingCallbacks,
                 pendingReviews,
+                pendingEmergency,
                 totalReviews,
                 totalUsers,
                 totalLoanAmount: loanStats._sum.loanAmount || 0,

@@ -57,6 +57,7 @@ interface Stats {
     totalLoanAmount: number;
     conversionRate: number;
     totalReviews: number;
+    pendingEmergency: number;
 }
 
 interface StageDistribution {
@@ -199,7 +200,18 @@ export default function AdminDashboard() {
         );
     }
 
-    const statsCards = [
+    const statsCards = (stats: Stats | null) => [
+        {
+            label: 'Emergency Leads',
+            value: stats?.pendingEmergency || 0,
+            change: 'Immediate Action',
+            trend: 'alert',
+            icon: AlertTriangle,
+            color: 'from-red-600 to-orange-500',
+            bgColor: 'bg-red-500/10',
+            iconColor: 'text-red-600',
+            href: '/admin/emergency',
+        },
         {
             label: 'Total Cases',
             value: stats?.totalTickets || 0,
@@ -296,7 +308,7 @@ export default function AdminDashboard() {
 
             {/* Stats Grid - Bento Style */}
             <motion.div variants={item} className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4">
-                {statsCards.map((stat, idx) => (
+                {statsCards(stats).map((stat, idx) => (
                     <Link key={idx} href={stat.href} className="block">
                         <Card
                             className="group relative h-full overflow-hidden border-border bg-card hover:bg-muted/50 transition-all duration-500 hover:border-border cursor-pointer shadow-sm hover:shadow-md"
@@ -368,7 +380,8 @@ export default function AdminDashboard() {
                                         activity.type === 'ticket' ? `/admin/tickets/${activity.id}` :
                                             activity.type === 'callback' ? `/admin/callbacks?id=${activity.id}` :
                                                 activity.type === 'review' ? `/admin/reviews?id=${activity.id}` :
-                                                    activity.type === 'user' ? `/admin/users/${activity.id}` : '/admin';
+                                                    activity.type === 'user' ? `/admin/users/${activity.id}` :
+                                                        activity.type === 'emergency' ? '/admin/emergency' : '/admin';
 
                                     return (
                                         <motion.div
@@ -391,7 +404,7 @@ export default function AdminDashboard() {
                                                     )}>
                                                         {activity.status === 'success' && <CheckCircle2 className="w-4 h-4 xs:w-5 xs:h-5 text-emerald-500" />}
                                                         {activity.status === 'warning' && <AlertTriangle className="w-4 h-4 xs:w-5 xs:h-5 text-amber-500" />}
-                                                        {activity.status === 'error' && <XCircle className="w-4 h-4 xs:w-5 xs:h-5 text-red-500" />}
+                                                        {activity.status === 'error' && <AlertTriangle className="w-4 h-4 xs:w-5 xs:h-5 text-red-500 animate-pulse" />}
                                                         {activity.status === 'info' && <Bell className="w-4 h-4 xs:w-5 xs:h-5 text-blue-500" />}
                                                     </div>
                                                     <div className="flex-1 min-w-0 overflow-hidden">
