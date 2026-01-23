@@ -72,24 +72,24 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
   return (
     <>
-      {/* Top Bar - Now visible on all devices with horizontal scroll/wrap on mobile */}
-      <div className="bg-muted/50 text-muted-foreground border-b border-border py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-6">
+      {/* Top Bar - Compact for mobile */}
+      <div className="bg-muted/50 text-muted-foreground border-b border-border py-1.5 sm:py-2">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs md:text-sm">
+            <div className="flex items-center gap-2 sm:gap-6 flex-wrap">
               <a
                 href="tel:+919389815277"
-                className="flex items-center gap-2 hover:text-primary transition-colors"
+                className="flex items-center gap-1 hover:text-primary transition-colors"
               >
-                <Phone className="w-4 h-4" />
-                +91 9389815277
+                <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span>+91 9389815277</span>
               </a>
               <a
                 href="mailto:support@fairpaysolution.com"
-                className="flex items-center gap-2 hover:text-primary transition-colors"
+                className="flex items-center gap-1 hover:text-primary transition-colors truncate max-w-[150px] xs:max-w-none"
               >
-                <Mail className="w-4 h-4" />
-                support@fairpaysolution.com
+                <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="truncate">support@fairpaysolution.com</span>
               </a>
             </div>
           </div>
@@ -111,14 +111,14 @@ export function Header({ onOpenCallback }: HeaderProps) {
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16 lg:h-20 gap-4">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
+            <Link href="/" className="flex items-center gap-1 sm:gap-2 group flex-shrink-0">
               <img
                 src="/logo-fairpay.jpg"
                 alt="FairPay Solutions"
-                className="w-9 h-9 lg:w-12 lg:h-12 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 border border-primary/20"
+                className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 border border-primary/20"
               />
               <div className="flex flex-col">
-                <span className="font-display font-bold text-base lg:text-xl text-foreground leading-tight">
+                <span className="font-display font-bold text-[10px] xs:text-xs sm:text-base lg:text-xl text-foreground leading-tight tracking-tight">
                   FAIR<span className="text-primary">PAY</span> <span className="inline">SOLUTIONS</span>
                 </span>
               </div>
@@ -175,8 +175,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
             </div>
 
             {/* Right Section: Theme, Auth, CTA & Mobile Menu */}
-            <div className="flex items-center gap-2 lg:gap-4 ml-auto">
-              <div className="flex">
+            <div className="flex items-center gap-1 xs:gap-2 lg:gap-4 ml-auto">
+              <div className="flex scale-90 xs:scale-100">
                 <ThemeToggle />
               </div>
 
@@ -235,7 +235,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
                     <LogIn className="w-4 h-4" />
                     Sign In
                   </Button>
-                  <Button variant="ghost" className="lg:hidden h-9 px-2 text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-1">
+                  <Button variant="ghost" className="lg:hidden h-8 xs:h-9 px-1.5 xs:px-2 text-[9px] xs:text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-1">
                     <LogIn className="w-3 h-3" />
                     Login
                   </Button>
@@ -252,7 +252,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <Button
                 variant="accent"
                 onClick={onOpenCallback}
-                className="md:hidden h-9 px-2 sm:px-3 text-[10px] sm:text-xs font-bold rounded-lg shadow-md"
+                className="md:hidden h-8 xs:h-9 px-1.5 xs:px-3 text-[9px] xs:text-[10px] sm:text-xs font-bold rounded-lg shadow-md"
               >
                 Callback
               </Button>
