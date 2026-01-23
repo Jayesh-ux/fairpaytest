@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         siteName: 'FairPay Solutions',
         title: 'FairPay Solutions | Expert Debt Settlement & Relief in India',
         description:
-            'Legal consultancy for debt relief in India. Reduce personal loan and credit card debt by 40-60%. Professional RBI-compliant guidance.',
+            'Ethical Unsecured Loan Resolution – Expert guidance for lawful, transparent, and structured debt resolution. Free consultation available. We are not a bank or lender; consultancy services only.',
         images: [
             {
                 url: '/logo.jpg',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'FairPay Solutions | Expert Debt Settlement & Relief in India',
         description:
-            'Legal debt settlement guidance in India. Reduce loans by 40-60%. Professional RBI-compliant advisors.',
+            'Ethical Unsecured Loan Resolution – Expert guidance for lawful, transparent, and structured debt resolution. Free consultation available. We are not a bank or lender; consultancy services only.',
         images: ['/logo.jpg'],
     },
     robots: {
