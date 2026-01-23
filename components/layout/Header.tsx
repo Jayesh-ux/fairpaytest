@@ -72,8 +72,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
   return (
     <>
-      {/* Top Bar - Desktop */}
-      <div className="hidden lg:block bg-muted/50 text-muted-foreground border-b border-border py-2">
+      {/* Top Bar - Now visible on all devices with horizontal scroll/wrap on mobile */}
+      <div className="bg-muted/50 text-muted-foreground border-b border-border py-2">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-6">
@@ -184,8 +184,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <button className="flex items-center gap-2 p-1 pl-2 rounded-full border border-border hover:bg-muted/50 transition-colors">
-                      <div className="flex flex-col items-end hidden md:flex">
-                        <span className="text-xs font-bold text-foreground truncate max-w-[80px]">
+                      <div className="flex flex-col items-end">
+                        <span className="text-[10px] sm:text-xs font-bold text-foreground truncate max-w-[60px] sm:max-w-[80px]">
                           {session.user?.name?.split(' ')[0]}
                         </span>
                         <Badge variant="secondary" className="h-3.5 px-1 text-[8px] font-bold uppercase bg-primary/10 text-primary border-none">
@@ -247,7 +247,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 onClick={onOpenCallback}
                 className="hidden md:flex shadow-lg shadow-primary/20 rounded-xl px-4 lg:px-6 h-10 lg:h-11 font-semibold"
               >
-                Get Callback <span className="ml-2 hidden xl:inline">→</span>
+                Get Callback <span className="ml-2 inline">→</span>
               </Button>
               <Button
                 variant="accent"

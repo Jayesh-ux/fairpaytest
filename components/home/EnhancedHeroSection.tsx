@@ -281,7 +281,7 @@ export function EnhancedHeroSection({ onOpenCallback }: EnhancedHeroSectionProps
                         <motion.div
                             animate={{ y: [0, -15, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
-                            className="hidden sm:block absolute -top-4 sm:-top-6 -right-3 sm:-right-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl text-xs sm:text-sm md:text-base font-black border-2 border-white/20"
+                            className="block absolute -top-4 sm:-top-6 -right-3 sm:-right-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl text-xs sm:text-sm md:text-base font-black border-2 border-white/20"
                         >
                             ₹50 Cr+ Resolved
                         </motion.div>

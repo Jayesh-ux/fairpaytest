@@ -66,7 +66,7 @@ export function StatsSection() {
               <div className="text-primary-foreground/90 font-medium mb-1">
                 {stat.label}
               </div>
-              <div className="text-primary-foreground/60 text-sm hidden lg:block">
+              <div className="text-primary-foreground/60 text-xs sm:text-sm">
                 {stat.description}
               </div>
             </motion.div>
