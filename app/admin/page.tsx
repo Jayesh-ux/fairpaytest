@@ -147,17 +147,51 @@ export default function AdminDashboard() {
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-6">
-                <div className="relative">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 animate-pulse" />
-                    <Loader2 className="w-10 h-10 text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin" />
+            <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
+                <div className="relative w-24 h-24">
+                    {/* Unique Animated Loader */}
+                    <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 rounded-full border-t-2 border-b-2 border-primary"
+                    />
+                    <motion.div
+                        animate={{ rotate: -360 }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-2 rounded-full border-r-2 border-l-2 border-secondary"
+                    />
+                    <motion.div
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-4 rounded-full bg-primary/20 flex items-center justify-center"
+                    >
+                        <ShieldCheck className="w-8 h-8 text-primary" />
+                    </motion.div>
                 </div>
-                <div className="text-center space-y-2">
-                    <p className="text-muted-foreground font-bold tracking-widest uppercase text-xs">Initializing Dashboard</p>
-                    <div className="flex items-center justify-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <span className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <span className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="text-center space-y-3">
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-muted-foreground font-display font-bold tracking-[0.2em] uppercase text-[10px]"
+                    >
+                        Securing Environment
+                    </motion.p>
+                    <div className="flex items-center justify-center gap-1.5">
+                        {[0, 1, 2].map((i) => (
+                            <motion.span
+                                key={i}
+                                animate={{
+                                    scale: [1, 1.5, 1],
+                                    opacity: [0.3, 1, 0.3]
+                                }}
+                                transition={{
+                                    duration: 1,
+                                    repeat: Infinity,
+                                    delay: i * 0.2
+                                }}
+                                className="w-1.5 h-1.5 rounded-full bg-primary shadow-glow"
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
@@ -221,35 +255,35 @@ export default function AdminDashboard() {
             className="space-y-4 xs:space-y-6 sm:space-y-8 max-w-[1600px] 3xl:max-w-[1800px] 4xl:max-w-[2000px] mx-auto overflow-hidden"
         >
             {/* Header Section */}
-            <motion.div variants={item} className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 xs:gap-4">
-                <div className="min-w-0">
-                    <div className="flex items-center gap-2 xs:gap-3 mb-1 xs:mb-2">
-                        <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight truncate">Command Center</h1>
-                        <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 text-[10px] xs:text-xs font-bold flex items-center gap-1 xs:gap-1.5 flex-shrink-0">
-                            <ShieldCheck className="w-3 h-3 xs:w-3.5 xs:h-3.5" />
+            <motion.div variants={item} className="flex flex-col min-[400px]:flex-row min-[400px]:items-center justify-between gap-4 px-1">
+                <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 xs:gap-3 mb-1 xs:mb-2 flex-wrap min-[340px]:flex-nowrap">
+                        <h1 className="text-sm min-[340px]:text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">Command Center</h1>
+                        <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full px-2 xs:px-3 sm:px-4 py-0.5 xs:py-1 text-[9px] xs:text-xs font-bold flex items-center gap-1 xs:gap-1.5 flex-shrink-0">
+                            <ShieldCheck className="w-2.5 h-2.5 xs:w-3.5 xs:h-3.5" />
                             ADMIN
                         </Badge>
                     </div>
-                    <p className="text-muted-foreground text-xs xs:text-sm sm:text-base truncate">
+                    <p className="text-muted-foreground text-[9px] min-[340px]:text-[10px] xs:text-xs sm:text-sm truncate opacity-80">
                         Real-time overview • Last updated: {new Date().toLocaleTimeString()}
                     </p>
                 </div>
-                <div className="flex items-center gap-2 xs:gap-3 flex-shrink-0">
+                <div className="flex items-center gap-2 flex-shrink-0">
                     <Button
                         variant="outline"
                         size="sm"
                         onClick={handleRefresh}
                         disabled={refreshing}
-                        className="rounded-full gap-1.5 xs:gap-2 border-border hover:bg-muted text-xs px-2 xs:px-3"
+                        className="rounded-full gap-1.5 border-border hover:bg-muted text-[10px] xs:text-xs px-2.5 h-8 xs:h-9"
                     >
                         <RefreshCw className={cn("w-3 h-3 xs:w-4 xs:h-4", refreshing && "animate-spin")} />
-                        <span className="hidden xs:inline">Refresh</span>
+                        <span className="hidden min-[450px]:inline">Refresh</span>
                     </Button>
-                    <Button size="sm" className="rounded-full gap-1.5 xs:gap-2 shadow-lg shadow-primary/20 text-xs px-2 xs:px-3" asChild>
+                    <Button size="sm" className="rounded-full gap-1.5 shadow-lg shadow-primary/20 text-[10px] xs:text-xs px-2.5 h-8 xs:h-9 bg-primary" asChild>
                         <Link href="/admin/tickets">
                             <Eye className="w-3 h-3 xs:w-4 xs:h-4" />
-                            <span className="hidden xs:inline">View All Cases</span>
-                            <span className="xs:hidden">Cases</span>
+                            <span className="hidden min-[450px]:inline">View All Cases</span>
+                            <span className="min-[450px]:hidden">Cases</span>
                         </Link>
                     </Button>
                 </div>
