@@ -72,23 +72,17 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
   return (
     <>
-      {/* Top Bar - Compact for mobile */}
-      <div className="bg-muted/50 text-muted-foreground border-b border-border py-1.5 sm:py-2">
-        <div className="container mx-auto px-2 sm:px-4">
-          <div className="flex items-center justify-between text-[10px] sm:text-xs md:text-sm">
-            <div className="flex items-center gap-2 sm:gap-6 flex-wrap">
-              <a
-                href="tel:+919389815277"
-                className="flex items-center gap-1 hover:text-primary transition-colors"
-              >
-                <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>+91 9389815277</span>
+      {/* Top Bar - Ultra Compact */}
+      <div className="bg-muted/50 text-muted-foreground border-b border-border py-1">
+        <div className="container mx-auto px-1 sm:px-4">
+          <div className="flex items-center justify-between text-[9px] xs:text-xs md:text-sm">
+            <div className="flex items-center gap-1.5 sm:gap-6">
+              <a href="tel:+919389815277" className="flex items-center gap-1 hover:text-primary transition-colors whitespace-nowrap">
+                <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
+                <span>9389815277</span>
               </a>
-              <a
-                href="mailto:support@fairpaysolution.com"
-                className="flex items-center gap-1 hover:text-primary transition-colors truncate max-w-[150px] xs:max-w-none"
-              >
-                <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+              <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-1 hover:text-primary transition-colors truncate max-w-[120px] xs:max-w-none">
+                <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
                 <span className="truncate">support@fairpaysolution.com</span>
               </a>
             </div>
@@ -111,14 +105,14 @@ export function Header({ onOpenCallback }: HeaderProps) {
         <div className="container mx-auto px-1 sm:px-4">
           <nav className="flex items-center justify-between h-16 lg:h-20 gap-4">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center gap-0.5 sm:gap-2 group flex-shrink-0">
+            <Link href="/" className="flex items-center gap-0.5 sm:gap-2 group flex-shrink">
               <img
                 src="/logo-fairpay.jpg"
                 alt="FairPay Solutions"
-                className="w-6 h-6 xs:w-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover border border-primary/20"
+                className="w-5 h-5 xs:w-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover border border-primary/20 flex-shrink-0"
               />
-              <div className="flex flex-col">
-                <span className="font-display font-black text-[9px] xs:text-xs sm:text-base lg:text-xl text-foreground leading-tight tracking-tighter">
+              <div className="flex flex-col min-w-0">
+                <span className="font-display font-black text-[8px] xs:text-xs sm:text-base lg:text-xl text-foreground leading-none tracking-tighter truncate">
                   FAIR<span className="text-primary">PAY</span> <span className="inline">SOLUTIONS</span>
                 </span>
               </div>
@@ -230,13 +224,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link href="/auth/signin">
+                <Link href="/auth/signin" className="flex-shrink-0">
                   <Button variant="outline" className="hidden lg:flex gap-2 rounded-xl h-10 xl:h-11 font-semibold">
                     <LogIn className="w-4 h-4" />
                     Sign In
                   </Button>
-                  <Button variant="ghost" className="lg:hidden h-7 xs:h-9 px-1.5 xs:px-2 text-[8px] xs:text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-0.5 sm:gap-1">
-                    <LogIn className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                  <Button variant="ghost" className="lg:hidden h-7 xs:h-9 px-1 xs:px-2 text-[8px] xs:text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-0.5">
+                    <LogIn className="w-2.5 h-2.5" />
                     Login
                   </Button>
                 </Link>
@@ -245,24 +239,24 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <Button
                 variant="accent"
                 onClick={onOpenCallback}
-                className="hidden md:flex shadow-lg shadow-primary/20 rounded-xl px-4 lg:px-6 h-10 lg:h-11 font-semibold"
+                className="hidden md:flex shadow-lg shadow-primary/20 rounded-xl px-4 lg:px-6 h-10 lg:h-11 font-semibold flex-shrink-0"
               >
                 Get Callback <span className="ml-2 inline">→</span>
               </Button>
               <Button
                 variant="accent"
                 onClick={onOpenCallback}
-                className="md:hidden h-7 xs:h-9 px-1 xs:px-3 text-[8px] xs:text-[10px] sm:text-xs font-bold rounded-lg shadow-md"
+                className="md:hidden h-7 xs:h-9 px-1 xs:px-3 text-[8px] xs:text-[10px] sm:text-xs font-bold rounded-lg shadow-md flex-shrink-0"
               >
                 Callback
               </Button>
 
               {/* Mobile Menu Trigger */}
-              <div className="lg:hidden">
+              <div className="lg:hidden flex-shrink-0">
                 <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                   <SheetTrigger asChild>
-                    <button className="p-0.5 sm:p-1 rounded-lg hover:bg-muted/50 transition-colors">
-                      {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6 text-primary" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+                    <button className="p-0.5 rounded-lg hover:bg-muted/50 transition-colors">
+                      {mobileMenuOpen ? <X className="w-4 h-4 text-primary" /> : <Menu className="w-5 h-5" />}
                     </button>
                   </SheetTrigger>
                   <SheetContent side="right" className="w-[300px] p-0 flex flex-col bg-card border-l border-border">
