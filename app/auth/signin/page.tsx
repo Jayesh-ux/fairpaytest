@@ -334,14 +334,14 @@ function SignInContent() {
                                     onClick={handleSignUp}
                                     disabled={isLoading}
                                     size="lg"
-                                    className="w-full h-12 xs:h-14 text-sm xs:text-base font-semibold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all rounded-xl gap-2 xs:gap-3 px-2 xs:px-4"
+                                    className="w-full h-12 xs:h-14 text-[12px] min-[340px]:text-sm sm:text-base font-semibold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all rounded-xl gap-1.5 xs:gap-3 px-2 xs:px-4"
                                 >
                                     {isLoading && loadingType === 'signup' ? (
                                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                     ) : (
                                         <>
                                             <UserPlus className="w-4 h-4 xs:w-5 xs:h-5 shrink-0" />
-                                            <span className="truncate">Create Account with Google</span>
+                                            <span>Create Account with Google</span>
                                         </>
                                     )}
                                 </Button>
@@ -366,7 +366,7 @@ function SignInContent() {
                                     disabled={isLoading}
                                     size="lg"
                                     variant="outline"
-                                    className="w-full h-12 xs:h-14 text-sm xs:text-base font-semibold bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all rounded-xl gap-2 xs:gap-3 px-2 xs:px-4"
+                                    className="w-full h-12 xs:h-14 text-[12px] min-[340px]:text-sm sm:text-base font-semibold bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all rounded-xl gap-1.5 xs:gap-3 px-2 xs:px-4"
                                 >
                                     {isLoading && loadingType === 'signin' ? (
                                         <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -390,7 +390,7 @@ function SignInContent() {
                                                     d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                                                 />
                                             </svg>
-                                            <span className="truncate">Sign In with Google</span>
+                                            <span>Sign In with Google</span>
                                         </>
                                     )}
                                 </Button>
