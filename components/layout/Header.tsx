@@ -75,14 +75,14 @@ export function Header({ onOpenCallback }: HeaderProps) {
       {/* Top Bar - Ultra Compact */}
       <div className="bg-muted/50 text-muted-foreground border-b border-border py-1">
         <div className="container mx-auto px-1 sm:px-4">
-          <div className="flex items-center justify-between text-[7px] min-[340px]:text-[8px] sm:text-xs md:text-sm">
-            <div className="flex items-center gap-1 sm:gap-6">
+          <div className="flex items-center justify-between text-[8px] min-[340px]:text-[9px] sm:text-xs md:text-sm">
+            <div className="flex items-center gap-1.5 sm:gap-6">
               <a href="tel:+919389815277" className="flex items-center gap-0.5 hover:text-primary transition-colors whitespace-nowrap">
-                <Phone className="w-1.5 h-1.5 min-[340px]:w-2.5 min-[340px]:h-2.5 sm:w-4 sm:h-4" />
+                <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
                 <span>9389815277</span>
               </a>
-              <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-0.5 hover:text-primary transition-colors truncate max-w-[80px] min-[340px]:max-w-none">
-                <Mail className="w-1.5 h-1.5 min-[340px]:w-2.5 min-[340px]:h-2.5 sm:w-4 sm:h-4" />
+              <a href="mailto:support@fairpaysolution.com" className="flex items-center gap-0.5 hover:text-primary transition-colors truncate max-w-[90px] min-[340px]:max-w-none">
+                <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
                 <span className="truncate">support@fairpaysolution.com</span>
               </a>
             </div>
@@ -103,16 +103,16 @@ export function Header({ onOpenCallback }: HeaderProps) {
         )}
       >
         <div className="container mx-auto px-1 sm:px-4">
-          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20 gap-0.5 sm:gap-4">
+          <nav className="flex items-center justify-between h-14 sm:h-16 lg:h-20 gap-1 sm:gap-4">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center gap-0.5 sm:gap-2 group flex-shrink min-w-0">
+            <Link href="/" className="flex items-center gap-1 sm:gap-2 group flex-shrink min-w-0">
               <img
                 src="/logo-fairpay.jpg"
                 alt="FairPay Solutions"
-                className="w-5 h-5 min-[340px]:w-6 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover border border-primary/20 flex-shrink-0"
+                className="w-5 h-5 min-[340px]:w-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover border border-primary/20 flex-shrink-0"
               />
               <div className="flex flex-col min-w-0">
-                <span className="font-display font-black text-[8px] min-[340px]:text-[10px] sm:text-base lg:text-xl text-foreground leading-none tracking-tighter whitespace-nowrap">
+                <span className="font-display font-black text-[9px] min-[340px]:text-[11px] sm:text-base lg:text-xl text-foreground leading-none tracking-tighter whitespace-nowrap">
                   FAIR<span className="text-primary">PAY</span> SOLUTIONS
                 </span>
               </div>
@@ -169,8 +169,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
             </div>
 
             {/* Right Section: Theme, Auth, CTA & Mobile Menu */}
-            <div className="flex items-center gap-0.5 min-[340px]:gap-1 lg:gap-4 ml-auto">
-              <div className="flex scale-[0.6] min-[340px]:scale-75 sm:scale-100 origin-right transition-transform">
+            <div className="flex items-center gap-1 lg:gap-4 ml-auto">
+              <div className="flex scale-[0.7] min-[340px]:scale-85 sm:scale-100 origin-right transition-transform">
                 <ThemeToggle />
               </div>
 
@@ -229,8 +229,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
                     <LogIn className="w-4 h-4" />
                     Sign In
                   </Button>
-                  <Button variant="ghost" className="lg:hidden h-7 min-[340px]:h-8 px-0.5 min-[340px]:px-1 text-[7px] min-[340px]:text-[9px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-0.5">
-                    <LogIn className="w-2 h-2 min-[340px]:w-2.5 min-[340px]:h-2.5" />
+                  <Button variant="ghost" className="lg:hidden h-7 min-[340px]:h-9 px-1 min-[340px]:px-2 text-[8px] min-[340px]:text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-0.5">
+                    <LogIn className="w-2.5 h-2.5" />
                     Login
                   </Button>
                 </Link>
@@ -246,7 +246,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <Button
                 variant="accent"
                 onClick={onOpenCallback}
-                className="md:hidden h-7 min-[340px]:h-8 px-0.5 min-[340px]:px-2 text-[7px] min-[340px]:text-[9px] sm:text-xs font-bold rounded-lg shadow-md flex-shrink-0"
+                className="md:hidden h-7 min-[340px]:h-9 px-1.5 min-[340px]:px-3 text-[8px] min-[340px]:text-[10px] sm:text-xs font-bold rounded-lg shadow-md flex-shrink-0"
               >
                 Callback
               </Button>
@@ -255,7 +255,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <div className="lg:hidden flex-shrink-0">
                 <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                   <SheetTrigger asChild>
-                    <button className="p-0 rounded-lg hover:bg-muted/50 transition-colors">
+                    <button className="p-0.5 min-[340px]:p-1 rounded-lg hover:bg-muted/50 transition-colors">
                       {mobileMenuOpen ? <X className="w-4 h-4 text-primary" /> : <Menu className="w-4 h-4 min-[340px]:w-5 min-[340px]:h-5" />}
                     </button>
                   </SheetTrigger>
