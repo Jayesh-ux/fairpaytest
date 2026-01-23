@@ -108,17 +108,17 @@ export function Header({ onOpenCallback }: HeaderProps) {
             : 'bg-transparent'
         )}
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-1 sm:px-4">
           <nav className="flex items-center justify-between h-16 lg:h-20 gap-4">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center gap-1 sm:gap-2 group flex-shrink-0">
+            <Link href="/" className="flex items-center gap-0.5 sm:gap-2 group flex-shrink-0">
               <img
                 src="/logo-fairpay.jpg"
                 alt="FairPay Solutions"
-                className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 border border-primary/20"
+                className="w-6 h-6 xs:w-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full object-cover border border-primary/20"
               />
               <div className="flex flex-col">
-                <span className="font-display font-bold text-[10px] xs:text-xs sm:text-base lg:text-xl text-foreground leading-tight tracking-tight">
+                <span className="font-display font-black text-[9px] xs:text-xs sm:text-base lg:text-xl text-foreground leading-tight tracking-tighter">
                   FAIR<span className="text-primary">PAY</span> <span className="inline">SOLUTIONS</span>
                 </span>
               </div>
@@ -175,8 +175,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
             </div>
 
             {/* Right Section: Theme, Auth, CTA & Mobile Menu */}
-            <div className="flex items-center gap-1 xs:gap-2 lg:gap-4 ml-auto">
-              <div className="flex scale-90 xs:scale-100">
+            <div className="flex items-center gap-0.5 xs:gap-2 lg:gap-4 ml-auto">
+              <div className="flex scale-75 xs:scale-100 origin-right">
                 <ThemeToggle />
               </div>
 
@@ -235,8 +235,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
                     <LogIn className="w-4 h-4" />
                     Sign In
                   </Button>
-                  <Button variant="ghost" className="lg:hidden h-8 xs:h-9 px-1.5 xs:px-2 text-[9px] xs:text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-1">
-                    <LogIn className="w-3 h-3" />
+                  <Button variant="ghost" className="lg:hidden h-7 xs:h-9 px-1.5 xs:px-2 text-[8px] xs:text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-0.5 sm:gap-1">
+                    <LogIn className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                     Login
                   </Button>
                 </Link>
@@ -252,7 +252,7 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <Button
                 variant="accent"
                 onClick={onOpenCallback}
-                className="md:hidden h-8 xs:h-9 px-1.5 xs:px-3 text-[9px] xs:text-[10px] sm:text-xs font-bold rounded-lg shadow-md"
+                className="md:hidden h-7 xs:h-9 px-1 xs:px-3 text-[8px] xs:text-[10px] sm:text-xs font-bold rounded-lg shadow-md"
               >
                 Callback
               </Button>
@@ -261,8 +261,8 @@ export function Header({ onOpenCallback }: HeaderProps) {
               <div className="lg:hidden">
                 <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                   <SheetTrigger asChild>
-                    <button className="p-1 rounded-lg hover:bg-muted/50 transition-colors">
-                      {mobileMenuOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6" />}
+                    <button className="p-0.5 sm:p-1 rounded-lg hover:bg-muted/50 transition-colors">
+                      {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6 text-primary" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
                     </button>
                   </SheetTrigger>
                   <SheetContent side="right" className="w-[300px] p-0 flex flex-col bg-card border-l border-border">
