@@ -110,127 +110,16 @@ export function Header({ onOpenCallback }: HeaderProps) {
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16 lg:h-20 gap-4">
-            {/* Mobile: Hamburger Menu */}
-            <div className="lg:hidden flex items-center">
-              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-                <SheetTrigger asChild>
-                  <button className="p-2 -ml-2 rounded-lg hover:bg-muted/50 transition-colors">
-                    <Menu className="w-6 h-6" />
-                  </button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-[300px] p-0 flex flex-col bg-card border-r border-border">
-                  <SheetHeader className="p-6 border-b border-border text-left">
-                    <SheetTitle>
-                      <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                        <img
-                          src="/logo-fairpay.jpg"
-                          alt="FairPay Solutions"
-                          className="w-10 h-10 rounded-full object-cover border border-primary/20"
-                        />
-                        <div className="flex flex-col">
-                          <span className="font-display font-bold text-lg leading-tight">
-                            FAIR<span className="text-primary">PAY</span>
-                          </span>
-                        </div>
-                      </Link>
-                    </SheetTitle>
-                  </SheetHeader>
-
-                  <div className="flex-1 overflow-y-auto py-6 px-4">
-                    <div className="space-y-1">
-                      {mainNavItems.map((item) => (
-                        <div key={item.label}>
-                          {item.submenu ? (
-                            <>
-                              <button
-                                onClick={() => toggleSubmenu(item.label)}
-                                className={cn(
-                                  'flex items-center justify-between w-full px-4 py-3 rounded-xl text-base font-medium transition-colors',
-                                  activeSubmenu === item.label
-                                    ? 'text-primary bg-primary/10'
-                                    : 'text-foreground hover:bg-muted/50'
-                                )}
-                              >
-                                {item.label}
-                                <ChevronDown
-                                  className={cn(
-                                    'w-5 h-5 transition-transform duration-200',
-                                    activeSubmenu === item.label && 'rotate-180'
-                                  )}
-                                />
-                              </button>
-                              <div className={cn(
-                                "grid transition-all duration-200 ease-in-out",
-                                activeSubmenu === item.label ? "grid-rows-[1fr] opacity-100 mt-1" : "grid-rows-[0fr] opacity-0"
-                              )}>
-                                <div className="overflow-hidden pl-4 border-l-2 border-primary/10 ml-4 space-y-1">
-                                  {item.submenu.map((subItem) => (
-                                    <Link
-                                      key={subItem.label}
-                                      href={subItem.href}
-                                      onClick={() => setMobileMenuOpen(false)}
-                                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                                    >
-                                      {subItem.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            </>
-                          ) : (
-                            <Link
-                              href={item.href}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className={cn(
-                                'flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors',
-                                pathname === item.href
-                                  ? 'text-primary bg-primary/10'
-                                  : 'text-foreground hover:bg-muted/50'
-                              )}
-                            >
-                              {item.label}
-                              <ChevronRight className="w-4 h-4 opacity-50" />
-                            </Link>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="p-6 border-t border-border mt-auto bg-muted/30">
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-sm font-medium text-muted-foreground">Appearance</span>
-                      <ThemeToggle />
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <Phone className="w-4 h-4 text-primary" />
-                        <a href="tel:+919389815277" className="hover:text-primary transition-colors font-medium">
-                          +91 9389815277
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <Mail className="w-4 h-4 text-primary" />
-                        <a href="mailto:support@fairpaysolution.com" className="hover:text-primary transition-colors font-medium break-all">
-                          support@fairpaysolution.com
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group flex-1 lg:flex-none justify-center lg:justify-start">
+            {/* Logo Section */}
+            <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
               <img
                 src="/logo-fairpay.jpg"
                 alt="FairPay Solutions"
-                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 border border-primary/20"
+                className="w-9 h-9 lg:w-12 lg:h-12 rounded-full object-cover shadow-md group-hover:shadow-glow transition-shadow duration-300 border border-primary/20"
               />
-              <div className="flex flex-col lg:hidden xl:flex">
-                <span className="font-display font-bold text-lg lg:text-xl text-foreground leading-tight">
-                  FAIR<span className="text-primary">PAY</span> <span className="hidden sm:inline">SOLUTIONS</span>
+              <div className="flex flex-col">
+                <span className="font-display font-bold text-base lg:text-xl text-foreground leading-tight">
+                  FAIR<span className="text-primary">PAY</span> <span className="inline">SOLUTIONS</span>
                 </span>
               </div>
             </Link>
@@ -285,9 +174,9 @@ export function Header({ onOpenCallback }: HeaderProps) {
               ))}
             </div>
 
-            {/* Right Section: Theme, Auth & CTA */}
-            <div className="flex items-center gap-2 lg:gap-4">
-              <div className="hidden sm:flex">
+            {/* Right Section: Theme, Auth, CTA & Mobile Menu */}
+            <div className="flex items-center gap-2 lg:gap-4 ml-auto">
+              <div className="flex">
                 <ThemeToggle />
               </div>
 
@@ -342,12 +231,13 @@ export function Header({ onOpenCallback }: HeaderProps) {
                 </DropdownMenu>
               ) : (
                 <Link href="/auth/signin">
-                  <Button variant="outline" className="hidden lg:flex gap-2 rounded-xl h-10 xl:h-11">
+                  <Button variant="outline" className="hidden lg:flex gap-2 rounded-xl h-10 xl:h-11 font-semibold">
                     <LogIn className="w-4 h-4" />
                     Sign In
                   </Button>
-                  <Button variant="ghost" size="icon" className="lg:hidden w-10 h-10 rounded-full border border-border">
-                    <LogIn className="w-5 h-5" />
+                  <Button variant="ghost" className="lg:hidden h-9 px-2 text-[10px] sm:text-xs font-bold rounded-lg border border-border/50 flex items-center gap-1">
+                    <LogIn className="w-3 h-3" />
+                    Login
                   </Button>
                 </Link>
               )}
@@ -361,16 +251,126 @@ export function Header({ onOpenCallback }: HeaderProps) {
               </Button>
               <Button
                 variant="accent"
-                size="icon"
                 onClick={onOpenCallback}
-                className="md:hidden w-10 h-10 rounded-full shadow-lg shadow-primary/20"
+                className="md:hidden h-9 px-2 sm:px-3 text-[10px] sm:text-xs font-bold rounded-lg shadow-md"
               >
-                <Phone className="w-4 h-4" />
+                Callback
               </Button>
+
+              {/* Mobile Menu Trigger */}
+              <div className="lg:hidden">
+                <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                  <SheetTrigger asChild>
+                    <button className="p-1 rounded-lg hover:bg-muted/50 transition-colors">
+                      {mobileMenuOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6" />}
+                    </button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[300px] p-0 flex flex-col bg-card border-l border-border">
+                    <SheetHeader className="p-6 border-b border-border text-left">
+                      <SheetTitle>
+                        <Link href="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
+                          <img
+                            src="/logo-fairpay.jpg"
+                            alt="FairPay Solutions"
+                            className="w-10 h-10 rounded-full object-cover border border-primary/20"
+                          />
+                          <div className="flex flex-col">
+                            <span className="font-display font-bold text-lg leading-tight">
+                              FAIR<span className="text-primary">PAY</span> <span className="inline">SOLUTIONS</span>
+                            </span>
+                          </div>
+                        </Link>
+                      </SheetTitle>
+                    </SheetHeader>
+
+                    <div className="flex-1 overflow-y-auto py-6 px-4">
+                      <div className="space-y-1">
+                        {mainNavItems.map((item) => (
+                          <div key={item.label}>
+                            {item.submenu ? (
+                              <>
+                                <button
+                                  onClick={() => toggleSubmenu(item.label)}
+                                  className={cn(
+                                    'flex items-center justify-between w-full px-4 py-3 rounded-xl text-base font-medium transition-colors',
+                                    activeSubmenu === item.label
+                                      ? 'text-primary bg-primary/10'
+                                      : 'text-foreground hover:bg-muted/50'
+                                  )}
+                                >
+                                  {item.label}
+                                  <ChevronDown
+                                    className={cn(
+                                      'w-5 h-5 transition-transform duration-200',
+                                      activeSubmenu === item.label && 'rotate-180'
+                                    )}
+                                  />
+                                </button>
+                                <div className={cn(
+                                  "grid transition-all duration-200 ease-in-out",
+                                  activeSubmenu === item.label ? "grid-rows-[1fr] opacity-100 mt-1" : "grid-rows-[0fr] opacity-0"
+                                )}>
+                                  <div className="overflow-hidden pl-4 border-l-2 border-primary/10 ml-4 space-y-1">
+                                    {item.submenu.map((subItem) => (
+                                      <Link
+                                        key={subItem.label}
+                                        href={subItem.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                                      >
+                                        {subItem.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              </>
+                            ) : (
+                              <Link
+                                href={item.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={cn(
+                                  'flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors',
+                                  pathname === item.href
+                                    ? 'text-primary bg-primary/10'
+                                    : 'text-foreground hover:bg-muted/50'
+                                )}
+                              >
+                                {item.label}
+                                <ChevronRight className="w-4 h-4 opacity-50" />
+                              </Link>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="p-6 border-t border-border mt-auto bg-muted/30">
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-sm font-medium text-muted-foreground">Appearance</span>
+                        <ThemeToggle />
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <Phone className="w-4 h-4 text-primary" />
+                          <a href="tel:+919389815277" className="hover:text-primary transition-colors font-medium">
+                            +91 9389815277
+                          </a>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <Mail className="w-4 h-4 text-primary" />
+                          <a href="mailto:support@fairpaysolution.com" className="hover:text-primary transition-colors font-medium break-all">
+                            support@fairpaysolution.com
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
             </div>
-          </nav>
-        </div>
-      </motion.header>
+          </nav >
+        </div >
+      </motion.header >
 
     </>
   );
