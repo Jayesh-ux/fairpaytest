@@ -92,15 +92,14 @@ export function Header({ onOpenCallback }: HeaderProps) {
 
       {/* Main Header */}
       <motion.header
-        initial={{ y: 100 }}
+        initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className={cn(
-          'fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 lg:top-0 lg:bottom-auto',
-          isScrolled || typeof window !== 'undefined' && window.innerWidth < 1024
+          'sticky top-0 left-0 right-0 z-50 transition-all duration-300',
+          isScrolled
             ? 'glass-nav shadow-lg'
-            : 'bg-transparent',
-          'lg:sticky'
+            : 'bg-transparent'
         )}
       >
         <div className="container mx-auto px-1 sm:px-4">
