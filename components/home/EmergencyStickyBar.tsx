@@ -179,9 +179,9 @@ export const EmergencyStickyBar = () => {
                             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping" />
                             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white dark:border-zinc-900" />
 
-                            <div className="flex flex-col items-start mr-2">
-                                <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Emergency?</span>
-                                <span className="text-sm font-semibold text-foreground whitespace-nowrap">Talk to Expert Now</span>
+                            <div className="flex flex-col items-start mr-1 sm:mr-2">
+                                <span className="text-[10px] sm:text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider leading-none mb-0.5">Emergency?</span>
+                                <span className="text-[12px] sm:text-sm font-semibold text-foreground whitespace-nowrap leading-none">Talk to Expert Now</span>
                             </div>
 
                             <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center text-white shadow-lg">
