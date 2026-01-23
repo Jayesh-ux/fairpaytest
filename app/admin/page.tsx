@@ -56,6 +56,7 @@ interface Stats {
     completedCases: number;
     totalLoanAmount: number;
     conversionRate: number;
+    totalReviews: number;
 }
 
 interface StageDistribution {
@@ -233,10 +234,10 @@ export default function AdminDashboard() {
             href: '/admin/callbacks',
         },
         {
-            label: 'Reviews',
-            value: stats?.pendingReviews || 0,
-            change: '+3 pending',
-            trend: 'info',
+            label: 'Approved Reviews',
+            value: stats?.totalReviews || 0,
+            change: `${stats?.pendingReviews || 0} pending approval`,
+            trend: (stats?.pendingReviews || 0) > 0 ? 'alert' : 'info',
             icon: Star,
             color: 'from-purple-500 to-pink-400',
             bgColor: 'bg-purple-500/10',

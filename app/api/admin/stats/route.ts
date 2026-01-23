@@ -37,8 +37,8 @@ export async function GET(request: NextRequest) {
             prisma.callbackRequest.count({ where: { status: 'NEW' } }),
             // Pending reviews (not approved)
             prisma.review.count({ where: { approved: false } }),
-            // Total reviews
-            prisma.review.count(),
+            // Approved reviews count
+            prisma.review.count({ where: { approved: true } }),
             // Total users (excluding admins)
             prisma.user.count({ where: { role: 'USER' } }),
             // Recent 5 tickets with user info

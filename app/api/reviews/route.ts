@@ -1,17 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { isAdmin } from '@/lib/auth';
 
-// GET /api/reviews - Get all approved reviews (public)
+// GET /api/reviews - Get reviews (public: approved only, admin: all)
 export async function GET(request: NextRequest) {
     try {
+        const { searchParams } = new URL(request.url);
+        const adminMode = searchParams.get('admin') === 'true';
+        const userIsAdmin = await isAdmin();
+
+        const where: any = {};
+
+        // If not in admin mode or requester is not an admin, only show approved reviews
+        if (!adminMode || !userIsAdmin) {
+            where.approved = true;
+        }
+
         const reviews = await prisma.review.findMany({
-            where: {
-                approved: true,
-            },
+            where,
             orderBy: {
                 createdAt: 'desc',
             },
-            take: 50, // Limit to 50 reviews
+            take: 100,
         });
 
         return NextResponse.json({
