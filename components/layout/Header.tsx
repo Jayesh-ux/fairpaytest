@@ -283,6 +283,17 @@ export function Header({ onOpenCallback }: HeaderProps) {
                     </SheetHeader>
 
                     <div className="flex-1 overflow-y-auto py-6 px-4">
+                      {status !== 'authenticated' && (
+                        <Link
+                          href="/auth/signin"
+                          className="block w-full mb-6"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <Button variant="default" className="w-full py-6 text-base font-bold shadow-xl bg-primary text-primary-foreground rounded-xl">
+                            Get Started with Account →
+                          </Button>
+                        </Link>
+                      )}
                       <div className="space-y-1">
                         {mainNavItems.map((item) => (
                           <div key={item.label}>

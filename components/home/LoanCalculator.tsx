@@ -14,7 +14,7 @@ export function LoanCalculator() {
     // Calculate total debt
     const totalDebt = creditCardDebt + personalLoanDebt;
 
-    // Calculate savings (40-60% based on debt amount and missed EMI)
+    // Calculate savings based on debt amount and missed EMI typical outcomes
     const savingsPercentage = missedEMI === "yes" ? 0.55 : 0.50;
     const totalSavings = Math.round(totalDebt * savingsPercentage);
 
@@ -191,7 +191,7 @@ export function LoanCalculator() {
                                                 {formatCurrency(totalSavings)}
                                             </p>
                                             <p className="text-xs text-muted-foreground mt-2">
-                                                Potential reduction of ~{Math.round(savingsPercentage * 100)}%
+                                                Potential reduction through structured settlement
                                             </p>
                                         </motion.div>
 
