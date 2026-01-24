@@ -67,11 +67,8 @@ export const metadata: Metadata = {
             'max-snippet': -1,
         },
     },
-    icons: {
-        icon: '/logo.jpg',
-        shortcut: '/logo.jpg',
-        apple: '/logo.jpg',
-    },
+    manifest: '/manifest.json',
+    // end of metadata
 };
 
 // JSON-LD structured data
@@ -104,6 +101,7 @@ export default function RootLayout({
             <head>
                 <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
                 <link rel="preconnect" href="https://www.google.com" />
+                <meta name="google-site-verification" content="LvDpSzPHfOjkrOuH4qOwHpOK3n0mkMAQWKnIe6sGlH0" />
                 <meta name="theme-color" content="#C9A962" />
                 <script
                     type="application/ld+json"
